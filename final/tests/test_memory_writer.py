@@ -1,6 +1,6 @@
-"""memory_writer 与 main 分支 mem_writer.go 对齐的单元测试。
+"""memory_writer 单元测试。
 
-覆盖 Task 20：
+覆盖：
 - classify_memory_content 4 条规则
 - llm_classify_memory 7 类 6 槽 + 兜底 general
 - sync_consolidation_to_db：批删 + 逐条 update + 鲁棒错误处理
@@ -171,7 +171,7 @@ def test_sync_consolidation_to_db_skips_invalid_ids():
 
 
 def test_sync_consolidation_to_db_delete_failure_continues_to_update():
-    """delete 抛错不应阻止后续 update（与 main 粗粒度错误处理一致）。"""
+    """delete 抛错不应阻止后续 update。"""
     repo = _RecLtmRepo(raise_delete=True)
     agent = _agent_with_repo(repo)
     result = ConsolidationResult(

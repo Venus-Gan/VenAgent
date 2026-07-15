@@ -1,6 +1,5 @@
 """CancelRegistry 多任务管理 + 快照防泄漏 单元测试。
 
-对齐 main 分支 taskRuntime（runtime_task.go）：
 - registerCancel/cancelAll：多 in-flight token 全部触发
 - setTask：清空 snapshots
 - appendSnapshot/snapshotList：持锁、返回拷贝
@@ -53,7 +52,7 @@ def test_set_task_clears_snapshots():
     reg.append_snapshot({"step": 2})
     assert len(reg.snapshot_list()) == 2
 
-    # 切换任务时 snapshots 清空（对应 Go setTask）
+    # 切换任务时 snapshots 清空
     reg.set_task({"task_id": "t2"})
     assert reg.snapshot_list() == []
     assert reg.current_task() == {"task_id": "t2"}
@@ -101,7 +100,7 @@ def test_concurrent_register_unregister_no_race():
 
 
 def test_go_safe_recovers_from_exception():
-    """go_safe 抛异常的子线程不应影响调用方（已知行为，回归保护）。"""
+    """后台线程抛异常不应影响调用方（已知行为，回归保护）。"""
     done = threading.Event()
 
     def boom():

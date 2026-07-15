@@ -41,13 +41,13 @@ except ImportError:
     _HAS_MILVUS = False
 
 
-# 默认 RAG 集合名（与 main 分支 Go 实现 internal/infrastructure/persistence/ragchunk 对齐）
+# 默认 RAG 集合名
 RAG_COLLECTION = "rag_chunks"
-# 索引参数（与 Go 端 entity.NewIndexIvfFlat(entity.L2, 128) 对齐）
+# 索引参数：IVF_FLAT + L2 + nlist=128
 _RAG_INDEX_TYPE = "IVF_FLAT"
 _RAG_METRIC_TYPE = "L2"
 _RAG_INDEX_NLIST = 128
-# content 字段最大长度（与 Go 端 max_length=4096 对齐）
+# content 字段最大长度
 _RAG_CONTENT_MAX_LEN = 4096
 
 
@@ -492,10 +492,7 @@ class Infrastructure:
             logger.warning("⚠️  Milvus 创建集合失败: %s", e)
 
     def _create_milvus_rag_collection(self, collection_name: str, dim: int):
-        """以显式 schema 创建 RAG 集合：pg_id (PK Int64) / content (VarChar 4096) / embedding。
-
-        与 main 分支 Go 实现 EnsureMilvusCollection 对齐。
-        """
+        """以显式 schema 创建 RAG 集合：pg_id (PK Int64) / content (VarChar 4096) / embedding。"""
         if not self._milvus or DataType is None:
             return
         schema = self._milvus.create_schema(auto_id=False, enable_dynamic_field=False)

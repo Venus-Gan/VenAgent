@@ -409,9 +409,7 @@ def test_llm_embed_does_not_return_mock_vector_when_unconfigured():
 def test_save_rag_chunk_with_parent_is_idempotent_upsert():
     """重复 ingest 同一 (doc_hash, chunk_idx) 不应触发 UNIQUE 冲突。
 
-    对齐 main 分支 Go 实现 (internal/infrastructure/persistence/ragchunk/ragchunk.go
-    SavePGWithParent)：使用 ON CONFLICT (doc_hash, chunk_idx) DO UPDATE，
-    返回的 id 应保持稳定。
+    使用 ON CONFLICT (doc_hash, chunk_idx) DO UPDATE，返回的 id 应保持稳定。
     """
     from internal.repo.ragchunk import Store
 

@@ -1,6 +1,6 @@
-"""LongTerm + GraphMemory 访问器对齐 main 分支的单元测试。
+"""LongTerm + GraphMemory 访问器单元测试。
 
-覆盖 Task 19：
+覆盖：
 - LongTerm.snapshot / find_by_id / last_id / last_item / sync_last_item_pg_id /
   set_consolidation_config
 - GraphMemory.sync_prev_id / set_consolidation_config / need_consolidation

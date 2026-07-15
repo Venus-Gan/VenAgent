@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from typing import List
 
 
-# EntityType 实体类型枚举（字符串值，与 Go 版保持一致）
+# EntityType 实体类型字符串常量
 EntityType = str
 
 ENTITY_PERSON: EntityType = "Person"

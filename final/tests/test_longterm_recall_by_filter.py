@@ -1,4 +1,4 @@
-"""LongTerm.recall_by_filter 对齐 main 分支 Go RecallByFilter 的单元测试。
+"""LongTerm.recall_by_filter 单元测试。
 
 覆盖：
   1. top_k=2 + emb 充足 → 返回按 score desc 排序后的 2 条

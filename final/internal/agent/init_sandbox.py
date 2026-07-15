@@ -1,6 +1,5 @@
 # init_sandbox — 沙箱初始化与 shell 命令解析
 #
-# 对应 Go 版 internal/agent/init_sandbox.go：
 #   - init_sandbox：构造 Sandbox 实例 + 注册 exec_command 工具 + 审计回调
 #   - extract_shell_command：从用户自然语言中提取实际的 shell 命令
 #
@@ -26,7 +25,7 @@ def init_sandbox(agent):
 
         sb = create_sandbox(agent.cfg)
 
-        # 审计：将每条命令执行结果发送到 Kafka（字段对齐 Go 版 initSandbox）
+        # 审计：将每条命令执行结果发送到 Kafka
         def _audit(r):
             try:
                 validation = getattr(r, "validation", None)

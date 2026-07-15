@@ -16,15 +16,15 @@ except ImportError:
     _HAS_MILVUS = False
 
 
-# 默认 RAG 集合名（与 main 分支 Go 实现 internal/infrastructure/persistence/ragchunk 对齐）
+# 默认 RAG 集合名
 DEFAULT_RAG_COLLECTION = "rag_chunks"
 
-# 索引参数（与 Go 端 entity.NewIndexIvfFlat(entity.L2, 128) 对齐）
+# 索引参数：IVF_FLAT + L2 + nlist=128
 _RAG_INDEX_TYPE = "IVF_FLAT"
 _RAG_METRIC_TYPE = "L2"
 _RAG_INDEX_NLIST = 128
 
-# content 字段最大长度（与 Go 端 TypeParams["max_length"]=4096 对齐）
+# content 字段最大长度
 _RAG_CONTENT_MAX_LEN = 4096
 
 
@@ -37,7 +37,7 @@ class MilvusClientWrapper:
     def __init__(self, cfg: APIConfig):
         self.cfg = cfg
         self._client = None
-        # 与 Go 版差异：内存模式下用 "memory-mode" 显式标识降级
+        # 内存模式下用 "memory-mode" 显式标识降级
         self.status: str = "disconnected"
         self._connect()
         if self._client is not None:
@@ -90,7 +90,7 @@ class MilvusClientWrapper:
         """以显式 schema 创建 RAG 集合：pg_id/content/embedding。"""
         if self._client is None or DataType is None:
             return
-        # 显式 schema：与 Go 端 entity.Schema 对齐
+        # 显式 schema：pg_id (INT64 PK) / content (VARCHAR) / embedding (FLOAT_VECTOR)
         schema = self._client.create_schema(auto_id=False, enable_dynamic_field=False)
         schema.add_field(
             field_name="pg_id", datatype=DataType.INT64, is_primary=True
@@ -176,7 +176,7 @@ class MilvusClientWrapper:
                           auto_id: bool = True, enable_dynamic_field: bool = True) -> bool:
         """幂等创建任意业务集合。
 
-        对默认 RAG 集合 (rag_chunks) 走显式 schema 路径以保证 schema/index 与 Go 对齐；
+        对默认 RAG 集合 (rag_chunks) 走显式 schema 路径以保证 schema/index 一致性；
         其它集合走 pymilvus 的简易 schema（dimension 参数）兼容旧调用方。
         """
         if self._client is None:

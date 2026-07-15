@@ -1,6 +1,6 @@
-"""restore.py 三件套对齐 main 分支的单元测试。
+"""restore.py 三件套单元测试。
 
-覆盖 Task 21：
+覆盖：
 - restore_from_db：先调 ltm.load_from_storage，再回放 chat_history 到 STM；
 - init_knowledge_graph 降级路径：Neo4j / KGStore 不可用时 agent.kg = graph_memory = None；
 - init_knowledge_graph 三件套：复用同一个 Neo4j client、KGStore 注入 RAG、

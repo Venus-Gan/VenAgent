@@ -34,7 +34,7 @@ class Item:
     embedding: Optional[List[float]] = None
     # 用于在 GraphMemory 中追踪节点；未设置时由 GraphMemory 用 content hash 派生
     id: Optional[int] = None
-    # 与 main 分支 Go Item 对齐的 Schema-driven 字段
+    # Schema-driven 字段
     created_at: float = field(default_factory=time.time)
     last_accessed: float = field(default_factory=time.time)
     category: str = ""
@@ -45,7 +45,7 @@ class Item:
 
 @dataclass
 class RecallFilter:
-    """LongTerm.recall_by_filter 的过滤参数（与 main 分支 RecallFilter 对齐）。
+    """LongTerm.recall_by_filter 的过滤参数。
 
     定义在 memory 包内以避免对 promptctx 的反向依赖；recall_by_filter 接受任何
     具备同名字段的 duck-typed 对象（如 promptctx.RecallFilter）。
@@ -62,8 +62,7 @@ class RecallFilter:
 class ConsolidationResult:
     """LongTerm.consolidate 的结构化返回。
 
-    与 main 分支 Go ConsolidationResult 对齐：调用方据此向 PG / 图同步删除与更新，
-    consolidate 自身只改内存。
+    调用方据此向 PG / 图同步删除与更新，consolidate 自身只改内存。
     """
     deduped: int = 0
     merged: int = 0
@@ -75,7 +74,6 @@ class ConsolidationResult:
 class ShortTerm:
     """短期记忆 - 滑动窗口存储最近 N 轮对话。
 
-    与 main 分支 Go ShortTerm 对齐：
     - 每条消息带 ``timestamp``（"HH:MM:SS"）
     - 通过可重入锁保护并发读写（写 add / clear，读 get / count）
     - 底层用 ``collections.deque(maxlen=max_turns*2)``，达到上限自动淘汰最早消息
@@ -148,8 +146,8 @@ class LongTerm:
     def set_graph_memory(self, graph_memory: Optional["GraphMemory"]) -> None:
         """注入图增强记忆层；可在任意时刻调用，None 表示解除注入。
 
-        同时反向把 self 注入到 graph_memory.ltm 上（如果对方支持），让 main 分支
-        风格的代理方法（sync_prev_id / need_consolidation / set_consolidation_config）
+        同时反向把 self 注入到 graph_memory.ltm 上（如果对方支持），让
+        代理方法（sync_prev_id / need_consolidation / set_consolidation_config）
         在装配后即可使用。
         """
         self.graph_memory = graph_memory
@@ -254,8 +252,9 @@ class LongTerm:
         tags: Optional[List[str]],
         slot_hint: str,
     ) -> bool:
-        """Schema-driven 写入：写前对内存中已有 items 做 cosine dedup（与 main 分支
-        Go StoreClassified 对齐）。命中阈值则只更新 importance / tags / category /
+        """Schema-driven 写入：写前对内存中已有 items 做 cosine dedup。
+
+        命中阈值则只更新 importance / tags / category /
         slot_hint，并通过 repo.ltm.update_classified 同步到 PG，不插新行；未命中则
         走完整 add 路径写入 PG 并 append 到 self.items。
 
@@ -407,7 +406,7 @@ class LongTerm:
         query_embedding: Optional[List[float]],
         filter,
     ) -> List[Item]:
-        """带 filter 的语义召回（对齐 main 分支 LongTerm.RecallByFilter）。
+        """带 filter 的语义召回。
 
         参数 ``filter`` 走 duck typing（需具备 categories / require_tags /
         max_age_hours / min_score / top_k 字段），既兼容 ``memory.RecallFilter``
@@ -516,7 +515,7 @@ class LongTerm:
         return self._cosine_similarity(va, vb)
 
     def filter_by_category(self, categories: List[str], limit: int) -> List[Item]:
-        """按 category 严格过滤 LTM 条目（与 main FilterByCategory 对齐）。
+        """按 category 严格过滤 LTM 条目。
 
         空 items 或空 categories 直接返回 []；命中即追加，limit > 0 时按命中顺序截断。
         """
@@ -546,13 +545,12 @@ class LongTerm:
         with self._lock:
             return self._items_since_last >= max(1, self.cfg.memory_consolidation_trigger)
 
-    # ─── main 分支访问器对齐 ───────────────────────────────────────────────
+    # ─── 访问器 ───────────────────────────────────────────────
 
     def snapshot(self) -> List["Item"]:
         """返回 self.items 的浅拷贝（值拷贝 Item，但 embedding/tags 为引用）。
 
-        与 main 分支 LongTerm.Snapshot 对齐：调用方可安全遍历，但不应修改
-        Item 内嵌的 list 字段。
+        调用方可安全遍历，但不应修改 Item 内嵌的 list 字段。
         """
         with self._lock:
             return [
@@ -594,7 +592,7 @@ class LongTerm:
         return None, False
 
     def last_id(self) -> int:
-        """返回最后一条 item 的 id；空返回 -1（与 main 一致）。"""
+        """返回最后一条 item 的 id；空返回 -1。"""
         with self._lock:
             if not self.items:
                 return -1
@@ -626,7 +624,7 @@ class LongTerm:
     def sync_last_item_pg_id(self, pg_id: int) -> None:
         """把最后一条 item 的 id 改写为 PG 真实主键，并推高 _next_id。
 
-        对齐 main 分支：写入 PG 后 RETURNING 拿到的真实 id 通过此方法回写到内存
+        写入 PG 后 RETURNING 拿到的真实 id 通过此方法回写到内存
         item 上，保证后续图同步用的 mem_id 与 PG 一致。
         """
         if pg_id <= 0:
@@ -644,7 +642,7 @@ class LongTerm:
         cfg 需具备：``memory_consolidation_similarity / memory_consolidation_dedup /
         memory_consolidation_ttl_days / memory_consolidation_decay_rate /
         memory_consolidation_min_import / memory_consolidation_trigger`` 字段。
-        与 main 分支 SetConsolidationConfig 一致：替换内部引用即可生效。
+        替换内部引用即可生效。
         """
         if cfg is None:
             return
@@ -654,16 +652,15 @@ class LongTerm:
     def consolidate(self) -> ConsolidationResult:
         """周期性合并：阶段 1 衰减 → 阶段 2 去重/合并 → 阶段 3 双条件淘汰。
 
-        与 main 分支 Go LongTerm.Consolidate 严格对齐：
+        严格遵循以下规则：
           - 衰减按每条 item 自己的 created_at 而非全局 elapsed_days
           - 去重保留 i、删除 j（吸收 importance 取 max 和 tags 合并）
           - 合并产出新 item 替换 i，j 删除
           - 淘汰需同时满足 days > ttl_days 且 importance < min_importance
 
-        本方法只改内存 self.items，不写 PG（持久化由 Task 20 的
-        sync_consolidation_to_db 处理）。返回 ConsolidationResult，
-        delete_from_db 含被去重和合并删除的 j.id；update_in_db 含被替换为
-        merged 后的 i 副本。
+        本方法只改内存 self.items，不写 PG（持久化由 sync_consolidation_to_db 处理）。
+        返回 ConsolidationResult，delete_from_db 含被去重和合并删除的 j.id；
+        update_in_db 含被替换为 merged 后的 i 副本。
         """
         result = ConsolidationResult()
         with self._lock:
@@ -735,8 +732,8 @@ class LongTerm:
 
             self.items = [it for k, it in enumerate(self.items) if not removed[k]]
 
-            # 图中心度保护：入度 ≥ threshold 的节点不进入 PG 删除列表（与 main
-            # GraphAwareConsolidate 对齐；只过滤 delete_from_db，不复活内存条目）。
+            # 图中心度保护：入度 ≥ threshold 的节点不进入 PG 删除列表
+            #（只过滤 delete_from_db，不复活内存条目）。
             if self.graph_memory is not None and result.delete_from_db:
                 try:
                     threshold = int(getattr(self.cfg, "graph_protect_indegree", 3) or 3)
@@ -836,8 +833,7 @@ class LongTerm:
         """中英文 cosine 相似度。
 
         优先使用 embedding 余弦：当 emb_a / emb_b 都非空且维度一致时，直接计算；
-        否则降级为 TF 词袋（按 _tokenize_zh 切词）后做 cosine。与 main 分支 Go
-        实现 itemSimilarity / Cosine 对齐。
+        否则降级为 TF 词袋（按 _tokenize_zh 切词）后做 cosine。
         """
         if emb_a and emb_b and len(emb_a) == len(emb_b):
             return self._cosine_similarity(emb_a, emb_b)
@@ -924,7 +920,7 @@ class MemoryManager:
         query_embedding: Optional[List[float]] = None,
         categories: Optional[List[str]] = None,
     ) -> List[Item]:
-        """语义召回（与 main GraphMemory.RecallByFilter 对齐）。
+        """语义召回（支持图增强扩展）。
 
         流程：
           1) 走 ``LongTerm.recall_by_filter`` 拿种子（带 score = sim*0.7 + imp*0.3）。

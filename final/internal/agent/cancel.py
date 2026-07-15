@@ -1,9 +1,8 @@
-# cancel — 并发执行 helper：取消令牌注册表 + 当前任务持锁访问 + go_safe
+# cancel — 并发执行 helper：取消令牌注册表 + 当前任务持锁访问 + 后台线程安全启动器
 #
-# 对应 Go 版 internal/agent/cancel.go：
 #   - cancelFns map：每个 in-flight 请求一个 token，Cancel() 触发全部
 #   - currentTask / setTask：持锁访问当前 TaskState
-#   - goSafe：带 panic recover 的后台 goroutine 启动器
+#   - go_safe：带异常恢复的后台线程启动器
 #
 # Python 用 threading.Event 取代 context.CancelFunc。每次请求注册一个独立
 # 的 Event，agent.cancel() 会触发所有 in-flight 请求的 Event。
@@ -29,10 +28,10 @@ class CancelToken:
 
 
 class CancelRegistry:
-    """所有 in-flight 请求的 CancelToken 注册表（对应 Go 的 cancelFns map）。
+    """所有 in-flight 请求的 CancelToken 注册表。
 
     每个请求开始时 register() 拿到一个 token，结束时调用返回的 unregister。
-    cancel_all() 会触发所有 in-flight 的 token，对应 Go 的 Cancel()。
+    cancel_all() 会触发所有 in-flight 的 token。
     """
 
     def __init__(self):
@@ -41,7 +40,7 @@ class CancelRegistry:
         self._next_id = 0
         # 当前正在执行的 task 状态（仅保留一个引用，用于 PlannerSource 读取）
         self._current_task: Optional[dict] = None
-        # 当前任务的步骤快照列表（与 main taskRuntime.snapshots 对齐）。
+        # 当前执行的步骤快照列表。
         # set_task 时清空，append_snapshot 持锁追加，snapshot_list 返回拷贝。
         self._snapshots: List[dict] = []
 
@@ -61,7 +60,7 @@ class CancelRegistry:
         return token, _unregister
 
     def cancel_all(self):
-        """触发所有 in-flight 请求的 cancel（对应 Go Cancel()）。"""
+        """触发所有 in-flight 请求的 cancel。"""
         with self._lock:
             tokens = list(self._tokens.values())
         for t in tokens:
@@ -72,26 +71,26 @@ class CancelRegistry:
             return self._current_task
 
     def set_task(self, task: Optional[dict]):
-        """设置当前 task，并清空 snapshots（对应 Go setTask 语义）。"""
+        """设置当前 task，并清空 snapshots。"""
         with self._lock:
             self._current_task = task
             self._snapshots = []
 
     def append_snapshot(self, snapshot: dict) -> None:
-        """持锁追加一条步骤快照（对应 Go appendSnapshot）。"""
+        """持锁追加一条步骤快照。"""
         if snapshot is None:
             return
         with self._lock:
             self._snapshots.append(snapshot)
 
     def snapshot_list(self) -> List[dict]:
-        """返回当前任务的快照拷贝（对应 Go snapshotList）。"""
+        """返回当前任务的快照拷贝。"""
         with self._lock:
             return list(self._snapshots)
 
 
 def go_safe(name: str, fn: Callable[[], None]) -> threading.Thread:
-    """启动一个带 panic recover 的后台线程（对应 Go 的 goSafe）。
+    """启动一个带异常恢复的后台线程。
 
     所有异步任务（偏好提取/记忆挖掘/记忆合并/KG 异步写）走这里，
     任意线程崩溃都不会影响主流程。

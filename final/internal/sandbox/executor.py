@@ -23,7 +23,7 @@ class SandboxUnavailableError(RuntimeError):
 
 
 class Sandbox:
-    """封装 Validator + Executor + 审计回调（对应 Go 版 Sandbox）"""
+    """封装 Validator + Executor + 审计回调"""
 
     def __init__(self, backend: str, sandbox_cfg: SandboxConfig, sec_cfg: SecurityConfig):
         self._validator = Validator(sec_cfg)

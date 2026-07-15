@@ -1,13 +1,13 @@
-# tools — 工具定义、调用与注册（Python 版与 main 分支 Go 版 tools.go 对齐）
+# tools — 工具定义、调用与注册模块
 #
-# 内置工具集合（与 Go 版 toolimpl.DefaultTools 对齐）：get_time / get_weather / search_web。
+# 内置工具集合：get_time / get_weather / search_web。
 # 注意 rag_search 不在此处注册——它依赖 Agent 持有的 RAG 引擎实例，
 # 由 internal/agent/agent.py 的 _register_builtin_tools 在 agent 启动期动态注入闭包。
 #
 # 此外提供以下能力：
 #   - exec_command：通过 sandbox 在隔离环境执行终端命令
 #   - tavily：显式调用 Tavily Search API 的可选工具（search_web 默认路径不再依赖 provider）
-#   - decide：基于关键字的简单工具选择器（对应 Go 版 tools.Decide）
+#   - decide：基于关键字的简单工具选择器
 import logging
 import threading
 import time
@@ -37,7 +37,7 @@ class CallResult:
     success: bool
     content: str
     error: Optional[str] = None
-    # 兼容 Go 版 CallResult 字段（部分调用方期望）
+    # 工具执行结果字段（部分调用方期望）
     tool_name: str = ""
     params: Dict[str, Any] = field(default_factory=dict)
 
@@ -45,7 +45,7 @@ class CallResult:
 # ─────────────────────────────── 内置工具 ────────────────────────────────────
 
 def get_time(args: Dict[str, Any]) -> str:
-    """返回当前时间，支持可选时区参数（与 Go 版 GetTime 对齐）。"""
+    """返回当前时间，支持可选时区参数。"""
     tz = args.get("timezone") if isinstance(args, dict) else None
     if tz:
         try:
@@ -59,7 +59,7 @@ def get_time(args: Dict[str, Any]) -> str:
 
 
 def get_weather(args: Dict[str, Any]) -> str:
-    """模拟天气查询（与 Go 版 GetWeather 对齐，含小型词表）。"""
+    """模拟天气查询，含小型词表。"""
     db = {
         "北京": "晴天 22°C",
         "东京": "多云 18°C 湿度65%",
@@ -76,7 +76,7 @@ def get_weather(args: Dict[str, Any]) -> str:
 
 
 def _mock_search(query: str) -> str:
-    """search 工具的 mock 兜底实现（与 Go 版 SearchWeb 对齐）。"""
+    """search 工具的 mock 兜底实现。"""
     db = {
         "AI应用工程师": "AI 应用工程师是将 AI 技术落地到业务的工程师，需具备 ML 基础、API 开发、Prompt 工程等能力。",
         "Go语言": "Go 是 Google 开发的开源编程语言，适用于高并发服务端应用。Docker 即用 Go 开发。",
@@ -177,7 +177,7 @@ def build_exec_command_tool(sandbox) -> Optional[Tool]:
 # ─────────────────────────────── 默认工具集 ──────────────────────────────────
 
 def default_tools(cfg=None, llm=None, sandbox=None) -> List[Tool]:
-    """返回默认工具集合（与 Go 版 toolimpl.DefaultTools 对齐）。
+    """返回默认工具集合。
 
     Args:
         cfg:     APIConfig 实例。保留兼容性，但默认 search_web 不再依赖 provider key。
@@ -220,14 +220,14 @@ def default_tools(cfg=None, llm=None, sandbox=None) -> List[Tool]:
 # ─────────────────────────────── 工具调用器 ──────────────────────────────────
 
 class ToolExecutor:
-    """与 main 分支 Go 版接口对齐的工具执行器。
+    """工具执行器。
 
     内部用 ``threading.RLock`` 串行化 ``_tool_map`` 的读写。多路并发调用方：
       - register / add_tool（写）
       - call / get_tool_descriptions / snapshot / filter_tools / 路由侧
         ``self.tool_executor._tool_map`` 直读（读）
 
-    与 main toolRegistry 对齐：写持锁；读经 ``snapshot``/``filter_tools``
+    写持锁；读经 ``snapshot``/``filter_tools``
     返回浅拷贝供调用方无锁遍历。``call`` 内部以一次 snapshot 查询 + 锁外
     执行 ``tool.func`` 的方式，避免长时占锁。
     """
@@ -283,7 +283,7 @@ class ToolExecutor:
 # ─────────────────────────────── 工具选择器 ──────────────────────────────────
 
 def decide(query: str, ts: Dict[str, Tool]) -> Optional[CallResult]:
-    """基于关键字推断应调用的工具及参数（对应 Go 版 tools.Decide）。
+    """基于关键字推断应调用的工具及参数。
 
     只会返回 ts 中实际存在的工具；若无任何工具命中，则取首个工具兜底。
     """
@@ -336,8 +336,7 @@ def new_mcp_tool(
 ) -> Tool:
     """创建 MCP 工具：
 
-    若提供 func 则直接使用（兼容旧调用）；否则当 endpoint 非空时构造 HTTP POST 调用器
-    （对应 Go 版 NewMCPTool 行为）。
+    若提供 func 则直接使用（兼容旧调用）；否则当 endpoint 非空时构造 HTTP POST 调用器。
     """
     if func is None and endpoint:
         def _http_call(p: Dict[str, Any]) -> str:

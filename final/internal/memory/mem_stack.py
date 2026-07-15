@@ -1,11 +1,12 @@
 # mem_stack — 三层记忆 + 偏好的聚合容器，并提供 ConsolidationConfig 数据类。
 #
-# 与 main 分支 internal/application/chat/mem_stack.go 对齐：
 #   - MemoryStack 把 stm（短期）/ ltm（长期）/ graph_memory（图增强）/ preference
 #     四个独立组件装进一个对象，UnifiedAgent 不再铺 4 个字段。
 #   - graph_memory 是延后注入的（KGStore 就绪后才创建），调用前需 nil 检查。
 #
-# ConsolidationConfig 与 main longterm.ConsolidationConfig 字段一一对应（6 字段），
+# ConsolidationConfig 含 6 个业务字段：
+#   - similarity_threshold / dedup_threshold / ttl_days / decay_rate /
+#     min_importance / trigger_interval
 # 额外保留 1 个兼容字段 ``source``（指向原始 APIConfig），共 7 字段，便于
 # 既有 ``LongTerm.set_consolidation_config`` 的 duck-typed ``getattr`` 路径继续
 # 读取 ``memory_consolidation_*`` 属性名而不必修改 LongTerm 内部实现。
@@ -35,7 +36,7 @@ _LEGACY_ALIAS = {
 
 @dataclass
 class ConsolidationConfig:
-    """记忆合并配置（与 main longterm.ConsolidationConfig 对齐）。
+    """记忆合并配置。
 
     7 字段 = 6 业务字段 + 1 兼容字段：
       - similarity_threshold: 合并相似度阈值（>= 触发合并）
@@ -87,7 +88,7 @@ class ConsolidationConfig:
 
 @dataclass
 class MemoryStack:
-    """三层记忆 + 偏好的聚合容器（对应 main memoryStack）。
+    """三层记忆 + 偏好的聚合容器。
 
     stm/ltm/preference 必填；graph_memory 启动期为 None，KGStore 就绪后由
     ``attach_graph`` 注入。
@@ -99,5 +100,5 @@ class MemoryStack:
     graph_memory: Optional[Any] = None
 
     def attach_graph(self, graph_memory: Any) -> None:
-        """KGStore 就绪后注入图增强记忆层（对应 main attachGraph）。"""
+        """KGStore 就绪后注入图增强记忆层。"""
         self.graph_memory = graph_memory

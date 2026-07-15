@@ -16,7 +16,7 @@ except ImportError:
     _HAS_NEO4J = False
 
 
-# 启动期幂等创建的约束/索引（与 Go 版一致）
+# 启动期幂等创建的约束/索引
 _CONSTRAINTS: List[str] = [
     "CREATE CONSTRAINT entity_name IF NOT EXISTS FOR (e:Entity) REQUIRE e.name IS UNIQUE",
     "CREATE INDEX entity_type IF NOT EXISTS FOR (e:Entity) ON (e.type)",
@@ -69,7 +69,7 @@ class Neo4jClient:
         return self._driver is not None
 
     def available(self) -> bool:
-        """与 Go 版 Available() 同名；返回是否可用。"""
+        """返回 Neo4j 是否可用。"""
         return self._driver is not None
 
     @property

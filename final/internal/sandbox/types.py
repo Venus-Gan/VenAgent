@@ -1,4 +1,4 @@
-# sandbox.types — Sandbox 数据结构与配置（与 main 分支 Go 版字段对齐）
+# sandbox.types — Sandbox 数据结构与配置
 """
 sandbox 包提供安全的终端命令执行能力：
   - Validator：静态安全校验（block/warn/safe 三级）
@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 
 
-# ── 风险级别（与 Go 版 RiskLevel 字符串对齐） ────────────────────────────────
+# ── 风险级别 ────────────────────────────────
 RISK_SAFE = "safe"
 RISK_WARN = "warn"
 RISK_BLOCK = "block"

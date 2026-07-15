@@ -1,4 +1,4 @@
-# config — 配置管理（与主分支 Go 版字段对齐的 Python 配置）
+# config — 配置管理模块
 import logging
 import os
 from typing import Any, Dict, List, Optional
@@ -69,7 +69,7 @@ _NESTED_CONFIG_SCHEMA = {
 
 
 class APIConfig:
-    """整合 Python 版主干能力的运行配置（字段名与 Go 版 APIConfig 对齐）。"""
+    """整合系统主干能力的运行配置。"""
 
     def __init__(self):
         # ---- LLM / Embedding ----
@@ -235,7 +235,7 @@ def _resolve_config_path(explicit: Optional[str]) -> str:
 
 
 def default_config(config_path: Optional[str] = None) -> APIConfig:
-    """从 config.yaml 加载配置（与 Go 版 DefaultConfig 字段一一对齐）。"""
+    """从 config.yaml 加载配置。"""
     c = APIConfig()
     path = _resolve_config_path(config_path)
     data = _read_yaml(path)

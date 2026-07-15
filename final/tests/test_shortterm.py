@@ -1,6 +1,5 @@
 """ShortTerm 滑动窗口 + timestamp + 并发安全的单元测试。
 
-对齐 main 分支：
 - 每条消息带 timestamp（"HH:MM:SS"）
 - 超过 max_turns*2 自动淘汰最早消息（deque maxlen）
 - 多线程并发 add/get/count 不抛异常、不丢一致性

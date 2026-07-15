@@ -24,7 +24,7 @@ EmbedFn = Callable[[str], List[float]]
 
 @dataclass
 class HybridResult:
-    """混合检索的单条结果（与 Go 版 HybridResult 字段对齐）"""
+    """混合检索的单条结果"""
     pg_id: int = 0
     content: str = ""
     score: float = 0.0
@@ -64,7 +64,7 @@ class HybridStore:
         self._reranker = None
         self.mode = self._resolve_mode()
 
-    # ─── 注入式 setter（与 Go 版接口对齐） ─────────────────────────────────
+    # ─── 注入式 setter ─────────────────────────────────
 
     def set_embed_fn(self, fn: EmbedFn) -> None:
         self._embed_fn = fn
@@ -241,14 +241,14 @@ class HybridStore:
     # ─── 混合检索：三路 RRF 融合 ─────────────────────────────────────────
 
     def _search_hybrid(self, query: str, top_k: int) -> List[HybridResult]:
-        # 从每路取 2*top_k，给融合留候选（与 Go 版一致，下限 10）
+        # 从每路取 2*top_k，给融合留候选（下限 10）
         fetch_k = max(top_k * 2, 10)
 
         milvus_path = self._fetch_milvus(query, fetch_k)
         es_path = self._fetch_es(query, fetch_k)
         kg_path = self._fetch_kg(query, fetch_k)
 
-        # 三路全失败 → 直接返回；保留 Go 版的两两降级路径
+        # 三路全失败 → 直接返回；保留两两降级路径
         if not milvus_path.ok and not es_path.ok and not kg_path.ok:
             logger.warning("⚠️  三路检索均失败")
             return []

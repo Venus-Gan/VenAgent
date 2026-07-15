@@ -1,4 +1,4 @@
-"""LongTerm.consolidate 三阶段对齐 main 分支 Go 实现的单元测试。
+"""LongTerm.consolidate 三阶段单元测试。
 
 覆盖：
   1. 阶段 1：按条目 created_at 单独指数衰减

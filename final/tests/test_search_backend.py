@@ -15,8 +15,8 @@ def test_search_web_factory_ignores_provider_key_and_uses_fallback(monkeypatch):
     )
     search_web = search_web_factory(cfg=cfg, llm=None)
 
-    assert search_web({"query": "Go语言"}) == (
-        "Go 是 Google 开发的开源编程语言，适用于高并发服务端应用。Docker 即用 Go 开发。"
+    assert search_web({"query": "AI应用工程师"}) == (
+        "AI 应用工程师是将 AI 技术落地到业务的工程师，需具备 ML 基础、API 开发、Prompt 工程等能力。"
     )
 
 

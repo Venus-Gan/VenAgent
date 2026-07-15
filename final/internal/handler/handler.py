@@ -100,7 +100,7 @@ def _rag_result_to_main_contract(result: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _tool_to_main_contract(tool: Dict[str, Any]) -> Dict[str, Any]:
-    """兼容 Go main 分支前端：工具参数字段叫 params。"""
+    """工具参数转前端契约格式：工具参数字段叫 params。"""
     params = tool.get("params")
     if params is None:
         params = tool.get("parameters", [])

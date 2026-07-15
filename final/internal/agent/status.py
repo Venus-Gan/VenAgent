@@ -1,4 +1,4 @@
-# status — 系统状态视图聚合（对应 Go 版 internal/agent/status.go）
+# status — 系统状态视图聚合
 #
 # 把 RAG / memory / preferences / Infrastructure 健康快照聚合为一个 dict，
 # 让 handler 不必直接读取 agent 内部组件。

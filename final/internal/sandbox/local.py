@@ -27,7 +27,7 @@ def _truncate_output(data: str, max_bytes: int) -> tuple:
 
 
 class LocalSandbox:
-    """本地执行器（对应 Go 版 LocalSandbox）
+    """本地执行器
 
     出于安全考虑，始终对命令做二次 block 校验，且超时强制终止。
     """

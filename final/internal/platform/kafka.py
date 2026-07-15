@@ -19,8 +19,7 @@ except ImportError:
 class KafkaClient:
     """Kafka 平台客户端：连接、produce 关键操作。
 
-    Go 版无 broker 时仍返回 writer + "disconnected"；Python 这里直接给 None，
-    并由 produce 落入日志回退（与 Go 版的 fallback-to-log 行为一致）。
+    无 broker 时返回 None，并由 produce 落入日志回退。
     """
 
     def __init__(self, cfg: APIConfig):
@@ -41,10 +40,10 @@ class KafkaClient:
             # value 用 raw bytes 写入；key 也按 bytes；上层负责 encode/序列化。
             self._producer = KafkaProducer(
                 bootstrap_servers=self.cfg.kafka_brokers,
-                # 与 Go segmentio LeastBytes 类似，kafka-python 默认按 partition key 路由；
+                # kafka-python 默认按 partition key 路由；
                 # 这里统一以 bytes 序列化，业务侧自由决定 payload 结构
                 value_serializer=lambda v: v if isinstance(v, (bytes, bytearray)) else json.dumps(v).encode("utf-8"),
-                # batch 与 Go 端 10ms 量级对齐
+                # batch 延迟 10ms 量级
                 linger_ms=10,
             )
             self.status = "connected"

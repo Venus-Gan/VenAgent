@@ -1,9 +1,7 @@
-# preference — 用户偏好独立模块（与 main 分支 internal/domain/memory/preference 对齐）。
+# preference — 用户偏好模块。
 #
-# 与 main 分支 Go Preference 的差异：
-#   - Python 版仍然持有 ``user_id`` 与 ``inf``，因为现有 repo 接口按 user_id 维度
-#     做读写；main 分支由更高层装配 user_id，这里出于历史原因保持现状不动。
-#   - ExtractAndSave 规则、BuildContext 输出格式、对外方法签名严格对齐。
+# Python 版持有 ``user_id`` 与 ``inf``，因为现有 repo 接口按 user_id 维度做读写。
+# ExtractAndSave 规则、BuildContext 输出格式、对外方法签名保持一致。
 import logging
 import threading
 from typing import Dict, Optional, Tuple
@@ -55,13 +53,13 @@ class Preference:
     def snapshot(self) -> Dict[str, str]:
         return self.get_all()
 
-    # ─── main 分支对齐 ─────────────────────────────────────────────────────
+    # ─── 偏好提取 ─────────────────────────────────────────────────────
 
     def extract_and_save(self, msg: str) -> Tuple[str, str, bool]:
         """从用户输入提取偏好并落库。
 
-        与 main 分支 Go ExtractAndSave 严格对齐：仅识别 "我喜欢" / "我爱" / "我叫"
-        三条规则，``strings.SplitN(msg, "X", 2)`` 取分隔符之后的部分；任一规则
+        仅识别 "我喜欢" / "我爱" / "我叫" 三条规则，
+        ``strings.SplitN(msg, "X", 2)`` 取分隔符之后的部分；任一规则
         提取出非空 value 即写入；未命中返回 ("", "", False)。
         """
         if not msg:

@@ -7,7 +7,6 @@
 #   CAUSES       — 因果推断（LLM 提取，可选）
 #   BELONGS_TO   — 话题归属
 #
-# 与 Go 版本 graph_memory.go 对齐；cypher 字符串直接照抄。
 # 失败降级：Neo4j 不可用时所有方法都是 no-op，不抛异常。
 import logging
 import math
@@ -20,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 def _go_safe(name: str, fn) -> None:
-    """启动一个带 panic recover 的后台线程（与 main 分支 goSafe 对齐）。
+    """启动一个带异常恢复的后台线程。
 
     任何异常都被吞下并落 logger.warning，不会冒泡到 caller，避免主路径被图写入失败拖累。
     """
@@ -29,7 +28,7 @@ def _go_safe(name: str, fn) -> None:
         try:
             fn()
         except Exception as e:  # pragma: no cover - 防御性日志
-            logger.warning("⚠️  goSafe %s 异常: %s", name, e)
+            logger.warning("⚠️  go_safe %s 异常: %s", name, e)
 
     threading.Thread(target=_runner, name=f"go_safe-{name}", daemon=True).start()
 
@@ -64,7 +63,7 @@ class GraphMemory:
         self.llm = llm
         self.sim_thresh = sim_threshold if sim_threshold > 0 else 0.7
         self.prev_id: int = -1
-        # 可选 LTM 反向引用（与 main 分支 GraphMemory 持有 *LongTerm 对齐）。
+        # 可选 LTM 反向引用。
         # 持有后：sync_prev_id / set_consolidation_config / need_consolidation
         # 都可代理到 LTM；未注入时各代理方法静默 no-op。
         self.ltm = ltm
@@ -87,7 +86,7 @@ class GraphMemory:
     # ─── 原子图操作 ─────────────────────────────────────────────────────────
 
     def _upsert_memory_node(self, mem_id: int, content: str, importance: float) -> None:
-        """插入或更新记忆节点（cypher 照抄 Go 版）。"""
+        """插入或更新记忆节点。"""
         if not self._available():
             return
         try:
@@ -190,7 +189,7 @@ class GraphMemory:
     # ─── 对外接口（任务约定的核心 4 个方法）────────────────────────────────
 
     def add_to_graph(self, item, neighbors: Optional[Iterable] = None) -> int:
-        """将一条记忆同步进图（异步执行，main 分支 goSafe 模式）：
+        """将一条记忆同步进图（异步执行）：
 
         - 主线程仅做 mem_id 计算与 prev_id 更新（保证 caller 紧接的查询能看到时序）。
         - 节点 upsert / FOLLOWS / SIMILAR_TO 边写入丢到 daemon 线程，失败不影响主路径。
@@ -282,10 +281,10 @@ class GraphMemory:
         """返回 candidate_ids 中入度 ≥ threshold 的节点列表（应豁免删除）。"""
         return self._get_high_centrality_ids(candidate_ids, indegree_threshold)
 
-    # ─── LTM 代理（main 分支签名对齐）──────────────────────────────────────
+    # ─── LTM 代理 ──────────────────────────────────────
 
     def sync_prev_id(self) -> None:
-        """从 LTM 拉取 last_id 同步到 self.prev_id（无参数，与 main 一致）。
+        """从 LTM 拉取 last_id 同步到 self.prev_id。
 
         未注入 LTM 时静默 no-op。
         """
@@ -299,7 +298,7 @@ class GraphMemory:
         self.prev_id = int(last)
 
     def set_consolidation_config(self, cfg) -> None:
-        """代理到 LTM.set_consolidation_config（与 main 一致）。"""
+        """代理到 LTM.set_consolidation_config。"""
         if self.ltm is None:
             return
         try:
@@ -308,7 +307,7 @@ class GraphMemory:
             logger.warning("⚠️  set_consolidation_config 代理失败: %s", e)
 
     def need_consolidation(self) -> bool:
-        """代理到 LTM.need_consolidation（与 main 一致）；未注入返回 False。"""
+        """代理到 LTM.need_consolidation；未注入返回 False。"""
         if self.ltm is None:
             return False
         try:
@@ -320,8 +319,7 @@ class GraphMemory:
     def sync_last_item_pg_id(self, pg_id: int) -> None:
         """先代理 LTM 回写 PG 主键，再用最新 last_id 更新 self.prev_id。
 
-        与 main 分支 GraphMemory.SyncLastItemPGID 对齐（缺省下 Neo4j 节点
-        upsert 在 add_to_graph 中已通过 _go_safe 异步写入，不在此重复）。
+        Neo4j 节点 upsert 在 add_to_graph 中已通过 _go_safe 异步写入，不在此重复。
         """
         if self.ltm is None or pg_id <= 0:
             return
@@ -350,7 +348,6 @@ class GraphMemory:
     def graph_aware_consolidate(self):
         """图感知合并：在 LTM.consolidate 基础上保护高中心度节点 + 同步删 Neo4j。
 
-        与 main 分支 GraphMemory.GraphAwareConsolidate 对齐：
           1) 调 LTM.consolidate 拿基础结果；
           2) Neo4j 不可用时直接返回基础结果；
           3) 入度 ≥3 的节点从 delete_from_db 中剔除（保护核心记忆）；
@@ -399,5 +396,5 @@ class GraphMemory:
         return result
 
     def close(self) -> None:
-        """语义对齐 Go 版；底层 driver 由 Neo4jClient 拥有，这里仅清状态。"""
+        """关闭 GraphMemory；底层 driver 由 Neo4jClient 拥有，这里仅清状态。"""
         self.prev_id = -1

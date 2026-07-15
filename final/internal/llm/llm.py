@@ -1,4 +1,4 @@
-# llm — LLM 客户端（OpenAI 兼容 Chat Completions + Embedding，与 main 分支 Go 版协议对齐）
+# llm — LLM 客户端（OpenAI 兼容 Chat Completions + Embedding）
 import json
 import logging
 import re
@@ -44,7 +44,7 @@ class Client:
             return self._mock(messages)
 
     def chat_context(self, ctx, system_prompt: str, messages: List[Message]) -> str:
-        """兼容主分支 Go 版 ChatContext。"""
+        """带取消上下文感知的对话调用。"""
         if getattr(ctx, "cancelled", False):
             return "[已中断]"
         return self.chat(messages, system_prompt=system_prompt)
@@ -56,7 +56,7 @@ class Client:
         messages: List[Message],
         on_token: Optional[Callable[[str], None]] = None,
     ) -> str:
-        """流式对话调用，对齐 main 分支 Go ChatStreamContext。
+        """流式对话调用。
 
         - mock 模式按字符 sleep 0.02s 推送，模拟流式体感。
         - 真实 API 走 OpenAI 兼容 SSE：``data: {json}\\n``，``data: [DONE]`` 终止。
@@ -257,7 +257,7 @@ class Client:
     # ── Embedding ───────────────────────────────────────────────────────────
 
     def embed(self, text: str) -> List[float]:
-        """文本向量化；与 Go 主分支一致：失败时抛错，由调用方决定是否降级。"""
+        """文本向量化；失败时抛错，由调用方决定是否降级。"""
         if not self.cfg.is_real_embedding():
             raise RuntimeError("embedding API 未配置")
         return self._call_embed(text)
@@ -299,7 +299,7 @@ class Client:
     # ── Preference Extraction ──────────────────────────────────────────────
 
     def extract_preferences(self, msg: str) -> Dict[str, str]:
-        """对齐 main 分支：优先用 LLM 抽取偏好 JSON，失败时规则兜底。"""
+        """优先用 LLM 抽取偏好 JSON，失败时规则兜底。"""
         if not msg:
             return {}
         if not self.cfg.is_real_llm():
@@ -345,7 +345,7 @@ class Client:
 
 
 def _extract_rule_based(msg: str) -> Dict[str, str]:
-    """规则兜底，与 Go 版 extractRuleBased 一致。"""
+    """规则兜底：从消息中提取"我喜欢"/"我爱"/"我叫"等偏好信息。"""
     result: Dict[str, str] = {}
     if "我喜欢" in msg:
         parts = msg.split("喜欢", 1)

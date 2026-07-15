@@ -13,7 +13,7 @@ from .slot import ContextItem, Slot, SlotKind, SlotConstraints
 from .source import ContextSource, Query
 
 
-# 风险级别常量（与 Go 端 sandbox.RiskBlock / RiskWarn 对齐）
+# 风险级别常量（block / warn）
 RISK_BLOCK = "block"
 RISK_WARN = "warn"
 

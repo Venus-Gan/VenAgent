@@ -1,6 +1,5 @@
-"""ToolExecutor 并发安全 + snapshot/filter 测试（Task 27）。
+"""ToolExecutor 并发安全 + snapshot/filter 测试。
 
-对齐 main 分支 toolRegistry：
 - 写（add_tool）持锁
 - 读（call/snapshot/filter_tools/get_tool_descriptions）走 snapshot 拷贝
 - 并发 add + call 不应触发 KeyError / RuntimeError

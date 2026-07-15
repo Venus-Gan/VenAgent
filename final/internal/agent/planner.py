@@ -1,7 +1,7 @@
 # planner — UnifiedAgent 的工具规划器
 #
-# 对应 Go 版 internal/agent/planner.go：在 ReAct 模式下由 Planner LLM 根据
-# 可用工具集和用户问题产出一组 PlanItem，Harness 再逐项重试执行。
+# 在 ReAct 模式下由 Planner LLM 根据可用工具集和用户问题产出一组 PlanItem，
+# Harness 再逐项重试执行。
 # LLM 不可用或解析失败时降级到 rule_plan_items 关键字规则。
 import json
 import logging

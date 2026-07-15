@@ -1,6 +1,5 @@
-"""ConsolidationConfig + MemoryStack 单元测试（Task 26）。
+"""ConsolidationConfig + MemoryStack 单元测试。
 
-对齐 main 分支：
 - ConsolidationConfig 6 业务字段 + 1 兼容 source 字段
 - 通过 memory_consolidation_* 别名兼容 LongTerm 现有 getattr 路径
 - MemoryStack 聚合 stm/ltm/preference，graph_memory 由 attach_graph 后注入

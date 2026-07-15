@@ -1,6 +1,5 @@
 # memory_writer — 异步记忆写入与回复中事实抽取
 #
-# 对应 main 分支 internal/application/chat/mem_writer.go：
 #   - extract_memory_from_reply：从 assistant 回复抽取 k-v 事实，分类后通过
 #     LongTerm.store_classified 入库（含 embed + PG 写 + 图 add_to_graph 一站式），
 #     再调 sync_last_item_pg_id 把 PG 真实主键回写到内存与图。
@@ -8,8 +7,8 @@
 #   - llm_classify_memory：7 类 6 槽 LLM 兜底。
 #   - sync_consolidation_to_db：把 ConsolidationResult 落到 PG（批删 + 逐条 update）。
 #
-# Python 在 Go 的 goroutine + channel 基础上额外提供 AsyncMemoryWriter：
-# 后台线程 + queue.Queue 串行化所有记忆写入，避免 PG/Milvus 并发竞争。
+# 额外提供 AsyncMemoryWriter：后台线程 + queue.Queue 串行化所有记忆写入，
+# 避免 PG/Milvus 并发竞争。
 import json
 import logging
 import queue
@@ -35,7 +34,7 @@ def _publish_event(agent, event_type: str, payload: Dict[str, Any]) -> None:
 # ── 异步记忆写入器 ──────────────────────────────────────────────────────────
 
 class AsyncMemoryWriter:
-    """后台线程串行化记忆写入（对应 Go 的 goroutine + channel 模型）。
+    """后台线程串行化记忆写入。
 
     使用 queue.Queue 排队写任务，单 worker 线程消费，避免 ltm/preference 同时
     被多线程改写。stop() 触发优雅退出。
@@ -107,7 +106,6 @@ def _embed(agent, content: str) -> Optional[List[float]]:
 def extract_memory_from_reply(agent, answer: str):
     """从 assistant 回复中提取值得记忆的 k-v 事实并存入长期记忆。
 
-    与 main 分支 mem_writer.go L24-75 对齐：
       1) LLM 抽 k-v；
       2) 写偏好仓 (agent.preference.set)；
       3) classify_memory_content → 失败 fallback llm_classify_memory；
@@ -253,13 +251,13 @@ def llm_classify_memory(agent, content: str) -> Tuple[str, List[str], str]:
 
 
 def sync_consolidation_to_db(agent, result) -> None:
-    """把 ConsolidationResult 同步到 PG（与 main mem_writer.go L126-138 对齐）。
+    """把 ConsolidationResult 同步到 PG。
 
     流程：
       1) 批量删除 result.delete_from_db；
       2) 逐条 update result.update_in_db（每条 marshal embedding 后调 repo.ltm.update）。
 
-    错误粗粒度：单步失败仅打 warning，不中断后续步骤、不回滚（与 main 一致）。
+    错误粗粒度：单步失败仅打 warning，不中断后续步骤、不回滚。
     """
     if result is None:
         return
@@ -341,7 +339,6 @@ def async_update_memory(agent, user_input: str, resp: Any) -> None:
 def maybe_consolidate_memory(agent):
     """达到触发阈值时合并/去重/衰减/淘汰长期记忆，并把结果同步到 PG。
 
-    与 main 分支 finalize 的 consolidate 分支对齐：
     有 graph_memory 时走 ``graph_aware_consolidate``（保护高中心度节点 + 同步删 Neo4j），
     否则走纯内存 ``ltm.consolidate``。
     """

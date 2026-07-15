@@ -1,10 +1,10 @@
-# agent — Python 版统一智能体（重写后版本）
+# agent — Python 版统一智能体
 #
-# 主分支 Go 版 internal/agent/agent.go 拆出的诸多职责被分散到同目录下的：
+# 职责被分散到同目录下的：
 #   - router.py          — chat / tool / react / rag 模式路由
 #   - planner.py         — ReAct 模式下的 Planner LLM
 #   - restore.py         — 启动期从 PG 恢复偏好/长期记忆/聊天记录 + KG 初始化
-#   - cancel.py          — 取消令牌注册表 + go_safe
+#   - cancel.py          — 取消令牌注册表 + 后台线程安全启动器
 #   - init_sandbox.py    — 沙箱 + exec_command 工具初始化
 #   - memory_writer.py   — 异步记忆写入 + 回复事实抽取
 #   - status.py          — 系统状态视图聚合
@@ -141,8 +141,8 @@ class UnifiedAgent:
         self.subagents = register_builtin_subagents(self)
         self.intent_policy = IntentPolicy()
 
-        # 注册依赖 agent 上下文的内置工具（rag_search 闭包，与 Go 版
-        # registerBuiltinTools 对齐）。search_web 已在 default_tools 中
+        # 注册依赖 agent 上下文的内置工具（rag_search 闭包）。
+        # search_web 已在 default_tools 中
         # 通过 search_web_factory 处理 LLM / mock 降级，无需重复注册。
         self._register_builtin_tools()
 
@@ -279,7 +279,6 @@ class UnifiedAgent:
     def _register_builtin_tools(self) -> None:
         """注册依赖 agent 自身字段的内置工具。
 
-        与 Go 版 UnifiedAgent.registerBuiltinTools 对齐：
         rag_search 必须在 self.rag 构造之后注册，因为闭包要捕获 self.rag。
         """
         def _rag_search(params: Dict[str, Any]) -> str:
@@ -829,7 +828,7 @@ class UnifiedAgent:
                 params["query"] = user_input
         return params
 
-    # 偏好键 → 候选工具参数名（与 main 分支 fillParamsFromPreference 完全一致）
+    # 偏好键 → 候选工具参数名
     _PREFERENCE_PARAM_MAP = {
         "城市": ("city", "location", "location_name"),
         "时区": ("timezone", "tz", "time_zone"),
@@ -841,8 +840,8 @@ class UnifiedAgent:
     def _fill_params_from_preference(self, params: Dict[str, Any]) -> None:
         """在工具 Execute 之前用偏好补齐空槽位（不覆盖既有非空值）。
 
-        与 main 分支 UnifiedAgent.fillParamsFromPreference 对齐：取偏好快照后
-        按 5 键映射表逐个尝试填入候选参数名，仅当对应槽位缺失或为空字符串时才赋值。
+        取偏好快照后按 5 键映射表逐个尝试填入候选参数名，
+        仅当对应槽位缺失或为空字符串时才赋值。
         """
         if not isinstance(params, dict):
             return
@@ -866,7 +865,7 @@ class UnifiedAgent:
         if not tool_name:
             return self._chat_response(mem_prefix, hist_msgs), None
         params = self._parse_tool_params(tool_name, query)
-        # 偏好补全：在 tool_executor.call 之前注入偏好（对应 Go 版 fillParamsFromPreference）
+        # 偏好补全：在 tool_executor.call 之前注入偏好
         self._fill_params_from_preference(params)
         result = self.tool_executor.call(tool_name, params)
         answer = result.content if result.success else f"工具调用失败: {result.error}"
@@ -891,19 +890,19 @@ class UnifiedAgent:
         on_token: Optional[Callable[[str], None]] = None,
         on_event: Optional[Callable[[str, Dict[str, Any]], None]] = None,
     ):
-        """ReAct 模式入口：与 main 分支 runReAct 行为一致。
+        """ReAct 模式入口：Planner LLM 出计划 → Harness 逐项执行 → 综合回复。
 
         - llm_plan_graph 拿到节点列表；
-        - 节点为空 → 直接调 chat LLM 给一句话回答（对应 Go chatLLM 兜底），不再做工具迭代；
+        - 节点为空 → 直接调 chat LLM 给一句话回答，不再做工具迭代；
         - 节点非空 → 走 GraphRuntime 拓扑分层 + race + 重试；执行结束后用
-          _generate_final_answer_stream（对应 Go llmGenerate）合成自然语言回复。
+          _generate_final_answer_stream 合成自然语言回复。
         """
         task = {"task_id": f"task_{int(time.time())}", "query": query, "status": "running", "steps": []}
         self._governance().set_task(task)
         try:
             plan_nodes = llm_plan_graph(self, query, tools_map, mem_prefix)
             if not plan_nodes:
-                # 与 Go runReAct: planNodes 空 → chatLLM 一句话答复
+                # planNodes 空 → chatLLM 一句话答复
                 return self._chat_response(mem_prefix, hist_msgs), [], task
 
             from internal.graph.task_graph import TaskGraph

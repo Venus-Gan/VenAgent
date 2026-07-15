@@ -1,11 +1,10 @@
 # router — UnifiedAgent 的兼容模式路由输入源
 #
-# 对应 Go 版 internal/agent/router.go。保留关键词兼容输入源，供 IntentPolicy
-# 和旧路径复用。
+# 保留关键词兼容输入源，供 IntentPolicy 和旧路径复用。
 from typing import Dict
 
 
-# 关键字触发表（与 main 分支保持一致）
+# 关键字触发表
 _TOOL_TRIGGERS = [
     ("时间", "get_time"),
     ("几点", "get_time"),
