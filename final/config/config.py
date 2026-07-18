@@ -1,11 +1,8 @@
 # config — 配置管理模块
-import logging
 import os
 from typing import Any, Dict, List, Optional
 
 import yaml
-
-logger = logging.getLogger(__name__)
 
 # 项目根目录（final/）：本文件位于 final/config/config.py
 DEFAULT_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -188,10 +185,12 @@ class APIConfig:
 def _read_yaml(path: str) -> Dict[str, Any]:
     try:
         with open(path, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f) or {}
-    except Exception as e:
-        logger.warning("读取 %s 失败，使用默认值: %s", path, e)
-        return {}
+            loaded = yaml.safe_load(f) or {}
+    except (OSError, yaml.YAMLError):
+        raise ValueError(f"cannot read configuration file: {path}") from None
+    if not isinstance(loaded, dict):
+        raise ValueError(f"configuration root must be a mapping: {path}")
+    return loaded
 
 
 def _validate_config_schema(data: Dict[str, Any]) -> None:
@@ -220,10 +219,12 @@ def _resolve_config_path(explicit: Optional[str]) -> str:
     """按优先级找 config：参数 > 环境变量 > 本地配置 > 项目默认 > cwd。"""
     candidates: List[str] = []
     if explicit:
-        candidates.append(explicit)
+        # 显式路径即使不存在也必须原样返回，让调用方 fail fast。
+        return explicit
     env = os.environ.get("AGI_CONFIG")
     if env:
-        candidates.append(env)
+        # 环境变量同样代表用户明确选择的配置来源，不静默切回默认值。
+        return env
     root = _project_root()
     candidates.append(os.path.join(root, "config", "config.local.yaml"))
     candidates.append(os.path.join(root, "config", "config.yaml"))

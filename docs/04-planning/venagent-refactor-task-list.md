@@ -1,6 +1,6 @@
 # VenAgent 重构任务清单
 
-> 状态：规划基线已确认，Phase 0 尚未启动  
+> 状态：规划基线已确认，Phase 1 Sprint 04 已完成；P1-11 已完成，Phase 1 已收口
 > 日期：2026-07-18  
 > 路线图：[VenAgent 重构路线图](./roadmap.md)  
 > 说明：本清单是全量 backlog，不代表一次性实施。每个任务在执行前仍需生成详细 TDD 卡片。
@@ -16,37 +16,38 @@
 
 | ID | 任务 | 优先级 | 状态 | 依赖 | 验收摘要 |
 |---|---|---|---|---|---|
-| P0-01 | 撤销并轮换 AGI-saber 疑似真实 API 凭据 | P0 | BLOCKED | 账号所有者操作 | 旧凭据不可用；审计调用/计费记录 |
-| P0-02 | 扫描两仓库所有 refs 与 Git 历史 | P0 | READY | P0-01 可并行先轮换 | 活动秘密已失效；历史命中已清理，或有经批准且标明剩余风险的阻断/豁免记录 |
-| P0-03 | 清理 tracked config/Compose 默认凭据 | P0 | READY | 无 | 跟踪文件只含安全模板 |
-| P0-04 | 补齐 local secret ignore 与验证 | P0 | READY | 无 | `config.local.yaml`/`.env*` ignored 且未 tracked |
-| P0-05 | 冻结 AGI-saber 行为参考和 ADR | P0 | READY | 无 | 记录 python commit；禁止自动同步 |
-| P0-06 | 运行 pytest/compileall/可用 coverage 基线 | P0 | READY | 无 | 命令与真实结果入执行记录 |
-| P0-07 | 建立 HTTP/SSE/OpenAPI characterization tests | P0 | PENDING | P0-06 | API/SSE 事件顺序、字段和 OpenAPI schema 固化 |
-| P0-08 | 建立 chat/RAG/tool/document 行为 fixtures | P0 | PENDING | P0-06 | 新旧 runtime 可复用同一 fixture |
-| P0-09 | 建立启动/降级/性能基线 | P0 | PENDING | P0-06 | 记录 startup、TTFT、RAG/workflow latency |
+| P0-01 | 确认 AGI-saber 仅为静态参考，不纳入 VenAgent 运行面 | P0 | DONE | 用户范围确认 | 不执行外部账号、部署、凭据处置或自动同步 |
+| P0-02 | 扫描 VenAgent 所有 refs 与 Git 历史 | P0 | DONE | P0-01 | 本地与 GitHub master 已完成强制更新；历史配置凭据扫描无命中 |
+| P0-03 | 清理 tracked config/Compose 默认凭据 | P0 | DONE | 无 | 跟踪文件只含安全模板，Compose 凭据改为外部注入 |
+| P0-04 | 补齐 local secret ignore 与验证 | P0 | DONE | 无 | `config.local.yaml`/`.env*` ignored 且未 tracked |
+| P0-05 | 冻结 AGI-saber 行为参考和 ADR | P0 | DONE | 无 | 已记录 `python@2b995cdd8b2fb413bfb34c41456ec0bda92e6c2a`；禁止自动同步 |
+| P0-06 | 运行 pytest/compileall/可用 coverage 基线 | P0 | DONE | 无 | 240 tests passed，网络熔断已启用，compileall 通过；legacy 总覆盖率 59% |
+| P0-07 | 建立 HTTP/SSE/OpenAPI characterization tests | P0 | DONE | P0-06 | 已固化当前 API/SSE envelope、事件顺序、字段和 OpenAPI schema；legacy 伪流式只作为基线 |
+| P0-08 | 建立 chat/RAG/tool/document 行为 fixtures | P0 | DONE | P0-06 | 已建立无网络共享 fixtures；新旧 runtime 可复用同一输入/期望集合 |
+| P0-09 | 建立启动/降级/性能基线 | P0 | DONE | P0-06 | 已记录安全 mock/降级模式的 startup、TTFT、完成时间、RAG/workflow latency；真流式指标后置到 Phase 3 |
 | P0-10 | LangGraph/MCP 依赖版本 spike | P0 | READY | D-12 已确认；仅限隔离验证 | Python 3.11 与现有栈兼容，给出锁定版本；改 requirements 仍需版本确认 |
 | P0-11 | 修复重复 `_save_agent_snapshot` | P1 | PENDING | 先写回归测试 | 仅一处定义，行为不变 |
 | P0-12 | UUID run identity 替代秒级 task ID | P0 | PENDING | P0-16 | 并发无碰撞，request/run/thread 区分 |
 | P0-13 | 删除文档接口真实语义修复 | P0 | PENDING | 契约确认 | 删除成功必须真实删除/标记；不再虚假成功 |
 | P0-14 | 安全错误映射与 CORS 基线 | P0 | PENDING | HTTP characterization | 不回传内部异常；生产默认非通配 CORS |
 | P0-15 | 全局取消行为建立缺陷测试 | P0 | PENDING | run identity | 证明当前问题并为 per-run 迁移设基线 |
-| P0-16 | 形成并确认关键 ADR 基线 | P0 | READY | D-01/D-03/D-07/D-14 已确认 | 生成 ADR-001/003/004/007/012/013；身份、checkpoint、配置、迁移和目标目录决策可追踪 |
+| P0-16 | 形成并确认关键 ADR 基线 | P0 | DONE | D-01/D-03/D-07/D-14 已确认 | 已生成 ADR-001/003/004/007/011/012/013；身份、checkpoint、配置、迁移和目标目录决策可追踪 |
 
 ## Phase 1：配置与 Bootstrap
 
 | ID | 任务 | 优先级 | 状态 | 依赖 | 验收摘要 |
 |---|---|---|---|---|---|
-| P1-01 | 定义不可变配置模型 | P0 | PENDING | Phase 0 | schema、类型和秘密字段明确 |
-| P1-02 | 实现五层配置深度合并 | P0 | PENDING | P1-01 | 默认→共享→local→env→CLI |
-| P1-03 | 配置未知字段/组合/脱敏测试 | P0 | PENDING | P1-02 | fail fast，日志不含秘密 |
-| P1-04 | 建立 `src/venagent`、`apps/api` 骨架与 dependency container | P0 | PENDING | P0-16/P1-01 | 依赖显式、可测试；新包不导入 `final`，旧入口只向新包委托 |
-| P1-05 | 提取 staged Bootstrapper | P0 | PENDING | P1-04 | 阶段诊断清晰 |
-| P1-06 | 迁移 `_bootstrap_concurrent` | P0 | PENDING | P1-05 | agent 构造无启动副作用 |
-| P1-07 | FastAPI lifespan 装配/关闭 | P0 | PENDING | P1-05 | 所有资源反序关闭 |
-| P1-08 | capability health 与降级模型 | P1 | PENDING | P1-05 | 无外部设施时无关功能可用 |
-| P1-09 | 兼容 `APIConfig/build_deps` | P1 | PENDING | P1-02/P1-05 | 旧调用和测试可过渡 |
-| P1-10 | 启动/关闭/降级集成测试 | P0 | PENDING | P1-07/P1-08 | 无泄漏、无未关闭 worker |
+| P1-01 | 定义不可变配置模型 | P0 | DONE | Phase 0 | `src/venagent/infrastructure/config` 使用严格、不可变 schema，secret 使用 `SecretStr` |
+| P1-02 | 实现五层配置深度合并 | P0 | DONE | P1-01 | 默认→共享→local→白名单 env→CLI；mapping 深合并、list 替换 |
+| P1-03 | 配置未知字段/组合/脱敏测试 | P0 | DONE | P1-02 | fail fast、secret metadata/regex 脱敏；12 个 Phase 1 配置测试通过 |
+| P1-04 | 建立 `src/venagent`、`apps/api` 骨架与 dependency container | P0 | DONE | P0-16/P1-01 | 显式 frozen container、fake provider 可替换；新包不导入 `final`；旧入口未提前切换 |
+| P1-05 | 提取 staged Bootstrapper | P0 | DONE | P1-04 | 固定阶段顺序、稳定错误码、脱敏诊断、失败反序清理和取消传播测试通过 |
+| P1-06 | 迁移 `_bootstrap_concurrent` | P0 | DONE | P1-05 | 并发编排移入 Bootstrap，Agent 构造无启动副作用，旧行为回归通过 |
+| P1-07 | FastAPI lifespan 装配/关闭 | P0 | DONE | P1-05 | 同步/异步资源可启动并反序关闭，worker 不遗留 |
+| P1-08 | capability health 与降级模型 | P1 | DONE | P1-05 | 健康 snapshot 与 durable/non-durable 降级规则可测试 |
+| P1-09 | 兼容 `APIConfig/build_deps` | P1 | DONE | P1-02/P1-05 | 显式 legacy→AppConfig 映射；旧 `Deps`/Handler 调用形状保留；旧入口委托新 StagedBootstrapper |
+| P1-10 | 启动/关闭/降级集成测试 | P0 | DONE | P1-07/P1-08 | 309 tests passed；启动/关闭/取消/失败回滚/health degradation/网络熔断门禁通过 |
+| P1-11 | `.env` 环境变量注入 legacy 运行入口 | P1 | DONE | P1-09/P1-02 | `.env`→白名单环境变量→canonical loader→legacy `APIConfig`，进程环境变量优先，真实 `.env` 不入库 |
 
 ## Phase 2：Ports、能力目录和授权
 
@@ -88,7 +89,8 @@
 | P3-11 | 重启恢复集成测试 | P0 | PENDING | P3-10 | 真正跨进程恢复 |
 | P3-12 | per-profile runtime flag | P0 | PENDING | P3-07/P3-08 | 可即时回旧路径 |
 | P3-13 | 只读 shadow comparison | P1 | PENDING | P3-12 | chat/RAG parity |
-| P3-14 | SSE RuntimeEvent adapter | P0 | PENDING | P3-04 | 事件顺序/单例/ID 保持 |
+| P3-14 | SSE RuntimeEvent adapter | P0 | PENDING | P3-04 | 事件顺序/单例/ID 保持，并支持增量 token |
+| P3-15 | 真流式 LLM→RuntimeEvent→SSE 链路 | P0 | PENDING | P3-04/P3-07/P3-14 | token 来自上游增量响应；生产路径不使用本地 sleep 伪造流式；取消可中止上游请求；Phase 3 执行 |
 
 ## Phase 4：工具、Workflow 与 AgentTeam
 

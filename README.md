@@ -233,7 +233,9 @@ cd final
 docker-compose up -d
 
 # 3. 配置 LLM API Key
-# 编辑 final/config/config.yaml，填入 llm.api_key 和 embedding.api_key
+# 复制 .env.example 为 .env，填入本地密钥
+# .env 已被忽略；也可通过 AGI_CONFIG 指向本地 YAML 配置文件
+# 不要修改 tracked config.yaml 写入真实密钥
 
 # 4. 启动应用
 cd final && python main.py
@@ -245,16 +247,20 @@ cd final && python main.py
 
 ### 配置
 
-编辑 `final/config/config.yaml`，填入 API Key：
+推荐复制 `.env.example` 为仓库根目录 `.env`，通过白名单环境变量注入；也可以使用被 Git 忽略的 `final/config/config.local.yaml`，或设置 `AGI_CONFIG` 指向仓库外配置文件：
 
 - `llm.api_key` — OpenAI 兼容对话模型 API Key（DeepSeek / 火山方舟等）
 - `embedding.api_key` — Embedding 模型 API Key
 
+进程环境变量优先于 `.env`，`.env` 优先于 YAML 配置。`.env` 和 `final/config/config.local.yaml` 都不应提交。
+
+`final/config/config.yaml` 只保留安全模板，不应写入真实凭据。
+
 ---
 
-## 当前目录结构（迁移前）
+## 当前目录结构（迁移期）
 
-下面是当前可运行实现，不是重构后的永久布局。目标结构与逐阶段映射见 [VenAgent 目标目录层次与迁移边界](docs/03-design/venagent-target-directory-structure.md)。
+下面是当前可运行实现与兼容壳结构，不是重构后的永久布局。目标结构与逐阶段映射见 [VenAgent 目标目录层次与迁移边界](docs/03-design/venagent-target-directory-structure.md)。
 
 ```
 final/
@@ -283,17 +289,42 @@ final/
 └── docker-compose.yml        基础设施编排
 ```
 
+Phase 1 已建立的目标边界：
+
+```
+apps/api/
+├── main.py                  无副作用 app factory
+├── lifespan.py              FastAPI 启动/关闭边界
+└── compat.py                APIConfig/build_deps 兼容适配
+
+src/venagent/
+├── infrastructure/config/   不可变配置与分层加载
+├── infrastructure/health/   capability health/degradation
+├── infrastructure/lifecycle/资源生命周期管理
+└── bootstrap/               staged/concurrent Bootstrap
+```
+
+`final/` 仍是迁移期事实源和兼容入口；新代码不反向导入 `final`。
+
 ---
 
 ## 重构状态
 
-当前项目已完成第一轮边界壳层抽取，但尚未完成 PRD 定义的全量重构。2026-07-17 的重新审计确认：IntentPolicy、RuntimeGovernance、AgentTeam contract/registry 和流式 SSE 基线已经存在；真实 LangGraph、真正 MCP、可执行权限、完整配置分层与 staged bootstrap 仍待迁移。
+Phase 1「配置与 Bootstrap」已完成，P1-01～P1-11 全部通过验收：
 
-- ✅ **已完成基础形态**：IntentPolicy、RuntimeGovernance、AgentTeam contract/registry、工具目录规范化、真实 token/进度 SSE
-- ⚠️ **部分完成**：策略仍复用旧关键词规则；checkpoint 仅在进程内；AgentTeam 权限仍是元数据
-- 📋 **待完成**：官方 LangGraph + PostgreSQL checkpointer、真实 MCP client/server、配置/bootstrap、per-run 治理和 legacy 清理
+- ✅ 不可变配置模型、五层配置合并、secret 脱敏和 fail-fast 配置错误；
+- ✅ staged Bootstrap、并发初始化迁移和 `UnifiedAgent` 构造器副作用隔离；
+- ✅ FastAPI lifespan、同步/异步资源反序关闭、worker 排空和失败回滚；
+- ✅ capability health 与 durable/non-durable degradation 语义；
+- ✅ `APIConfig/build_deps` 兼容 façade，旧入口单向委托新 Bootstrap；
+- ✅ `.env`→白名单环境变量→canonical loader→legacy `APIConfig` 注入链路，进程环境变量优先；
+- ✅ 启动、关闭、取消、降级、HTTP/SSE/OpenAPI 和网络熔断集成门禁。
 
-当前事实审计、目标架构、[目标目录层次](docs/03-design/venagent-target-directory-structure.md)、最终需求矩阵与实施路线从 [VenAgent 文档索引](docs/README.md) 进入。当前可运行代码仍位于 `final/`；重构目标不会继续把全部新代码堆入该目录。
+Phase 1 验证结果：`309 passed`，`src/venagent` 覆盖率 93%，`apps/api` 覆盖率 91%。测试默认开启网络熔断，不连接真实 LLM、HTTP、数据库、MCP 或 Docker。
+
+尚未开始的后续工作包括：Phase 2 Ports、CapabilityBroker、授权体系；真实 LangGraph、PostgreSQL checkpointer、MCP client/server；以及真流式 LLM→RuntimeEvent→SSE 迁移。`final/` 会在兼容窗口内保留，默认入口切换和 legacy 清理属于后续阶段。
+
+当前事实审计、目标架构、[目标目录层次](docs/03-design/venagent-target-directory-structure.md)、最终需求矩阵与实施路线从 [VenAgent 文档索引](docs/README.md) 进入。
 
 ---
 

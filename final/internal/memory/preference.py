@@ -14,12 +14,13 @@ logger = logging.getLogger(__name__)
 class Preference:
     """用户偏好管理。线程安全：data 读写均走 RLock。"""
 
-    def __init__(self, user_id: str, inf: Infrastructure):
+    def __init__(self, user_id: str, inf: Infrastructure, *, load: bool = True):
         self.user_id = user_id
         self.inf = inf
         self.preferences: Dict[str, str] = {}
         self._lock = threading.RLock()
-        self.load_from_storage()
+        if load:
+            self.load_from_storage()
 
     @property
     def data(self) -> Dict[str, str]:

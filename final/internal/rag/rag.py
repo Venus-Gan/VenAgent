@@ -20,7 +20,14 @@ logger = logging.getLogger(__name__)
 class Engine:
     """RAG 引擎：切分 → 入库（PG/Milvus/ES） → 检索（RRF 融合） → LLM 合成。"""
 
-    def __init__(self, cfg: APIConfig, inf: Infrastructure, llm: Optional[LLMClient] = None):
+    def __init__(
+        self,
+        cfg: APIConfig,
+        inf: Infrastructure,
+        llm: Optional[LLMClient] = None,
+        *,
+        check_existing: bool = True,
+    ):
         self.cfg = cfg
         self.inf = inf
         parent_size = max(cfg.chunk_size * 4, 600)
@@ -39,7 +46,8 @@ class Engine:
         # 三路混合检索（Milvus + ES + KG），由 cfg.enable_hybrid_search 控制是否启用
         self._hybrid: Optional[HybridStore] = None
         self._hybrid = HybridStore(cfg, inf, embed_fn=self._llm.embed)
-        self._check_existing_chunks()
+        if check_existing:
+            self._check_existing_chunks()
 
     def set_generate_fn(self, fn: Callable[[str, str], str]):
         self._generate_fn = fn

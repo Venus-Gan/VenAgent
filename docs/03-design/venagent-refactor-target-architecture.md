@@ -433,7 +433,14 @@ Handler 只负责：
 - `/api/tools` 与 `/api/tools/mcp`；
 - `/api/status`、`/api/memory`、`/api/snapshots`、`/health`。
 
-SSE 保证 start 首发、route/done 单例、token 顺序、相同 request ID、`[DONE]` 终止和断开后的 per-run cancel。
+SSE 的外部 envelope 保证 start 首发、route/done 单例、token 顺序、相同 request ID、`[DONE]` 终止和断开后的 per-run cancel。
+
+流式语义分为两层：
+
+- 当前 legacy 伪流式只作为 Phase 0 行为基线，用于识别兼容性差异，不是重构目标；
+- 重构后的目标是真流式：token 必须来自上游 LLM 的增量响应，经 RuntimeEvent 增量转换后立即发送，禁止使用本地 sleep 将完整响应伪装成流式。
+
+因此，重构可以保持 SSE 路径、事件 envelope、字段和结束语义兼容，同时有意改变 token 到达时序，并以 TTFT、增量间隔、完成时间和取消延迟作为新的性能指标。
 
 Phase 0 生成 OpenAPI schema 基线；路由/schema 拆分和 canonical 入口切换时执行结构化 diff，任何破坏性差异必须先更新契约并获得确认。
 

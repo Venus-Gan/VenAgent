@@ -50,16 +50,17 @@ from internal.rag.rewriter import HistoryMessage, LLMRewriter
 from internal.tools.tools import Tool, ToolExecutor, default_tools, new_mcp_tool
 
 from .cancel import CancelRegistry, go_safe
+from .bootstrap_adapter import bootstrap_agent_runtime
 from .graph_runtime import GraphConfig
 from .langgraph.runtime import InMemorySaver, ReactRuntime
 from .policy import ExecutionProfile, IntentPolicy, IntentSignal
-from .init_sandbox import init_sandbox
 from .memory_writer import (
     AsyncMemoryWriter,
     async_update_memory,
     extract_memory_from_reply,
     maybe_consolidate_memory,
 )
+from .init_sandbox import init_sandbox
 from .runtime_governance import RuntimeGovernance
 from .restore import init_knowledge_graph, restore_from_db, restore_rag_from_db
 from .router import detect_tool
@@ -116,9 +117,9 @@ class UnifiedAgent:
         self.llm = LLMClient(cfg)
         self.stm = ShortTerm(cfg.short_term_max_turns)
         self.ltm = LongTerm(cfg, inf)
-        self.preference = Preference("default_user", inf)
+        self.preference = Preference("default_user", inf, load=False)
         # 三层记忆 + 偏好聚合容器（与 main memoryStack 对齐）。
-        # graph_memory 由 init_knowledge_graph 在末尾通过 attach_graph 注入。
+        # graph_memory 在 runtime startup 完成后再通过 attach_graph 注入。
         self.mem = MemoryStack(stm=self.stm, ltm=self.ltm, preference=self.preference)
         # 用 ConsolidationConfig（dataclass + memory_consolidation_* 别名）替换裸 cfg
         # 喂给 LongTerm；保留对 APIConfig 的引用便于后续访问其它字段。
@@ -131,7 +132,7 @@ class UnifiedAgent:
 
         # RAG 引擎构造失败不致命：降级为禁用知识库
         try:
-            self.rag = RAGEngine(cfg, inf, self.llm)
+            self.rag = RAGEngine(cfg, inf, self.llm, check_existing=False)
         except Exception as e:
             logger.warning("⚠️  RAG 引擎初始化失败: %s（已禁用知识库）", e)
             self.rag = None
@@ -152,7 +153,7 @@ class UnifiedAgent:
         self._memory_lock = threading.Lock()
 
         # 异步记忆写入器（单 worker 线程串行化）
-        self.memory_writer = AsyncMemoryWriter()
+        self.memory_writer = None
 
         # 接通 LLM embed / RAG generate
         try:
@@ -169,29 +170,12 @@ class UnifiedAgent:
             except Exception as e:
                 logger.warning("⚠️  RAG generate 函数注入失败: %s", e)
 
-        # 加载持久化的长期记忆 + chat_history（best-effort）
-        # 注：实际还原由 restore_from_db 完成，此处的 ltm.load_from_storage
-        # 仅作为冷启动 RAG 索引装载前的快速预热——已合并到 _bootstrap_concurrent。
-
-        # bootstrap 4 路并发（与 main bootstrapConcurrent 对齐）：
-        #   - ragchunk.init(dim)         建 Milvus collection + ES 索引
-        #   - restore_from_db            从 PG 恢复偏好 / LTM / 聊天记录
-        #   - restore_rag_from_db        从 PG 恢复 RAG chunks
-        #   - init_sandbox               Docker 探测 + exec_command 注册
-        # 主线程同时同步注册 builtin 工具（rag_search 已在 _register_builtin_tools
-        # 中提前完成，无须再放进并发组）。
+        # 启动期恢复、sandbox、RAG 索引和 memory writer 由显式 runtime
+        # initializer/lifespan 执行，构造器本身不创建 worker 或访问持久化。
         self.sandbox = None
-        self._bootstrap_concurrent()
-
-        # 知识图谱：必须在 restore_from_db 完成后串行执行（依赖 ltm 已就绪）
         self.kg = None
-        try:
-            init_knowledge_graph(self)
-        except Exception as e:
-            logger.warning("⚠️  init_knowledge_graph 失败: %s", e)
-            self.kg = None
-        # KG 就绪后把 graph_memory 挂回 mem stack（对应 main attachGraph）
-        self.mem.attach_graph(getattr(self, "graph_memory", None))
+        self.graph_memory = None
+        self._runtime_initialized = False
 
         # 快照计数器（每 N 轮序列化 agent_state 到 PG）
         self._turn_count = 0
@@ -201,48 +185,46 @@ class UnifiedAgent:
 
         logger.info("✅ UnifiedAgent 初始化完成")
 
-    def _bootstrap_concurrent(self) -> None:
-        """与 main bootstrapConcurrent 对齐的 4 路并发启动。
+    def initialize_runtime(self) -> None:
+        """在应用 startup 阶段执行恢复、并发初始化和 KG 后置装配。"""
+        if self._runtime_initialized:
+            return
+        try:
+            self.memory_writer = AsyncMemoryWriter()
+            self.memory_writer.start()
+            bootstrap_agent_runtime(
+                self,
+                restore_db=restore_from_db,
+                restore_rag_db=restore_rag_from_db,
+                sandbox_initializer=init_sandbox,
+            )
 
-        每个子任务自行做异常吞没，整体串行总耗时被压缩到最慢一项。
-        """
-        def _ragchunk_init():
+            # KG 必须在 restore barrier 之后串行执行，因为它依赖已恢复的 LTM。
             try:
-                repo = getattr(getattr(self.inf, "repo", None), "ragchunk", None)
-                if repo is not None and hasattr(repo, "init"):
-                    repo.init(int(self.cfg.rag_milvus_dim or 1024))
-            except Exception as e:
-                logger.warning("⚠️  ragchunk.init 失败: %s", e)
-
-        def _restore_db():
+                init_knowledge_graph(self)
+            except Exception as error:
+                logger.warning("⚠️  init_knowledge_graph 失败: %s", type(error).__name__)
+                self.kg = None
+                self.graph_memory = None
+            self.mem.attach_graph(getattr(self, "graph_memory", None))
+            self._runtime_initialized = True
+        except BaseException:
+            writer = self.memory_writer
             try:
-                restore_from_db(self)
-            except Exception as e:
-                logger.warning("⚠️  restore_from_db 失败: %s", e)
+                if writer is not None:
+                    writer.stop()
+            finally:
+                self.memory_writer = None
+            raise
 
-        def _restore_rag():
-            try:
-                restore_rag_from_db(self)
-            except Exception as e:
-                logger.warning("⚠️  restore_rag_from_db 失败: %s", e)
-
-        def _init_sandbox():
-            try:
-                init_sandbox(self)
-            except Exception as e:
-                logger.warning("⚠️  init_sandbox 失败: %s", e)
-                self.sandbox = None
-
-        threads = [
-            threading.Thread(target=_ragchunk_init, name="bootstrap:ragchunk", daemon=True),
-            threading.Thread(target=_restore_db, name="bootstrap:restore-db", daemon=True),
-            threading.Thread(target=_restore_rag, name="bootstrap:restore-rag", daemon=True),
-            threading.Thread(target=_init_sandbox, name="bootstrap:sandbox", daemon=True),
-        ]
-        for t in threads:
-            t.start()
-        for t in threads:
-            t.join()
+    def _bootstrap_concurrent(self):
+        """旧测试和兼容调用使用的无状态迁移包装。"""
+        return bootstrap_agent_runtime(
+            self,
+            restore_db=restore_from_db,
+            restore_rag_db=restore_rag_from_db,
+            sandbox_initializer=init_sandbox,
+        )
 
     # ── 对外 API ────────────────────────────────────────────────────────────
 
@@ -658,9 +640,12 @@ class UnifiedAgent:
         self._save_chat_history("assistant", resp.answer)
 
         # 异步：从回复中提取事实 → 长期记忆
-        self.memory_writer.submit(lambda: extract_memory_from_reply(self, resp.answer))
+        writer = getattr(self, "memory_writer", None)
+        if writer is not None:
+            writer.submit(lambda: extract_memory_from_reply(self, resp.answer))
         # 异步：长期记忆合并/淘汰（有图层时走图感知合并）
-        self.memory_writer.submit(lambda: maybe_consolidate_memory(self))
+        if writer is not None:
+            writer.submit(lambda: maybe_consolidate_memory(self))
 
         # 每 N 轮快照一次 agent 状态到 PG
         self._turn_count += 1
@@ -1041,7 +1026,9 @@ class UnifiedAgent:
 
     def close(self):
         try:
-            self.memory_writer.stop()
+            writer = getattr(self, "memory_writer", None)
+            if writer is not None:
+                writer.stop()
         except Exception:
             pass
 

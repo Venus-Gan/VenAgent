@@ -44,7 +44,18 @@ class AsyncMemoryWriter:
         self._queue: queue.Queue = queue.Queue()
         self._stopped = threading.Event()
         self._worker = threading.Thread(target=self._run, name="memory-writer", daemon=True)
+        self._started = False
+
+    @property
+    def is_running(self) -> bool:
+        return self._started and self._worker.is_alive()
+
+    def start(self) -> None:
+        """在应用生命周期 startup 阶段启动唯一 worker。"""
+        if self._started or self._stopped.is_set():
+            return
         self._worker.start()
+        self._started = True
 
     def submit(self, fn):
         """提交一个无参可调用，最终在 worker 线程执行。"""
@@ -56,14 +67,23 @@ class AsyncMemoryWriter:
             logger.warning("⚠️  memory-writer 提交失败: %s", e)
 
     def stop(self):
+        if self._stopped.is_set():
+            return
         self._stopped.set()
         try:
-            self._queue.put_nowait(None)  # 唤醒 worker
+            self._queue.put_nowait(None)  # 排空已有任务后再退出
         except Exception:
             pass
+        if (
+            self._started
+            and self._worker.is_alive()
+            and threading.current_thread() is not self._worker
+        ):
+            # 无超时返回，确保 Infrastructure 关闭前不会再有 worker 访问存储。
+            self._worker.join()
 
     def _run(self):
-        while not self._stopped.is_set():
+        while True:
             try:
                 fn = self._queue.get(timeout=0.5)
             except queue.Empty:

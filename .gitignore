@@ -29,6 +29,11 @@ Thumbs.db
 *.log
 nohup.out
 
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
 # Cache
 .pytest_cache/
 .ruff_cache/

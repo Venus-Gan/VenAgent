@@ -3,6 +3,10 @@
 > 真实 API Key 不要提交到仓库；生产请用 `config/config.local.yaml`、环境变量或密钥管理服务。
 > 占位符：`$ARK_API_KEY`
 
+`final/config/config.yaml` 只保留无秘密模板。需要连接本地基础设施时，请复制为被忽略的
+`final/config/config.local.yaml`，填入密码和 API Key，并通过 `AGI_CONFIG` 指向该文件；不要修改
+或提交模板中的真实凭据。Compose 的数据库密码也必须通过环境变量或被忽略的 `.env` 文件提供。
+
 ## 多模态向量化
 
 ```bash

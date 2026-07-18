@@ -75,7 +75,7 @@ graph_runtime:
   enable_racing: true
 
 server:
-  port: "8090"
+  port: 8090
 
 search:
   api_key: ""               # 请填入你的 Tavily API Key（可选）

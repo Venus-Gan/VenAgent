@@ -188,6 +188,16 @@ def test_chat_stream_emits_sse_events_for_main_frontend():
     assert "data: [DONE]" in body
     assert "request_id" in body
 
+    event_names = [
+        line.removeprefix("event: ")
+        for line in body.splitlines()
+        if line.startswith("event: ")
+    ]
+    assert event_names[0] == "start"
+    assert event_names[-1] == "done"
+    assert event_names.count("done") == 1
+    assert body.endswith("data: [DONE]\n\n")
+
 
 def test_legacy_rag_query_route_removed_to_match_main_branch():
     status, _payload = _request(
