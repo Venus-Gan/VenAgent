@@ -17,6 +17,10 @@ env/
 .vscode/
 .idea/
 
+# Local agent instructions
+AGENTS.md
+CLAUDE.md
+
 # OS
 .DS_Store
 Thumbs.db

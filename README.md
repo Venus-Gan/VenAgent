@@ -252,7 +252,9 @@ cd final && python main.py
 
 ---
 
-## 目录结构
+## 当前目录结构（迁移前）
+
+下面是当前可运行实现，不是重构后的永久布局。目标结构与逐阶段映射见 [VenAgent 目标目录层次与迁移边界](docs/03-design/venagent-target-directory-structure.md)。
 
 ```
 final/
@@ -285,13 +287,13 @@ final/
 
 ## 重构状态
 
-当前项目基于 Python + FastAPI 实现，后续计划引入 LangChain/LangGraph。目前处于 **Phase 1** 重构阶段，正在对核心模块进行边界抽取与架构标准化。
+当前项目已完成第一轮边界壳层抽取，但尚未完成 PRD 定义的全量重构。2026-07-17 的重新审计确认：IntentPolicy、RuntimeGovernance、AgentTeam contract/registry 和流式 SSE 基线已经存在；真实 LangGraph、真正 MCP、可执行权限、完整配置分层与 staged bootstrap 仍待迁移。
 
-- ✅ 已完成：IntentPolicy 策略层、MCP 工具边界抽出、agentteam 合约定义
-- 🔄 进行中：边界实现加固、兼容路径清理
-- 📋 计划中（Phase 2）：将自研图执行引擎迁移到 LangGraph StateGraph（`agent/langgraph/` 已包含过渡实现）
+- ✅ **已完成基础形态**：IntentPolicy、RuntimeGovernance、AgentTeam contract/registry、工具目录规范化、真实 token/进度 SSE
+- ⚠️ **部分完成**：策略仍复用旧关键词规则；checkpoint 仅在进程内；AgentTeam 权限仍是元数据
+- 📋 **待完成**：官方 LangGraph + PostgreSQL checkpointer、真实 MCP client/server、配置/bootstrap、per-run 治理和 legacy 清理
 
-设计文档见 `docs/SDD/`。
+当前事实审计、目标架构、[目标目录层次](docs/03-design/venagent-target-directory-structure.md)、最终需求矩阵与实施路线从 [VenAgent 文档索引](docs/README.md) 进入。当前可运行代码仍位于 `final/`；重构目标不会继续把全部新代码堆入该目录。
 
 ---
 
