@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "f682699d87c9239f06b034b4baa956782a9d45fdf3b6b35d552d54ec7c43492a",
+  "baselineProjectionRef": "runtime/evidence/snapshots/046ca213c9f6e9f8964db0b6fd0acc3ceab940998430e3149f362565718b1108.json",
+  "baselineProjectionHash": "046ca213c9f6e9f8964db0b6fd0acc3ceab940998430e3149f362565718b1108",
+  "currentProjectionRef": "runtime/evidence/snapshots/e279b6a297deb43f1b3b9c7aa9508344093f85dadd0f0accca7533c6e6efd16f.json",
+  "currentProjectionHash": "e279b6a297deb43f1b3b9c7aa9508344093f85dadd0f0accca7533c6e6efd16f",
+  "complete": true,
+  "declaredArtifacts": [],
+  "changes": [],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": "本 change 仅恢复被 Git 忽略的本地 .env；环境文件不能作为 Comet artifact，运行时代码未修改。",
+  "scopeHash": "5df2f3a6850461ca34b43fe437f405ab215ca338b6cd002d7b9ffec739430d88"
+}

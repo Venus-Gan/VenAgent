@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: bound-chat-payloads
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: a88e807e210abb93b065118e98f2bd1cdf3a212ead9f8232f297c64a8ab6e055
+spec_changes:
+  - capability: bounded-chat-payloads
+    operation: create
+    source: specs/bounded-chat-payloads/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/1e827137cf4a258e417f319e8472dce07542b8c2ea5a08d383e84268e5be4e01.json
+verification_evidence: runtime/evidence/verifications/1a2486974891adacab6eb1fe18c9df31b7afba8097ba4ee589b8fd0d5422d6b0.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-26
+run_id: 69d69836-1134-49cb-965e-cc843e0593f7

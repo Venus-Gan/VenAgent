@@ -1,0 +1,103 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "remove-legacy-conversation-import",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "partial",
+  "contractHash": "3c0610fa13994e51c461a199d09b50934586ba3030326aee6771f1fa999fa0db",
+  "acceptanceCriteriaHash": "f97394eb2d34c0b4ed8031c2a765ceca3b1de9bfebf3155dd322e8948d3d8be6",
+  "implementationScopeRef": "runtime/evidence/scopes/3dc2c7f43427f9ad61264793ecbfecd8da6048d71d19ddd265777f374930b0c5.json",
+  "implementationScopeHash": "3dc2c7f43427f9ad61264793ecbfecd8da6048d71d19ddd265777f374930b0c5",
+  "reportRef": "verification.md",
+  "reportHash": "1b630f2bf165dfb65d389fc6bba5357a5d910777e1cc304d24e754d20681caec",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "f97394eb2d34c0b4ed8031c2a765ceca3b1de9bfebf3155dd322e8948d3d8be6",
+    "total": 7,
+    "evidenced": 7,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-24c7ccc822687e58ff4785d1db5c34cc960bd355c92de2c7e4ae9fecbe6747b0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-6c37bc66e67942c017cb6c256356c1e3d5c76df4efb372a35f7cc5ebf436cf31",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/ChatWorkspace.vue",
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-7a3d303e32620747d9f08bc9c96b91782dcfc89733cb4aac4ef46856f0fd8c14",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/interfaces/http/routes.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-8fe67102f070d7e50155eb2178a1d15a0c248164be2121c25d43d724919afa19",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/ChatWorkspace.vue",
+          "web/src/style.css",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a159a4b04d303fe3725e0b99e71680565860aa20469d9d1f77d80e08996f3c8a",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/bootstrap.py",
+          "venagent/infra/platform/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c0bbf97abf39d57a3e11503176413fcad846a199b0569256ad564dadc21298b5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/infra/platform/migrations.py",
+          "venagent/infra/platform/postgres.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c33c15045e7a50cd40fbba9597d2b48a04723ed6935fdbf7deb481b0f3ae2845",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "c3f923f54acf5517c2833fb2baa2c33fda59681412c09d5d5dce9a9ac7a0391d"
+  },
+  "partialAllowanceRef": "runtime/evidence/allowances/acfffe4c4d3082176147b3ba77d6fec7dc6b9784954185943c31a8219f4785b1.json",
+  "partialAllowanceHash": "acfffe4c4d3082176147b3ba77d6fec7dc6b9784954185943c31a8219f4785b1",
+  "receiptRef": "runtime/evidence/check-receipts/3bc906fe765989affcb8e206bfd9307cc756be7bf6622a343fed058c2ce4b433.json",
+  "createdAt": "2026-07-27T03:57:52.014Z",
+  "envelopeHash": "8cda95eb55e93479ae7f3c9007ac5e6ce668fe66bd8cf8db7d88a2aeb6daa264"
+}

@@ -1,5 +1,8 @@
 # Final Stage — 全阶段整合 AI 助手（Python 版）
 #
+# 该文件目前是 legacy 兼容入口：配置和 Bootstrap 已委托给新目录，
+# 但仍保留旧的 Infrastructure/UnifiedAgent/Handler 组装形状，供现有启动方式使用。
+#
 # 启动入口：
 # - 加载配置（路径与 cwd 解耦）
 # - 初始化基础设施
@@ -49,6 +52,7 @@ class Deps:
 
 
 def _runtime_env_file() -> Path | None:
+    """按 legacy 启动场景查找 dotenv，不把 secret 写入进程环境。"""
     project_root = Path(PROJECT_ROOT)
     configured_root = Path(os.environ.get("AGI_PROJECT_ROOT", project_root))
     candidates = (configured_root / ".env", project_root.parent / ".env", project_root / ".env")
@@ -56,6 +60,7 @@ def _runtime_env_file() -> Path | None:
 
 
 def _runtime_config_paths() -> tuple[Path, Path]:
+    """保留 AGI_CONFIG/AGI_PROJECT_ROOT 的旧路径语义。"""
     configured_path = os.environ.get("AGI_CONFIG")
     if configured_path:
         path = Path(configured_path)
@@ -79,6 +84,7 @@ def default_config():
 
 
 def build_deps():
+    """通过兼容 façade 使用新 Bootstrap，同时返回旧 ``Deps`` 形状。"""
     cfg = default_config()
     result = build_legacy_dependencies(
         cfg,
@@ -113,6 +119,7 @@ def _close_safely(resource) -> None:
 
 
 def main():
+    """启动旧 HTTP 入口，并在退出时按 agent、infrastructure 顺序释放资源。"""
     deps = None
     try:
         deps = build_deps()

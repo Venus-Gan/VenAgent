@@ -1,0 +1,55 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "4fc6cb80-b684-4e47-900e-3a5cd5472513",
+  "kind": "archive",
+  "status": "committed",
+  "change": "complete-m05-semantic-memory",
+  "createdAt": "2026-08-11T04:46:18.720Z",
+  "preflightHash": "7db46c1fe52fd20f64e14cf8effbcea6fb400acd1ad51ab038135b9fb7f2a899",
+  "operations": [
+    {
+      "id": "spec-1-environment-configuration",
+      "type": "write",
+      "target": "specs/environment-configuration/spec.md",
+      "staged": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/staged/specs/environment-configuration/spec.md",
+      "backup": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/backups/specs/environment-configuration/spec.md",
+      "expectedTargetHash": "9679a38e27e0f1e5ac60b16c739b0d5440f90fb3b03983f5418dd54aa2fdd6d9",
+      "stagedHash": "3e2f29164358e03c84c1ca97d114f2ae84b321e6a8c5246c8970d4e1cb507af5"
+    },
+    {
+      "id": "spec-2-llm-runtime-configuration",
+      "type": "write",
+      "target": "specs/llm-runtime-configuration/spec.md",
+      "staged": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/staged/specs/llm-runtime-configuration/spec.md",
+      "backup": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/backups/specs/llm-runtime-configuration/spec.md",
+      "expectedTargetHash": "1986e6cccaf96284c5d5823fcaf18d714a88ca612397554b530a596fcb491006",
+      "stagedHash": "e54ecec03eca92b32abd2929fcb48cb6bdef354402b8b82a041a08de77426e95"
+    },
+    {
+      "id": "spec-3-memory-context",
+      "type": "write",
+      "target": "specs/memory-context/spec.md",
+      "staged": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/staged/specs/memory-context/spec.md",
+      "backup": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/backups/specs/memory-context/spec.md",
+      "expectedTargetHash": "ae984f144bf8f4255b0ca592568b55bc24e10bc392e4a0488519d2a6cf5e13e0",
+      "stagedHash": "79ca4b797980d6c23146785197aad66ce0818167cb85be4d6738ccdcfc5adf03"
+    },
+    {
+      "id": "spec-4-memory-module-layout",
+      "type": "write",
+      "target": "specs/memory-module-layout/spec.md",
+      "staged": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/staged/specs/memory-module-layout/spec.md",
+      "backup": "runtime/transactions/4fc6cb80-b684-4e47-900e-3a5cd5472513/backups/specs/memory-module-layout/spec.md",
+      "expectedTargetHash": "380ab0609361247df7807b7190e952ad5748b040462efa0f60e1f7426712af3a",
+      "stagedHash": "ccd7f6796465daf1298951d74fd9e70586f683366bda973aace7f4a1843b6804"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/complete-m05-semantic-memory",
+      "target": "archive/2026-08-11-complete-m05-semantic-memory",
+      "expectedSourceHash": "28cbb82872972090c7f1573454e300791dfe30459468e1a250935ce9704f3c77",
+      "expectedTargetHash": null
+    }
+  ]
+}

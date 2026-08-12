@@ -1,0 +1,50 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "preserve-legacy-secret-env-names",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "8b971145050fa2ee61829384e72e52185378c30ad45aa48fa8dffc9c5140679d",
+  "acceptanceCriteriaHash": "3dd03ea45968aae38d73391c69d331fe30c8ccc8e056d2e46b342463e7c9a50d",
+  "implementationScopeRef": "runtime/evidence/scopes/a6264cacd9fde75e459d8bc6b105b088ce8f56be7d3121e2dc9277594fc1b060.json",
+  "implementationScopeHash": "a6264cacd9fde75e459d8bc6b105b088ce8f56be7d3121e2dc9277594fc1b060",
+  "reportRef": "verification.md",
+  "reportHash": "b0fea1ff92acb084487e5040375247e1255957a218453e57c6e7cd286508261a",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "3dd03ea45968aae38d73391c69d331fe30c8ccc8e056d2e46b342463e7c9a50d",
+    "total": 2,
+    "evidenced": 2,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-871701e0fa8b7353a7b252cd3560e358449a44afddab0c3afc24b5572c26df5f",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "config/config.yaml",
+          "venagent/infra/config/loader.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-be4660687801f0137d6a9d81e5bad8381ed12ef1f7e8049ec97b8bf0dfdf2f64",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/bootstrap.py",
+          "venagent/infra/config/loader.py",
+          "venagent/infra/platform/runtime.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "22263401511679dc2577e4f54a432927a92b9c0a476cf8092af8d32f2b6c9fad"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/43ddde74e3b1e92d903c0397890dcf64e936993f6af0e10a72e3e8ac048eefcd.json",
+  "createdAt": "2026-07-25T10:46:45.675Z",
+  "envelopeHash": "0950721577b91ea3ff145c3743582033d1cd878dce6972df1a4ac1b1b98f64fd"
+}

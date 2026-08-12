@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "e8516ee4a081e7d93ff2fd2891c400368ef43433a6caa0150308abcf9bb75f04",
+  "baselineProjectionRef": "runtime/evidence/snapshots/a7c746a89a19c15e4a65e21fc222044d005d7d9a6e10a046a8c41da565be91fd.json",
+  "baselineProjectionHash": "a7c746a89a19c15e4a65e21fc222044d005d7d9a6e10a046a8c41da565be91fd",
+  "currentProjectionRef": "runtime/evidence/snapshots/dab96cd890bfb2157ff649b7c2779b425cbbc56854470194737998f516f996c5.json",
+  "currentProjectionHash": "dab96cd890bfb2157ff649b7c2779b425cbbc56854470194737998f516f996c5",
+  "complete": true,
+  "declaredArtifacts": [],
+  "changes": [],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": "仅修改 canonical 规划契约，归档时由 Native 事务更新规格；不需要 Python、Vue、数据库或测试代码变更。",
+  "scopeHash": "50fa702d860acb567094b6ddd1a2f597576066eadfda153ad271de128db8d46d"
+}

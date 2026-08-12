@@ -1,0 +1,89 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-0b2b8156a7f4bea7d6b884ab1c61bd91d58e8e9aba7297f0a5f3250647100306",
+    "evidence_refs": [
+      "tests/test_streaming_api.py",
+      "venagent/interfaces/http/routes.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-24f2ad859cc0015c493b632d8831106e4c38dc21cac400574b4398d7f11febaf",
+    "evidence_refs": [
+      "tests/test_streaming_api.py",
+      "venagent/interfaces/http/routes.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-2cff96e1d37ffb05eda8958483477ae0cd47ddd4b83bd77c2342bd3054d70a68",
+    "evidence_refs": [
+      "tests/test_commit_recovery.py",
+      "tests/test_persistence.py",
+      "venagent/agent/runtime.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-b9fee88ec2e206ff4e1bdcac45032a21821ee16ab6595bfa0c66d4653efafc57",
+    "evidence_refs": [
+      "web/src/modules/chat/ChatWorkspace.vue",
+      "web/src/modules/chat/store.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-c3a8d2da6b2a8b6332920b5c5ac07dfa4a7b2cd3724af578f1ed06a8a59b2aa8",
+    "evidence_refs": [
+      "tests/test_streaming_api.py",
+      "venagent/agent/runtime.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-f7fe36340bac7f55f854ae11feaa60df44af247235a0b44d183f2b07f444f249",
+    "evidence_refs": [
+      "tests/test_streaming_api.py",
+      "venagent/agent/runtime.py"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- `.venv\Scripts\python.exe -m pytest tests/test_streaming_api.py tests/test_commit_recovery.py tests/test_runs.py -q`：15 passed；覆盖首 token 前取消、最后 token 竞态、终态幂等返回、跨 runtime 取消观察和 worker fencing。
+- `.venv\Scripts\python.exe -m pytest tests/test_persistence.py -q -rs`：8 passed，0 skipped；真实 PostgreSQL 中由第二个 runtime 写入取消请求，执行 runtime 在 1.5 秒门限内进入 `cancelled`。
+- `.venv\Scripts\python.exe -m pytest -q -rs`：119 passed，0 skipped。
+- `.venv\Scripts\python.exe -m ruff check venagent tests`：通过，`All checks passed!`。
+- `.venv\Scripts\python.exe -m compileall -q venagent tests`：通过。
+- `.venv\Scripts\python.exe -m pip check`：通过，`No broken requirements found.`。
+- `npm.cmd run build`（`web/`）：Vue TypeScript 检查与 Vite production build 通过。
+- `git diff --check`：通过。
+- `comet native check fix-run-cancellation-latency --json`：通过；12 个作用域文件完成 scoped-text-safety 检查，0 issue；receipt 为 `runtime/evidence/check-receipts/60a537d852eca032c48848ad69c47aec236c0e7beb53422691cc3b16617877f3.json`。
+- 真实持久化启动：PostgreSQL 状态为 `connected`，服务以持久化模式监听 `http://127.0.0.1:8090`。
+- 真实浏览器与真实模型取消：长回答进入“思考中”后点击停止，`POST /api/runs/e4b51504-6870-4829-9cd6-b072c4914ccf/cancel` 返回 202；页面立即收敛到“运行已取消”，输入与发送按钮恢复。
+- 取消后稳定性：等待 1.5 秒未出现迟到回答；随后同一对话发送“请只回复：取消后可以继续对话”，模型成功返回“取消后可以继续对话”，浏览器控制台 0 error。
+
+# Skipped checks
+
+- 未运行 mypy、Bandit、pip-audit 或 AgentShield；本 change 没有新增外部输入面或权限能力，已使用 Ruff、全量 pytest、真实 PostgreSQL、真实 HTTP/SSE、真实模型和浏览器交互覆盖当前风险。
+- `ruff format --check` 扫描到 28 个既有未格式化文件；未为本次窄范围缺陷修复批量改写全仓，`ruff check` 和项目既有构建门槛均已通过。
+- 未人为断开 SSE 连接做浏览器验收；该路径没有调用取消 API，API 回归测试覆盖了取消必须由显式请求触发的边界。
+
+# Spec consistency
+
+- `AgentRun.cancel_requested_at` 继续作为持久权威事实，没有新增 `cancelling` 生命周期状态；“正在停止”只是前端投影。
+- 进程内取消由 `ActiveRunContext` 保存 graph task 并主动取消；跨进程取消由 0.5 秒独立观察任务发现，不依赖 15 秒 heartbeat。
+- PostgreSQL 与内存实现的取消终结均校验 `worker_id`、`claim_token` 和 `execution_attempt`，过期 worker 不能提交终态。
+- finalizer 与取消竞态通过读取持久 run 并执行 fenced reconciliation 收敛；取消先持久成功时不发布 assistant message，成功先提交时取消接口返回既有 `succeeded`。
+- 前端在取消请求已持久但终态尚未返回时显示“正在停止”、禁止重复取消并丢弃迟到 token；权威终态到达后恢复输入。
+- SSE 断线、页面刷新和关闭仍不产生隐式取消；lease 60 秒、heartbeat 15 秒的运行所有权参数未改变。
+
+# Known limitations and risks
+
+- 主动取消只能停止当前 Python/LangGraph await 链；已经被外部服务接收的工具副作用不能自动回滚，后续 M06 工具执行模块仍需通过幂等键、状态查询和补偿策略收敛。
+- 跨进程取消的最坏发现时间取决于 0.5 秒观察周期和数据库响应；数据库不可用时执行 runtime 按 lease 不确定处理并停止继续产出，而不是猜测取消结果。
+- 真实 UI 中取消收敛快于一次 DOM 快照，因而没有稳定捕获“正在停止”中间帧；该状态的映射、禁用和重复请求保护由前端构建及源码复核覆盖，终态交互由真实浏览器验证。
+
+# Conclusion
+
+通过。取消 API 不再只是写入意图并等待下一个 token 或 lease 到期：同进程会主动取消 graph/model task，跨进程会在专用观察周期内发现请求，最后 token 竞态会立即收敛；真实浏览器中取消后没有迟到回答，并可继续下一轮对话。

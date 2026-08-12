@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: neo4j-startup-reporting
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: e3cd780f6876bace393c02562a7fe43307c18df51bcc1652ee93c3a3b4720120
+spec_changes:
+  - capability: infrastructure-startup-reporting
+    operation: replace
+    source: specs/infrastructure-startup-reporting/spec.md
+    base_hash: adf71d3470c59dc1d05c251e1225de7537d9fa93ecb1af199ad3b6a342774518
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/5f2c1e67b17276dff1dd6d9805a0254727d33126c2c7b84fbf76c63f9c8c94e3.json
+verification_evidence: runtime/evidence/verifications/738b2b12fc7e03342cb090b42619213f93bbe49c0f928a5e82d2e3086fcf07bf.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-08
+run_id: a4ee254c-65a1-47ce-b672-5bbff5c53a1c

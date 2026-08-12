@@ -1,0 +1,6 @@
+{
+  "schema": "comet.native.checkpoint-manifest.v1",
+  "change": "fix-chat-stream-rendering-and-autoscroll",
+  "artifacts": [],
+  "totalBytes": 0
+}

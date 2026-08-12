@@ -1,0 +1,8 @@
+{"sequence":1,"timestamp":"2026-07-25T12:28:00.714Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-07-25T12:28:03.200Z","type":"operation-started","operationId":"spec-1-refactor-roadmap"}
+{"sequence":3,"timestamp":"2026-07-25T12:28:05.017Z","type":"operation-completed","operationId":"spec-1-refactor-roadmap"}
+{"sequence":4,"timestamp":"2026-07-25T12:28:05.080Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":5,"timestamp":"2026-07-25T12:28:07.306Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":6,"timestamp":"2026-07-25T12:28:08.642Z","type":"archive-finalization-started"}
+{"sequence":7,"timestamp":"2026-07-25T12:28:08.814Z","type":"archive-finalized"}
+{"sequence":8,"timestamp":"2026-07-25T12:28:08.983Z","type":"commit"}

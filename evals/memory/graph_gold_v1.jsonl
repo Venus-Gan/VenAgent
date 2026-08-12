@@ -1,0 +1,2 @@
+{"case_id":"follows-adjacent","timeline":["m1","m2","m3"],"expected_edges":[["FOLLOWS","m1","m2"],["FOLLOWS","m2","m3"]],"forbidden_edges":[["FOLLOWS","m1","m3"]],"registry_version":"m05-g1-v1"}
+{"case_id":"similar-canonical-pair","facts":["m9","m4"],"expected_edges":[["SIMILAR_TO","m4","m9"]],"registry_version":"m05-g1-v1"}

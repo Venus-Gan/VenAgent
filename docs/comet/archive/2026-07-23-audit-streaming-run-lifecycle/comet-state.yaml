@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: audit-streaming-run-lifecycle
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: d5866bb0ab71296c9cd4cb7335a9f9d87208941d20b9d74cd4153200d4bf5c47
+spec_changes:
+  - capability: streaming-run-lifecycle
+    operation: create
+    source: specs/streaming-run-lifecycle/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/bc2356b4887d55467b569df2c6b332b686270b02bd87bcb61cf114ed04432f4c.json
+verification_evidence: runtime/evidence/verifications/1a2287693c7386a406a0efa9bc9c2df99e462742f914539cd61d004c32cc3a41.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-23
+run_id: 7a368fe4-eb45-446f-8a06-3a19fda711c1

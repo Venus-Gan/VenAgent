@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: add-cross-provider-memory-regression-gates
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: e8516ee4a081e7d93ff2fd2891c400368ef43433a6caa0150308abcf9bb75f04
+spec_changes:
+  - capability: refactor-roadmap
+    operation: replace
+    source: specs/refactor-roadmap/spec.md
+    base_hash: ff70e7d5c6e59fde2795f8d465247ef61518977883bccfa799bbc3acaff2902c
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/50fa702d860acb567094b6ddd1a2f597576066eadfda153ad271de128db8d46d.json
+verification_evidence: runtime/evidence/verifications/2c6281e4d6f7808ccbb7c03c31d847f6fdabfc7cd863fcceaa023c79d0f8583b.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-07
+run_id: 1d75c9b5-ea03-40ad-a7a6-273bbdce7643

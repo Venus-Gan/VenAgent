@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "c67d52c9-25bb-4f79-b794-3bea4101db37",
+  "kind": "archive",
+  "status": "committed",
+  "change": "frontend-foundation",
+  "createdAt": "2026-07-25T08:10:05.264Z",
+  "preflightHash": "2559f345d73eb172667ec8fc070d4d60a0eac8e2f03f482c2d29139d371b5810",
+  "operations": [
+    {
+      "id": "spec-1-frontend-foundation",
+      "type": "write",
+      "target": "specs/frontend-foundation/spec.md",
+      "staged": "runtime/transactions/c67d52c9-25bb-4f79-b794-3bea4101db37/staged/specs/frontend-foundation/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "578e3311a0c0b62a7cf776b48913886569914b57a8dd63b988711889f9db5d3e"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/frontend-foundation",
+      "target": "archive/2026-07-25-frontend-foundation",
+      "expectedSourceHash": "2e94238280707132231782e50e5e7f37eaeb0d7dc3673638cdecd0eab4de8ba9",
+      "expectedTargetHash": null
+    }
+  ]
+}

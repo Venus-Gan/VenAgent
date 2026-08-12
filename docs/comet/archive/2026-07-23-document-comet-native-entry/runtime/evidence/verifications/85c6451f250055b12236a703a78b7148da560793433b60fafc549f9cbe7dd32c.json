@@ -1,0 +1,50 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "document-comet-native-entry",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "acf22c35b8f0b81c5860e8f52a92de2bdefc62d852404c9e79b455ec1c941a02",
+  "acceptanceCriteriaHash": "e5d9677d7b3c10b0d330fdf4eafbc76ce850a9e26a74db75e20d2c1c6294bc7e",
+  "implementationScopeRef": "runtime/evidence/scopes/8a4e734fbbb4109c26f72fcf8090668a70f4afacf62a2f6d8343c33fd6670d97.json",
+  "implementationScopeHash": "8a4e734fbbb4109c26f72fcf8090668a70f4afacf62a2f6d8343c33fd6670d97",
+  "reportRef": "verification.md",
+  "reportHash": "a870cd52b3f445457463d12759082f33f0810b2525b1ceba7fb014da7cb42f17",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "e5d9677d7b3c10b0d330fdf4eafbc76ce850a9e26a74db75e20d2c1c6294bc7e",
+    "total": 3,
+    "evidenced": 0,
+    "skipped": 3,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-8ba27c7386ceea9d4175c4a1d62ea18d66740d4feefa674b2afc83d2fcf38e32",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "AGENTS.md 按用户决定继续被 Git 忽略；本机文本检查已确认 bundled runtime 命令存在，但无法绑定到 Comet implementation scope。"
+      },
+      {
+        "acceptanceId": "acceptance-a16d129767c59896530e6a368a0319bc5048cdfcc86c1cdb9dd5c9064782e7d2",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "AGENTS.md 按用户决定继续被 Git 忽略；本机检查已确认 /comet 与 resume probe 约束仍存在，但无法绑定到 Comet implementation scope。"
+      },
+      {
+        "acceptanceId": "acceptance-f00bc29b941f1a915bee125918d6c4c31f07f361bd5aa8adcc8bdc83b490fa48",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "AGENTS.md 按用户决定继续被 Git 忽略；本机文本检查已确认 Native Skill 与 runtime 路径存在，但无法绑定到 Comet implementation scope。"
+      }
+    ],
+    "traceHash": "b34177f4e22f53dca4ff9295c5bea12729b5c02391f54b2b2919c1f165db8e3c"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/1cc54a3fdd881887900d0369e39e13cf632fa1805fe670eb8ba9ac8380daae0d.json",
+  "createdAt": "2026-07-23T10:30:26.643Z",
+  "envelopeHash": "85c6451f250055b12236a703a78b7148da560793433b60fafc549f9cbe7dd32c"
+}

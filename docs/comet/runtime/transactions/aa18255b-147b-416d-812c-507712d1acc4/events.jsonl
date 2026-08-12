@@ -1,0 +1,10 @@
+{"sequence":1,"timestamp":"2026-07-26T14:54:28.702Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-07-26T14:54:30.788Z","type":"operation-started","operationId":"spec-1-configuration-management"}
+{"sequence":3,"timestamp":"2026-07-26T14:54:32.420Z","type":"operation-completed","operationId":"spec-1-configuration-management"}
+{"sequence":4,"timestamp":"2026-07-26T14:54:32.465Z","type":"operation-started","operationId":"spec-2-llm-runtime-configuration"}
+{"sequence":5,"timestamp":"2026-07-26T14:54:33.018Z","type":"operation-completed","operationId":"spec-2-llm-runtime-configuration"}
+{"sequence":6,"timestamp":"2026-07-26T14:54:33.184Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":7,"timestamp":"2026-07-26T14:54:35.440Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":8,"timestamp":"2026-07-26T14:54:36.638Z","type":"archive-finalization-started"}
+{"sequence":9,"timestamp":"2026-07-26T14:54:36.851Z","type":"archive-finalized"}
+{"sequence":10,"timestamp":"2026-07-26T14:54:37.187Z","type":"commit"}

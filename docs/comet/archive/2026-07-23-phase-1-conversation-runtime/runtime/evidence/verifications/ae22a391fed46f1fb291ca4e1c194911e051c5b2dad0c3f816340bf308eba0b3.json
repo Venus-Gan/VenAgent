@@ -1,0 +1,78 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "phase-1-conversation-runtime",
+  "sourceRevision": 9,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "99acc69a41fc28cb188ae93a5271fe13757b190432153997c6853a9b653829c0",
+  "acceptanceCriteriaHash": "f9003cf7c635bb7aa4215ef4b23ea940c12cc8eb98f9f2b22464115dfd4bf903",
+  "implementationScopeRef": "runtime/evidence/scopes/3744429cd231928391099e3eeeee2aa3679cd6190bc66e411e8eddc654a225f8.json",
+  "implementationScopeHash": "3744429cd231928391099e3eeeee2aa3679cd6190bc66e411e8eddc654a225f8",
+  "reportRef": "verification.md",
+  "reportHash": "0cd87cdb5c3e8c085c6e216ec5bddc152d798a17d8c6728cbd2d2da559308d97",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "f9003cf7c635bb7aa4215ef4b23ea940c12cc8eb98f9f2b22464115dfd4bf903",
+    "total": 7,
+    "evidenced": 0,
+    "skipped": 7,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-14075b1cfd41f9ecc4c297ccf601aec231c1d801bb2f05c3624dcf8386263276",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "本 change 只完成 M01 审计与目标规格；不同线程并发、同线程冲突和活跃删除需要后续独立实现 change 验证。"
+      },
+      {
+        "acceptanceId": "acceptance-337ae3406d4d736ef2c2f6b9900c81bc27281e99961bec35c0ee6ea78eda1e09",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "本 change 不修改 API 或 Web UI；线程新建、未知、重启失效和删除行为已形成批准契约，留待后续实现验证。"
+      },
+      {
+        "acceptanceId": "acceptance-8710cb0e7240e3cca2859c82b67786299f97d3248c1f03a532297768923131dd",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "该项是 M01/M02 规格边界而非已实现行为；契约检查已确认 M01 不包含 SSE、token、取消或断线端点。"
+      },
+      {
+        "acceptanceId": "acceptance-920d7558f19b318e5ac3c9ed03a19e4ba6ab16d417edd1a155941705f9a1adfc",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "最近 5 个完整成功轮次及不拆轮裁剪已写入目标规格；本次无代码 change 不执行窗口行为测试。"
+      },
+      {
+        "acceptanceId": "acceptance-9e3e811bf6d460ff787e6d804ee8033629d41e4590272b392972949ed33689d8",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "localStorage 完整可见记录与失效后只读规则已写入目标规格；浏览器实现和 E2E 留待独立实现 change。"
+      },
+      {
+        "acceptanceId": "acceptance-f69ced58ce9342048003e0d05c8e4e5b2ae9b1deb6f6193ba40fbe59b6d39e82",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "同线程多轮与跨线程隔离是后续实现验收，不属于本次审计规格 change 的运行结果。"
+      },
+      {
+        "acceptanceId": "acceptance-f910bbb877fb4e9decbf5553d797f4f1e3717a2e11adb57d42c6421c69877e1e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "失败不提交半轮已定义为 LangGraph State 不变量；需要后续假模型失败测试证明实际实现。"
+      }
+    ],
+    "traceHash": "85f12732611c5f130919ed42765b7adc5750c57870e2b46a200ede29a0755c73"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": null,
+  "createdAt": "2026-07-23T09:29:43.313Z",
+  "envelopeHash": "ae22a391fed46f1fb291ca4e1c194911e051c5b2dad0c3f816340bf308eba0b3"
+}

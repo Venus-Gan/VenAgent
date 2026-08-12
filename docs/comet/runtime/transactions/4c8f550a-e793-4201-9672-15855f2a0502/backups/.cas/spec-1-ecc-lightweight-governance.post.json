@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-ecc-lightweight-governance",
+  "role": "post",
+  "hash": "fa831fe6c2c62ac971fc723156512f5fc6901af75742255a03d603fee84d2dae",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 562949954228127,
+    "birthtimeMs": 1784991508646.7646
+  }
+}

@@ -76,21 +76,23 @@ class ReactRuntime(GraphRuntime):
         on_event: Optional[Any] = None,
         checkpointer: Optional[InMemorySaver] = None,
         thread_id: Optional[str] = None,
+        checkpoint_enabled: bool = True,
     ) -> None:
         super().__init__(graph, agent, cfg, tools, task=task, on_event=on_event)
-        self.checkpointer = checkpointer or InMemorySaver()
+        self.checkpoint_enabled = checkpoint_enabled
+        self.checkpointer = (checkpointer or InMemorySaver()) if checkpoint_enabled else None
         self.thread_id = thread_id or str(self.task.get('task_id') or self.task.get('thread_id') or '')
 
     def invoke(self, token, config: Optional[Mapping[str, Any]] = None, *, resume: bool = False) -> GraphResult:
         self.thread_id = _resolve_thread_id(config, self.thread_id or self.task.get('task_id') or self.task.get('thread_id') or '')
-        if not self.thread_id:
+        if self.checkpoint_enabled and not self.thread_id:
             raise ValueError('thread_id is required for checkpointed react runtime')
 
-        if resume:
+        if resume and self.checkpoint_enabled:
             self._restore_checkpoint()
         else:
             self._reset_graph_state()
-            if hasattr(self.checkpointer, 'clear'):
+            if self.checkpoint_enabled and hasattr(self.checkpointer, 'clear'):
                 self.checkpointer.clear(self.thread_id)
 
         return super().execute(token)
@@ -103,7 +105,7 @@ class ReactRuntime(GraphRuntime):
         self._persist_checkpoint()
 
     def _persist_checkpoint(self) -> None:
-        if not self.thread_id:
+        if not self.checkpoint_enabled or not self.thread_id or self.checkpointer is None:
             return
         checkpoint = ReactCheckpoint(
             thread_id=self.thread_id,
@@ -113,6 +115,8 @@ class ReactRuntime(GraphRuntime):
         self.checkpointer.save(self.thread_id, checkpoint)
 
     def _restore_checkpoint(self) -> None:
+        if not self.checkpoint_enabled or self.checkpointer is None:
+            return
         checkpoint = self.checkpointer.get(self.thread_id)
         if checkpoint is None:
             return

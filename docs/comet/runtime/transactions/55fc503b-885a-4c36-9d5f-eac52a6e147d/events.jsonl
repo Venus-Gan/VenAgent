@@ -1,0 +1,10 @@
+{"sequence":1,"timestamp":"2026-07-28T02:42:07.924Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-07-28T02:42:09.307Z","type":"operation-started","operationId":"spec-1-conversation-persistence"}
+{"sequence":3,"timestamp":"2026-07-28T02:42:09.692Z","type":"operation-completed","operationId":"spec-1-conversation-persistence"}
+{"sequence":4,"timestamp":"2026-07-28T02:42:09.728Z","type":"operation-started","operationId":"spec-2-ownership-lifecycle"}
+{"sequence":5,"timestamp":"2026-07-28T02:42:09.940Z","type":"operation-completed","operationId":"spec-2-ownership-lifecycle"}
+{"sequence":6,"timestamp":"2026-07-28T02:42:09.975Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":7,"timestamp":"2026-07-28T02:42:10.555Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":8,"timestamp":"2026-07-28T02:42:11.058Z","type":"archive-finalization-started"}
+{"sequence":9,"timestamp":"2026-07-28T02:42:11.194Z","type":"archive-finalized"}
+{"sequence":10,"timestamp":"2026-07-28T02:42:11.361Z","type":"commit"}

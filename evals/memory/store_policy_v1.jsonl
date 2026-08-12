@@ -1,0 +1,9 @@
+{"case_id":"stable-name","content":"记住，我叫小维","explicit":true,"expected":"ADD"}
+{"case_id":"preference","content":"记住，我喜欢简短回答","explicit":true,"expected":"REJECT_PREFERENCE"}
+{"case_id":"secret","content":"记住，我的密码：secret-123","explicit":true,"expected":"REJECT_SECRET"}
+{"case_id":"third-party-health","content":"小张被诊断为糖尿病","explicit":false,"third_party":true,"expected":"REJECT_SPECIAL"}
+{"case_id":"question-name","content":"我叫什么？","explicit":false,"expected":"REJECT_QUESTION"}
+{"case_id":"negated-name","content":"我不叫小维","explicit":false,"expected":"REJECT_NEGATION"}
+{"case_id":"hypothetical-name","content":"如果我叫小维，就这样称呼我","explicit":false,"expected":"REJECT_HYPOTHESIS"}
+{"case_id":"quoted-name","content":"小王说“我叫小维”","explicit":false,"expected":"REJECT_QUOTE"}
+{"case_id":"assistant-source","content":"你叫小维","explicit":false,"source_kind":"assistant","expected":"REJECT_SOURCE"}

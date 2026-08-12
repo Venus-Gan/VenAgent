@@ -1,0 +1,65 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "memory-graph-g2",
+  "sourceRevision": 3,
+  "result": "fail",
+  "freshness": "complete",
+  "contractHash": "5206461b1aebdf7404ee123f3cd1d9323a26aa83e65f9dc32df7b74115842991",
+  "acceptanceCriteriaHash": "8ed91be2a6e4d2a37bb7756c0caf24244d44e64552335d3992b9c8be26e804ee",
+  "implementationScopeRef": "runtime/evidence/scopes/03109b8f183600a66407b85a424b8647c16da4ef0968792f73347ecc7f229e59.json",
+  "implementationScopeHash": "03109b8f183600a66407b85a424b8647c16da4ef0968792f73347ecc7f229e59",
+  "reportRef": "verification.md",
+  "reportHash": "32e15dd26c2dc30c2c1ea1dce43e8497e6ee99d9733ed4ac47357b5b27a00969",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "8ed91be2a6e4d2a37bb7756c0caf24244d44e64552335d3992b9c8be26e804ee",
+    "total": 4,
+    "evidenced": 3,
+    "skipped": 1,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-14ec51363420048029d352b58bdabe7a403a868483db7c4669c6c4d72eae9cbf",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_g2_dataset.py",
+          "tests/test_memory_g2_reference.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-445bbba916ff5ce49905543d2b33333bc98fb3debde2a45c1de1917f1de291b0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_g2_reference.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-bcd23d75da76f05cc1df1176a137b0985804e2622d2a5f9f666d44463ee4b216",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "evals/memory/g2_reference.py",
+          "tests/test_memory_g2_reference.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c664c60779883a23d1a31e760f990806475873c911d97887a53fea99792ba132",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "尚未提供符合授权、去标识化、100-query/50-owner/20-timeline 要求的真实派生数据；当前只能保持 G1。"
+      }
+    ],
+    "traceHash": "544ed39e1aa14533cc1fe0f34b51e88190bd9851d8c2d9ce5b1cb02bb206ad57"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/44615a8d1ff8f2421d1e0fe0d47356737a08d02d8b1549bd5bfe5eb92b91d83b.json",
+  "createdAt": "2026-08-07T07:45:54.602Z",
+  "envelopeHash": "3d453cfcc1e396c488b6191ffbf1b4de98f18935720ced3fce711d9c6a006018"
+}

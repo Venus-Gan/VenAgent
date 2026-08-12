@@ -1,0 +1,14 @@
+{
+  "schema": "comet.native.partial-allowance.v1",
+  "change": "consolidate-refactor-roadmap",
+  "scopeHash": "345e05f0d793fc31319a0e85c17870f3bd89eb649e824d7d7c295faf62acd409",
+  "scopeIds": [
+    "scope:6ec3f69b9d379c9f7f5f826a678ce14ed011939351c134c2d6f253a82a818dc4",
+    "scope:8e11d09bf449e99dd942af61a26f5ebb41a7df822270446d5c4ff43526b1b633"
+  ],
+  "reason": "用户已确认本 change 只验证路线、路由、相邻规格和项目规则；tests/test_config.py 与 tests/test_llm.py 是未归属改动，不纳入本次验证或归档结论。",
+  "confirmedSummary": "已同步重排后的路线与路由；部分范围仅排除 tests/test_config.py 和 tests/test_llm.py 的未归属改动。",
+  "sourceRevision": 4,
+  "confirmedAt": "2026-07-25T12:19:13.092Z",
+  "allowanceHash": "96516b8a6a4222d1d38b73785a0cb224566c4532e786ae37d533adb7a57f7f4b"
+}

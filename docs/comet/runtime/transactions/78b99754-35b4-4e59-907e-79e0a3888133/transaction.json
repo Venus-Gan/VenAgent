@@ -1,0 +1,28 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "78b99754-35b4-4e59-907e-79e0a3888133",
+  "kind": "archive",
+  "status": "committed",
+  "change": "finalize-m01-spec-status",
+  "createdAt": "2026-07-23T13:11:00.596Z",
+  "preflightHash": "ca58b291ef05ab8311ccfb65f33d5220a530d63c4768b5bd20474e45d5ee0b4e",
+  "operations": [
+    {
+      "id": "spec-1-conversation-context",
+      "type": "write",
+      "target": "specs/conversation-context/spec.md",
+      "staged": "runtime/transactions/78b99754-35b4-4e59-907e-79e0a3888133/staged/specs/conversation-context/spec.md",
+      "backup": "runtime/transactions/78b99754-35b4-4e59-907e-79e0a3888133/backups/specs/conversation-context/spec.md",
+      "expectedTargetHash": "ecce82efaff43b683fe90af8230998f64cb1c7665fbc056f3c3287b74589f3ad",
+      "stagedHash": "f969eb3aa21781c88268bf8a69da81c09c0cab5255fbcff214cb7c258f7d7b8e"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/finalize-m01-spec-status",
+      "target": "archive/2026-07-23-finalize-m01-spec-status",
+      "expectedSourceHash": "69c53c86fb6800e1de73d6de206ba0346783c4afc148ed3ea9cddb655fd4175d",
+      "expectedTargetHash": null
+    }
+  ]
+}

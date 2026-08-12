@@ -1,0 +1,32 @@
+{
+  "schema": "comet.native.checkpoint-manifest.v1",
+  "change": "memory-graph-g2",
+  "artifacts": [
+    {
+      "path": "evals/memory/g2_admission.py",
+      "hash": "554fe786d272d4e021adbaa01cd66c7a6f55063148229d9087bc87894f0c34a7",
+      "size": 12785
+    },
+    {
+      "path": "evals/memory/g2_dataset.py",
+      "hash": "c094b87d427b1d089e2da2c2da6a3f2357384c3f6bca84414cfe6e20bb7134d8",
+      "size": 23287
+    },
+    {
+      "path": "evals/memory/g2_reference.py",
+      "hash": "f5f987cbe3412fd7345462d777093e7d21d8a06739913763d4ba3888e758c9e8",
+      "size": 13423
+    },
+    {
+      "path": "evals/memory/schemas/g2_case.schema.json",
+      "hash": "593c54c98bac9632071dd40602ec584c4f10db5767fa20451f4206bc7ded288d",
+      "size": 7647
+    },
+    {
+      "path": "evals/memory/schemas/g2_manifest.schema.json",
+      "hash": "47dc470cdd51e7a71a1ee15808ce7adea78fcd99f48220eb56ab5fc27f97b508",
+      "size": 1936
+    }
+  ],
+  "totalBytes": 59078
+}

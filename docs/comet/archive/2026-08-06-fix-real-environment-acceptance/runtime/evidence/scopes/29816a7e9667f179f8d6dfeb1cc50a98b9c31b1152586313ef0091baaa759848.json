@@ -1,0 +1,149 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "565f04d8cd299dcd9a922d205a52d785bffba3e50a3956610357897c710c380a",
+  "baselineProjectionRef": "runtime/evidence/snapshots/b7011fb2329d97566379030a9fcf48c2f0ca55c4ac6fdae070e683227e6df193.json",
+  "baselineProjectionHash": "b7011fb2329d97566379030a9fcf48c2f0ca55c4ac6fdae070e683227e6df193",
+  "currentProjectionRef": "runtime/evidence/snapshots/198e0e1053ba4d03cee5d39337108a54eaa4b27cc4364312b680fe337143f32e.json",
+  "currentProjectionHash": "198e0e1053ba4d03cee5d39337108a54eaa4b27cc4364312b680fe337143f32e",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/agent/graph.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/platform/migrations.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/platform/runtime.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/recall_provider.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "modified",
+      "before": {
+        "hash": "e0a6d6f78ee419605ff222b7dbac5765cff22872f3e7ad21ae0be839a220045e",
+        "size": 33367
+      },
+      "after": {
+        "hash": "54cc8e125df7c43af1917d41270cafd3ec565012ef689e51b1a7aac84a3e75c0",
+        "size": 38317
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_context.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ece08a1df709588e6f7b086f66f4d85bf2dab50d271ce52e0caf5cc85344cdc3",
+        "size": 21312
+      },
+      "after": {
+        "hash": "15f546c48e57cfa0971ff55ffb6de7f92904a5c6043b0566f384ad904b51d825",
+        "size": 26468
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_persistence.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/graph.py",
+      "kind": "modified",
+      "before": {
+        "hash": "c02c4a53c0f76f2c734395ba805c2734d2c150ca9301963f92bbc7009928a939",
+        "size": 871
+      },
+      "after": {
+        "hash": "1777286d4eeca2ed20372e0736a722903666b5bb50b139727fb4182ecde4779a",
+        "size": 1524
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/agent/graph.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/migrations.py",
+      "kind": "modified",
+      "before": {
+        "hash": "a66523c8e2331002f0e86474d2f74ee003b36f4067f831f5f4e786b060ff5f54",
+        "size": 21132
+      },
+      "after": {
+        "hash": "4ce2cf95abaf79718b3b39643df4620eb03ab15e06208eca614ee618edadd3c2",
+        "size": 21312
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/platform/migrations.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/runtime.py",
+      "kind": "modified",
+      "before": {
+        "hash": "78c252f98e31963355c467bea60b1e71cc52e60a52e6026505db5fd6f2a1609a",
+        "size": 12722
+      },
+      "after": {
+        "hash": "3fd5828c709390f5075f9b7548c10f3cedbb2d3257173a7a42266da7678636fe",
+        "size": 12262
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/platform/runtime.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/recall_provider.py",
+      "kind": "modified",
+      "before": {
+        "hash": "6f113758f1e044c320f83b6a447ca5b9d56099af67b2d83811023ddc4d885472",
+        "size": 8951
+      },
+      "after": {
+        "hash": "4d3caec74870cdd0c972ff201dd1bb4ff40ec21501e78ff518f8fdbc8667ad46",
+        "size": 12042
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/recall_provider.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "29816a7e9667f179f8d6dfeb1cc50a98b9c31b1152586313ef0091baaa759848"
+}

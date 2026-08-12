@@ -1,0 +1,8 @@
+{"sequence":1,"timestamp":"2026-07-25T14:26:30.158Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-07-25T14:26:32.306Z","type":"operation-started","operationId":"spec-1-backend-ecc-audit"}
+{"sequence":3,"timestamp":"2026-07-25T14:26:33.847Z","type":"operation-completed","operationId":"spec-1-backend-ecc-audit"}
+{"sequence":4,"timestamp":"2026-07-25T14:26:33.956Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":5,"timestamp":"2026-07-25T14:26:35.472Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":6,"timestamp":"2026-07-25T14:26:36.050Z","type":"archive-finalization-started"}
+{"sequence":7,"timestamp":"2026-07-25T14:26:36.515Z","type":"archive-finalized"}
+{"sequence":8,"timestamp":"2026-07-25T14:26:37.278Z","type":"commit"}

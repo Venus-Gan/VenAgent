@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "e824dadd3705cbccc43ad09817cd78e235b338d25935823537907b143545b31f",
+  "baselineProjectionRef": "runtime/evidence/snapshots/f46f01d1f5d7f7652c9b88c23eca864a51945e7be2728cd0cbee8466a474c96c.json",
+  "baselineProjectionHash": "f46f01d1f5d7f7652c9b88c23eca864a51945e7be2728cd0cbee8466a474c96c",
+  "currentProjectionRef": "runtime/evidence/snapshots/e17c81fb00c3cba7ae7455b634dad0cbe74de6288fd92888bffb52fb5ad454ac.json",
+  "currentProjectionHash": "e17c81fb00c3cba7ae7455b634dad0cbe74de6288fd92888bffb52fb5ad454ac",
+  "complete": true,
+  "declaredArtifacts": [],
+  "changes": [],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": "问题来自本地 PostgreSQL schema 停留在 v7 及本地 JWT_SECRET 缺失；使用现有迁移入口和被忽略的本地环境配置即可恢复，无需代码变更。",
+  "scopeHash": "79da2010378a2f898f0bc7c9a1d9b4100167b2a2b22eeaef2eb082ec46dc692d"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "align-infra-platform-terminology",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "5e42176ca7404246f60c7507599e5d36bbda98f089975eee0624f247dce0ed42",
+  "acceptanceCriteriaHash": "6337147c27b0b0fcaebb4e47e0fc543b3b5d073ade515140de560a27cfb0b8b1",
+  "implementationScopeRef": "runtime/evidence/scopes/866787cc18a709037c3ebf51c08d0be093cfa76538ae2c6e60480a4f076a1546.json",
+  "implementationScopeHash": "866787cc18a709037c3ebf51c08d0be093cfa76538ae2c6e60480a4f076a1546",
+  "reportRef": "verification.md",
+  "reportHash": "2c67ce78fa21a314a5201dccc81d3703cf2eecf4ff529774c6e0a199e816aa02",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "6337147c27b0b0fcaebb4e47e0fc543b3b5d073ade515140de560a27cfb0b8b1",
+    "total": 3,
+    "evidenced": 3,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-3ccc94231b78c6588e83b1e4ed9ceabc763c553e018c6a7915cfacdbd1ba0ebb",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/infra/platform/__init__.py",
+          "venagent/infra/platform/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-552dcca37976a191e45e6184763c67f41223c17eadcbae4380a316747eb7d39d",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "README.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-864e1f0f9324ee3ab2bb6c246e22d3f4364a7c05ce2bc0bd1679dff7619c3498",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/infra/platform/runtime.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "420625fd7588e3e49b413436864794e905adf5ab5aee58300d17572f8ea35681"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/8f90af13e2a9116bd30623208a6fa7c86818a217913e4ff3d2e2466c0955ec9a.json",
+  "createdAt": "2026-07-25T08:26:32.019Z",
+  "envelopeHash": "73af630eb0fc0bf3664259d27d73d56bc20ea4bf3a24a97588c05349d663c5b2"
+}

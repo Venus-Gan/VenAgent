@@ -1,0 +1,17 @@
+{
+  "schema": "comet.native.checkpoint-manifest.v1",
+  "change": "frontend-foundation",
+  "artifacts": [
+    {
+      "path": "web/src/App.vue",
+      "hash": "59e39fa24b78ed0140427ee7f753640cf3a156c458c7b4523b972b4344780b79",
+      "size": 7441
+    },
+    {
+      "path": "web/src/style.css",
+      "hash": "3b9168f5483eea5d520ea94581e819d59a7a3097561c21556ec560e0bf4fe9ef",
+      "size": 5298
+    }
+  ],
+  "totalBytes": 12739
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-g1-recall-ranking",
+  "role": "post",
+  "hash": "a06cbf88e9ea51a3f8e939bb406214f616674385768fa3b57012e8d2c7c0c8fa",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 562949954116189,
+    "birthtimeMs": 1786115595432.6965
+  }
+}

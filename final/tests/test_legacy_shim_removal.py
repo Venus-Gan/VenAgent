@@ -56,8 +56,8 @@ def test_prepare_uses_intent_policy_for_default_cutover(monkeypatch):
     agent.subagents = SimpleNamespace(names=lambda: ())
     agent.intent_policy = IntentPolicy()
     agent._save_chat_history = lambda *_args, **_kwargs: None
-    agent._build_memory_system_prefix = lambda _query="": ""
-    agent._build_history_messages = lambda query: [Message(role="user", content=query)]
+    agent._build_context_prefix = lambda _query, _schema_key, _memory_scope: ""
+    agent._build_history_messages = lambda query, _memory_scope: [Message(role="user", content=query)]
 
     prepared = agent._prepare("帮我整理这份文档并写成摘要", ChatOptions())
 

@@ -1,0 +1,61 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 9
+name: agent-runtime-foundation
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 0b3bc7dd7b3bb4e1cf8d088aa426e3d89c7ea7920f0aa858d209d8a0516ef841
+spec_changes:
+  - capability: agent-runtime
+    operation: create
+    source: specs/agent-runtime/spec.md
+    base_hash: null
+  - capability: bounded-chat-payloads
+    operation: replace
+    source: specs/bounded-chat-payloads/spec.md
+    base_hash: 8502bcbd1ac3cb9a8f3eb8785a962062a6434b0d875696e0c053364313889a37
+  - capability: conversation-context
+    operation: replace
+    source: specs/conversation-context/spec.md
+    base_hash: 9ea68b67fb9af802634eb79ce82cfb0deeac07bcdadb0e15bb3902848888388d
+  - capability: conversation-persistence
+    operation: replace
+    source: specs/conversation-persistence/spec.md
+    base_hash: 086768460430b951220cbc493cc0f6db61f5740703239d6848c25dacddcfd3a1
+  - capability: feature-first-package-layout
+    operation: replace
+    source: specs/feature-first-package-layout/spec.md
+    base_hash: a0fb93c27728e1d2ee4d38f64d5da6155d5943cb06a4796d90539d0bafc771bd
+  - capability: frontend-foundation
+    operation: replace
+    source: specs/frontend-foundation/spec.md
+    base_hash: 53d692468b34433479f6423723ebc9ade5089b3fca046e778586c55d0525e611
+  - capability: infrastructure-startup-reporting
+    operation: replace
+    source: specs/infrastructure-startup-reporting/spec.md
+    base_hash: 3f7e26de2ed77c4e2a571585c15843a4a844b2afad9e94772f58d1cb885be754
+  - capability: minimal-agent-loop
+    operation: remove
+    base_hash: 70de5c82e5a257ac1750006fe3a631335e9fa3d3977e090368d30abec45c5db8
+  - capability: ownership-lifecycle
+    operation: replace
+    source: specs/ownership-lifecycle/spec.md
+    base_hash: 4b3a333f37f09f4b2a60f62e77733d71fb43461463e908f5eb86f72e13fbfb4d
+  - capability: refactor-roadmap
+    operation: replace
+    source: specs/refactor-roadmap/spec.md
+    base_hash: 8703877cb079783d7ad4197f4506a9a704b026eaa00d4f01aac9dfae2ae43c25
+  - capability: streaming-run-lifecycle
+    operation: replace
+    source: specs/streaming-run-lifecycle/spec.md
+    base_hash: 18d93b71dee3d617d81c046189594ff02914ce1b30074afc5c38219b4bd135c7
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/8f8d985dabb031e509d58381cdf040d2f1a96e16ad0385657900fb2f07671f48.json
+verification_evidence: runtime/evidence/verifications/6e3d6544e4902da72e52ee3cb0526ccae2fce82e539e1c096929306fc16344b8.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-03
+run_id: 1fae1a38-2656-4630-9c3f-7b992fd638d4

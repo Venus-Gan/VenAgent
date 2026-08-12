@@ -1,0 +1,307 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "d3fa03efdcedacb6e1422a17883421a012ad0965d1667a907b8db87f22857e96",
+  "baselineProjectionRef": "runtime/evidence/snapshots/e409755b7b1b2a2fddad97cdbc7a41691850c2e060dd7cc52114a6c8e31b9662.json",
+  "baselineProjectionHash": "e409755b7b1b2a2fddad97cdbc7a41691850c2e060dd7cc52114a6c8e31b9662",
+  "currentProjectionRef": "runtime/evidence/snapshots/ac60caf01cc102bd9b25a5f891d191eff28bb95bc7b584292b3cdc5ebbd7a663.json",
+  "currentProjectionHash": "ac60caf01cc102bd9b25a5f891d191eff28bb95bc7b584292b3cdc5ebbd7a663",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_index.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_semantics.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/agent/runtime.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/routes/runs.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/command_adapter.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/jobs.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/extractor.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/policy.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/writer.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/model_adapters.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/service.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "bdabed664571b6ee80fbef9eddc0749803ec8ca5e195a5a9791b05c53435abcc",
+        "size": 7037
+      },
+      "after": {
+        "hash": "89e757debbc96cd266f57294e4f2475a00309f5a3665bcb30c096a8fa7ce8747",
+        "size": 9734
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_agent_loop.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "modified",
+      "before": {
+        "hash": "17f76c85ef70ebfc8d94e3f0b0f4ab15b402754e24cd371d356292e4c8cedc68",
+        "size": 8769
+      },
+      "after": {
+        "hash": "6da6ea80a0e4e0ad80d6abdf2fa7c60bf6f0f052f1c047fa634e23e3714dc1aa",
+        "size": 8438
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_api.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "modified",
+      "before": {
+        "hash": "b566b162a646ba50d01920a69f38696a135cf2078104f0f07db500d4ca31038e",
+        "size": 52615
+      },
+      "after": {
+        "hash": "611aa042be2e062d7860f8edf7bb721b80dcb81c6f613f446ccc0042dac8d978",
+        "size": 57385
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_context.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_index.py",
+      "kind": "modified",
+      "before": {
+        "hash": "196335eb8ddbfc6a80cc2bf86fe4c94e100a677accddbeaa81119b057a4db6b7",
+        "size": 8262
+      },
+      "after": {
+        "hash": "203107277558253fbd1a33b16c56dde459a6c6e6d8fb18ace30a7d4f414d95ee",
+        "size": 8543
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_index.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/runtime.py",
+      "kind": "modified",
+      "before": {
+        "hash": "57410c1fb4dc3ada1a5a77c2a501217cfdc347db0444bda0583777d1bead39e6",
+        "size": 24529
+      },
+      "after": {
+        "hash": "6525b2cda2df07deb6dac6cb0dd2fca9b435d4d530da17422388a84c9b6bbb5e",
+        "size": 26832
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/agent/runtime.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes/runs.py",
+      "kind": "modified",
+      "before": {
+        "hash": "5d6f043178db4a369a32e8e8ba62667f66e640e4b751dc4ba20d873656fc209b",
+        "size": 5458
+      },
+      "after": {
+        "hash": "3fe25589ccadca7eca90f62fa69b82b7bbc502eb62fd1d9a1cc6e02695ea6613",
+        "size": 5212
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/interfaces/http/routes/runs.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/command_adapter.py",
+      "kind": "modified",
+      "before": {
+        "hash": "d3df75e58a4a21ee2f7a714f929ed3ba3c76e730e8c939b6701b95514d74eeb3",
+        "size": 11090
+      },
+      "after": {
+        "hash": "10f21cd4febecfc6ef938630ed44632791265ae27c8dba3876db607496fce5a1",
+        "size": 7342
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/command_adapter.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/jobs.py",
+      "kind": "modified",
+      "before": {
+        "hash": "dff9273315c7294499c0c578a37055c13a897eb6ea8b45cd3586bf6f36b6e977",
+        "size": 11978
+      },
+      "after": {
+        "hash": "3461a709434b6539c2fde07a2eabde34512bfd9ba5904d7d7644f006d593d8db",
+        "size": 12060
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/jobs.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/extractor.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ec001a9a3e3a45ef0f8f380bd108a55d6287bc40de321970af916bcde682551d",
+        "size": 5133
+      },
+      "after": {
+        "hash": "cbd0d0ff29551d4eaf638ff964ac1caed1129bd98b40e63459450cd53b9e9e22",
+        "size": 5170
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/long_term/extractor.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/policy.py",
+      "kind": "modified",
+      "before": {
+        "hash": "a21cd32b25bfcfc9b60298d530ad366b238b23b66082c15fce4eba08bfb3a16e",
+        "size": 6029
+      },
+      "after": {
+        "hash": "7eed0773e714337aae716379d8666f336900bd298164fd1fbfa0b455792f54b7",
+        "size": 8381
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/long_term/policy.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/writer.py",
+      "kind": "modified",
+      "before": {
+        "hash": "29c0710768dece2416b2a8f2a994739da8dd6d91cf961d0b254eb0166b2bc18d",
+        "size": 7886
+      },
+      "after": {
+        "hash": "7fd7a0d48168b380e0c459d381157fbf63e11b18692d8f93a0e26c3d759b1820",
+        "size": 8535
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/long_term/writer.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/model_adapters.py",
+      "kind": "modified",
+      "before": {
+        "hash": "163fa3f2ba5fbf8fb93caaa18a1d411ec952888db28affec568780f90f21a6c7",
+        "size": 8210
+      },
+      "after": {
+        "hash": "bd6c1da5edae28a645961f56e3fd8f46e83ec9c2cdb7daa687001d400e395fe6",
+        "size": 8576
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/model_adapters.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/service.py",
+      "kind": "modified",
+      "before": {
+        "hash": "3a50dbc409ab724dab468df9c24e2395c73ad83a0a4bef424b4f51fdaefd0d1a",
+        "size": 10705
+      },
+      "after": {
+        "hash": "d20c90ece713d4ada26351d29484e723ea4a82c6aebc3684674bb7f702d52829",
+        "size": 15762
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/service.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "5e01386cb3b9c9f69c59ba039d70a58d4c5b1e03be6222b79e96fac1fa601c6a"
+}

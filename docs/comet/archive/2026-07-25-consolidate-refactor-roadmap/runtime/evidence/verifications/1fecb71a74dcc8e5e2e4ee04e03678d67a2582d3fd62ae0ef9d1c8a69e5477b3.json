@@ -1,0 +1,78 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "consolidate-refactor-roadmap",
+  "sourceRevision": 5,
+  "result": "pass",
+  "freshness": "partial",
+  "contractHash": "69fee44bcd6358273ab5d5a0ef7d3825cac68add4543dd116a657e5dd083514b",
+  "acceptanceCriteriaHash": "8018c9a67b9f66106722714a924430e71ca3547fd80517b8baabbca280b2c5a2",
+  "implementationScopeRef": "runtime/evidence/scopes/345e05f0d793fc31319a0e85c17870f3bd89eb649e824d7d7c295faf62acd409.json",
+  "implementationScopeHash": "345e05f0d793fc31319a0e85c17870f3bd89eb649e824d7d7c295faf62acd409",
+  "reportRef": "verification.md",
+  "reportHash": "a062928c42e0ffdf3023f6d320dfc19510253e600170f5097a3f98738cb764a7",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "8018c9a67b9f66106722714a924430e71ca3547fd80517b8baabbca280b2c5a2",
+    "total": 7,
+    "evidenced": 0,
+    "skipped": 7,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-1160607f47880713031c0ff71cba08a5ff68a9d70a901282845f5139a82f8f74",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-41c0f356f6f8393c361004044c787edf70d7e5d2a737d7d6ac81d6d5c7948dff",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-5441143157b6e19646757bd1d2c0dce224f75cdcc56904c064d48cd248b9de61",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-642eeb949e1b3f962d653e7ef0d7ce364824061a32b607c949c27027a80ecae7",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-c1ba1250b8d488272fc0ae2b5eadbda05fd459ec0fbaa3ee33b601cdb9d4756e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-d1e5e40799e20ea5a10f23326d599e5304ff0b3747ee7583a52d3b991ff6b851",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      },
+      {
+        "acceptanceId": "acceptance-f24b448cbb201fd4c4313f97f79da19a5f62a519d47522fd027df4d20969e686",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此 change 的已允许部分 scope 只包含两项无关测试修改；路线和项目规则文件不属于 Runtime 可绑定的实现 scope。已通过记录在 Commands and results 的只读扫描人工核对。"
+      }
+    ],
+    "traceHash": "8a049bac031bd4d92933b4cc2cf32a4506884bc5fea87aef26f79780c5397d63"
+  },
+  "partialAllowanceRef": "runtime/evidence/allowances/96516b8a6a4222d1d38b73785a0cb224566c4532e786ae37d533adb7a57f7f4b.json",
+  "partialAllowanceHash": "96516b8a6a4222d1d38b73785a0cb224566c4532e786ae37d533adb7a57f7f4b",
+  "receiptRef": "runtime/evidence/check-receipts/ce9cc1eb67dacdf823b1483e42794d829f913844336d0fb60699f9883771b3d8.json",
+  "createdAt": "2026-07-25T12:27:20.080Z",
+  "envelopeHash": "1fecb71a74dcc8e5e2e4ee04e03678d67a2582d3fd62ae0ef9d1c8a69e5477b3"
+}

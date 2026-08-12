@@ -1,0 +1,26 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "3c0dbcc3-efa3-40f9-af76-e4960fb70eb7",
+  "kind": "archive",
+  "status": "committed",
+  "change": "rollback-ownership-lifecycle",
+  "createdAt": "2026-07-27T02:13:36.371Z",
+  "preflightHash": "5da4f686718e71412bcb3f1ae72b78ee34898a7d2f19894f7eb360039b8c3676",
+  "operations": [
+    {
+      "id": "spec-1-ownership-lifecycle",
+      "type": "remove",
+      "target": "specs/ownership-lifecycle/spec.md",
+      "backup": "runtime/transactions/3c0dbcc3-efa3-40f9-af76-e4960fb70eb7/backups/specs/ownership-lifecycle/spec.md",
+      "expectedTargetHash": "5d779ed32cb542d72d895f7c9842306ac739efcad589cf43233d5de6f37a33e2"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/rollback-ownership-lifecycle",
+      "target": "archive/2026-07-27-rollback-ownership-lifecycle",
+      "expectedSourceHash": "3550d478b646484e7a965b19596b65752986c43aafbe6d1f955c96cfceca3cf9",
+      "expectedTargetHash": null
+    }
+  ]
+}

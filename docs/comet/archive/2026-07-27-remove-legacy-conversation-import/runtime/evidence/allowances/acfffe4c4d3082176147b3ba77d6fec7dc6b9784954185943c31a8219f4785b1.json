@@ -1,0 +1,13 @@
+{
+  "schema": "comet.native.partial-allowance.v1",
+  "change": "remove-legacy-conversation-import",
+  "scopeHash": "3dc2c7f43427f9ad61264793ecbfecd8da6048d71d19ddd265777f374930b0c5",
+  "scopeIds": [
+    "scope:6855119eab5e193416096e4777a6409f81ce8cecbe620b81b57ed8395bc3cf8b"
+  ],
+  "reason": "venagent/config/config.yaml 是 change 创建后的无关用户配置改动，本次不修改、不回退且不作为验证证据。",
+  "confirmedSummary": "已删除旧会话导入功能，增加 schema v3 与失效会话持续提示，并同步三份规格和回归测试。",
+  "sourceRevision": 2,
+  "confirmedAt": "2026-07-27T03:52:13.799Z",
+  "allowanceHash": "acfffe4c4d3082176147b3ba77d6fec7dc6b9784954185943c31a8219f4785b1"
+}

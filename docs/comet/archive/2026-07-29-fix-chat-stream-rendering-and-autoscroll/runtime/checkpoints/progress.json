@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.progress-checkpoint.v1",
+  "id": "5240d219-ba49-45b8-9069-d576c1054a82",
+  "change": "fix-chat-stream-rendering-and-autoscroll",
+  "phase": "shape",
+  "previousRevision": 2,
+  "stateRevision": 3,
+  "summary": "已将对话中的完整修复计划补入 Shape brief：文件级施工蓝图、响应式数据流、智能跟随状态机、分段流测试协议、实施顺序、验证矩阵、不采用方案、风险与回退均已记录；未进入 Build。",
+  "nextAction": "等待用户明确要求执行后，复核当前 Shape contract 并进入 Build。",
+  "inputHash": "fc4f160beee561329a7df3cefba3527b19e7e31e21380f7fd9fe7ab7a80cb124",
+  "manifestHash": "9c974621b86a4c6ec3f1e29fa43e6c6c7c92c82dc9856ce16440a7d5ae3aecf8",
+  "manifestRef": "runtime/checkpoints/manifests/9c974621b86a4c6ec3f1e29fa43e6c6c7c92c82dc9856ce16440a7d5ae3aecf8.json",
+  "artifactCount": 0,
+  "createdAt": "2026-07-29T09:16:22.188Z"
+}

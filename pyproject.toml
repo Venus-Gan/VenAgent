@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "venagent"
+version = "0.1.0"
+description = "VenAgent 的渐进式最小 Agent Loop"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110,<1.0",
+    "langchain-core>=1.0,<2.0",
+    "langchain-anthropic>=1.5,<2.0",
+    "langchain-google-genai>=4.3,<5.0",
+    "langchain-openai>=1.0,<2.0",
+    "langgraph>=1.0,<2.0",
+    "langgraph-checkpoint-postgres>=3.1,<4.0",
+    "neo4j>=5.26,<6.0",
+    "PyJWT>=2.10,<3.0",
+    "argon2-cffi>=25.1,<26.0",
+    "psycopg[binary,pool]>=3.2,<4.0",
+    "python-dotenv>=1.0,<2.0",
+    "uvicorn[standard]>=0.29,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx2>=2.0,<3.0",
+    "pytest>=8.0,<10.0",
+    "ruff>=0.16,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+extend-exclude = ["final"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["venagent"]
+
+[tool.setuptools.packages.find]
+include = ["venagent*"]
+
+[tool.setuptools]
+include-package-data = true

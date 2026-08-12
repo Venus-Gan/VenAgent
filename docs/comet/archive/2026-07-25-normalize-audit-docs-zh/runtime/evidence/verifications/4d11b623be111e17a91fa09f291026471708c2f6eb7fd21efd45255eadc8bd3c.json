@@ -1,0 +1,54 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "normalize-audit-docs-zh",
+  "sourceRevision": 5,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "c78c63997fe896e284663e29cd392aca5a8d99f8b734e4cffec5548ba332f8e2",
+  "acceptanceCriteriaHash": "971a7a4f749d9db4fdf6d47225e5fbf490c25bb93054ea9b40834b966409f4c7",
+  "implementationScopeRef": "runtime/evidence/scopes/c0f1409dd1f21ba4f8bc3c1416ceb93e1c3c1965df3473879a93186b4c96230a.json",
+  "implementationScopeHash": "c0f1409dd1f21ba4f8bc3c1416ceb93e1c3c1965df3473879a93186b4c96230a",
+  "reportRef": "verification.md",
+  "reportHash": "d7b6fba393421c31c3787ed85ba5dcf91e31046f29d298b5c2bf52d11492a4b1",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "971a7a4f749d9db4fdf6d47225e5fbf490c25bb93054ea9b40834b966409f4c7",
+    "total": 3,
+    "evidenced": 2,
+    "skipped": 1,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-4154bf2d618a3ae8911064e8fc79db55ef24ca400b52096a5c4d2b3e537cf7d2",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "用户选择仅对今后文档使用中文，不新增当前归档审计的中文阅读版。"
+      },
+      {
+        "acceptanceId": "acceptance-51718c75294396a2f7e7aa71f267dc694f69ae3981478a314898e877e6a5d038",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/documentation-language.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-568023d9bde57c8c262c152704d5edc097affc558171024006f94dd529503101",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/documentation-language.md"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "23bbdec5e368f51bc4a04f563af893ffe9ebd85ddf282c54d2954d0754470d68"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": null,
+  "createdAt": "2026-07-25T14:41:43.492Z",
+  "envelopeHash": "4d11b623be111e17a91fa09f291026471708c2f6eb7fd21efd45255eadc8bd3c"
+}

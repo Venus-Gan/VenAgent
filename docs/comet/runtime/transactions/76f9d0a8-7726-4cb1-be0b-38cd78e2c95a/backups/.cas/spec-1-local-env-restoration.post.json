@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-local-env-restoration",
+  "role": "post",
+  "hash": "bec61ca2079f62601d0826d86b5de4f4dc16c110f0adc69d1813378db0772bb3",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 3940649674632043,
+    "birthtimeMs": 1786181379745.2441
+  }
+}

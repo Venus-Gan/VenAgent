@@ -1,0 +1,71 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "postgres-test-project-ruff",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "d9de36f797c02cee6b3fe5e08a4382265a50b98fb6cec2184d43bc40fb10c5d6",
+  "acceptanceCriteriaHash": "779294a0b133be580667097a8bf02c164f7d386ec53e10a5c51b983eaf9ced5b",
+  "implementationScopeRef": "runtime/evidence/scopes/4e471230b9b28a916cd2fa72d8db05581ef5feb9bd2189f365e5b4ad497c990e.json",
+  "implementationScopeHash": "4e471230b9b28a916cd2fa72d8db05581ef5feb9bd2189f365e5b4ad497c990e",
+  "reportRef": "verification.md",
+  "reportHash": "66f7e80d5bdaaada147c2717557e59cc1e7a204b2da96582fb2092b9119b10cd",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "779294a0b133be580667097a8bf02c164f7d386ec53e10a5c51b983eaf9ced5b",
+    "total": 4,
+    "evidenced": 4,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-0221aa793eda078988cb4eeeede4d217fc4deb5a249c2a8561a8e10d9b8fdebc",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/conftest.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-69610d119d1dd3a5476522e20f1881b81ffb73ea39ba3a3715003a472bc08557",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "README.md",
+          "pyproject.toml"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-9d2b9774b91e72f734711a790d81885ffc645f2e15d6ee999fc08536161756a6",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/conftest.py",
+          "tests/test_persistence.py",
+          "tests/test_test_configuration.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c93fab93941b87802cba080717de1d93f37df5e0aadec6ee5c26f3544044f929",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "README.md",
+          "tests/conftest.py",
+          "tests/test_test_configuration.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "3e9067d1e336a06a8f9ee700ddd9bef964bbaba42e81de4fe2c23e4e3ec4b2e2"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/3c1b15f548e9047dbf35ef1924494cd5f7a59dc6c5f8a33e35a6b53ce3583d96.json",
+  "createdAt": "2026-08-03T13:52:24.945Z",
+  "envelopeHash": "121e82a5d7c357ce85a8239c07db433b76dd7afeb5c120879031f820c83be881"
+}

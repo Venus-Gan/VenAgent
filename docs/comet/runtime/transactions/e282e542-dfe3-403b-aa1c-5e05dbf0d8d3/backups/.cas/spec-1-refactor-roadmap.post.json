@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-refactor-roadmap",
+  "role": "post",
+  "hash": "8fd170d8adce0db95882610087a63fd069f53aa75a700642e30452fa78b66345",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1125899907535850,
+    "birthtimeMs": 1786100307536.9514
+  }
+}

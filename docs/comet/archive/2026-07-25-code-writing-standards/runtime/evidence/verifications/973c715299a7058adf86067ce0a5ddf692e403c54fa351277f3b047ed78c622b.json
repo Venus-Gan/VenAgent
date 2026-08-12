@@ -1,0 +1,64 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "code-writing-standards",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "bb0e5f28727b7ff6f5f59250c263ba5faf88b1c91ad4f46e12af5676cb2f2b6f",
+  "acceptanceCriteriaHash": "d6c75cef74a171321bc6200eab431a5631e347990ed4c080d11eae56efe0759f",
+  "implementationScopeRef": "runtime/evidence/scopes/9ec78e2fba2c7540414cbeade16ad8786d826792e26ba8f76865aa060d965b5f.json",
+  "implementationScopeHash": "9ec78e2fba2c7540414cbeade16ad8786d826792e26ba8f76865aa060d965b5f",
+  "reportRef": "verification.md",
+  "reportHash": "c35a8b36aa75b406ab87672113360c205a82cee64fd5a1b74ae745438fb234f0",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "d6c75cef74a171321bc6200eab431a5631e347990ed4c080d11eae56efe0759f",
+    "total": 5,
+    "evidenced": 0,
+    "skipped": 5,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-0567660b838aebf966d07c603337c5b4b2a3ae2a58ab5d96adcd66ffba297c9c",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+      },
+      {
+        "acceptanceId": "acceptance-6d216062ecd363d33cf61b11c4a69bf74baee2c29e2a3015183b17a1de9e749e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+      },
+      {
+        "acceptanceId": "acceptance-aaaca9bd1f20df68fd746c35986fe1bff1f9b57945581aef27ca92df3b4450b5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+      },
+      {
+        "acceptanceId": "acceptance-c75541c1e04289bcec7deed5cde8c94a7775de1212a4ba96e7dc3647189800f4",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+      },
+      {
+        "acceptanceId": "acceptance-f5cc3b1e5c6ff25a03e81e5f59fad7a3dff0d859a1d4793389f6d6b7906e44f5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+      }
+    ],
+    "traceHash": "0b4c5aef8a2c2b6245c6bb21393576a4808af3322ab35bd146807b0496e6d05a"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/41c44bfa9c77c7f04d99ebd5db71b3fb9e5c3bcdbee1729d6251dc5be0901f5e.json",
+  "createdAt": "2026-07-25T13:49:58.656Z",
+  "envelopeHash": "973c715299a7058adf86067ce0a5ddf692e403c54fa351277f3b047ed78c622b"
+}

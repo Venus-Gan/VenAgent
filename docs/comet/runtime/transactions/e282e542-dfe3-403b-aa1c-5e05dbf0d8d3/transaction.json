@@ -1,0 +1,28 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "e282e542-dfe3-403b-aa1c-5e05dbf0d8d3",
+  "kind": "archive",
+  "status": "committed",
+  "change": "add-cross-provider-memory-regression-gates",
+  "createdAt": "2026-08-07T10:58:23.353Z",
+  "preflightHash": "d8ddb4afceaea2ce81fa5aa807175f1875f2374df0e0095fe7b84df87369c445",
+  "operations": [
+    {
+      "id": "spec-1-refactor-roadmap",
+      "type": "write",
+      "target": "specs/refactor-roadmap/spec.md",
+      "staged": "runtime/transactions/e282e542-dfe3-403b-aa1c-5e05dbf0d8d3/staged/specs/refactor-roadmap/spec.md",
+      "backup": "runtime/transactions/e282e542-dfe3-403b-aa1c-5e05dbf0d8d3/backups/specs/refactor-roadmap/spec.md",
+      "expectedTargetHash": "ff70e7d5c6e59fde2795f8d465247ef61518977883bccfa799bbc3acaff2902c",
+      "stagedHash": "8fd170d8adce0db95882610087a63fd069f53aa75a700642e30452fa78b66345"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/add-cross-provider-memory-regression-gates",
+      "target": "archive/2026-08-07-add-cross-provider-memory-regression-gates",
+      "expectedSourceHash": "a24b9efcaff7c6951d547295e29355c2c01f5243131c1a35f2b2f51ea9632632",
+      "expectedTargetHash": null
+    }
+  ]
+}

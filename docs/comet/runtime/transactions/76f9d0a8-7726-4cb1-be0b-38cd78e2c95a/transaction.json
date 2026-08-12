@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "76f9d0a8-7726-4cb1-be0b-38cd78e2c95a",
+  "kind": "archive",
+  "status": "committed",
+  "change": "restore-local-env",
+  "createdAt": "2026-08-08T09:29:36.632Z",
+  "preflightHash": "ba68b0e0c734a4da67229c8d081e265ef9d15d7ed6711cba7e79aa09eae95e8b",
+  "operations": [
+    {
+      "id": "spec-1-local-env-restoration",
+      "type": "write",
+      "target": "specs/local-env-restoration/spec.md",
+      "staged": "runtime/transactions/76f9d0a8-7726-4cb1-be0b-38cd78e2c95a/staged/specs/local-env-restoration/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "bec61ca2079f62601d0826d86b5de4f4dc16c110f0adc69d1813378db0772bb3"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/restore-local-env",
+      "target": "archive/2026-08-08-restore-local-env",
+      "expectedSourceHash": "244678c5814b71fca726e790d4ab4a2a41fdd23f02b2d3402caf4f4d52d208c2",
+      "expectedTargetHash": null
+    }
+  ]
+}

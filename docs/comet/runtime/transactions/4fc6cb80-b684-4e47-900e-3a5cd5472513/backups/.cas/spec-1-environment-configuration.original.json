@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-environment-configuration",
+  "role": "original",
+  "hash": "9679a38e27e0f1e5ac60b16c739b0d5440f90fb3b03983f5418dd54aa2fdd6d9",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 562949954145859,
+    "birthtimeMs": 1786274043787.497
+  }
+}

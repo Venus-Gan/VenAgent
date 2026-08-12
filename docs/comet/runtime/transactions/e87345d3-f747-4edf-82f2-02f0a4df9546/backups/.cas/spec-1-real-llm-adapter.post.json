@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-real-llm-adapter",
+  "role": "post",
+  "hash": "4cfe882561f65fb5bac08dd29f5ce2d71262684171acd9bc6524e0e1c2b7404e",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1407374884316200,
+    "birthtimeMs": 1784717712889.9182
+  }
+}

@@ -1,9 +1,17 @@
 # postgres — PostgreSQL 平台层薄封装：连接、健康检查、schema bootstrap、关键 SQL 操作。
 # 失败时降级到 mock（self._conn 为 None），不阻塞应用启动。
 import logging
+from pathlib import Path
+import sys
 from typing import Any, Iterable, List, Optional, Sequence, Tuple
 
 from config.config import APIConfig
+
+_SOURCE_ROOT = Path(__file__).resolve().parents[3] / "src"
+if str(_SOURCE_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SOURCE_ROOT))
+
+from venagent.adapters.postgres.schema import ADDITIVE_RUN_SNAPSHOT_DDLS
 
 logger = logging.getLogger(__name__)
 
@@ -67,7 +75,7 @@ _DDLS: List[str] = [
         created_at  TIMESTAMP DEFAULT NOW(),
         UNIQUE(doc_hash, chunk_idx)
     )""",
-]
+] + list(ADDITIVE_RUN_SNAPSHOT_DDLS)
 
 
 class PostgresClient:

@@ -1,0 +1,83 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "document-agi-saber-design-reference",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "dc837a7b9e4824628a7acbae41cf42d9cdf111005fb8ccfba096e0154c7780fe",
+  "acceptanceCriteriaHash": "60023588bdd24bbb25381e17d170c5927f678a16d9ea5aa26d13477617a3633a",
+  "implementationScopeRef": "runtime/evidence/scopes/d18771edf73e304de144f37e6c32ae061deb07ff6ba9700b44abaa82b1edd65d.json",
+  "implementationScopeHash": "d18771edf73e304de144f37e6c32ae061deb07ff6ba9700b44abaa82b1edd65d",
+  "reportRef": "verification.md",
+  "reportHash": "7745bf7d7a40d397d63363f3b2ffb8bd16a779013f4743457250ffdf1f166dee",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "60023588bdd24bbb25381e17d170c5927f678a16d9ea5aa26d13477617a3633a",
+    "total": 6,
+    "evidenced": 6,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-1c431c908d733ec0899cc09887ba255d6d1a4d212e147d326fe00af347379b2b",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-6113502791cd88342fb0326a92d2c18581b6c4fe5eae65a7d40076b9240e6e14",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-64f9519b151510482756120d582175b40774112eeb1c56b6bdca1a1d8d3ef2e8",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-af83235434f42150a4ae843202b48c4321a1961d959bcf67d74babb6f097d903",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-cfc143a3a20b3562ea38384206f8e4df7ac3f571a348d46dfaccc88406d38ed8",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-ee8a73fd00dd3759610c5fcd23bb76f4e528c0af298e41dce712d1e58530983b",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "docs/discussions/agi-saber-design-reference.md"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "06949f333d694d7d6b724187b9b0f57bc6b1032d88fcb95802d1c9529a499830"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/e73bd0df7162e370e7e81591a007db4e35e15ba7073a94145dfbc772ce0751dc.json",
+  "createdAt": "2026-08-04T11:33:17.127Z",
+  "envelopeHash": "ae95819e1f439dfb17337a8f5c3c4b57779761e8752aed36c48b048bbf4b2b69"
+}

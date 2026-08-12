@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "df7a6e78-fa72-47f8-a26c-365ff7c70ee4",
+  "kind": "archive",
+  "status": "committed",
+  "change": "postgres-test-project-ruff",
+  "createdAt": "2026-08-03T13:53:00.411Z",
+  "preflightHash": "bb3990d63ce66a26c0261c0fa8fb937a2712008647245593dc6acb0986e32788",
+  "operations": [
+    {
+      "id": "spec-1-project-verification-tooling",
+      "type": "write",
+      "target": "specs/project-verification-tooling/spec.md",
+      "staged": "runtime/transactions/df7a6e78-fa72-47f8-a26c-365ff7c70ee4/staged/specs/project-verification-tooling/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "d3e13cfe740d4c40559369fd66d64e99fa19624ef9217fea5391074eafb7a820"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/postgres-test-project-ruff",
+      "target": "archive/2026-08-03-postgres-test-project-ruff",
+      "expectedSourceHash": "0c01b41e143ad520a87948d9f0f03284ab00c2d409ba337f1bf806dd7d3b52fc",
+      "expectedTargetHash": null
+    }
+  ]
+}

@@ -54,6 +54,7 @@ from .bootstrap_adapter import bootstrap_agent_runtime
 from .graph_runtime import GraphConfig
 from .langgraph.runtime import InMemorySaver, ReactRuntime
 from .policy import ExecutionProfile, IntentPolicy, IntentSignal
+from .policy.execution_projection import project_intent_decision
 from .memory_writer import (
     AsyncMemoryWriter,
     async_update_memory,
@@ -474,15 +475,19 @@ class UnifiedAgent:
                 on_event=on_event,
             )
         elif pr["mode"] == "react":
+            react_arguments = dict(on_token=on_token, on_event=on_event)
+            if "execution_plan" in pr:
+                react_arguments["execution_plan"] = pr["execution_plan"]
             resp.answer, resp.steps, resp.task = self._run_react_with_tools(
                 pr["query"],
                 pr["route_tools"],
                 pr["mem_prefix"],
                 pr["hist_msgs"],
                 token,
-                on_token=on_token,
-                on_event=on_event,
+                **react_arguments,
             )
+        elif pr["mode"] == "clarify":
+            resp.answer = self._clarify_response()
         else:
             self._dispatch_mode(
                 pr,
@@ -525,11 +530,16 @@ class UnifiedAgent:
         async_update_memory(self, query, ph)
 
         decision = self._intent_policy().resolve(self._build_intent_signal(query, opts))
-        mode = self._mode_from_intent(decision)
-        route_tools = self._route_tools_from_intent(decision)
+        execution_plan = project_intent_decision(decision)
+        mode = execution_plan.dispatch_mode.value
+        route_tools = self._route_tools_from_scope(execution_plan.tool_scope)
 
-        mem_prefix = self._build_memory_system_prefix(query)
-        hist_msgs = self._build_history_messages(query)
+        mem_prefix = self._build_context_prefix(
+            query,
+            execution_plan.prompt_schema_key,
+            execution_plan.memory_scope,
+        )
+        hist_msgs = self._build_history_messages(query, execution_plan.memory_scope)
 
         return {
             "query": query,
@@ -538,6 +548,7 @@ class UnifiedAgent:
             "mem_prefix": mem_prefix,
             "hist_msgs": hist_msgs,
             "extracted": ph.extracted_info,
+            "execution_plan": execution_plan,
         }
 
     def _intent_policy(self) -> IntentPolicy:
@@ -588,7 +599,10 @@ class UnifiedAgent:
         return "chat"
 
     def _route_tools_from_intent(self, decision):
-        tool_scope = list(decision.tool_scope or ())
+        return self._route_tools_from_scope(decision.tool_scope)
+
+    def _route_tools_from_scope(self, tool_scope: tuple[str, ...]):
+        tool_scope = list(tool_scope or ())
         if not tool_scope:
             return None
         tools = self._filter_tools(tool_scope)
@@ -613,14 +627,16 @@ class UnifiedAgent:
         resp.extracted_info = pr["extracted"]
 
         if mode == "react":
+            react_arguments = dict(on_token=on_token, on_event=on_event)
+            if "execution_plan" in pr:
+                react_arguments["execution_plan"] = pr["execution_plan"]
             resp.answer, resp.steps, resp.task = self._run_react_with_tools(
                 query,
                 route_tools,
                 mem_prefix,
                 hist_msgs,
                 token,
-                on_token=on_token,
-                on_event=on_event,
+                **react_arguments,
             )
         elif mode == "tool":
             resp.answer, resp.tool_call = self._run_tool_from_set(
@@ -629,8 +645,14 @@ class UnifiedAgent:
         elif mode == "rag":
             rag_result = self._run_rag_query(query, token, on_token=on_token, on_event=on_event)
             resp.answer, resp.search_results = rag_result
+        elif mode == "clarify":
+            resp.answer = self._clarify_response()
         else:
             resp.answer = self._chat_response(mem_prefix, hist_msgs)
+
+    @staticmethod
+    def _clarify_response() -> str:
+        return "请提供更多上下文或明确希望执行的操作。"
 
     # ── finalize ─────────────────────────────────────────────────────────────
 
@@ -699,14 +721,42 @@ class UnifiedAgent:
             interrupted_at=task.get("interrupted_at", ""),
         )
 
-    def _build_context_prefix(self, query: str, mode: str = "chat") -> str:
-        if not hasattr(self, "prompt_assembler"):
-            self._build_prompt_context()
+    def _build_context_prefix(
+        self,
+        query: str,
+        mode: str = "chat",
+        memory_scope: tuple[str, ...] | None = None,
+    ) -> str:
+        if memory_scope is None:
+            if not hasattr(self, "prompt_assembler"):
+                self._build_prompt_context()
+            try:
+                return self.prompt_assembler.assemble(Query(text=query, mode=mode)).render()
+            except Exception as e:
+                logger.warning("⚠️ promptctx 装配失败，降级到 legacy memory context: %s", e)
+                return self._build_memory_system_prefix(query)
+
+        allowed_memory = set(memory_scope or ()) if memory_scope is not None else {"task_memory"}
+        registry = SourceRegistry()
+        registry.register(ConstraintsSource([
+            Policy(pattern="rm -rf", reason="禁止破坏性删除命令", level="block"),
+            Policy(pattern="sudo", reason="禁止提权命令", level="block"),
+        ]))
+        registry.register(PlannerSource(self._planner_snapshot))
+        registry.register(ToolStateSource(lambda: self.tool_executor.snapshot(), self.tool_tracker))
+        if "task_memory" in allowed_memory:
+            registry.register(TaskMemSource(self.task_mem))
+
         try:
-            return self.prompt_assembler.assemble(Query(text=query, mode=mode)).render()
+            context = ContextAssembler(default_schemas(), registry).assemble(
+                Query(text=query, mode=mode)
+            ).render()
         except Exception as e:
-            logger.warning("⚠️  promptctx 装配失败，降级到旧记忆前缀: %s", e)
-            return self._build_memory_system_prefix(query)
+            logger.warning("⚠️ promptctx 装配失败，返回受限 memory context: %s", e)
+            context = ""
+
+        memory_prefix = self._build_memory_system_prefix(query, memory_scope)
+        return "\n\n".join(part for part in (context, memory_prefix) if part)
 
     def push_task_mem(self, obs: StepObservation) -> None:
         if hasattr(self, "task_mem"):
@@ -734,12 +784,21 @@ class UnifiedAgent:
             except Exception:
                 pass
 
-    def _build_memory_system_prefix(self, query: str = "") -> str:
+    def _build_memory_system_prefix(
+        self,
+        query: str = "",
+        memory_scope: tuple[str, ...] | None = None,
+    ) -> str:
         parts: List[str] = []
-        prefs = self.preference.get_all()
+        allowed_memory = set(memory_scope) if memory_scope is not None else {"preference", "ltm"}
+        prefs = self.preference.get_all() if "preference" in allowed_memory else {}
         if prefs:
             parts.append(f"用户偏好: {json.dumps(prefs, ensure_ascii=False)}")
-        memories = self.ltm.recall(query, self.cfg.long_term_top_k) if query else []
+        memories = (
+            self.ltm.recall(query, self.cfg.long_term_top_k)
+            if query and "ltm" in allowed_memory
+            else []
+        )
         if memories:
             parts.append("相关记忆:\n" + "\n".join(f"- {m.content}" for m in memories))
         return "\n".join(parts)
@@ -765,8 +824,13 @@ class UnifiedAgent:
             return self.rag.query_with_history(query, history)
         return self.rag.query(query)
 
-    def _build_history_messages(self, query: str) -> List[Message]:
-        msgs = [Message(role=m["role"], content=m["content"]) for m in self.stm.get()]
+    def _build_history_messages(
+        self,
+        query: str,
+        memory_scope: tuple[str, ...] | None = None,
+    ) -> List[Message]:
+        messages = self.stm.get() if memory_scope is None or "stm" in memory_scope else []
+        msgs = [Message(role=m["role"], content=m["content"]) for m in messages]
         if not msgs or msgs[-1].content != query:
             msgs.append(Message(role="user", content=query))
         return msgs
@@ -874,6 +938,7 @@ class UnifiedAgent:
         token,
         on_token: Optional[Callable[[str], None]] = None,
         on_event: Optional[Callable[[str, Dict[str, Any]], None]] = None,
+        execution_plan=None,
     ):
         """ReAct 模式入口：Planner LLM 出计划 → Harness 逐项执行 → 综合回复。
 
@@ -883,9 +948,15 @@ class UnifiedAgent:
           _generate_final_answer_stream 合成自然语言回复。
         """
         task = {"task_id": f"task_{int(time.time())}", "query": query, "status": "running", "steps": []}
+        if execution_plan is not None:
+            task["execution_profile"] = execution_plan.execution_profile
+            task["graph_entry"] = execution_plan.graph_entry
+            task["recovery_policy"] = execution_plan.recovery_policy
         self._governance().set_task(task)
         try:
             plan_nodes = llm_plan_graph(self, query, tools_map, mem_prefix)
+            if execution_plan is not None:
+                plan_nodes = self._filter_plan_nodes(plan_nodes, execution_plan.agent_scope)
             if not plan_nodes:
                 # planNodes 空 → chatLLM 一句话答复
                 return self._chat_response(mem_prefix, hist_msgs), [], task
@@ -913,6 +984,10 @@ class UnifiedAgent:
                 on_event=on_event,
                 checkpointer=getattr(self, "_react_checkpointer", None),
                 thread_id=task["task_id"],
+                checkpoint_enabled=(
+                    execution_plan is None
+                    or "checkpoint" in execution_plan.recovery_policy
+                ),
             )
             result = graph_runtime.invoke(token, {"configurable": {"thread_id": task["task_id"]}})
             steps = [
@@ -950,6 +1025,21 @@ class UnifiedAgent:
             return final_answer, steps, task
         finally:
             self._governance().set_task(None)
+
+    @staticmethod
+    def _filter_plan_nodes(plan_nodes, allowed_agents: tuple[str, ...]):
+        from internal.graph.task_graph import NodeType
+
+        allowed = set(allowed_agents)
+        filtered = [
+            node
+            for node in plan_nodes
+            if node.type is not NodeType.SUBAGENT or node.tool_name in allowed
+        ]
+        known_nodes = {node.id for node in filtered}
+        for node in filtered:
+            node.depends_on = [dependency for dependency in node.depends_on if dependency in known_nodes]
+        return filtered
 
     def _generate_final_answer(self, query: str, steps: List[ReActStep], mem_prefix: str) -> str:
         steps_str = "\n".join(f"{s.type}: {s.content}" for s in steps)

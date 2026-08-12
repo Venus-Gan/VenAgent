@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-2-memory-context",
+  "role": "original",
+  "hash": "242d9e5b6407c7328e4aca5f779d409c366ae1c1324ecb68dfdb57693d0d4f13",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 3659174697925331,
+    "birthtimeMs": 1786097332314.0427
+  }
+}

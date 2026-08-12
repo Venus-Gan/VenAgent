@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "afd824c39e930065310920e310d8fe3910a71f66ac137da87596f7882bc0a72c",
+  "baselineProjectionRef": "runtime/evidence/snapshots/e4df4cf5f3d1f3f9b79a2b1d1f244c45474fe4787207940c026e1d9e7d373715.json",
+  "baselineProjectionHash": "e4df4cf5f3d1f3f9b79a2b1d1f244c45474fe4787207940c026e1d9e7d373715",
+  "currentProjectionRef": "runtime/evidence/snapshots/85d424519744a25afdf22bcefc39cb01d8b4b12964afd07a005eeb8a2537d95a.json",
+  "currentProjectionHash": "85d424519744a25afdf22bcefc39cb01d8b4b12964afd07a005eeb8a2537d95a",
+  "complete": true,
+  "declaredArtifacts": [],
+  "changes": [],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": "本 change 只通过两个完整 canonical 规格 replace 记录治理决定，不修改运行时代码。",
+  "scopeHash": "0556e0015aefd39b8083f54fda0727cd68a7e72b8083638cf81e99f78d564228"
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "49d4c7df-dc4f-48dd-8109-a1d716c3f8ba",
+  "kind": "archive",
+  "status": "committed",
+  "change": "env-prefix-normalization",
+  "createdAt": "2026-08-07T10:29:14.568Z",
+  "preflightHash": "cd5133e7fdd92aa1df95af7c09700931168b20c2d2f67d9d21e93f8919794b31",
+  "operations": [
+    {
+      "id": "spec-1-environment-configuration",
+      "type": "write",
+      "target": "specs/environment-configuration/spec.md",
+      "staged": "runtime/transactions/49d4c7df-dc4f-48dd-8109-a1d716c3f8ba/staged/specs/environment-configuration/spec.md",
+      "backup": "runtime/transactions/49d4c7df-dc4f-48dd-8109-a1d716c3f8ba/backups/specs/environment-configuration/spec.md",
+      "expectedTargetHash": "e52c6cd3953ec6bf110438c928bd2c9a120d56e9d0d3da02287fe68717efdc83",
+      "stagedHash": "f6edb12f69dcad5f1454acb09adf9ee2dacc3f0d52c8f5286a22043f19151a36"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/env-prefix-normalization",
+      "target": "archive/2026-08-07-env-prefix-normalization",
+      "expectedSourceHash": "aa79257f42cac77233e53d80d3cab65e79edd5dac1f79da5fda33ce36955e579",
+      "expectedTargetHash": null
+    }
+  ]
+}

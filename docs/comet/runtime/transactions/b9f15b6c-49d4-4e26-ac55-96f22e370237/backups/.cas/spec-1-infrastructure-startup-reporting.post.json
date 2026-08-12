@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-infrastructure-startup-reporting",
+  "role": "post",
+  "hash": "69b21929e1a171f958307e5ca34067cd622a080a9d7ed8702b1ca86f5230878b",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 562949954145234,
+    "birthtimeMs": 1786197015392.4404
+  }
+}

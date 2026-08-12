@@ -1,0 +1,47 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "restore-legacy-env-test-inputs",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "d6e1b1f839bbac6cb42fa39990833488ea6d34feed69b3579f9950aea0fc59be",
+  "acceptanceCriteriaHash": "f3b83094cfd4bd64e065b541e2c1dddba1e839861052cf2912887a6465803d89",
+  "implementationScopeRef": "runtime/evidence/scopes/e0f2314e63b0f7ff93f683391c1c4d48556657255abae43a5bdd59d7a0a9ea62.json",
+  "implementationScopeHash": "e0f2314e63b0f7ff93f683391c1c4d48556657255abae43a5bdd59d7a0a9ea62",
+  "reportRef": "verification.md",
+  "reportHash": "15cbdafea2a717586dc1b15edddc42a595b27eba8a8c3b5e755cccfe8dc94d6e",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "f3b83094cfd4bd64e065b541e2c1dddba1e839861052cf2912887a6465803d89",
+    "total": 2,
+    "evidenced": 2,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-7532f1229c6f827c6d088d856f54bdfe0cc0af069455edbf4877f7f8249366ed",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_llm.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-bad2e141b30bd2f09910faee36aedfb299d1c055addf40b5e3775b661fe6c5b5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_config.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "17e01cfb6228e0f27ddae89c79fd16a452eef767bb7b4c8b0847d28beb7428e4"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/ef026a4b92e9d769a0f99112e92781ba1682d4d0cc505ce9197e8764b51b886f.json",
+  "createdAt": "2026-07-25T10:55:34.087Z",
+  "envelopeHash": "584ab3ddd29df4887f56d3bfd7727989104b10e1a1fb17f806be1336df9ff485"
+}

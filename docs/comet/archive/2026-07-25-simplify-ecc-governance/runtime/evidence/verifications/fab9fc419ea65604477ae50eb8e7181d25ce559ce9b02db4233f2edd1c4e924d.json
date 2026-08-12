@@ -1,0 +1,56 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "simplify-ecc-governance",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "8e5ae96203863791c3cd56a791f8db6e958563b78042a7e4529897c6ad964671",
+  "acceptanceCriteriaHash": "ff0274cd5d31c21ca75eaee24671d65e3d6d46656474aa34edb0b0c60c06395f",
+  "implementationScopeRef": "runtime/evidence/scopes/bef6018ab3a7b071ec773c72bf63d7e72452a98ce9174130b6e715a0560cdd25.json",
+  "implementationScopeHash": "bef6018ab3a7b071ec773c72bf63d7e72452a98ce9174130b6e715a0560cdd25",
+  "reportRef": "verification.md",
+  "reportHash": "0810714c1ede7e50921526122e494827aeebb2ac5545ddfb2d0d53e63f82da56",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "ff0274cd5d31c21ca75eaee24671d65e3d6d46656474aa34edb0b0c60c06395f",
+    "total": 3,
+    "evidenced": 3,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-105108d7b18db682741ecadddeb6e678d6447107ae6e4a8b98ccd7d9475b8560",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "AGENTS.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-7ce5afcc36f45abc59e17bff6dca28fd2a62732dfbf4cc6d5c9af3c05caf2d49",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "AGENTS.md"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-9dc1f66fd7ecbeebd554000f7c23629ed5f961719ef667a9bb439a94a6ec9de3",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "AGENTS.md"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "baa3088b4b416265602a00b65aeac6a8bae8e3da54857cae59f5fe85dfad7538"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": null,
+  "createdAt": "2026-07-25T14:55:09.387Z",
+  "envelopeHash": "fab9fc419ea65604477ae50eb8e7181d25ce559ce9b02db4233f2edd1c4e924d"
+}

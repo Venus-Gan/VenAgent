@@ -1,0 +1,97 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "fix-natural-memory-conversation-flow",
+  "sourceRevision": 5,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "d3fa03efdcedacb6e1422a17883421a012ad0965d1667a907b8db87f22857e96",
+  "acceptanceCriteriaHash": "b694f4ac91cd3c7c39fdfb06eda98103bf79e4e33073d2cbb2656bbff429975c",
+  "implementationScopeRef": "runtime/evidence/scopes/94009b6ed846a0eaf193fb8f60a5fa6693b00cc1feff8ff123ab74535e832cd2.json",
+  "implementationScopeHash": "94009b6ed846a0eaf193fb8f60a5fa6693b00cc1feff8ff123ab74535e832cd2",
+  "reportRef": "verification.md",
+  "reportHash": "a1606f372ebc69e911a2cbd86315d507dc2c6bc566373ab3884a74ce0c1bbd1d",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "b694f4ac91cd3c7c39fdfb06eda98103bf79e4e33073d2cbb2656bbff429975c",
+    "total": 6,
+    "evidenced": 6,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-1e6638c5c06d031d9c00aee558917510b85de442bd66d0f05b74224b65045f0d",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/memory/jobs.py",
+          "venagent/memory/long_term/policy.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-77f7d38dda424a63ffd009592aa47e06f328bd86dbb2d38848e03a4105f42d02",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_agent_loop.py",
+          "tests/test_api.py",
+          "venagent/agent/runtime.py",
+          "venagent/interfaces/http/routes/runs.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-9fb606162490a6ae4cfbe17cccd8e33a8238c41121292983ea532daf97d76b79",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_api.py",
+          "venagent/interfaces/http/routes/runs.py",
+          "venagent/memory/command_adapter.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a5ea983f379e1eccedc2763f281169aa2797df6ba424e02554420679603569d9",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/agent/runtime.py",
+          "venagent/memory/service.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a8910a29a5b006983f90f39bba8d5632e8fee9d680fc14dc356b7f5555a365ae",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_agent_loop.py",
+          "tests/test_memory_context.py",
+          "venagent/memory/service.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-d80982e01a8ac4e9e3244a7a11faff16efc6a24618b5fd71acc8bc61a2d7d252",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/memory/long_term/policy.py",
+          "venagent/memory/model_adapters.py",
+          "venagent/memory/service.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "b2bdd533ca88d3e9dbbdd463a501e486edae79b1cd393941c46afb2910416b86"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/d46ffb22ea73e07a4de3cbe08aad59cab0c84102b14fefe431058768df1be516.json",
+  "createdAt": "2026-08-11T13:11:23.030Z",
+  "envelopeHash": "e916ddd846a6420ab0793389c0cda9cca47f5330856ed0802ddd30f8d960777e"
+}

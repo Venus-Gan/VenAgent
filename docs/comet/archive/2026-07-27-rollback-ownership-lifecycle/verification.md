@@ -1,0 +1,61 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-534e6a0b4bba42f2b7823764c1b476ab03031c5a701e2724673a2b6b3281a3d5",
+    "evidence_refs": [
+      "tests/test_persistence.py",
+      "venagent/infra/platform/migrations.py",
+      "venagent/infra/platform/postgres.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-596cf91e68943e69db1c815c6be0c2e4213b09e9c0d16e407ce54c760bf6d395",
+    "evidence_refs": [
+      "venagent/conversation/service.py",
+      "venagent/interfaces/http/routes.py",
+      "web/tests/e2e/workspace.spec.ts",
+      "web/vite.config.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-c2982eb1a01da1eb7adcc9043f5a5e4146ed8179877b34e27d70dbd325ecff81",
+    "evidence_refs": [
+      "tests/test_api.py",
+      "venagent/interfaces/http/app.py",
+      "venagent/interfaces/http/routes.py",
+      "web/src/modules/chat/ChatWorkspace.vue"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- .\.venv\Scripts\python.exe -m pytest -q: 114 passed, 1 skipped.
+- npm.cmd run build（在 web/）: Vue 类型检查与 Vite 生产构建通过。
+- .\.venv\Scripts\python.exe -m venagent migrate: 在重建后的本地 venagent 数据库成功创建 M03 schema。
+- Docker PostgreSQL 只读检查：venagent_schema_migrations 为 1,2；业务表仅包含 conversation_imports,conversation_threads，不存在 M04 身份与所有权表。
+- 真实 PostgreSQL API 检查：默认运行时为 durable；/api/account/me 与 /api/account/register 返回 404；匿名 thread 创建与聊天返回成功。
+- tests/test_persistence.py::test_postgres_migration_and_restart_recovery: 1 passed。
+- npm.cmd run test:e2e -- workspace.spec.ts（在 web/）: 五个 M03 场景均通过；Playwright 收尾未退出，命令在 180 秒超时。
+- comet native check rollback-ownership-lifecycle: passed，receipt 为 runtime/evidence/check-receipts/d7c4ec411046f03ac811ad56609383d7c17535955c3981844c76d920aa8f5b89.json。
+
+# Skipped checks
+
+- 未进行真实外部 LLM 调用；匿名聊天的 HTTP 与持久化路径使用固定模型验证。
+- 未进行人工浏览器验收；现有 M03 Playwright 场景已经全部通过，但测试 runner 的收尾行为仍需后续单独排查。
+
+# Spec consistency
+
+M04 的所有权、账号 Cookie、账号 HTTP 路由、账号侧栏、所有权校验、v3 migration 与相关测试均已移除。conversation、legacy import、HTTP 和 PostgreSQL adapter 已恢复为匿名 M03 语义。venagent/config/ 的 PostgreSQL 配置、密码注入和 Vite 到 8090 的代理均保留。
+
+# Known limitations and risks
+
+- 用户选择 B 已清空 Docker PostgreSQL 内原 venagent 数据库；此前对话、checkpoint、测试账号和 M04 数据不可恢复。
+- Playwright 五个用例通过后 runner 未自动退出，当前不影响通过的测试断言，但应在后续前端测试基础设施工作中处理。
+
+# Conclusion
+
+PASS。M04 用户模块已从运行时、前端和数据库 schema 移除；本地 Docker PostgreSQL 已重建为可用的 M03 v1/v2 schema，匿名聊天与 legacy import 通过回归验证，Vite 8090 代理保持不变。

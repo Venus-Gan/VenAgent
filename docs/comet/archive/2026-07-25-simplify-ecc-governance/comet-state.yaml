@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: simplify-ecc-governance
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 8e5ae96203863791c3cd56a791f8db6e958563b78042a7e4529897c6ad964671
+spec_changes:
+  - capability: ecc-lightweight-governance
+    operation: create
+    source: specs/ecc-lightweight-governance/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/bef6018ab3a7b071ec773c72bf63d7e72452a98ce9174130b6e715a0560cdd25.json
+verification_evidence: runtime/evidence/verifications/fab9fc419ea65604477ae50eb8e7181d25ce559ce9b02db4233f2edd1c4e924d.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-25
+run_id: 4bb5293d-38c6-4455-ac00-41fc178b116e

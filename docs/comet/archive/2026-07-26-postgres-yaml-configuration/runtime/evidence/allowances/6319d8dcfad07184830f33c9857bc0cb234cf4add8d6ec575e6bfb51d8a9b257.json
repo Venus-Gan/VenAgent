@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.partial-allowance.v1",
+  "change": "postgres-yaml-configuration",
+  "scopeHash": "9611a16eb4ecc4b62ed59276c08d9947273cf5514ece5070db0dc19cc89d5dfc",
+  "scopeIds": [
+    "scope:02ce644a4974681d8b01ad8b27618ba775049e113599276dc5cbcf0e1bfe87e8",
+    "scope:3b0a6f45936b5318959bc11ece67f27c7fc0e1eb18dcc6ebea6b2571aaf32439",
+    "scope:f669344775b4eca252a020033472f99b7859e51a20528392dc970815b11b3be7"
+  ],
+  "reason": "两个旧根目录配置模板按已确认迁移删除；web/vite.config.ts 是用户要求忽略的无关工作区改动。",
+  "confirmedSummary": "用户已确认包内 YAML 的 PostgreSQL 与 LLM 非敏感配置、仅保留两个 .env 秘密变量以及根目录配置迁移。",
+  "sourceRevision": 2,
+  "confirmedAt": "2026-07-26T14:45:13.422Z",
+  "allowanceHash": "6319d8dcfad07184830f33c9857bc0cb234cf4add8d6ec575e6bfb51d8a9b257"
+}

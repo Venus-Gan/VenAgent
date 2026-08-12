@@ -1,0 +1,46 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8",
+  "kind": "archive",
+  "status": "committed",
+  "change": "remove-legacy-conversation-import",
+  "createdAt": "2026-07-27T03:59:16.398Z",
+  "preflightHash": "22bdc192c7cfbaa263206ddf5cdbcb70bce2f0e321876676bd9c4acb3847cce5",
+  "operations": [
+    {
+      "id": "spec-1-conversation-persistence",
+      "type": "write",
+      "target": "specs/conversation-persistence/spec.md",
+      "staged": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/staged/specs/conversation-persistence/spec.md",
+      "backup": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/backups/specs/conversation-persistence/spec.md",
+      "expectedTargetHash": "468c63d8c4f59253bf01cebd94834037c293d38b83be286e067e8e180a260eb3",
+      "stagedHash": "3fbf7697c81b3d6b313ecff63aee45b4eb6b74cbcaaf80618784b01789714215"
+    },
+    {
+      "id": "spec-2-frontend-foundation",
+      "type": "write",
+      "target": "specs/frontend-foundation/spec.md",
+      "staged": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/staged/specs/frontend-foundation/spec.md",
+      "backup": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/backups/specs/frontend-foundation/spec.md",
+      "expectedTargetHash": "578e3311a0c0b62a7cf776b48913886569914b57a8dd63b988711889f9db5d3e",
+      "stagedHash": "785fd2207de5b1550962f09a9fd5a9478b029502e535d2ebcd96669b91b62cf5"
+    },
+    {
+      "id": "spec-3-skill-orchestration",
+      "type": "write",
+      "target": "specs/skill-orchestration/spec.md",
+      "staged": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/staged/specs/skill-orchestration/spec.md",
+      "backup": "runtime/transactions/9dd5aaad-1518-4cee-aec8-60a3f3bc9ad8/backups/specs/skill-orchestration/spec.md",
+      "expectedTargetHash": "5a48dcb99562ef9364a24e0f3921c8da20f8d52d5f7041c290d01ba726095654",
+      "stagedHash": "a2c6160b99c2be29b62843be9ee4205510f34e65b8edfb5517ac2f3e1f5876a0"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/remove-legacy-conversation-import",
+      "target": "archive/2026-07-27-remove-legacy-conversation-import",
+      "expectedSourceHash": "b21089331333e72b803c555099aec6e37c3b236b46357e622391d45bb01ebed2",
+      "expectedTargetHash": null
+    }
+  ]
+}

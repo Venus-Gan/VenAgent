@@ -1,0 +1,14 @@
+{
+  "schema": "comet.native.partial-allowance.v1",
+  "change": "postgres-yaml-configuration",
+  "scopeHash": "cb6950ac1f723ba977857a7da8f8dbf2d91fd22c0a905fcff3eb080f4389f8c6",
+  "scopeIds": [
+    "scope:3b0a6f45936b5318959bc11ece67f27c7fc0e1eb18dcc6ebea6b2571aaf32439",
+    "scope:f669344775b4eca252a020033472f99b7859e51a20528392dc970815b11b3be7"
+  ],
+  "reason": "仅有两份旧根目录配置模板因已确认迁移而删除，无法作为现存 artifact 声明。",
+  "confirmedSummary": "重新封存 PostgreSQL、包内配置、LLM 参数、测试隔离与 Vite 代理端口对齐的实现范围。",
+  "sourceRevision": 5,
+  "confirmedAt": "2026-07-26T14:51:08.980Z",
+  "allowanceHash": "ccb53a047ec81c4ed429c1aef01841f96ef02d7b9352815b81ca5587c292a33a"
+}

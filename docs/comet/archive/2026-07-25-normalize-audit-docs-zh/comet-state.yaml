@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 7
+name: normalize-audit-docs-zh
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: c78c63997fe896e284663e29cd392aca5a8d99f8b734e4cffec5548ba332f8e2
+spec_changes:
+  - capability: documentation-language-zh
+    operation: create
+    source: specs/documentation-language-zh/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/c0f1409dd1f21ba4f8bc3c1416ceb93e1c3c1965df3473879a93186b4c96230a.json
+verification_evidence: runtime/evidence/verifications/4d11b623be111e17a91fa09f291026471708c2f6eb7fd21efd45255eadc8bd3c.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-25
+run_id: ef8afa21-e6fa-435c-a0ae-4e7ded5aae01
