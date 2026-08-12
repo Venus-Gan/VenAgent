@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "98871b40-8618-4a62-9324-c7b11c77b1d6",
+  "kind": "archive",
+  "status": "committed",
+  "change": "normalize-audit-docs-zh",
+  "createdAt": "2026-07-25T14:43:42.669Z",
+  "preflightHash": "3d24196bbed40b71d0811846e55b6fa086239ad1e4733e8028f15f87743490a7",
+  "operations": [
+    {
+      "id": "spec-1-documentation-language-zh",
+      "type": "write",
+      "target": "specs/documentation-language-zh/spec.md",
+      "staged": "runtime/transactions/98871b40-8618-4a62-9324-c7b11c77b1d6/staged/specs/documentation-language-zh/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "ae4a0b2c5c0cd9ee6a42238a93297e1171731affb370cb238d50502bb9941dc4"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/normalize-audit-docs-zh",
+      "target": "archive/2026-07-25-normalize-audit-docs-zh",
+      "expectedSourceHash": "78756822bcc12135ed39415988c8d7c593f8fdd1843c08deef81ea71faca32e0",
+      "expectedTargetHash": null
+    }
+  ]
+}

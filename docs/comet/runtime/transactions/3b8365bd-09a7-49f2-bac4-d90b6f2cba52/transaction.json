@@ -1,0 +1,35 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "3b8365bd-09a7-49f2-bac4-d90b6f2cba52",
+  "kind": "archive",
+  "status": "committed",
+  "change": "fix-real-environment-acceptance",
+  "createdAt": "2026-08-06T12:13:05.632Z",
+  "preflightHash": "c689b52d7fc143ecbf557956c96a5f87bd224fc58f6c678b5df44c2e37603ada",
+  "operations": [
+    {
+      "id": "spec-1-checkpoint-serialization-policy",
+      "type": "write",
+      "target": "specs/checkpoint-serialization-policy/spec.md",
+      "staged": "runtime/transactions/3b8365bd-09a7-49f2-bac4-d90b6f2cba52/staged/specs/checkpoint-serialization-policy/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "e03e0ee59b4564be55a9479aefd4785a6b99a0f227d96034461f38c0f43c0791"
+    },
+    {
+      "id": "spec-2-g1-recall-ranking",
+      "type": "write",
+      "target": "specs/g1-recall-ranking/spec.md",
+      "staged": "runtime/transactions/3b8365bd-09a7-49f2-bac4-d90b6f2cba52/staged/specs/g1-recall-ranking/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "1b040f78f3b97434d53c1f61e696311bdce8815f23822eef3e3f232ad739eb7e"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/fix-real-environment-acceptance",
+      "target": "archive/2026-08-06-fix-real-environment-acceptance",
+      "expectedSourceHash": "5d6bc43d886e9f4c246475d2c9b0896e856c05e5fa7d78888a349d9fac00fd1a",
+      "expectedTargetHash": null
+    }
+  ]
+}

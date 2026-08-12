@@ -1,0 +1,39 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "84a841c7d93810083c1ac21467e4b26b81a7764011837690b9b875c049aaf1fb",
+  "baselineProjectionRef": "runtime/evidence/snapshots/befa97fc0971b1558124134cab7dcbccaa45a2e7da4d20ec7666103c60ee5372.json",
+  "baselineProjectionHash": "befa97fc0971b1558124134cab7dcbccaa45a2e7da4d20ec7666103c60ee5372",
+  "currentProjectionRef": "runtime/evidence/snapshots/92901aa4281df9208441958c1b1ae384a763517ee52ab4a89ef3d6441ca9e201.json",
+  "currentProjectionHash": "92901aa4281df9208441958c1b1ae384a763517ee52ab4a89ef3d6441ca9e201",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "modified",
+      "before": {
+        "hash": "0488cf586a373964f7eeb38f8368559a4df3c370a23fda7a307b60a3018ce026",
+        "size": 4214
+      },
+      "after": {
+        "hash": "9c521995045c230232ee36de750e8ba23c037f8fe3113cd207660993ae844d5b",
+        "size": 9844
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_persistence.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "2b6340329c1ebf74755b5d8c4e8557aa800863ce4530ef8cdf0a3b27ad686f20"
+}

@@ -1,0 +1,50 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-246ac5585bb284f89e1a0c1b1cc19ef1e9a8ffcca8722749884e00ee2df6d3c8",
+    "evidence_refs": [
+      "tests/test_llm.py",
+      "venagent/llm.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-88573ec1728ac4c9385924a749a915cbca306cb37a4d58af83065016433958fb",
+    "evidence_refs": [
+      "tests/test_llm.py",
+      "venagent/llm.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-d6f0aad8724051cb627b692a78fd2f25c11e7b0df521807da9fb3ce9b2361557",
+    "evidence_refs": [
+      "tests/test_llm.py",
+      "venagent/llm.py"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- ` .\\.venv\\Scripts\\python.exe -m pytest tests -q `：通过，11 项测试全部通过。测试覆盖完整 OpenAI 兼容配置时的模型工厂注入、缺失配置时的离线回退、空白配置清理、配置示例脱敏及既有图/API/UI 行为。
+- ` .\\.venv\\Scripts\\python.exe -m compileall -q venagent `：通过，无 Python 编译错误。
+- ` node D:\\VSCProject\\VenAgent\\.agents\\skills\\comet-native\\scripts\\comet-native-runtime.mjs check real-llm-adapter --json `：通过；receipt 为 `runtime/evidence/check-receipts/9ada44cc03be98c9fee66c02cba745d4b3d8f796a192992bd159dcbc4ac86d66.json`，扫描 4 个实现范围文件，未发现问题。
+
+# Skipped checks
+
+- 未使用真实凭据发起第三方模型调用：密钥曾在对话中暴露且已建议撤销；本变更的自动化测试必须无网络、无真实凭据。
+- 未验证特定供应商的 URL 路径约定：服务地址由本机 `VENAGENT_LLM_BASE_URL` 原样提供，部署者可按服务商要求使用其完整 OpenAI 兼容 base URL。
+
+# Spec consistency
+
+`venagent.llm` 仅在服务地址、密钥和模型 ID 三项均存在时构造 `ChatOpenAI`，并把它注入既有 Agent Loop。缺少任一配置时返回本地回显模型。API 层仍只调用 Loop，未添加图节点、工具、记忆、RAG、流式或外部网络测试。
+
+# Known limitations and risks
+
+供应商可能要求 base URL 包含特定版本路径；该值由本地环境变量完全控制。真实模型调用的可用性、限额和响应内容依赖供应商；本次未用真实凭据验证。当前 Starlette `TestClient` 仍产生一条关于未来 `httpx2` 的弃用警告，不影响通过结果。
+
+# Conclusion
+
+通过。真实 OpenAI 兼容模型适配器、离线回退和凭据隔离均有自动化证据，且实现范围内的文本安全检查通过。

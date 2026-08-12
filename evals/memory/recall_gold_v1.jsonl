@@ -1,0 +1,8 @@
+{"case_id":"identity-name","query":"我叫什么？","expected_memory_ids":["m-name"],"forbidden_memory_ids":[]}
+{"case_id":"owner-isolation","query":"我负责什么项目？","expected_memory_ids":[],"forbidden_memory_ids":["other-owner-project"]}
+{"case_id":"deleted-fact","query":"我住在哪里？","expected_memory_ids":[],"forbidden_memory_ids":["deleted-location"]}
+{"case_id":"slot-exact-name","query":"我叫什么？","mode":"slot","expected_memory_ids":["m-name"],"forbidden_memory_ids":["m-project"]}
+{"case_id":"dense-paraphrase","query":"我手头负责的支付业务是什么？","mode":"dense","expected_memory_ids":["m-payment-project"],"forbidden_memory_ids":[]}
+{"case_id":"lexical-provider-down","query":"火星项目","mode":"lexical_fallback","provider_state":"unavailable","expected_memory_ids":["m-mars-project"],"forbidden_memory_ids":[]}
+{"case_id":"quarantine-forbidden","query":"我叫什么？","expected_memory_ids":["m-name"],"forbidden_memory_ids":["quarantine-name"]}
+{"case_id":"expired-forbidden","query":"我本周在哪里？","expected_memory_ids":[],"forbidden_memory_ids":["expired-temporary-location"]}

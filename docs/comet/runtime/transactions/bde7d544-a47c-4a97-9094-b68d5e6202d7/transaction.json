@@ -1,0 +1,115 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "bde7d544-a47c-4a97-9094-b68d5e6202d7",
+  "kind": "archive",
+  "status": "committed",
+  "change": "agent-runtime-foundation",
+  "createdAt": "2026-08-03T12:04:10.172Z",
+  "preflightHash": "4dfca57d2c1f2722ff9faa217592dcecf630558c5e27a0571e08baea7d5de9cd",
+  "operations": [
+    {
+      "id": "spec-1-agent-runtime",
+      "type": "write",
+      "target": "specs/agent-runtime/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/agent-runtime/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "f26dc7e3485c376f2f273b7ac01361b055f3a25c0fb24454811f6a8b7906911a"
+    },
+    {
+      "id": "spec-2-bounded-chat-payloads",
+      "type": "write",
+      "target": "specs/bounded-chat-payloads/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/bounded-chat-payloads/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/bounded-chat-payloads/spec.md",
+      "expectedTargetHash": "8502bcbd1ac3cb9a8f3eb8785a962062a6434b0d875696e0c053364313889a37",
+      "stagedHash": "1deb52eca476d67dcfdf4cd7bdf9a24d27d5c2bbd884a844ab7505f1eb5c58b1"
+    },
+    {
+      "id": "spec-3-conversation-context",
+      "type": "write",
+      "target": "specs/conversation-context/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/conversation-context/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/conversation-context/spec.md",
+      "expectedTargetHash": "9ea68b67fb9af802634eb79ce82cfb0deeac07bcdadb0e15bb3902848888388d",
+      "stagedHash": "7673d93ef7ab766932269f402b069bb3e8afc575dab0d93b0e32e9a81a684bba"
+    },
+    {
+      "id": "spec-4-conversation-persistence",
+      "type": "write",
+      "target": "specs/conversation-persistence/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/conversation-persistence/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/conversation-persistence/spec.md",
+      "expectedTargetHash": "086768460430b951220cbc493cc0f6db61f5740703239d6848c25dacddcfd3a1",
+      "stagedHash": "4a1385844e46ed929f4159f38868bd5f61b83466d1a79af0e77593aa205deb5b"
+    },
+    {
+      "id": "spec-5-feature-first-package-layout",
+      "type": "write",
+      "target": "specs/feature-first-package-layout/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/feature-first-package-layout/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/feature-first-package-layout/spec.md",
+      "expectedTargetHash": "a0fb93c27728e1d2ee4d38f64d5da6155d5943cb06a4796d90539d0bafc771bd",
+      "stagedHash": "32b31465134cf44c349d1965e221457e1a8d384ac9b9129ad96946e5f4a3b501"
+    },
+    {
+      "id": "spec-6-frontend-foundation",
+      "type": "write",
+      "target": "specs/frontend-foundation/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/frontend-foundation/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/frontend-foundation/spec.md",
+      "expectedTargetHash": "53d692468b34433479f6423723ebc9ade5089b3fca046e778586c55d0525e611",
+      "stagedHash": "13c5ce424e47a04a39b4f5832bcce1e9f4e316a34a4f39bb3f281a64407f78ef"
+    },
+    {
+      "id": "spec-7-infrastructure-startup-reporting",
+      "type": "write",
+      "target": "specs/infrastructure-startup-reporting/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/infrastructure-startup-reporting/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/infrastructure-startup-reporting/spec.md",
+      "expectedTargetHash": "3f7e26de2ed77c4e2a571585c15843a4a844b2afad9e94772f58d1cb885be754",
+      "stagedHash": "adf71d3470c59dc1d05c251e1225de7537d9fa93ecb1af199ad3b6a342774518"
+    },
+    {
+      "id": "spec-8-minimal-agent-loop",
+      "type": "remove",
+      "target": "specs/minimal-agent-loop/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/minimal-agent-loop/spec.md",
+      "expectedTargetHash": "70de5c82e5a257ac1750006fe3a631335e9fa3d3977e090368d30abec45c5db8"
+    },
+    {
+      "id": "spec-9-ownership-lifecycle",
+      "type": "write",
+      "target": "specs/ownership-lifecycle/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/ownership-lifecycle/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/ownership-lifecycle/spec.md",
+      "expectedTargetHash": "4b3a333f37f09f4b2a60f62e77733d71fb43461463e908f5eb86f72e13fbfb4d",
+      "stagedHash": "e0ffa777f5c4200a0b0fd3fd7a8916058db5ada5b0254a5056da87a0ece229fe"
+    },
+    {
+      "id": "spec-10-refactor-roadmap",
+      "type": "write",
+      "target": "specs/refactor-roadmap/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/refactor-roadmap/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/refactor-roadmap/spec.md",
+      "expectedTargetHash": "8703877cb079783d7ad4197f4506a9a704b026eaa00d4f01aac9dfae2ae43c25",
+      "stagedHash": "ff70e7d5c6e59fde2795f8d465247ef61518977883bccfa799bbc3acaff2902c"
+    },
+    {
+      "id": "spec-11-streaming-run-lifecycle",
+      "type": "write",
+      "target": "specs/streaming-run-lifecycle/spec.md",
+      "staged": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/staged/specs/streaming-run-lifecycle/spec.md",
+      "backup": "runtime/transactions/bde7d544-a47c-4a97-9094-b68d5e6202d7/backups/specs/streaming-run-lifecycle/spec.md",
+      "expectedTargetHash": "18d93b71dee3d617d81c046189594ff02914ce1b30074afc5c38219b4bd135c7",
+      "stagedHash": "5fffd9084d78a4cc8012b2c451549cb750d20f5e0be6ba8c3e83958ab6337730"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/agent-runtime-foundation",
+      "target": "archive/2026-08-03-agent-runtime-foundation",
+      "expectedSourceHash": "601664e53884e7da1e2bd2de4b50321980de636e6570ea311f4edb42f9b52109",
+      "expectedTargetHash": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"sequence":1,"timestamp":"2026-07-25T08:27:38.456Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-07-25T08:27:40.785Z","type":"operation-started","operationId":"spec-1-feature-first-package-layout"}
+{"sequence":3,"timestamp":"2026-07-25T08:27:41.833Z","type":"operation-completed","operationId":"spec-1-feature-first-package-layout"}
+{"sequence":4,"timestamp":"2026-07-25T08:27:42.367Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":5,"timestamp":"2026-07-25T08:27:43.862Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":6,"timestamp":"2026-07-25T08:27:44.343Z","type":"archive-finalization-started"}
+{"sequence":7,"timestamp":"2026-07-25T08:27:44.532Z","type":"archive-finalized"}
+{"sequence":8,"timestamp":"2026-07-25T08:27:44.970Z","type":"commit"}

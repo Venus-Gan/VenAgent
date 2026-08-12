@@ -1,0 +1,39 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "910cf36625f7df242ed9ff2ce137a48b974b0192844a964b86b9a9b2cbe3f8b2",
+  "baselineProjectionRef": "runtime/evidence/snapshots/3d0221f4a230d930f936fc6944f3e417cdf8fb59b2911c0ec0d0ae0af914ccc9.json",
+  "baselineProjectionHash": "3d0221f4a230d930f936fc6944f3e417cdf8fb59b2911c0ec0d0ae0af914ccc9",
+  "currentProjectionRef": "runtime/evidence/snapshots/5739a8d547fba802313d19cbda7df1777e3f0d0f69279fec643e8e20e7b2b2e4.json",
+  "currentProjectionHash": "5739a8d547fba802313d19cbda7df1777e3f0d0f69279fec643e8e20e7b2b2e4",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "README.md",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "before": {
+        "hash": "ce92392b12ffa980273931b2f5d0f28d90ff9ff7070b3f4c4526a5c938283024",
+        "size": 16252
+      },
+      "after": {
+        "hash": "5032cee2aea7300bad5eef707ecd9ab756ca25f964112a23faec244656d8e874",
+        "size": 16779
+      },
+      "attributedTo": [
+        {
+          "path": "README.md",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "e7a68d43d0cf3bc6a02bca100f2cbe4591241ff5a6c03ac88a03771a5f7b1cac"
+}

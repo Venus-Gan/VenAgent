@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.progress-checkpoint.v1",
+  "id": "d0b8de44-fb05-48ea-858b-c8ae8957c88a",
+  "change": "agent-runtime-foundation",
+  "phase": "shape",
+  "previousRevision": 2,
+  "stateRevision": 3,
+  "summary": "已补完 agent-runtime-foundation 的 Shape brief、10 份完整候选规格和 minimal-agent-loop 删除意图；等待用户确认后再进入 Build。",
+  "nextAction": "等待用户确认 brief 与完整候选规格；确认后移除 CONFIRM 阻塞并执行 Shape next。",
+  "inputHash": "7ed214c3a0bcea3ac4fdc1df96d0b73a0ffa6d01da5ece925b9e97af350a320b",
+  "manifestHash": "7c5dd3c5d2b56dfb24bbb182e441bd25aa00e0e42f79be1da1c3db05df095b66",
+  "manifestRef": "runtime/checkpoints/manifests/7c5dd3c5d2b56dfb24bbb182e441bd25aa00e0e42f79be1da1c3db05df095b66.json",
+  "artifactCount": 7,
+  "createdAt": "2026-08-03T09:31:39.828Z"
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "neo4j-startup-reporting",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "e3cd780f6876bace393c02562a7fe43307c18df51bcc1652ee93c3a3b4720120",
+  "acceptanceCriteriaHash": "84cc164c39bf6070e00b71e1b8d48384db976483da56e108b751edc880314fc3",
+  "implementationScopeRef": "runtime/evidence/scopes/5f2c1e67b17276dff1dd6d9805a0254727d33126c2c7b84fbf76c63f9c8c94e3.json",
+  "implementationScopeHash": "5f2c1e67b17276dff1dd6d9805a0254727d33126c2c7b84fbf76c63f9c8c94e3",
+  "reportRef": "verification.md",
+  "reportHash": "75cfd70f1f6799c824d97e9c7f79add6bd08ea165375c368b42d2393f226cc4b",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "84cc164c39bf6070e00b71e1b8d48384db976483da56e108b751edc880314fc3",
+    "total": 4,
+    "evidenced": 4,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-0e446bfece7fbe189439f4b34ecf012d9f7d09219d824df9aa22d7ed7a2cbc9e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_startup_reporting.py",
+          "venagent/bootstrap.py",
+          "venagent/infra/platform/neo4j/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-106dd9315732abddb06b67b76aa7e4bf6ccf0b51b33bdda0c46d0709806663e1",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_startup_reporting.py",
+          "venagent/bootstrap.py",
+          "venagent/infra/platform/neo4j/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-2b082d115289e5c75adb570bbe649f275ad4e609052e9ce3a0c5a057896879f9",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_startup_reporting.py",
+          "venagent/bootstrap.py",
+          "venagent/infra/platform/neo4j/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c5e2866217efdd188a57346b2c390366fdfa3fa857d0d63faacfd0a0f01f0550",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_startup_reporting.py",
+          "venagent/bootstrap.py",
+          "venagent/infra/platform/neo4j/runtime.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "d1150ebbf266295dcab905c5af7004028deb4088dd34f5e78adf2892671e1b17"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/5770199cd81f545965a0ecb38d2e413996a41c64e4d3f3c11ea02318d1a5bf46.json",
+  "createdAt": "2026-08-08T13:49:36.793Z",
+  "envelopeHash": "738b2b12fc7e03342cb090b42619213f93bbe49c0f928a5e82d2e3086fcf07bf"
+}

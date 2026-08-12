@@ -1,0 +1,105 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "fix-m04-acceptance-regressions",
+  "sourceRevision": 5,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "64b26ce24a8d3d976df63c40a905aaa870fa8b8971e9585d0401b85709b242b3",
+  "acceptanceCriteriaHash": "1d587fc60d082ed770f7a0d09de5aeca7476bb812c7b72e8d2e36c725e6f1d2a",
+  "implementationScopeRef": "runtime/evidence/scopes/e93144b3d6cb5d9540d7cff9207ae0c9931ba37d6bc2ca62dce39aee050d8e58.json",
+  "implementationScopeHash": "e93144b3d6cb5d9540d7cff9207ae0c9931ba37d6bc2ca62dce39aee050d8e58",
+  "reportRef": "verification.md",
+  "reportHash": "8ef0a2a26217834115d491a82576ae9ab1bfe2da5912f022945923b498e4e683",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "1d587fc60d082ed770f7a0d09de5aeca7476bb812c7b72e8d2e36c725e6f1d2a",
+    "total": 7,
+    "evidenced": 7,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-12bed75e8600b52a609c049714abb7c2993456736d0156ce7cb5a07b78a16c81",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-199fd5ffffef75d84ddaf709bfcd4d14fad6b4edd46f296f3ba1b6b2b68fd4c0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_commit_recovery.py",
+          "venagent/conversation/service.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-6caa8aa48a8ddcbc6a5dd97ac64e63706c7babdbafce70b76ef333464ffc9019",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_streaming_api.py",
+          "venagent/interfaces/http/streaming.py",
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-dcc340a72b0ab2692dd2f0ad9986d692b9f0d8bf3e3cec4fbea4d1ba27bebbd5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/ChatWorkspace.vue",
+          "web/src/modules/chat/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-eaa2e77602edd285d2e5155597a979aadaf70106b6b115f32ed10927d2de6322",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/style.css",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-fbd162864e555078f431a8e0d186bbf45beadde6b5abbc35233a3a5e60e0cc48",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "web/src/modules/chat/ChatWorkspace.vue",
+          "web/src/modules/chat/store.ts",
+          "web/src/modules/ownership/store.ts",
+          "web/tests/e2e/workspace.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-fd1de42d1c45d15c537f4758ef5c39c9dc2761669851873643e5630222541da3",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "README.md",
+          "venagent/config/config.yaml",
+          "web/vite.config.ts"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "bafbd83a40db6598cc2b647a524dd63b5b556491c7f872513f3d5d2fa375fa3e"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/40dfed728a0460501985ed8e8ef43c10b1f9515b691e2dd497b9b11b26bacaac.json",
+  "createdAt": "2026-07-29T03:18:49.241Z",
+  "envelopeHash": "a114c525dd389b12d54a81c4ad4fbc4dbe7629f8a650bd2dc6bf623b441052fd"
+}

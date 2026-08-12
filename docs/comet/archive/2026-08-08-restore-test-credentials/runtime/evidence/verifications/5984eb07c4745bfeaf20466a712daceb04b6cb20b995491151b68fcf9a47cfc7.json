@@ -1,0 +1,59 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "restore-test-credentials",
+  "sourceRevision": 5,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "4e0a67a5c0dbd129c052216d6c286491391f7f1e6036b3123aadcc2d6db55b5b",
+  "acceptanceCriteriaHash": "b13df08f64878c97daa96c227c521cf6fde3d6ef2e00f9f3d75c0ac6f5e43329",
+  "implementationScopeRef": "runtime/evidence/scopes/01d6e3203aababb8fe59855f83d64d863ae45fdc8d8e9ba9bb09b2577b38bf6c.json",
+  "implementationScopeHash": "01d6e3203aababb8fe59855f83d64d863ae45fdc8d8e9ba9bb09b2577b38bf6c",
+  "reportRef": "verification.md",
+  "reportHash": "7aadc213f198090565c0f034a03d0744530b2504dabd9b172fd1af8fd88018ba",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "b13df08f64878c97daa96c227c521cf6fde3d6ef2e00f9f3d75c0ac6f5e43329",
+    "total": 3,
+    "evidenced": 3,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-8d03df918f58ff35c97cddc527e658b216855274160531ccaa5ce4272659451e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/conftest.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c9788d496b0446efe21e51b739e7dad6e6d11103b5d2525fd624f69173937c57",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/conftest.py",
+          "tests/test_neo4j_graph_memory.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-d6fc7910265a433cdd0edfb08fd81a8366629f5447d379a8829af95122de8f11",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_neo4j_graph_memory.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "c0c6877a8f71204b6dc1bdc61d3e7cfca38cb6d0eee881f9608e21e858d6a1b3"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/a1ec0ef1a39bd7d4ff5b0167076a2c101581285703bdcfd4f522791a11ccaaac.json",
+  "createdAt": "2026-08-08T10:15:15.249Z",
+  "envelopeHash": "5984eb07c4745bfeaf20466a712daceb04b6cb20b995491151b68fcf9a47cfc7"
+}

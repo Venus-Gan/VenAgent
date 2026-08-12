@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-frontend-foundation",
+  "role": "original",
+  "hash": "13c5ce424e47a04a39b4f5832bcce1e9f4e316a34a4f39bb3f281a64407f78ef",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 844424930819221,
+    "birthtimeMs": 1785758655970.2017
+  }
+}

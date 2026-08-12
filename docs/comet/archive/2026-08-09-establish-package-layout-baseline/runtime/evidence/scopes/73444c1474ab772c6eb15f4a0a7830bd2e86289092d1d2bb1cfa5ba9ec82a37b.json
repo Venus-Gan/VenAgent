@@ -1,0 +1,2065 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "c0f7bce94f2ccc8a1893b0a5a688a55a12c88aea78c208c01cc6d6fcc1242de6",
+  "baselineProjectionRef": "runtime/evidence/snapshots/acfbd3641c2d639f5dcd31f2544bd1a3e554f641b24651c57005a461eaea53aa.json",
+  "baselineProjectionHash": "acfbd3641c2d639f5dcd31f2544bd1a3e554f641b24651c57005a461eaea53aa",
+  "currentProjectionRef": "runtime/evidence/snapshots/2734cb85a3f1900cb1ed6e258ffedc7bb0ea44cf96b4fb8dfb6481a8f8d40d86.json",
+  "currentProjectionHash": "2734cb85a3f1900cb1ed6e258ffedc7bb0ea44cf96b4fb8dfb6481a8f8d40d86",
+  "complete": false,
+  "declaredArtifacts": [
+    {
+      "path": "README.md",
+      "kind": "file"
+    },
+    {
+      "path": "tests",
+      "kind": "directory"
+    },
+    {
+      "path": "venagent",
+      "kind": "directory"
+    }
+  ],
+  "changes": [
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "before": {
+        "hash": "14f91da1f27b9f44a33e2c35cbf6a4e45b72b86bc648b348a5849180426003b2",
+        "size": 17058
+      },
+      "after": {
+        "hash": "6ecea335b741f8d38c2e14a90c3532296982f068b067a96daec5d634d45eaa17",
+        "size": 27149
+      },
+      "attributedTo": [
+        {
+          "path": "README.md",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/conftest.py",
+      "kind": "modified",
+      "before": {
+        "hash": "0f2a374474d6c6ee3b70a71a28224e3942c422cbf70b428e65923d35dee21720",
+        "size": 2894
+      },
+      "after": {
+        "hash": "782ae39277c36fbbd2a9ea20c99e9b8019ccb8c9220d3fcfcaa02191b7e8de73",
+        "size": 3148
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "1ccdba2ed4cbb4263f6d8ed14feda2b552f621f6b589b3dffbc246a6abf97742",
+        "size": 7033
+      },
+      "after": {
+        "hash": "bdabed664571b6ee80fbef9eddc0749803ec8ca5e195a5a9791b05c53435abcc",
+        "size": 7037
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "modified",
+      "before": {
+        "hash": "36269f4d78460ee9f8056c50fe37cfc48a6f2b8649a14062716da79a4099d3b6",
+        "size": 8091
+      },
+      "after": {
+        "hash": "98560a64019b86fa87072c65eb921e76aed8360d03835b3da832084b081c6fe1",
+        "size": 8085
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_commit_recovery.py",
+      "kind": "modified",
+      "before": {
+        "hash": "86460ec53739829232abdfed0cff9e42121af62729d463095d801d7bff827f9d",
+        "size": 7543
+      },
+      "after": {
+        "hash": "6cb5e13eade515124449e195fb7e602bace1f21d8a693730e4e09fec2693705c",
+        "size": 7533
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_config.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ce1c9a6c10bb75a6b2a51323dd3b2d799f093956cb6b39d9a918172158392029",
+        "size": 5177
+      },
+      "after": {
+        "hash": "c109115dd3b32311304b1d81b761a8651e2c0a8f1152eab2add3caded275fb59",
+        "size": 5159
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_conversation.py",
+      "kind": "modified",
+      "before": {
+        "hash": "a39ce554cfa06c03c3703d9e15a8e9e8b0994d44dfd0ffe5c7b382697e8f27a9",
+        "size": 3051
+      },
+      "after": {
+        "hash": "c6ee124fdccf67b26181413fee0edf305a08903fe8973303c08d66e70d6a35ff",
+        "size": 3041
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_llm.py",
+      "kind": "modified",
+      "before": {
+        "hash": "23d197514367ff1d2279f08881c8d328e6a18e83e4e211a2898d17077364d765",
+        "size": 12461
+      },
+      "after": {
+        "hash": "b0047258c07350a55202f3ed8c7504023ea31ed238a6aa0bb7122ddb07b4be5c",
+        "size": 12443
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "modified",
+      "before": {
+        "hash": "d97e3e41bec1f554a2f5d2ae2cc6b0b14c9a673c419e4ae4d355cfc7926cb3ad",
+        "size": 51609
+      },
+      "after": {
+        "hash": "095497b18ef7b60d6845ecae0225699ae971726d38128c099b4c945db2f77114",
+        "size": 51640
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_graph_store.py",
+      "kind": "modified",
+      "before": {
+        "hash": "337f1f503959097d4cf68d01bb5c74bbfbfa0b1e773aec7ad57c54dadda42de0",
+        "size": 3666
+      },
+      "after": {
+        "hash": "ba0a9ea7a00c3c4108b55ce2ffd2f8650cd41033b5a5c36e6e800aa256e6dc58",
+        "size": 3671
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_maintenance.py",
+      "kind": "modified",
+      "before": {
+        "hash": "818c3ce855a2376e9e2e4c6d610612f994db8bd4940a5a829cf0eaa67fa42c85",
+        "size": 2244
+      },
+      "after": {
+        "hash": "b0c5ddb9e889587db309a9f03235efb3a8712bffe0089ba6f911e13b9d132d52",
+        "size": 2242
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_migration.py",
+      "kind": "modified",
+      "before": {
+        "hash": "f1380cb128c7febecbc695184f4f61c40d9af67e67ebbc0174696547fea76a0a",
+        "size": 4564
+      },
+      "after": {
+        "hash": "314ccbfcc1fefa58570fc766ad108226b0814b53280609ff32f30a8a3f0b5e1a",
+        "size": 4569
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_neo4j_graph_memory.py",
+      "kind": "modified",
+      "before": {
+        "hash": "e1d9859563139507af938a46d0e9d686a0946887ecc0c1196812be03c221115b",
+        "size": 8188
+      },
+      "after": {
+        "hash": "6b526bc5d4f46a8a0b55958fa81fa965689d6ef37a0257e4d4624f4145421819",
+        "size": 8168
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_ownership.py",
+      "kind": "modified",
+      "before": {
+        "hash": "91cc48a3c78065e508bbab97a463ab1e6a84bb9971abf70161d605eb113db2c1",
+        "size": 2246
+      },
+      "after": {
+        "hash": "c6199a000e4eb93322547d71703c1dcdcf5b595103389bb6fe454621184b36ee",
+        "size": 2240
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_package_layout.py",
+      "kind": "modified",
+      "before": {
+        "hash": "723bf7336de723ab2e5ecb6a3be06a2d0ab20987eaef8495b416d9a120967fbb",
+        "size": 4169
+      },
+      "after": {
+        "hash": "200c30aa79ed48136d886d160e689323e512518b7b117ce99f89740a6b4c3597",
+        "size": 5481
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "modified",
+      "before": {
+        "hash": "df57eaec762bcd938d8018ca509bfcfe3ab21e91684e5324186a16f0ac079d51",
+        "size": 27622
+      },
+      "after": {
+        "hash": "4f351d07e4b1fbcd5859136e3e672edb9c9e19c4f61b9aff8190e6c27711aa45",
+        "size": 28304
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_runs.py",
+      "kind": "modified",
+      "before": {
+        "hash": "4a1160fed062ff4cd37084e0995cc1ca3227bb2da3efd073e42efa7a8f218e75",
+        "size": 7260
+      },
+      "after": {
+        "hash": "c94a04bcd47b4aab35c8e57abbe49ddf6ced24f294a0255761499eb96308ee1f",
+        "size": 7230
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_startup_reporting.py",
+      "kind": "modified",
+      "before": {
+        "hash": "1dce2897608d261e2d954300840e23ff708d78aae622731cffc5a4b933eab94f",
+        "size": 11223
+      },
+      "after": {
+        "hash": "59c21cff47d281c086521301420cc1089bbc429df0b12eb161f5231daf88d043",
+        "size": 11301
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_streaming.py",
+      "kind": "modified",
+      "before": {
+        "hash": "4d75dc76faff456f91529d40dd5d7c830fa3417c8a7e770d53cb34f68d4dc2dc",
+        "size": 2694
+      },
+      "after": {
+        "hash": "e373b9ed95acc85d4a24846ef2c7f2232760f3093bb0450491b6b6170869e54d",
+        "size": 2698
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_streaming_api.py",
+      "kind": "modified",
+      "before": {
+        "hash": "bc93f63d904cf6021788a01091c2230dea3a01b7d77ace4467338f960d2f085b",
+        "size": 6891
+      },
+      "after": {
+        "hash": "e2e805e0fe4a25514f9cf198ad3f773e763cbf24fdeef61c390b7d208e3179dc",
+        "size": 6885
+      },
+      "attributedTo": [
+        {
+          "path": "tests",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/__main__.py",
+      "kind": "modified",
+      "before": {
+        "hash": "925c1b35883cc8724c5746f5ac31fcae886acf77d3b305e993f65a273fe90fac",
+        "size": 2209
+      },
+      "after": {
+        "hash": "1c904e3aeca59fb24b3cd7e97a5df8ca3333597204dec28a8a8b08353200a08c",
+        "size": 2197
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/context.py",
+      "kind": "removed",
+      "before": {
+        "hash": "b1993d896fa61f86a245ae7f4045c218985ed3f2c91a823b3ad9fd99b5cd4b5e",
+        "size": 7164
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/errors.py",
+      "kind": "modified",
+      "before": {
+        "hash": "7146ed1ea976a29ad1f864dc3aa62b258c9cdd0e1ae8c30f43ded6f40114f15e",
+        "size": 767
+      },
+      "after": {
+        "hash": "1dda5071698bcaab41b6cbec85164af5bc774afba178d1d9acd555ca5c2e20c1",
+        "size": 474
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/observation.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "2396e2911e1505cd184a1adebb45e50181abd72c9d8d1410e15be3b5e363db3c",
+        "size": 1748
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent/runtime.py",
+      "kind": "modified",
+      "before": {
+        "hash": "eea25f816639ea99961a33c09ea3c8fce73f7df7f06d628d61265d1caf24b613",
+        "size": 25735
+      },
+      "after": {
+        "hash": "731bd4ddcdd972be1c7274d842389f91473f0a48599cf423c7a0f9450f7dab83",
+        "size": 24205
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/bootstrap.py",
+      "kind": "modified",
+      "before": {
+        "hash": "8d0fd45c6a7b4ff75a854a354d1fc0b7221e4f5d094471d7f3a169faad765dd8",
+        "size": 7519
+      },
+      "after": {
+        "hash": "8aab16fdc37301553fe3710d63fa4130139a22449cb4c5ff53886e1f6ad119cd",
+        "size": 9020
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/config/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "6a045cf730f56230966da1c0f00f8f35219bb563d868d089defaa358a66abbfa",
+        "size": 245
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/config/loader.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "c6878b57e463d58fc5524672ca6bfbb0c1531e56c382bf635d8e467b2449030e",
+        "size": 8572
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/conversation/rules.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "09a528275e777452d07e2eee3060b54d96d8208ebbc9bfe42a192e8f120b3f3f",
+        "size": 1811
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/conversation/service.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ec3a5b7638950ce7bd1e4031eed53d4c07a78f439afbde71cee000e93685443c",
+        "size": 7050
+      },
+      "after": {
+        "hash": "69c52cd81f7d6a70d131350740356d29ec35448496d50723d0c2f8340b63e824",
+        "size": 5727
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/conversation/title.py",
+      "kind": "removed",
+      "before": {
+        "hash": "72c0799b865aedba0c986069eabee1f366e2fee0c16eb432ab7ec2c72341b035",
+        "size": 257
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "d9c922d181e67464628ae56c25832a7d5aa1d332f65b8217c5e9fec8c22589dd",
+        "size": 46
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/config/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "6a045cf730f56230966da1c0f00f8f35219bb563d868d089defaa358a66abbfa",
+        "size": 245
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/config/loader.py",
+      "kind": "removed",
+      "before": {
+        "hash": "c6878b57e463d58fc5524672ca6bfbb0c1531e56c382bf635d8e467b2449030e",
+        "size": 8572
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/llm/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "99eb7b04657aebb7bfb175ae2f0ebf8068347906172d9e40f17ada63d9cbee25",
+        "size": 118
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/llm/config.py",
+      "kind": "removed",
+      "before": {
+        "hash": "0bd682075f773a7047c2fe9e7826593c1312330c2614f8ac4dc627a9aff0b95e",
+        "size": 13699
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/llm/factory.py",
+      "kind": "removed",
+      "before": {
+        "hash": "75255f3c33ea0b0b66f42fb218ddb32f669e964a89a977338d7ae664d064aaaa",
+        "size": 1778
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/llm/providers.py",
+      "kind": "removed",
+      "before": {
+        "hash": "a0a3f2c8a5a6d82d4c9ce39cf6d4c5aefe7a3de4df00bc1d28cccf37610d69d9",
+        "size": 5208
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "88d3355fc27918045debfa8296523809d33291c1f3db0af2a9a7c0e76b05603f",
+        "size": 186
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/neo4j/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "5a517870d2fbf9641047d5c009e78cbb9c6ba31799f0471850d3055eec033ac6",
+        "size": 118
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/neo4j/graph.py",
+      "kind": "removed",
+      "before": {
+        "hash": "5c0474ccb6aa85973d11ed5da0d95fced6a04fbe8318e8df480f295e859416fb",
+        "size": 16401
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "50892bee31da6f1e6cc6e65cb3899bf6a198524af92687c05ade30b383d9d103",
+        "size": 583
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/jobs.py",
+      "kind": "removed",
+      "before": {
+        "hash": "d3a60bf5f09ff959deda5f4b45cad4c6f124d36051e6c1a89967753945eb54bc",
+        "size": 14855
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/long_term.py",
+      "kind": "removed",
+      "before": {
+        "hash": "9cbaf41ac16344db7d2699828c478c9a89c29912bfc80f77ed711cf36d3a23dc",
+        "size": 29932
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/row_mapping.py",
+      "kind": "removed",
+      "before": {
+        "hash": "52e2f2f81435482e18b2c9236f807596436ca0a2476004ff85a33a7028366513",
+        "size": 2425
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/short_term.py",
+      "kind": "removed",
+      "before": {
+        "hash": "8c7812e67d9b29f06fa51dee93b9a2c43ae39815ef9330af9d351e608e9e4113",
+        "size": 4287
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "e5af255a3a09493047a248e9db7739e5b7829243de8ba8fabe050c949f86f34e",
+        "size": 212
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/graph.py",
+      "kind": "removed",
+      "before": {
+        "hash": "60eed3bd47aa1d9486d0b8445bcbe896bdb1e7085b4508e7a965e6177312bdd4",
+        "size": 6696
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/jobs.py",
+      "kind": "removed",
+      "before": {
+        "hash": "d456238fafdc22b694561d94b72216812d9537aff733ea113c255245f1fa3107",
+        "size": 8860
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/long_term.py",
+      "kind": "removed",
+      "before": {
+        "hash": "65f81e924307cfd748a57d4b2f8aa9c64c88ebfd75ae30ae2bae616b26fbc512",
+        "size": 15421
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/row_mapping.py",
+      "kind": "removed",
+      "before": {
+        "hash": "cdd5f7ba05d02385ce1573e9f09293f66deaa2e9a187caf07d8df565e0e75792",
+        "size": 724
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/short_term.py",
+      "kind": "removed",
+      "before": {
+        "hash": "57a81b22b9e2dc3d0483087177ec27ba8b98999f2a34bf3d17e8824e6c51faed",
+        "size": 1338
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/state.py",
+      "kind": "removed",
+      "before": {
+        "hash": "f2be66670a52b0b5ce423bd1e95bc4f9e82036fe290e950a1836cba023da0459",
+        "size": 1564
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "5182e3ebf31a16c0352f9d5aa08748cc7b022c7e228f132d8d061f01c8a5dc31",
+        "size": 619
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/errors.py",
+      "kind": "removed",
+      "before": {
+        "hash": "a7499cf8255d75e5b327889f465def2bf3df7ce600d912fa3a50d3f01c8372ea",
+        "size": 202
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/migrations.py",
+      "kind": "removed",
+      "before": {
+        "hash": "2d2ea5295de7eb6568da8217d965b335207796839ebad69827415489e49b7cc8",
+        "size": 26121
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/neo4j/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "b5bca3e694b6b5aeb7800ca91e47ddf0f2efa790045efdb302270a6a6a76f710",
+        "size": 363
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/neo4j/migrations.py",
+      "kind": "removed",
+      "before": {
+        "hash": "26a8a91873f6357a98474f13ac74e9d3789e804f2d75d1640afc0f8326c1dee8",
+        "size": 3182
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/neo4j/runtime.py",
+      "kind": "removed",
+      "before": {
+        "hash": "25b57f19198c0daada4f1bff87777e7272f9892902673747c3c59a22182c7cd4",
+        "size": 6254
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "fdc9192db60dc4544a2e4781a474e99c65141d38f02190e9a7276b8e1154a4c6",
+        "size": 239
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/conversation.py",
+      "kind": "removed",
+      "before": {
+        "hash": "dbc8b1cca824d9433d415e1c0a11fe6e6cde96a1dc98f26fde3edaed219e3711",
+        "size": 9568
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/conversation_runtime.py",
+      "kind": "removed",
+      "before": {
+        "hash": "42f937c80f90366017e2eebd96a9dbb125130dc324d82ffbf9e306cc475814ff",
+        "size": 581
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/ownership.py",
+      "kind": "removed",
+      "before": {
+        "hash": "1c6458e2b9f3b6e7866ed039fae6795105564bda70d7fcaacd5ce09a28e2166b",
+        "size": 15587
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/row_mapping.py",
+      "kind": "removed",
+      "before": {
+        "hash": "eed7cfd2182d71e92ac4bab8f21e5b8a941f32ad9defbbf261da3ea920f73c09",
+        "size": 3969
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/postgresql/runs.py",
+      "kind": "removed",
+      "before": {
+        "hash": "566d7014c34a5aa4819ae2799e437f7e0e935ddfd5e8745762e693b70e051ab0",
+        "size": 25761
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/runtime.py",
+      "kind": "removed",
+      "before": {
+        "hash": "8f54a80b0e4da92c4333f687378002ccf8461abf7e46461b5f05184204dc537f",
+        "size": 12272
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/temporary/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "e4250ab49782f850d10723372662b9db1cc5b41121563d64b5673e64bab174e4",
+        "size": 324
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/temporary/conversation_runtime.py",
+      "kind": "removed",
+      "before": {
+        "hash": "fe3d27b8e65cfd55013bb540c61882bed90f82ab3802f79d33b2385acdd45989",
+        "size": 24891
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/temporary/ownership.py",
+      "kind": "removed",
+      "before": {
+        "hash": "d0c7a1df7b93f14d43f4a651a1435c60ea2cc514a93b1cad844db87fdb778777",
+        "size": 10196
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/temporary/state.py",
+      "kind": "removed",
+      "before": {
+        "hash": "808d143b4742bc23b9653c75a5e6e00a321a6bea7d2d4ab3a9875656e7afb240",
+        "size": 2113
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/security/__init__.py",
+      "kind": "removed",
+      "before": {
+        "hash": "27745598fb3842d5680b31cb8d137f551ccff5f5b8e9bfa36f54b6931f67d1be",
+        "size": 210
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/security/passwords.py",
+      "kind": "removed",
+      "before": {
+        "hash": "49974ca63d123b7fec3b03a01bafed066dd25ec80945c9abfff4bb4550a0a700",
+        "size": 832
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/security/tokens.py",
+      "kind": "removed",
+      "before": {
+        "hash": "9f024d9121e32665f9a0a895791cc72ab6042ab813f35d1d4deaaf6cb4c84dff",
+        "size": 3764
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/app.py",
+      "kind": "modified",
+      "before": {
+        "hash": "42a588f5b17ef3338e477a742fdc60f7bbcaf5f029f61a452e3d45f6a967e4ab",
+        "size": 8504
+      },
+      "after": {
+        "hash": "bdbfce427fbf0e838ec5c731a80167b936fe452501bbab6030dafe904f84936e",
+        "size": 9698
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/auth.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ab094fa5f70643242e3bae4d464d8e75a9671936f1993d3a16b81acfad3f9c75",
+        "size": 3626
+      },
+      "after": {
+        "hash": "5f930b3166b2b4537f3e42d54ce517699fed1b41bd7155888e4f75c833c327ee",
+        "size": 3620
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes.py",
+      "kind": "removed",
+      "before": {
+        "hash": "b123e707164b64b3562a0c1534ee892f50962d8b8c00cea12c01586548dfd414",
+        "size": 17467
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "232e95b203257d7bb5d602a00c7cd06ce98c63b1634cd6044756d7ea9036fabb",
+        "size": 1041
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes/auth.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "08ade86e1f6b32450c8b9ab4077c92e03140dd251aad09d1fe3a075c8d031ea6",
+        "size": 6046
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes/conversations.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "6e4cd8ff688a759f679936517c4f3f568631de0bd9841cdd0128ede41477d2ff",
+        "size": 5815
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/routes/runs.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "5d6f043178db4a369a32e8e8ba62667f66e640e4b751dc4ba20d873656fc209b",
+        "size": 5458
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/interfaces/http/schemas.py",
+      "kind": "modified",
+      "before": {
+        "hash": "cbcbdb520b9327351e70f13b35932fdcac62a46247334f3dc17f75fd56def1ac",
+        "size": 2932
+      },
+      "after": {
+        "hash": "5f94c39764bc9e369fb92ca7a9d6a79f9de14ac4092c319fe23e653308aef5cc",
+        "size": 2930
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "99eb7b04657aebb7bfb175ae2f0ebf8068347906172d9e40f17ada63d9cbee25",
+        "size": 118
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm/config.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "584a09263406a76a775caf6430a89f9c4bedfc92ffc8d4457d09d186f53f7bce",
+        "size": 13698
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm/factory.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "f785c88a7736f56b14ac7e925b82f1aea0c5497a0e8fc1daa1fa45ae57bea6e5",
+        "size": 1776
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm/providers.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "0dea34f500a63ee9d06627e6ce3f23fe8e4019ea396951434b57399d84bfd640",
+        "size": 5207
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/__init__.py",
+      "kind": "modified",
+      "before": {
+        "hash": "afc4edf34d3ad907a9e722b045ba6834574a23884946a2d5620a2f3d48929c60",
+        "size": 189
+      },
+      "after": {
+        "hash": "66534049fff8dbae9e6227ddf1467fc727d6213ec150ee9ff93b39086687e001",
+        "size": 196
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/authorization.py",
+      "kind": "modified",
+      "before": {
+        "hash": "8e82fc9691881b997c842392e48a559167c754c94e643dcc2f6f1e22bfd8e72f",
+        "size": 5310
+      },
+      "after": {
+        "hash": "5d97dd52f78d95e9b1e9745b7ebce78118dd70f100691a1bf4f9596688a0be9e",
+        "size": 6176
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/capabilities.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "afc40d55c7aaf757849be4102c3ecab317d08ece0a763bd088cc75d762c02fc0",
+        "size": 2787
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/command_adapter.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "bd04d2afb5444b9d85e65e66657de2a6a1a66edc8e311c9f5ed4b2dea73b7611",
+        "size": 10892
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/commands.py",
+      "kind": "removed",
+      "before": {
+        "hash": "1f193418e12ad95dd01ff82b816946bd07b9dc37b5bd710bf11e302c83dc9567",
+        "size": 10807
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/graph.py",
+      "kind": "modified",
+      "before": {
+        "hash": "fcaf6e50d07b749b0b5af2c8433e057ab7e21ceaa908e03a2caf217406544d81",
+        "size": 4297
+      },
+      "after": {
+        "hash": "af73dd47c68129c93aefd63c2adcd05cebf896c3054af29deb924d9c3d8560e1",
+        "size": 4307
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/graph_memory.py",
+      "kind": "modified",
+      "before": {
+        "hash": "ca596489d954077c884153ab80af30f6440e8f23cdebb2d7b591f72a88cf7fe0",
+        "size": 4064
+      },
+      "after": {
+        "hash": "0392f8625f22d41f76723a4e457a47d7fcaf4f810fe5a28717c6c7207aebbb3a",
+        "size": 4106
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/health.py",
+      "kind": "removed",
+      "before": {
+        "hash": "99eb24e55d74440b023d068565e5177a47f6f6d9c281e5bfffb9e005d0ecd23f",
+        "size": 2143
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/job_worker.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "5071bd2a9a0261f6f9a96742615497aa4c9d71b91658218fc7584d66e1662d78",
+        "size": 1647
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/jobs.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "427089ecd926b5a0e4769a3ad0b8c766bc4a37a2d357e321a1e27897e9c9ece4",
+        "size": 8982
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term.py",
+      "kind": "removed",
+      "before": {
+        "hash": "5057e97c41c984ac2a013326b2feafe024c7037517223ccd9cbbe7f54ff94c41",
+        "size": 2169
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "52a932ab64873a9d40240c90219bd0f22645abcd0b83d5dd69e3f7ffde89a10b",
+        "size": 168
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/facts.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "561b2a76fd327f89f3518a017a5c30b6d37fc87cefae46f1ca61a70f04303fc1",
+        "size": 1145
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/policy.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "faa1bb254bb14c76710241076cead60131b0e7873de3971ae26fd7d7229eb110",
+        "size": 4511
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/long_term/writer.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "3af19f4457f0ba04fe213df1574add369401c69dd03e0a9cd2cf1525e746707b",
+        "size": 4815
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/maintenance.py",
+      "kind": "removed",
+      "before": {
+        "hash": "94747e50caa4341b95df6aa14719469f8994547bcfafa79017e7209500975b8a",
+        "size": 1648
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/management.py",
+      "kind": "modified",
+      "before": {
+        "hash": "61c651c2bcd68787306783b83fbff4eedb4fc35568c71054666b19d0b4d660a3",
+        "size": 12259
+      },
+      "after": {
+        "hash": "1e5f810a10b5a14a4103c51723f0a5caa36adf2c082da5f5f606facd8dc5fe6b",
+        "size": 12827
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/policy.py",
+      "kind": "removed",
+      "before": {
+        "hash": "faa1bb254bb14c76710241076cead60131b0e7873de3971ae26fd7d7229eb110",
+        "size": 4511
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/ports.py",
+      "kind": "modified",
+      "before": {
+        "hash": "5ea29008908a5a1776da813014c6f0e07126600ce9b9e52bc38d73ce6a042e78",
+        "size": 5530
+      },
+      "after": {
+        "hash": "658968aee79e2818e5a310db23c0e455c667c42b8f1de21150ad6a2d4b78457a",
+        "size": 6763
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/recall.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "4fa2e912c61ecd218bb7af335b4b4f7a31f71a4ecff4319f76dc88d224a4de4b",
+        "size": 13914
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/recall_provider.py",
+      "kind": "removed",
+      "before": {
+        "hash": "446d622523d0ee37119e9aa4aee78c2bddd5622ecd64ad0e93061fe2977a7d09",
+        "size": 14154
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/service.py",
+      "kind": "modified",
+      "before": {
+        "hash": "e09f3f804a8a2f11c6de2b1ce2484b4e93dd141de218648be1616687b6199404",
+        "size": 2861
+      },
+      "after": {
+        "hash": "34576c91b9e0e34f88e9c6ef1b5833e34af91dce4a2208be40ad9fd021a9420b",
+        "size": 9194
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/short_term.py",
+      "kind": "modified",
+      "before": {
+        "hash": "4d84378f405265913e17ef4bb8e93c7bc57c58d52a9ece874c9781e65725d460",
+        "size": 6272
+      },
+      "after": {
+        "hash": "08304aba5d040c50846853aeecfe9c172dfa6254e001edea056311080010b522",
+        "size": 6286
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/write_pipeline.py",
+      "kind": "removed",
+      "before": {
+        "hash": "544c27f92617ae82a30c5fc3ea9638ba39c53ff2ae49793875ec33280262a569",
+        "size": 12418
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/observability.py",
+      "kind": "removed",
+      "before": {
+        "hash": "aef1286c957cd680dbce5cb3eb0cc0f463c8ab2294c09a02c8b796c12133a4c3",
+        "size": 2438
+      },
+      "after": null,
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "fa0adacfa436ae8f644a8e91c14167294be3c5c30714f2a27c229699096bf24a",
+        "size": 581
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/errors.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "a7499cf8255d75e5b327889f465def2bf3df7ce600d912fa3a50d3f01c8372ea",
+        "size": 202
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/neo4j/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "b5bca3e694b6b5aeb7800ca91e47ddf0f2efa790045efdb302270a6a6a76f710",
+        "size": 363
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/neo4j/migrations.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "26a8a91873f6357a98474f13ac74e9d3789e804f2d75d1640afc0f8326c1dee8",
+        "size": 3182
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/neo4j/runtime.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "1f9283bbc5fc3e100f105423d24e26584e23637ca49347ce0ffbe8b9d8af50a5",
+        "size": 6253
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/observability.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "aef1286c957cd680dbce5cb3eb0cc0f463c8ab2294c09a02c8b796c12133a4c3",
+        "size": 2438
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/postgresql/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "ed6af93486950616c20219888403568b4b1414dd50117b2e6b5046c73c93cf49",
+        "size": 236
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/postgresql/migrations.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "bfd933da98fce1123fc2312f63a39be95121e57024a2cc83cab7adbc2001619e",
+        "size": 26122
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/postgresql/runtime.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "d31ea462222357b5ce0109e07ddbb58ee22ddc6a3501b777a03c9f5fd3fedf04",
+        "size": 7058
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/runtime.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "28753b372ce0d1c95c86f3c6e011191cfe7d6c0a4c7e8fb2b973332b2b21ee94",
+        "size": 5579
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/security/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "27745598fb3842d5680b31cb8d137f551ccff5f5b8e9bfa36f54b6931f67d1be",
+        "size": 210
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/security/passwords.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "49974ca63d123b7fec3b03a01bafed066dd25ec80945c9abfff4bb4550a0a700",
+        "size": 832
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/platform/security/tokens.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "9f024d9121e32665f9a0a895791cc72ab6042ab813f35d1d4deaaf6cb4c84dff",
+        "size": 3764
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/promptctx/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "30d028c46243aba3ddcca68987869936854328f668dc2201e6be51ed6d11ce43",
+        "size": 784
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/promptctx/assembler.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "c4c99a68fd9815527d2f313c33eb2efcc8627e1028a704ab907d02b412855b8b",
+        "size": 3479
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/promptctx/context.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "f7c27142234109f1e0d125b656613801013863e94c33d2f7602c50a3c1364fa9",
+        "size": 1033
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/promptctx/errors.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "be34527702d133c2dd7508d099eb4a1eacc6d0501c1b751a2f3d97f940cd97f3",
+        "size": 321
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    },
+    {
+      "path": "venagent/promptctx/recall_provider.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "652ab9906d9d3203a365cb7775d9ddda62ceb47fc9a7316371c9a8c0fb30cc6a",
+        "size": 3227
+      },
+      "attributedTo": [
+        {
+          "path": "venagent",
+          "kind": "directory"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [
+    {
+      "id": "scope:30c8fff96215a20f2409eb4d5598a2e68272857e4d838dc9e2cb10e0f5b54986",
+      "kind": "scope-detail-overflow",
+      "source": "implementation-scope",
+      "path": null,
+      "reason": "Implementation scope summarized 29 additional change details and 0 unresolved details (0 unattributed); overflow hash 16e3e9ece6aac040a7c711ca878f0132018a25de1d10be754fd1eb8162b69402"
+    }
+  ],
+  "noCodeReason": null,
+  "scopeHash": "73444c1474ab772c6eb15f4a0a7830bd2e86289092d1d2bb1cfa5ba9ec82a37b"
+}

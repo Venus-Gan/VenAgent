@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-4-conversation-persistence",
+  "role": "original",
+  "hash": "086768460430b951220cbc493cc0f6db61f5740703239d6848c25dacddcfd3a1",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 6192449488318070,
+    "birthtimeMs": 1785295161911.6943
+  }
+}

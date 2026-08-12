@@ -1,0 +1,83 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "89ba43add8f2261a2bb6c5f33db2b01d824975a1bf2736ec024fa33befacfb75",
+  "baselineProjectionRef": "runtime/evidence/snapshots/edc98d3ce9dd4af43ec5146a95c0be1f07e40e848ed161cf507dcae4fb4cce7c.json",
+  "baselineProjectionHash": "edc98d3ce9dd4af43ec5146a95c0be1f07e40e848ed161cf507dcae4fb4cce7c",
+  "currentProjectionRef": "runtime/evidence/snapshots/353d4a12b66cdfe48c8af3aea235216efe775623aaac7c546355c18cac5a28a0.json",
+  "currentProjectionHash": "353d4a12b66cdfe48c8af3aea235216efe775623aaac7c546355c18cac5a28a0",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "web/src/modules/chat/ChatWorkspace.vue",
+      "kind": "file"
+    },
+    {
+      "path": "web/src/modules/chat/store.ts",
+      "kind": "file"
+    },
+    {
+      "path": "web/tests/e2e/workspace.spec.ts",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "web/src/modules/chat/ChatWorkspace.vue",
+      "kind": "modified",
+      "before": {
+        "hash": "0a7f4c8aa6b0156acfd3da07cdd0005a9b8f1f23e9dc2075d7c733e9e0d3c3e9",
+        "size": 9986
+      },
+      "after": {
+        "hash": "94367ce9eaed648fb1a7165c53adbd6fec9a1c7fb601c941971f7700ba0ca50c",
+        "size": 12518
+      },
+      "attributedTo": [
+        {
+          "path": "web/src/modules/chat/ChatWorkspace.vue",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "web/src/modules/chat/store.ts",
+      "kind": "modified",
+      "before": {
+        "hash": "315e2b741729b3b8842524fa68304416fa7870ded3250a965475e4aeaea1749d",
+        "size": 21633
+      },
+      "after": {
+        "hash": "f73b633cec6a868e2cdc6285f05487ed3f3391f92d183c9764a610b1407ca156",
+        "size": 24178
+      },
+      "attributedTo": [
+        {
+          "path": "web/src/modules/chat/store.ts",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "web/tests/e2e/workspace.spec.ts",
+      "kind": "modified",
+      "before": {
+        "hash": "8c5c7c281a746c539e62e4566857df8a22983992f2a30787571034f942047e3a",
+        "size": 21449
+      },
+      "after": {
+        "hash": "9c9953c10d882361687bc8b8b321c7cc8fb7d239c327b665df6d26d1ea69da6a",
+        "size": 31082
+      },
+      "attributedTo": [
+        {
+          "path": "web/tests/e2e/workspace.spec.ts",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "1205fa334e2dac0ad4e036031ede9c972f43ac08177408398ff110e14fb2fa86"
+}

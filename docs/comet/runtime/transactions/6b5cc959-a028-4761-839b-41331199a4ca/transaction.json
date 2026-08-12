@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "6b5cc959-a028-4761-839b-41331199a4ca",
+  "kind": "archive",
+  "status": "committed",
+  "change": "restore-test-credentials",
+  "createdAt": "2026-08-08T10:15:41.573Z",
+  "preflightHash": "6309f77992c41954daae482f1a23496608fa93526b72569fb28f894293e675cb",
+  "operations": [
+    {
+      "id": "spec-1-isolated-test-configuration",
+      "type": "write",
+      "target": "specs/isolated-test-configuration/spec.md",
+      "staged": "runtime/transactions/6b5cc959-a028-4761-839b-41331199a4ca/staged/specs/isolated-test-configuration/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "0d6f056b222e57348e2cf281230629849c7d6642bf1f1399a1dc9be59475b9c7"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/restore-test-credentials",
+      "target": "archive/2026-08-08-restore-test-credentials",
+      "expectedSourceHash": "2eb551a152479b79e4896d1a1643596c609cce37b52177ad45692d58efbd78c9",
+      "expectedTargetHash": null
+    }
+  ]
+}

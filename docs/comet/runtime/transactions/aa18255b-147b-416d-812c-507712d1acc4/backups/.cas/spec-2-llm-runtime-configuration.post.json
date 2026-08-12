@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-2-llm-runtime-configuration",
+  "role": "post",
+  "hash": "568f3f170325315e9502807c7cbc03bef1071e8a6ea82badaa27eec072243ee0",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1125899907523271,
+    "birthtimeMs": 1785077672789.6284
+  }
+}

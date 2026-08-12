@@ -1,0 +1,105 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-40f828e1ee72bad2f026860a95cac3bd57f50b7fa14a3d09daaffec3b69dd9bc",
+    "evidence_refs": [
+      "tests/test_persistence.py",
+      "venagent/agent/graph.py",
+      "venagent/infra/platform/migrations.py",
+      "venagent/infra/platform/runtime.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-419f9cf4848d5359c3285eae0d1e6617c9f6b138ec9ef9662717ad33b3fc9446",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/memory/recall_provider.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-8feb0e93e27ce2697d9c96445d10a700d4b05f7150ea5800c5c2d9078f92bfee",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/memory/recall_provider.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-b5f69bdac61696c89e2e27c0ce0f3d2786668939d2d6a1bc4311bc98745fab3c",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "tests/test_persistence.py",
+      "venagent/memory/recall_provider.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-bf508739387b243c6f8c6dfc701e3ef79d1c8f8568da9da57fcec6e63a46994a",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/memory/recall_provider.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-d0b9ea6c8a8585cbd2d1a35f3cbf1c194435972010bc2b9fea5d0c7cd6d7420c",
+    "evidence_refs": [
+      "tests/test_persistence.py",
+      "venagent/infra/memory/postgresql/graph.py",
+      "venagent/memory/recall_provider.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-fe151fc03e9f67eaf335f054d90291414a450e5d5f33a410f22e505c4d1a7cfb",
+    "evidence_refs": [
+      "tests/test_persistence.py",
+      "venagent/agent/graph.py"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- `.\.venv\Scripts\python.exe -m venagent migrate`：通过，使用本机 Docker PostgreSQL 完成显式 migration，stdout/stderr 未出现 unregistered msgpack type 警告。
+- `.\.venv\Scripts\python.exe -m pytest -q`：通过，161 项测试全部通过（最终轮 20.23 秒）。
+- `.\.venv\Scripts\python.exe -m pytest tests\test_persistence.py -k "checkpoint_serializer or postgres_g1_path" -q`：通过，3 项 serializer 与真实 PostgreSQL G1 定向测试全部通过。
+- `.\.venv\Scripts\python.exe -m ruff check .`：通过，无 Ruff 问题。
+- `.\.venv\Scripts\python.exe -m compileall -q venagent tests`：通过，无 Python 编译错误。
+- `npm.cmd run build`（`web/`）：通过，Vue TypeScript 检查与 Vite 生产构建完成，共转换 32 个模块。
+- `docker compose ps`：PostgreSQL 16 容器 `venagent-postgres-1` 为 `healthy`，端口 5432 可用。
+- `node D:\NVM\nodejs\node_modules\@rpamis\comet\bin\comet.js native check fix-real-environment-acceptance --json`：通过；receipt 为 `runtime/evidence/check-receipts/4b69fbd3d658712e1396a467ce5c076a7bcb43b0002ed5673619dae4b64a4db1.json`，扫描 6 个实现范围文件和 111925 字节，0 问题。
+
+# Real environment acceptance
+
+- 正式 FastAPI 进程直接托管 `web/dist`；`GET /health` 返回 durable、PostgreSQL connected，M05 抽取、G1、长期记忆和短期记忆全部 ready。
+- 在应用内浏览器中创建一次性账号，通过聊天输入两条“记住”指令；页面分别返回长期事实 ID，PostgreSQL 中事实均为 active/ready，并派生 `SIMILAR_TO` 与 `FOLLOWS` 活动边，注册表版本为 `m05-g1-v1`。
+- 通过前端发起真实 DeepSeek 对话；运行成功，SSE 结果展示为“根据已保存的记忆，验收用户星河项目负责人是您本人”。
+- 重启正式服务后，同一浏览器会话恢复账号、服务端对话、用户消息、AI 回答和 `/memory list` 结果；启动日志未出现 unregistered 或 blocked deserialization 警告。
+- 在 390×844 移动视口重新加载，侧栏折叠、消息区、输入框和发送按钮均可见且无重叠；浏览器控制台没有应用 warning/error。
+- 真实隔离库测试使用 `abcde → abcdexyza → exyza` 构造只有一跳路径评分才能获得资格的邻居，runtime 重建前后排序一致；删除邻居后活动边和召回结果同步移除。
+- 通过前端“注销账号”完成一次性账号清理；随后数据库查询确认测试用户名不存在。验收服务与浏览器标签页均已停止/关闭，无后台 `venagent serve` 进程遗留。
+
+# Review
+
+- 按 ECC Python/code review 清单复核全部变更文件：未发现 CRITICAL、HIGH、MEDIUM 或 LOW 问题；生产代码没有宽松 allowlist、pickle fallback、动态 eval/exec、硬编码生产秘密或新增 SQL 拼接。
+- `allowed_msgpack_modules=True` 仅用于负向测试生成未知类型载荷；生产 helper 显式列出 RunState 实际持久化的 8 个 dataclass，测试逐一验证可恢复，并验证未知项目类型不会被重建。
+
+# Skipped checks
+
+- mypy、Black、isort、Bandit、pip-audit 未安装，故未运行；它们是项目可选补充检查，不作为本 change 的独立硬门槛。
+
+# Spec consistency
+
+G1 评分仍属于 `venagent/memory/`。直接召回阈值和严格注入阈值未降低；只有当前注册表的活动 `SIMILAR_TO` 边可提供“种子查询分数 × 0.45”的一跳路径分数，`FOLLOWS` 不提供语义加分。图路径候选仍先经过 owner/tenant、授权、活动状态、来源、有效期和索引状态过滤，单次结果最多包含一个仅因图路径获得资格的邻居，总数不超过调用方 `limit`，排序具有稳定 tie-breaker。
+
+checkpoint serializer 由 `venagent/agent/graph.py` 唯一定义。异步 runtime saver、同步启动 schema 校验 saver 和 migration saver 均消费同一 helper；没有修改官方 checkpoint 表、VenAgent schema、HTTP 契约或序列化格式。
+
+# Known limitations and risks
+
+- G1 仍是词法 bigram 与单跳 `SIMILAR_TO`，没有 embedding、实体图或多跳能力；这是本 change 明确保留的 G1 边界。
+- 图边只保存关系而不保存实际相似度，因此路径评分保守使用注册表下界 0.45；后续若升级关系注册表，需以新策略版本和重放验证更新。
+- 浏览器真实验收依赖本机已配置的 DeepSeek 与 Docker PostgreSQL；自动化单元和隔离库测试不依赖第三方模型可用性。
+
+# Conclusion
+
+通过。7 个 acceptance example 均有实现、自动化与真实环境证据；全量测试、真实 PostgreSQL、真实 DeepSeek、桌面/移动前端、服务重启、生命周期清理、静态检查、编译、前端构建和 Comet 范围检查全部通过。

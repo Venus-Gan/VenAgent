@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-8-minimal-agent-loop",
+  "role": "original",
+  "hash": "70de5c82e5a257ac1750006fe3a631335e9fa3d3977e090368d30abec45c5db8",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1407374884316078,
+    "birthtimeMs": 1784716386439.0576
+  }
+}

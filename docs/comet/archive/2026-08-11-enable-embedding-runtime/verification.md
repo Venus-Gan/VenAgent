@@ -1,0 +1,69 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-2ccd7a4ccefa4c155cd3b6ef1a2509b0f5f7a2e5fa5bea8d4ea18ba6c7dc78d4",
+    "evidence_refs": [
+      "tests/test_config.py",
+      "venagent/bootstrap.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-731e76f486679826cad7b5561e67809d3d6e7f069d1add7e26185637beca26a2",
+    "evidence_refs": [
+      "tests/test_memory_index.py",
+      "venagent/llm/embeddings.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-b722b7d3a7fc9e4a2e4c3e2c724d74333372da60adc0f6d795abd92571b430db",
+    "evidence_refs": [
+      "tests/test_config.py",
+      "web/tests/e2e/memory.real.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-cc11737bdb4644ee4016c0377707db7bc3cafb57ddf6116eff457d91aef31831",
+    "evidence_refs": [
+      "tests/test_memory_index.py",
+      "venagent/memory/embedding/index.py",
+      "venagent/repo/postgresql/memory/index.py"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- 脱敏配置检查：embedding enabled、HTTPS endpoint、模型、密钥存在性、timeout 与重试配置均通过；未输出密钥。
+- 真实 `HttpEmbeddingClient` 批量请求：2 个输入返回 2 个 2048 维向量，全部有限且非零，余弦计算通过。
+- 重启后 `/health`：durable；PostgreSQL connected；Neo4j、memory-embedding、memory-index、memory-long-term 与 memory-short-term 均为 ready。
+- 真实索引与召回探针：index job ready；PostgreSQL 向量维度 2048；词法相似度 0，dense 相似度 0.566077 时成功召回；第二账号无法召回；测试事实已删除。
+- 启用 embedding 后首次浏览器回归失败，定位到 AgentRuntime 固定 150ms 长期召回 deadline 丢弃真实 HTTP 查询结果；composition root 改为注入有限的 provider 请求预算，并增加 disabled、正常计算和 30.5 秒上限测试。
+- 修复并确认新进程加载后，`npx.cmd playwright test tests/e2e/memory.real.spec.ts`：1 passed，覆盖跨会话召回、更新、遗忘、开关和全部删除。
+- `.venv\Scripts\python.exe -m pytest -q`：215 passed。
+- `.venv\Scripts\python.exe -m ruff check venagent tests`：通过。
+- `.venv\Scripts\python.exe -m compileall -q venagent`：通过。
+- `npm.cmd run build`：Vue TypeScript 检查与 Vite 生产构建通过。
+- `comet native check enable-embedding-runtime`：通过，receipt 为 `runtime/evidence/check-receipts/781acaaee73b389eb64ca3d1de8c73517d2edb52a59054b39b57aa747cc68a8e.json`。
+
+# Skipped checks
+
+无。智谱 embedding、DeepSeek、PostgreSQL、Neo4j 和真实浏览器链路均已实际运行。
+
+# Spec consistency
+
+- 真实秘密只写入被 Git 忽略的本机 `.env`，没有进入项目模板、代码、Comet 产物或测试输出。
+- 继续使用通用 `venagent.llm.embeddings.HttpEmbeddingClient`，没有新增智谱专用 adapter。
+- 未配置 embedding 时继续使用 AgentRuntime 既有 150ms 默认；启用时由 composition root 注入有限且封顶的请求预算。
+- embedding 仍是派生索引，PostgreSQL 长期事实保持权威来源；owner 和 tenant 隔离未改变。
+
+# Known limitations and risks
+
+- 语义召回依赖外部 provider 延迟与可用性；provider 请求总预算封顶 30.5 秒，超时后仍按现有降级路径不注入 dense 结果。
+- 用户在聊天中直接提供过密钥；当前 `.env` 不会提交，但建议验收结束后在供应商控制台轮换密钥。
+
+# Conclusion
+
+通过。真实 embedding 已启用，索引、dense 召回、隔离、完整回归和浏览器生命周期均通过，服务保持运行并报告全部记忆组件 ready。

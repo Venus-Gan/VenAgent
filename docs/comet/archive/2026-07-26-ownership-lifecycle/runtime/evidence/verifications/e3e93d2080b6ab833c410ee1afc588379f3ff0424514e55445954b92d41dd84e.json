@@ -1,0 +1,84 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "ownership-lifecycle",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "34670dcd4acf382e3c7730899948fb239b32474bb957477116129026e7f9bba5",
+  "acceptanceCriteriaHash": "4b0afa083a87ef485c67912727ac1388e3ff7996bd8217e9268fc34ffeb4c50b",
+  "implementationScopeRef": "runtime/evidence/scopes/73169fca1d0014fff34308e1387761be3609d87c6d619087547898483e6d2c60.json",
+  "implementationScopeHash": "73169fca1d0014fff34308e1387761be3609d87c6d619087547898483e6d2c60",
+  "reportRef": "verification.md",
+  "reportHash": "f531dfda10a8e824251e64ad7ea8acda2bc8b43f7548d0654cebde395cf79c8a",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "4b0afa083a87ef485c67912727ac1388e3ff7996bd8217e9268fc34ffeb4c50b",
+    "total": 5,
+    "evidenced": 5,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-15bb701692561eaa4e733fc412db5a14c47bee4642e7d0a67d95f9aa63cac6cd",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_ownership.py",
+          "venagent/infra/platform/runtime.py",
+          "web/src/modules/ownership/AccountPanel.vue"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-7803691c0f788c1cffa710493d9a33c4f1c80bae58c4bdd4d2e4e2bb774fe3a7",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/conversation/service.py",
+          "venagent/infra/platform/postgres.py",
+          "venagent/interfaces/http/routes.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-884658ec96e159f2cb7ddd689787654f1abe275357f650efd2f2a79de03478f3",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/interfaces/http/ownership.py",
+          "venagent/ownership/service.py",
+          "web/src/modules/ownership/AccountPanel.vue"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-d654a0cf3e56b200380f22c4954f219611cc8fd795880623e3cfb0b8af904043",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/infra/platform/ownership.py",
+          "venagent/ownership/service.py",
+          "web/tests/e2e/ownership.spec.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-e67e83410f42afd0eca9eb7be2f3c00fd3592e668d85afcf115a37957949a655",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/conversation/service.py",
+          "venagent/infra/platform/postgres.py",
+          "venagent/ownership/service.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "169039978792bdc8aaf7f93a73385d05eda0181e075765557d651e96e9e62880"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/824671d1ed41b894220702aaa92e7bb8e4ec71fd2e2e3f14daf952762adccea4.json",
+  "createdAt": "2026-07-26T11:34:52.195Z",
+  "envelopeHash": "e3e93d2080b6ab833c410ee1afc588379f3ff0424514e55445954b92d41dd84e"
+}

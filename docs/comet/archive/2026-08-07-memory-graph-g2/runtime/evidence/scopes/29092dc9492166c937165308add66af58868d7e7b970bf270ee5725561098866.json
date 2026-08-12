@@ -1,0 +1,171 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "2a839a76e2b997959373703818ef41c46fff09125b8dffd4d95175eedf3dffc5",
+  "baselineProjectionRef": "runtime/evidence/snapshots/2abccdd572cebb408d9f33f70b2f86d0fbf90b3a968afc29606e579c3565703b.json",
+  "baselineProjectionHash": "2abccdd572cebb408d9f33f70b2f86d0fbf90b3a968afc29606e579c3565703b",
+  "currentProjectionRef": "runtime/evidence/snapshots/b504c6378b99352c30b2d2144afb4f80a41710c2cf88e0d796ddb948c01571c4.json",
+  "currentProjectionHash": "b504c6378b99352c30b2d2144afb4f80a41710c2cf88e0d796ddb948c01571c4",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "evals/memory/runner.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_evals.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/graph.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/memory/temporary/graph.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/ports.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/memory/recall_provider.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "evals/memory/runner.py",
+      "kind": "modified",
+      "before": {
+        "hash": "93932ac53c809aa4c82709d0eb430e3491e479aff1cfe124f986e40727ada307",
+        "size": 3093
+      },
+      "after": {
+        "hash": "70a90f6efa2e41e54b4d21d3cca5f556490e5d08b027a5ff34b01d743f2523a1",
+        "size": 4270
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/runner.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "kind": "modified",
+      "before": {
+        "hash": "54cc8e125df7c43af1917d41270cafd3ec565012ef689e51b1a7aac84a3e75c0",
+        "size": 38317
+      },
+      "after": {
+        "hash": "e726d15adabf39e1ca22ce230f8f2b574722e350962e32f80c090a196b464fd9",
+        "size": 46470
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_context.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_evals.py",
+      "kind": "modified",
+      "before": {
+        "hash": "12099cfa1d98d0de923652d48479382fd1897223cb2b3d287604f9fd0c9b5bbb",
+        "size": 1683
+      },
+      "after": {
+        "hash": "73c674fdc7ef6ee5c1336f8cb33fc65f2834f297fd4e112b296996775cd12c81",
+        "size": 2724
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_evals.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/postgresql/graph.py",
+      "kind": "modified",
+      "before": {
+        "hash": "7f3be78683ff537f1fb9c4528fe7fc31234a3e4b9774a0ba06deb23fbe786f2c",
+        "size": 2534
+      },
+      "after": {
+        "hash": "c00f6802b7926c08c7dd3226c3a97b4923edfefde993f9e1be7d368459fa4c6e",
+        "size": 5405
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/memory/postgresql/graph.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/memory/temporary/graph.py",
+      "kind": "modified",
+      "before": {
+        "hash": "a28990bf0d38302fc6901f165373428c29b9f6210fac96be8a71844dba31cb73",
+        "size": 1441
+      },
+      "after": {
+        "hash": "a05e4beab3c6a5b96994aa5826d83821997a57a97bb1fb4d5b51b864f99a9718",
+        "size": 2685
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/memory/temporary/graph.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/ports.py",
+      "kind": "modified",
+      "before": {
+        "hash": "d9b835b1fa89dd28bbee5a549ee2e47c3c9b8bb1ebeaff81e1ffeaa14365d4d8",
+        "size": 3975
+      },
+      "after": {
+        "hash": "4db371fd498400bf592ba95e66c2157f761a528ecb4697f5f2378e05b9591e18",
+        "size": 4583
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/ports.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/memory/recall_provider.py",
+      "kind": "modified",
+      "before": {
+        "hash": "4d3caec74870cdd0c972ff201dd1bb4ff40ec21501e78ff518f8fdbc8667ad46",
+        "size": 12042
+      },
+      "after": {
+        "hash": "2610120a64ca19c537be9bf95e1f36f3b622588e91b60efec683e4882cbbeb68",
+        "size": 13987
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/memory/recall_provider.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "29092dc9492166c937165308add66af58868d7e7b970bf270ee5725561098866"
+}

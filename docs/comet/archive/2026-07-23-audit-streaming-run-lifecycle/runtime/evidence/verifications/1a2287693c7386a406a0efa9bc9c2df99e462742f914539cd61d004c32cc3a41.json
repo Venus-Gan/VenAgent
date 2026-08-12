@@ -1,0 +1,78 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "audit-streaming-run-lifecycle",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "d5866bb0ab71296c9cd4cb7335a9f9d87208941d20b9d74cd4153200d4bf5c47",
+  "acceptanceCriteriaHash": "f521077f9718d57a9f1b72c3ced9760efe5de61e8c79af51c40d220eafede962",
+  "implementationScopeRef": "runtime/evidence/scopes/bc2356b4887d55467b569df2c6b332b686270b02bd87bcb61cf114ed04432f4c.json",
+  "implementationScopeHash": "bc2356b4887d55467b569df2c6b332b686270b02bd87bcb61cf114ed04432f4c",
+  "reportRef": "verification.md",
+  "reportHash": "3d844b4e2d9d28b059cfddfddebfd2eec0679207bbb6b84bef8803df5156b58c",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "f521077f9718d57a9f1b72c3ced9760efe5de61e8c79af51c40d220eafede962",
+    "total": 7,
+    "evidenced": 0,
+    "skipped": 7,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-29dc716375b0a6db4a2f3b9306c1c877ddcedbf29300b7729184349cfe50266a",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "该项是审计与规格验收；定向文本断言和源码定位已确认建流前 JSON 错误与建流后 SSE error 终态边界，本 change 没有运行时代码产物。"
+      },
+      {
+        "acceptanceId": "acceptance-7f1d8204b97057efc55efab3309befb3ae1fb2c34164eae45e56766b8a468cf2",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "完整目标规格文本断言已确认 started、token、唯一 completed/cancelled/error、目标取消和 M01 提交边界；代码实现由后续独立 change 交付。"
+      },
+      {
+        "acceptanceId": "acceptance-990c1090f0905878424b1a7fa9d402909a9424b1b9825ca61946b3eec43b148d",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "brief、audit 与完整规格已记录整体 replace 和各子能力的 adopt/replace/drop/defer 边界；这是规格事实而非运行时证据。"
+      },
+      {
+        "acceptanceId": "acceptance-a765da83c57b58cc8f3a34cf53355d294bc04d9e518b397880f3f308eee692e6",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "源码定位确认当前 venagent 仅有同步 chat、ThreadRegistry busy 与 model.invoke 成功提交路径；本审计不修改这些项目文件。"
+      },
+      {
+        "acceptanceId": "acceptance-c2bbe8173343e91ad4e0f4c10545d9d8b33dc9c8ff08360eb2278cd8e4ffcbe1",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "Build 使用明确 no-code reason 封存完整 scope；71 项现有测试通过，运行时代码将在归档后的独立 M02 implementation change 中验证。"
+      },
+      {
+        "acceptanceId": "acceptance-cca20d61efbb1147b2cffd2f992088824c8038d025419a9b66a67bd116752289",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "审计与规格已分别定义浏览器停止、网络断开、accepted 取消信号和服务端权威终态；当前 change 无可执行流式实现。"
+      },
+      {
+        "acceptanceId": "acceptance-d31559acd5bb5e4bf02a02ff21ebb9bcbbe2757e475a558fdad4f03f8bdeedd0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "源码定位确认旧 CancelRegistry.cancel_all 会取消全部 in-flight token，且旧 /api/chat/cancel 不接收目标 run ID；本 change 只记录替换决策。"
+      }
+    ],
+    "traceHash": "8d8e8afabf0ed464c1105f237f82122c8130f79fc962913ccbea8c960648a95d"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/bb9620bc5f9c9b3da2421f3a630c3f2e8b81cafb413183ba2d2511e454cabbba.json",
+  "createdAt": "2026-07-23T14:46:33.166Z",
+  "envelopeHash": "1a2287693c7386a406a0efa9bc9c2df99e462742f914539cd61d004c32cc3a41"
+}

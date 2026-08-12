@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: refine-m05-memory-boundaries
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 2d0b701c31f5a6cbed06752e9795bf9bf7552416d25c2516e3bf61ae61a37ca8
+spec_changes:
+  - capability: m05-memory-boundaries
+    operation: create
+    source: specs/m05-memory-boundaries/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/2bd06f52179e7e04f9b10eb202795cd9a5a3b7afd7a59ddba7cdd7901ffc3c3a.json
+verification_evidence: runtime/evidence/verifications/875d4e75c472569b193ec25bf4fc12ad1adf4523eab096fb500f5b246952b4a0.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-11
+run_id: c23959ba-bce9-44dc-8c4e-7ec4a5f0d542

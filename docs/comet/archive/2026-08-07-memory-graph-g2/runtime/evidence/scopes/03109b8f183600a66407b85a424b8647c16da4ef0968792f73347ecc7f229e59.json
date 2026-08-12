@@ -1,0 +1,169 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "5206461b1aebdf7404ee123f3cd1d9323a26aa83e65f9dc32df7b74115842991",
+  "baselineProjectionRef": "runtime/evidence/snapshots/2abccdd572cebb408d9f33f70b2f86d0fbf90b3a968afc29606e579c3565703b.json",
+  "baselineProjectionHash": "2abccdd572cebb408d9f33f70b2f86d0fbf90b3a968afc29606e579c3565703b",
+  "currentProjectionRef": "runtime/evidence/snapshots/22f0d024d7239fee96ccd3ce87086987c1f7596912b37506f743c3e326a7bb1d.json",
+  "currentProjectionHash": "22f0d024d7239fee96ccd3ce87086987c1f7596912b37506f743c3e326a7bb1d",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "evals/memory/g2_admission.py",
+      "kind": "file"
+    },
+    {
+      "path": "evals/memory/g2_dataset.py",
+      "kind": "file"
+    },
+    {
+      "path": "evals/memory/g2_reference.py",
+      "kind": "file"
+    },
+    {
+      "path": "evals/memory/schemas/g2_case.schema.json",
+      "kind": "file"
+    },
+    {
+      "path": "evals/memory/schemas/g2_manifest.schema.json",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_g2_admission.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_g2_dataset.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_memory_g2_reference.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "evals/memory/g2_admission.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "554fe786d272d4e021adbaa01cd66c7a6f55063148229d9087bc87894f0c34a7",
+        "size": 12785
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/g2_admission.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "evals/memory/g2_dataset.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "c094b87d427b1d089e2da2c2da6a3f2357384c3f6bca84414cfe6e20bb7134d8",
+        "size": 23287
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/g2_dataset.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "evals/memory/g2_reference.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "f5f987cbe3412fd7345462d777093e7d21d8a06739913763d4ba3888e758c9e8",
+        "size": 13423
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/g2_reference.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "evals/memory/schemas/g2_case.schema.json",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "593c54c98bac9632071dd40602ec584c4f10db5767fa20451f4206bc7ded288d",
+        "size": 7647
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/schemas/g2_case.schema.json",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "evals/memory/schemas/g2_manifest.schema.json",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "47dc470cdd51e7a71a1ee15808ce7adea78fcd99f48220eb56ab5fc27f97b508",
+        "size": 1936
+      },
+      "attributedTo": [
+        {
+          "path": "evals/memory/schemas/g2_manifest.schema.json",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_g2_admission.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "e4e0407fba2e7db3f4afd6ec508b886010de12e8950b3c00f408ce0689dcf09b",
+        "size": 6228
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_g2_admission.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_g2_dataset.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "d4aa01d3b0cbf7e8d64de8288f9e3a70343010741a94479819e229fcfad81d6a",
+        "size": 8463
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_g2_dataset.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_memory_g2_reference.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "604da4863291a547615de6d3781f48123b16bf93cea67c7d6a7bfbb82e54ba31",
+        "size": 7809
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_memory_g2_reference.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "03109b8f183600a66407b85a424b8647c16da4ef0968792f73347ecc7f229e59"
+}

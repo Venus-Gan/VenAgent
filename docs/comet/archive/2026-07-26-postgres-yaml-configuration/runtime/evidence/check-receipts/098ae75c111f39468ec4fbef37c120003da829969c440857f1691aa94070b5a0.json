@@ -1,0 +1,44 @@
+{
+  "schema": "comet.native.check-receipt.v1",
+  "change": "postgres-yaml-configuration",
+  "sourceRevision": 6,
+  "checker": {
+    "policy": "scoped-text-safety",
+    "version": 1,
+    "hash": "0b8e0e9570269a64123ba2794f1f5125cf454695e1d7fda8f0acddf87ec4912f",
+    "limits": {
+      "maxFiles": 256,
+      "maxFileBytes": 1048576,
+      "maxTotalBytes": 8388608,
+      "maxIssues": 128
+    }
+  },
+  "inputHash": "db1c1be854ae58b7f9d676c3af08417db29806865ca47c667a28a9e7b96025d5",
+  "status": "passed",
+  "startedAt": "2026-07-26T14:51:54.614Z",
+  "endedAt": "2026-07-26T14:52:00.331Z",
+  "contract": {
+    "expectedHash": "578089e1d4f7567dee58c1c3f214fe9287eb37c00cb4e8335a4907a6b8c355f9",
+    "beforeHash": "578089e1d4f7567dee58c1c3f214fe9287eb37c00cb4e8335a4907a6b8c355f9",
+    "afterHash": "578089e1d4f7567dee58c1c3f214fe9287eb37c00cb4e8335a4907a6b8c355f9"
+  },
+  "implementation": {
+    "scopeHash": "cb6950ac1f723ba977857a7da8f8dbf2d91fd22c0a905fcff3eb080f4389f8c6",
+    "expectedSnapshotHash": "e006cae4550379d9900923bf6fc564c5c7c38208b6b31d60d5470ded57b9bab5",
+    "beforeSnapshotHash": "e006cae4550379d9900923bf6fc564c5c7c38208b6b31d60d5470ded57b9bab5",
+    "afterSnapshotHash": "e006cae4550379d9900923bf6fc564c5c7c38208b6b31d60d5470ded57b9bab5"
+  },
+  "counts": {
+    "filesSelected": 16,
+    "filesScanned": 16,
+    "binaryFilesSkipped": 0,
+    "bytesScanned": 68796,
+    "issueCount": 0,
+    "recordedIssueCount": 0
+  },
+  "issues": [],
+  "issuesTruncated": false,
+  "stale": false,
+  "staleReasons": [],
+  "receiptHash": "098ae75c111f39468ec4fbef37c120003da829969c440857f1691aa94070b5a0"
+}

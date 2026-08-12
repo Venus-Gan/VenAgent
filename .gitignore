@@ -39,3 +39,7 @@ nohup.out
 .ruff_cache/
 .mypy_cache/
 .claude/
+.agents/
+.comet/
+web/test-results/
+web/playwright-report/

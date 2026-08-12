@@ -224,47 +224,240 @@ sequenceDiagram
 
 ### 本地运行
 
-```bash
-# 1. 安装依赖
-pip install -r final/requirements.txt
-
-# 2. 启动基础设施（需要 Docker）
-cd final
-docker-compose up -d
-
-# 3. 配置 LLM API Key
-# 复制 .env.example 为 .env，填入本地密钥
-# .env 已被忽略；也可通过 AGI_CONFIG 指向本地 YAML 配置文件
-# 不要修改 tracked config.yaml 写入真实密钥
-
-# 4. 启动应用
-cd final && python main.py
-
-# 5. 访问 http://localhost:8090
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+Copy-Item .env.example .env
+# 编辑被 Git 忽略的 .env；模板内每组变量都注明用途和安全边界。
+.\.venv\Scripts\python.exe -m venagent
 ```
 
-> 所有基础设施（Milvus/PG/ES/Kafka/Neo4j）均为可选，连接失败自动降级为内存模式，不影响启动。
+访问 `http://127.0.0.1:8090`。完全不配置任何 `LLM_*` 变量时，应用使用无网络的本地回复模型。
+
+### 对话与图记忆持久化（PostgreSQL + Neo4j）
+
+本机无需安装 PostgreSQL 或 Neo4j，可直接使用根目录 Docker Compose 服务：
+
+```powershell
+$env:POSTGRES_PASSWORD = "仅用于本机开发的密码"
+$env:NEO4J_PASSWORD = "另一个仅用于本机开发的密码"
+docker compose up -d postgres neo4j
+.\.venv\Scripts\python.exe -m venagent migrate
+.\.venv\Scripts\python.exe -m venagent
+```
+
+`migrate` 是唯一建立或升级 PostgreSQL 业务/checkpointer schema 与 M05 Neo4j constraints 的入口；普通启动只做兼容性检查，不静默执行 DDL。PostgreSQL 不可用时聊天退化到进程内模式；Neo4j 不可用时只停用 G1 图增益，PostgreSQL 普通长期事实仍可召回。
+
+后端启动时会以自然中文逐项输出已接入的基础设施状态和最终汇总。未配置依赖与连接或 schema 故障会使用不同的稳定原因和文案；日志不会显示密码、完整连接串或原始异常。
+
+### 项目级检查与真实 PostgreSQL 测试
+
+Ruff 属于 `dev` extra，只安装在项目虚拟环境中，不要求全局安装：
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe -m ruff check venagent tests
+```
+
+真实 PostgreSQL 测试必须使用独立的 `venagent_test` 数据库。真实 Neo4j 测试只在显式配置 `TEST_NEO4J_URI` 时运行，并使用测试 owner/label 范围清理，不能对共享图执行全局删除：
+
+```powershell
+docker compose exec postgres createdb -U venagent -O venagent venagent_test
+$env:TEST_DATABASE_URL = "postgresql://venagent:<本地密码>@127.0.0.1:5432/venagent_test"
+.\.venv\Scripts\python.exe -m pytest -q tests\test_persistence.py
+$env:TEST_NEO4J_URI = "bolt://127.0.0.1:7687"
+$env:TEST_NEO4J_PASSWORD = "<本地 Neo4j 密码>"
+.\.venv\Scripts\python.exe -m pytest -q tests\test_neo4j_graph_memory.py
+```
+
+测试连接不得指向开发数据库 `venagent`；未配置专用连接时，真实数据库用例会明确显示为 skipped。
 
 ### 配置
 
-推荐复制 `.env.example` 为仓库根目录 `.env`，通过白名单环境变量注入；也可以使用被 Git 忽略的 `final/config/config.local.yaml`，或设置 `AGI_CONFIG` 指向仓库外配置文件：
+真实模型统一通过 `.env` 或显式进程环境中的 `LLM_*` 白名单配置。支持的 provider：
 
-- `llm.api_key` — OpenAI 兼容对话模型 API Key（DeepSeek / 火山方舟等）
-- `embedding.api_key` — Embedding 模型 API Key
+| provider | 额外必需配置 | 说明 |
+| --- | --- | --- |
+| `openai` | 无 | 官方 OpenAI；可省略自定义 API root |
+| `openai_compatible` | `BASE_URL` 或 `ENDPOINT_URL` 二选一 | OpenAI-compatible 第三方服务 |
+| `azure_openai` | `AZURE_ENDPOINT`、`AZURE_DEPLOYMENT`、`API_VERSION` | Azure OpenAI 原生 adapter |
+| `anthropic` | 无 | Anthropic 原生 adapter |
+| `google_genai` | 无 | Google Gemini 原生 adapter |
 
-进程环境变量优先于 `.env`，`.env` 优先于 YAML 配置。`.env` 和 `final/config/config.local.yaml` 都不应提交。
+OpenAI-family 默认使用 `LLM_API_MODE=chat_completions`，也可选择 `responses`。例如配置 `LLM_BASE_URL=https://api.example.com/v1` 与 `LLM_API_MODE=responses` 时，最终请求地址为 `/v1/responses`。`LLM_BASE_URL` 表示 SDK API root；`LLM_ENDPOINT_URL` 表示完整的 `/chat/completions` 或 `/responses` 地址。两者不能同时配置，配置层也不会猜测并自动追加 `/v1`。
 
-`final/config/config.yaml` 只保留安全模板，不应写入真实凭据。
+可选类型化参数包括：
+
+- `reasoning_effort`
+- `temperature`（`0..2`）
+- `max_tokens`（正整数）
+- `timeout`（正数秒）
+- `max_retries`（非负整数）
+- `verbosity`（`low` / `medium` / `high`）
+- `extra_body`（经过保留字段检查的 JSON object）
+
+`reasoning_effort` 与 `verbosity` 当前只用于 OpenAI-family/Azure。Anthropic/Gemini 的原生 thinking 配置通过 `EXTRA_BODY_JSON` 传入；配置层不会在不同厂商间猜测式换算强度。
+
+配置优先级为内建安全默认值、仓库根 `.env`、显式进程环境变量。应用只读取 `.env.example` 中记录的白名单；未知的包含双下划线的结构化键会快速失败。PostgreSQL、认证、服务端口和 LLM 均使用环境变量，秘密不会写入日志或错误。只要出现任意非空 `LLM_*` 字段，配置就必须完整合法，否则应用在启动装配阶段失败；不会静默回退并伪装为真实模型成功。
 
 ---
 
-## 当前目录结构（迁移期）
+## 目录结构
 
-下面是当前可运行实现与兼容壳结构，不是重构后的永久布局。目标结构与逐阶段映射见 [VenAgent 目标目录层次与迁移边界](docs/03-design/venagent-target-directory-structure.md)。
+当前渐进式运行时采用按能力优先的 package layout：
+
+```text
+venagent/                                      # 当前 M01--M05 Python 运行时
+├── __init__.py                                # 稳定公开 API
+├── __main__.py                                # serve/migrate CLI 入口
+├── bootstrap.py                               # 唯一 feature adapter composition root
+├── agent/                                     # AgentRun 与 LangGraph 执行能力
+│   ├── __init__.py                            # agent 稳定导出
+│   ├── errors.py                              # run 领域错误
+│   ├── graph.py                               # LangGraph 编译与 checkpoint serializer
+│   ├── observation.py                         # 在线观察发布/订阅，不保存运行事实
+│   ├── ports.py                               # RunStore 与模型调用消费方端口
+│   ├── runs.py                                # AgentRun 生命周期、claim 与 fencing
+│   ├── runtime.py                             # 调度、执行、恢复、取消与 façade
+│   └── state.py                               # 继续 LangGraph 所需的运行 State
+├── conversation/                              # 对话、正式消息与 run 创建用例
+│   ├── __init__.py                            # conversation 稳定导出
+│   ├── errors.py                              # 对话领域错误
+│   ├── models.py                              # Conversation/Message/RunCreation 值对象
+│   ├── ports.py                               # ConversationStore 消费方端口
+│   ├── rules.py                               # 输入、标识符与自动标题规则
+│   └── service.py                             # owner-scoped conversation 用例
+├── ownership/                                 # owner、user、session 与身份授权
+│   ├── __init__.py                            # ownership 稳定导出
+│   ├── errors.py                              # 身份、session 与授权错误
+│   ├── models.py                              # Actor/Owner/Session/RunGrant 值对象
+│   ├── ports.py                               # OwnershipStore/密码/token 端口
+│   └── service.py                             # 注册、登录、refresh 与删除用例
+├── memory/                                    # M05 记忆授权、生命周期、召回与管理
+│   ├── __init__.py                            # MemoryService/command 稳定导出
+│   ├── authorization.py                       # MemoryAuthorizer 与 request snapshot
+│   ├── capabilities.py                        # Health/Settings 与能力状态注册表
+│   ├── command_adapter.py                     # /memory 解析与 MemoryCommandResult
+│   ├── errors.py                              # 记忆领域与安全错误
+│   ├── graph.py                               # 纯 G1 关系规则
+│   ├── model_adapters.py                      # extractor/judge/summary 模型适配
+│   ├── jobs.py                                # job 值对象、dispatch、retry 与 fencing
+│   ├── job_worker.py                          # lifespan polling worker
+│   ├── management.py                          # 查询、更新、删除、确认与开关用例
+│   ├── ports.py                               # memory 消费方窄端口与组合端口
+│   ├── recall.py                              # 授权后 short/long/G1 候选召回与排序
+│   ├── service.py                             # 显式组合协作者的稳定 façade
+│   ├── short_term.py                          # turn 选择、摘要构建与校验
+│   ├── embedding/                             # M05 embedding 与派生索引边界
+│   │   ├── __init__.py                        # index/port 稳定导出
+│   │   └── index.py                           # owner 范围向量投影与余弦召回
+│   ├── graph_memory/                          # GraphMemory 应用边界
+│   │   ├── __init__.py                        # GraphMemory 稳定导出
+│   │   └── service.py                         # 权威 store 到图 store 的 G1 用例
+│   └── long_term/                             # 长期事实、策略与写入行为
+│       ├── __init__.py                        # 长期事实稳定导出
+│       ├── facts.py                           # MemoryFact/Source/Page 值对象
+│       ├── conflict.py                        # ADD/UPDATE/NOOP/QUARANTINE 决策
+│       ├── extractor.py                       # 严格候选 schema 与原文 span 校验
+│       ├── policy.py                          # 提取、资格、安全、相似度规则
+│       └── writer.py                          # LongTermWriter 版本化与隔离处理
+├── promptctx/                                 # 模型调用上下文的通用唯一所有者
+│   ├── __init__.py                            # context/schema/assembler 稳定导出
+│   ├── assembler.py                           # 确定性投影、placement 与 token 预算
+│   ├── context.py                             # ContextBlock/ModelCallContext/BudgetReport
+│   ├── errors.py                              # 投影配置与 overflow 错误
+│   ├── recall_provider.py                     # 合格 memory 候选转 ContextBlock
+│   ├── schema.py                              # SectionSpec/ProjectionPolicy/角色策略
+│   └── source.py                              # 类型化 ContextSource 合约与基础来源
+├── repo/                                      # feature port 的具体 adapters
+│   ├── __init__.py                            # repository adapter package 标识
+│   ├── postgresql/                            # PostgreSQL feature adapters
+│   │   ├── __init__.py                        # PostgreSQL adapter 稳定导出
+│   │   ├── conversation.py                    # ConversationStore SQL 行为
+│   │   ├── conversation_mapping.py            # conversation/message/run 共享行映射
+│   │   ├── conversation_runtime.py            # conversation/run 薄共享 façade
+│   │   ├── ownership.py                       # OwnershipStore 及 ownership 行映射
+│   │   ├── runs.py                            # RunStore SQL、claim 与 fencing
+│   │   └── memory/                            # PostgreSQL memory authority adapters
+│   │       ├── __init__.py                    # 完整 PostgresMemoryStore 组合
+│   │       ├── index.py                       # PostgreSQL real[] 派生向量 adapter
+│   │       ├── jobs.py                        # durable job/fencing 持久化
+│   │       ├── long_term.py                   # 长期事实、来源与确认持久化
+│   │       ├── row_mapping.py                 # memory 数据库 row 映射
+│   │       └── short_term.py                  # conversation summary 持久化
+│   ├── temporary/                             # 进程内 feature adapters
+│   │   ├── __init__.py                        # temporary adapter 稳定导出
+│   │   ├── conversation.py                    # 进程内 conversation 行为
+│   │   ├── conversation_runtime.py            # 共享 state 的 conversation/run 薄 façade
+│   │   ├── ownership.py                       # 进程内 owner/session adapter
+│   │   ├── runs.py                            # 进程内 run、claim 与 fencing 行为
+│   │   ├── state.py                           # conversation/ownership/run 共享进程状态
+│   │   └── memory/                            # 进程内 memory adapters
+│   │       ├── __init__.py                    # TemporaryMemoryStore/graph 稳定导出
+│   │       ├── fact_state.py                  # tombstone/redaction/确认哈希 helper
+│   │       ├── graph.py                       # 测试与 temporary G1 graph store
+│   │       ├── index.py                       # 进程内派生向量 adapter
+│   │       ├── jobs.py                        # 进程内 job 状态与 claim
+│   │       ├── long_term.py                   # 进程内事实、来源与确认
+│   │       ├── short_term.py                  # 进程内 summary store
+│   │       └── state.py                       # 完整 TemporaryMemoryStore 组合状态
+│   └── neo4j/                                 # Neo4j feature adapters
+│       ├── __init__.py                        # Neo4j memory adapter 稳定导出
+│       └── memory_graph.py                    # durable G1 edge adapter
+├── platform/                                  # 共享技术资源与运行期能力
+│   ├── __init__.py                            # 平台状态、runtime 与迁移稳定导出
+│   ├── errors.py                              # 连接、迁移与 schema 错误
+│   ├── observability.py                       # 启动报告与结构化状态日志
+│   ├── runtime.py                             # backend-neutral 资源/状态/lifecycle façade
+│   ├── postgresql/                            # PostgreSQL 技术资源
+│   │   ├── __init__.py                        # PostgreSQL runtime/migration 导出
+│   │   ├── migrations.py                     # 业务与 LangGraph schema 迁移
+│   │   └── runtime.py                         # pool、schema 校验与 checkpointer 生命周期
+│   ├── neo4j/                                 # Neo4j 技术资源
+│   │   ├── __init__.py                        # Neo4j runtime/migration 导出
+│   │   ├── migrations.py                     # 显式 graph schema migration/validation
+│   │   └── runtime.py                         # driver 生命周期与安全降级
+│   └── security/                              # ownership 的技术安全 adapters
+│       ├── __init__.py                        # password/token 稳定导出
+│       ├── passwords.py                       # Argon2 密码哈希 adapter
+│       └── tokens.py                          # JWT access/refresh token adapter
+├── llm/                                       # 模型配置与 provider adapter
+│   ├── __init__.py                            # runtime model factory 稳定导出
+│   ├── config.py                              # provider 配置解析与校验
+│   ├── embeddings.py                          # M05/M08 通用 /embeddings HTTP adapter
+│   ├── factory.py                             # 模型实例选择与装配
+│   └── providers.py                           # provider factory 与参数映射
+├── config/                                    # 环境配置边界
+│   ├── __init__.py                            # AppConfig 与 loader 稳定导出
+│   └── loader.py                              # .env 白名单加载与 Pydantic 校验
+└── interfaces/                                # 外部 transport adapters
+    ├── __init__.py                            # interfaces package 标识
+    └── http/                                  # FastAPI/HTTP/SSE 边界
+        ├── __init__.py                        # app/create_app 稳定导出
+        ├── app.py                             # app、health、Web UI 与 lifespan 协调
+        ├── auth.py                            # cookie、origin 与 actor 解析
+        ├── errors.py                          # 领域错误到 HTTP 错误映射
+        ├── schemas.py                         # HTTP Pydantic 请求/响应模型
+        ├── streaming.py                       # run snapshot/token SSE 投影
+        └── routes/                            # 按消费面拆分的 endpoint 注册
+            ├── __init__.py                    # route group 稳定注册入口
+            ├── auth.py                        # 身份、session 与账号 routes
+            ├── conversations.py               # conversation 查询/重命名/删除 routes
+            └── runs.py                        # run 创建/重试/取消/SSE routes
+
+web/                                           # Vue 3 前端；生产构建由 FastAPI 托管
+├── src/modules/                               # chat、ownership 等前端能力模块
+├── tests/e2e/                                 # Playwright 端到端验收
+└── vite.config.ts                             # 开发代理与构建配置
+```
+
+依赖方向为 `interfaces → feature services/ports ← repo adapters`。`repo/` 只实现 feature ports，`platform/` 只管理共享技术资源；具体 adapter 只在 `bootstrap.py` 装配。PostgreSQL feature adapters 接收 `platform/postgresql/runtime.py` 创建的同步业务连接池，不自行读取 DSN、创建连接池或关闭连接。LangGraph 官方异步 checkpointer 使用独立池，但仍由同一个 PostgreSQL runtime 统一管理生命周期；Neo4j driver 同理由 `platform/neo4j/runtime.py` 管理。`promptctx/` 只装配已授权候选，memory 拥有授权、生命周期与召回排序，agent 拥有运行编排。当前 HTTP 层不取得原始数据库连接。
+
+以下 `final/` 目录保留为旧项目实现与功能参考，不是当前渐进式运行时的包边界。
 
 ```
 final/
-├── config/                   配置加载（YAML → Python 数据类）
+├── config/                   legacy 配置加载（历史 YAML → Python 数据类）
 │   ├── config.py
 │   └── config.yaml
 ├── internal/
@@ -288,45 +481,6 @@ final/
 ├── requirements.txt          Python 依赖
 └── docker-compose.yml        基础设施编排
 ```
-
-Phase 1 已建立的目标边界：
-
-```
-apps/api/
-├── main.py                  无副作用 app factory
-├── lifespan.py              FastAPI 启动/关闭边界
-└── compat.py                APIConfig/build_deps 兼容适配
-
-src/venagent/
-├── infrastructure/config/   不可变配置与分层加载
-├── infrastructure/health/   capability health/degradation
-├── infrastructure/lifecycle/资源生命周期管理
-└── bootstrap/               staged/concurrent Bootstrap
-```
-
-`final/` 仍是迁移期事实源和兼容入口；新代码不反向导入 `final`。
-
----
-
-## 重构状态
-
-Phase 1「配置与 Bootstrap」已完成，P1-01～P1-11 全部通过验收：
-
-- ✅ 不可变配置模型、五层配置合并、secret 脱敏和 fail-fast 配置错误；
-- ✅ staged Bootstrap、并发初始化迁移和 `UnifiedAgent` 构造器副作用隔离；
-- ✅ FastAPI lifespan、同步/异步资源反序关闭、worker 排空和失败回滚；
-- ✅ capability health 与 durable/non-durable degradation 语义；
-- ✅ `APIConfig/build_deps` 兼容 façade，旧入口单向委托新 Bootstrap；
-- ✅ `.env`→白名单环境变量→canonical loader→legacy `APIConfig` 注入链路，进程环境变量优先；
-- ✅ 启动、关闭、取消、降级、HTTP/SSE/OpenAPI 和网络熔断集成门禁。
-
-Phase 1 验证结果：`309 passed`，`src/venagent` 覆盖率 93%，`apps/api` 覆盖率 91%。测试默认开启网络熔断，不连接真实 LLM、HTTP、数据库、MCP 或 Docker。
-
-尚未开始的后续工作包括：Phase 2 Ports、CapabilityBroker、授权体系；真实 LangGraph、PostgreSQL checkpointer、MCP client/server；以及真流式 LLM→RuntimeEvent→SSE 迁移。`final/` 会在兼容窗口内保留，默认入口切换和 legacy 清理属于后续阶段。
-
-当前事实审计、目标架构、[目标目录层次](docs/03-design/venagent-target-directory-structure.md)、最终需求矩阵与实施路线从 [VenAgent 文档索引](docs/README.md) 进入。
-
----
 
 ## License
 

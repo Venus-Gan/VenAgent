@@ -1,0 +1,2184 @@
+{
+  "schema": "comet.native.content-snapshot-projection.v1",
+  "origin": "explicit",
+  "capture": {
+    "provider": "git"
+  },
+  "complete": true,
+  "limits": {
+    "maxFiles": 10000,
+    "maxFileBytes": 5242880,
+    "maxTotalBytes": 67108864,
+    "maxManifestBytes": 1048576
+  },
+  "entries": [
+    {
+      "path": ".gitignore",
+      "hash": "e9879f404caf09f49264d82a995324eb88b7b89e2c1bff24f4a80a9ee868ea54",
+      "size": 453,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "hash": "cb036fb96f663d2f2a211ec7eccd6ba20594e834aeb562e4a48c4eef801b6581",
+      "size": 27819,
+      "type": "file"
+    },
+    {
+      "path": "compose.yaml",
+      "hash": "afa316399827950a20ed4f5d7e94f76c7064b0f7e8ee079683cdb60d57572a92",
+      "size": 1247,
+      "type": "file"
+    },
+    {
+      "path": "docs/discussions/agent-runtime-context-decisions.md",
+      "hash": "dc77eda105a223c6f634394b3dc246afbfc75ef2b9eeee9c9429d88f6c90e8b5",
+      "size": 84804,
+      "type": "file"
+    },
+    {
+      "path": "docs/discussions/agi-saber-design-reference.md",
+      "hash": "c4cbf58888d762e59efd12246c12e1794e048cf8d1a8f9aeb55e4d1cb874d2fa",
+      "size": 25029,
+      "type": "file"
+    },
+    {
+      "path": "docs/documentation-language.md",
+      "hash": "fedd2a40166e1800ee3d1ce0ed8758b5b249dda1dc7f09b0bc80098ecb94529e",
+      "size": 580,
+      "type": "file"
+    },
+    {
+      "path": "evals/__init__.py",
+      "hash": "42f38b114f05ecebb21aff25bedca0f8dc45f888f66937fc32f8217885e088f6",
+      "size": 40,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/__init__.py",
+      "hash": "c174225ec5311f0c2bc66b715f0abc608aa9637077655a8f299228701717b6e2",
+      "size": 41,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/graph_gold_v1.jsonl",
+      "hash": "0445893bb6f9b48f803041ab050c6073304d4a0ce4aa13f58346a1034f2e3341",
+      "size": 327,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/metrics.py",
+      "hash": "b99190801300db710e181738e7f70edba82515fa257c2663619852ab88a7463b",
+      "size": 2936,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/recall_gold_v1.jsonl",
+      "hash": "ce5970f43af81109e39489f6402a3fd3090a50eaa2e7cc2109e0bbdb5ae2d64d",
+      "size": 1147,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/runner.py",
+      "hash": "7d6f6d7123186e7d198720c3ad3567123febadac6b1aeb8db343b922f12b1cc5",
+      "size": 5311,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/store_policy_v1.jsonl",
+      "hash": "3868a337180898df1defaafbfa336628448a80c94e311012590503a59d23a610",
+      "size": 1026,
+      "type": "file"
+    },
+    {
+      "path": "evals/memory/timelines_v1.jsonl",
+      "hash": "dcd5dfa21017dc445225c6916120db433f3ef45b4cb51279a602bcff0f51c5ae",
+      "size": 1232,
+      "type": "file"
+    },
+    {
+      "path": "final/.dockerignore",
+      "hash": "bd6679b98f54ab5e03f8074c9672652838875df10d8430a3008f720fd6eacdbd",
+      "size": 407,
+      "type": "file"
+    },
+    {
+      "path": "final/.gitignore",
+      "hash": "85a3a6c195edb2cf26f9a1390560bf887f53ed228bd0ba5f9724dcae6386cfb2",
+      "size": 423,
+      "type": "file"
+    },
+    {
+      "path": "final/Dockerfile",
+      "hash": "3af2726c7291446de78437f7daae813aea5ef2a97d932f19dc46ef4d9608f50d",
+      "size": 1076,
+      "type": "file"
+    },
+    {
+      "path": "final/config/__init__.py",
+      "hash": "08cdb861e07b89d41d20bfe8c1f1035de7edb873ec27bb81fac9c5107ab01df6",
+      "size": 47,
+      "type": "file"
+    },
+    {
+      "path": "final/config/config.md",
+      "hash": "462c34e06d70526ace62188ff886e779046a13f7b15cb657af4708d96a19e27a",
+      "size": 1682,
+      "type": "file"
+    },
+    {
+      "path": "final/config/config.py",
+      "hash": "728c87d5cbf15fe5f9ac56d975ab023e54a231a0ba1b9023ffec959b42a81411",
+      "size": 14692,
+      "type": "file"
+    },
+    {
+      "path": "final/config/config.yaml",
+      "hash": "c56f6c132d922657b88aa980a0960679b352f3fa14cfbce4c69aa3b97a8149dc",
+      "size": 2909,
+      "type": "file"
+    },
+    {
+      "path": "final/docker-compose.yml",
+      "hash": "8053e040b806b1dfbdf79f4e92c5480800bcd2fe16b718bcff2cc57862504dc5",
+      "size": 5127,
+      "type": "file"
+    },
+    {
+      "path": "final/frontend/index.html",
+      "hash": "cbcfacce362dc76afd35198b2e25aa0bc129ebaaa6c8ac99eee05ff9cafe4400",
+      "size": 68004,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/__init__.py",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/__init__.py",
+      "hash": "3ec5a32673a221fb3bf7d9a1411921b0a3650b2983fb1f5360dee05892e91fe4",
+      "size": 561,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/agent.py",
+      "hash": "eca9aab2b7df66aba332ce57f86965aef046491758ee9c4f0e3ddd24b0e77602",
+      "size": 48296,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/bootstrap_adapter.py",
+      "hash": "c08043465243527d8c411da0cde17ead4de5b11580922422745f5de42d388f06",
+      "size": 1764,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/cancel.py",
+      "hash": "c5759b8290627c2414cc02a9225eb586d159e4af87d217de868767e1fb2abec3",
+      "size": 3656,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/graph_runtime.py",
+      "hash": "ef2b209f4da3821b29c61d5f1b72910cc1e230dea8663f9189d7c323c5194436",
+      "size": 14023,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/init_sandbox.py",
+      "hash": "8526ea8dd81ad4633891c6c83a262a016d5be70cdcf1a90a63bf7e400467fa21",
+      "size": 3886,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/langgraph/__init__.py",
+      "hash": "84f841b5915e2db1df6ca5e8b669d65a2206a593dd0e37ada823640375fab3ea",
+      "size": 643,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/langgraph/builder.py",
+      "hash": "87002fed62cd9fc5472611d36542a8091c39a7595c7ef045566e39e078f08b6a",
+      "size": 9196,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/langgraph/nodes.py",
+      "hash": "7ec535d0604662233efd2a3c0157c3f718baf2b83b3ac62f9148adf0702b2a12",
+      "size": 1592,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/langgraph/runtime.py",
+      "hash": "bda02761c5d5ccdd8095c97ed9c9ecd4fa0d82d960ea8d7134fd44229142ca0e",
+      "size": 6495,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/langgraph/state.py",
+      "hash": "08a8710703c13a7e0772eebc9ebf526b62eac5fec047a252109b16ba8476ce14",
+      "size": 1908,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/memory_writer.py",
+      "hash": "a3633aa70bb2d7d4ef051aa1f4dfce70b49ab9817b607214587b9e034ad1eab9",
+      "size": 14987,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/planner.py",
+      "hash": "7df16633ef59ce5f56da7436278a5e12c5e407af7fc6a4290d616a141ccfdbbf",
+      "size": 12341,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/__init__.py",
+      "hash": "233a9188e0c850a5017709574ac4a4b3e877b06b3e492a3b53ce50481a710891",
+      "size": 317,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/execution_projection.py",
+      "hash": "a2e0cc02dba1daccaab22382e1e62b590c1e9a642e7434d670790e8b016828b5",
+      "size": 1458,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/fallback.py",
+      "hash": "419fff925be6d7a92e202a2fe98503c6b894e18287d2f379e76ff342d91d64e6",
+      "size": 2081,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/intent_policy.py",
+      "hash": "934ebde9b10bac8aebe4af826781804ae6cacb34e60ff1d80fe570203f6d5131",
+      "size": 10674,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/registry.py",
+      "hash": "6ff3d2884ad097e13446376bcf942fcc39bafad878f87cc3469aed094d23cdfa",
+      "size": 3246,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/policy/types.py",
+      "hash": "bc1d596f1d42a02022dbef1b2523bee0be090e34297e0e1bbd4992dc6336f2ec",
+      "size": 3433,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/restore.py",
+      "hash": "81651c52f1a0f2e578b8ba9b5c98393e4fbe4c2de9611b1e38014a8036a6bb25",
+      "size": 5852,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/router.py",
+      "hash": "d0fce9a9e03c05e453a65817b69280bab2f71dcd4dfd68db3175292ba0743b59",
+      "size": 1935,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/runtime_governance.py",
+      "hash": "d43fdce7c5ce30ab205df0a94d5dbcf0b801c74ed29a0f431f00a8a13e96677f",
+      "size": 2924,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/status.py",
+      "hash": "8153f3dc640addda4c576527a529394505c72db4f8048e9353e25bb28cb6b895",
+      "size": 2844,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agent/subagents.py",
+      "hash": "94118ab55fd6d75a2cc1563aec838fdecfbd409f1c35adaf38c9eef768d736cc",
+      "size": 1735,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/__init__.py",
+      "hash": "fbdd1e0332225b56a3f6b1717313bb1501f4edcfae37f0f6eb4f588fd303e870",
+      "size": 322,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/contracts.py",
+      "hash": "075e473dc6b955d61ff65280397f9089641532b38067e8f20461e68a6f07bd41",
+      "size": 3063,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/presets/__init__.py",
+      "hash": "85cd60fe762480246ed50517bfeaec238cfac635efe1a3dea6de49288a0b8151",
+      "size": 838,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/presets/doc.py",
+      "hash": "0eefb54efc70aa05fd1f2472199a1b32e6d89e148935c58e3c994f13bc720765",
+      "size": 6035,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/presets/research.py",
+      "hash": "775c406eb99e232ef452ea42e399747cba52c938895a2a3c5e25eb20b3bf9cf4",
+      "size": 2707,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/presets/review.py",
+      "hash": "8f86654243073b81256d214c570858810bbf247d6d71fe21d13bf65e53334d77",
+      "size": 2207,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/presets/writer.py",
+      "hash": "74ff7578ec59ed217d21999e6d997017b1bad6bd395149a2239ed3b8b5bb1e6d",
+      "size": 2693,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/agentteam/registry.py",
+      "hash": "0aacf98f8447520eadf375d49365fc6ff72067187e1f2ac2408e34f765aa48c1",
+      "size": 2178,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/document/__init__.py",
+      "hash": "11bfae007c5e307c65efdf8c54281a212a54af0b46dc402db1a257f3bc1d8ad0",
+      "size": 555,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/document/library.py",
+      "hash": "295eea081a79c11350b78da4baffd7adaf36ce37a85356ff2ac033a6e468d02c",
+      "size": 2014,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/document/parser.py",
+      "hash": "3723fba52de1a591650cff17f36fdc0ab85561486f3a30e39d82f71cbe41385c",
+      "size": 5213,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/graph/__init__.py",
+      "hash": "4056aa3ac26388198e14006a7106c803f07f1f2a6461d9b75b0949292cef79bd",
+      "size": 897,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/graph/extractor.py",
+      "hash": "41328d8d8f3a13529cb97983a6611e9da4c07167f1abd0547925101336fc8951",
+      "size": 4316,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/graph/kgstore.py",
+      "hash": "33eb9ff4e64b423dbdcec95f0146679b1501d5499f2e15930ae512ba17f4fedb",
+      "size": 10822,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/graph/task_graph.py",
+      "hash": "f3c4ee81a9a114136637bc01a1061beac0d56c018986a86c6ec36bd8822e218f",
+      "size": 4761,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/graph/types.py",
+      "hash": "b5323b62f7151a3a55f9d0c4c7b9436968bf06495d44a3c71840e2fd386d6dcd",
+      "size": 2052,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/handler/__init__.py",
+      "hash": "d3ea87ea62d68eac360944f74c72de259fa7e78e37c61bd74b70e3a0c57b199d",
+      "size": 35,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/handler/handler.py",
+      "hash": "73178a18a3d5788b335e8fee49a88d8808a75cd44231192480f9246ec756c884",
+      "size": 27212,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/infra/__init__.py",
+      "hash": "4346b84cf9a75b53797857b281d571c1106244e120c278f3b87e7f0b113c6f3e",
+      "size": 56,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/infra/infra.py",
+      "hash": "9197d548f65cb25c960408aca7071892fd9ffb7f7e22ae68bbcb61a3d605d6a4",
+      "size": 24637,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/llm/__init__.py",
+      "hash": "6572ba4152d33d1fbd576cd2cc166a04a0e0cdb42b238ded124829a270e38834",
+      "size": 34,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/llm/llm.py",
+      "hash": "c88a4b17ca05a49dd003f4eec8364e250b5dc313cf3fe7091f8277380ed0a5d9",
+      "size": 14450,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/memory/__init__.py",
+      "hash": "c050b3bcd6a7fd2460c14c1bf6140a9041ed9f039438c675d8d24b7c55236526",
+      "size": 83,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/memory/graph_memory.py",
+      "hash": "c16b863277db610ce152ce33af48467cfd654dc105b30f723de8964448a1e680",
+      "size": 16359,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/memory/mem_stack.py",
+      "hash": "52e2c3d188692e7bdf6e104ac23f60a425d62e06f58f3d6e7109f27e15fc270b",
+      "size": 4710,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/memory/memory.py",
+      "hash": "395b72a4e656381fb130ff1bccf444a41f713d9f9306fc21105c30065e7baea1",
+      "size": 40399,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/memory/preference.py",
+      "hash": "f678414b41c0af70de3d516fbe6388667a38ecbd419c9763223623a0ca3397b7",
+      "size": 3433,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/__init__.py",
+      "hash": "c780872e2491ae5e6cbf957262aaf0a170b5f1c2cf04ee00b06139341f948570",
+      "size": 539,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/es.py",
+      "hash": "bca45156753b1b85d556d1633f73d25a1931d8d8e6b625273df0e622594600fe",
+      "size": 4347,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/kafka.py",
+      "hash": "d5555ab3566f97d29ae4c8973ee101b39134d79c4877ba3ecd011008e8f17668",
+      "size": 4010,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/milvus.py",
+      "hash": "61c4884150b746a13a0fc88ea381b7acd544aad66a404c63a31741d393222d82",
+      "size": 11211,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/neo4j.py",
+      "hash": "f23977dc9658c2c9748370e20e34fcf7bb7c9dff24040d80184c014821a2f9f4",
+      "size": 5189,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/platform/postgres.py",
+      "hash": "5b3d785654374535d677623d97829a583957850e067d3a84e67d84d3bf3c785a",
+      "size": 9919,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/__init__.py",
+      "hash": "21b98949edf018e33af88cbcf7f7958a21dba3ce6b2d0e0499aa4673a7d4711e",
+      "size": 2527,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/assembler.py",
+      "hash": "36265e0f72c96f74fd8b4549c293c15cacf72e0445593b72a345bcad637d156a",
+      "size": 6476,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/context.py",
+      "hash": "18d8b1ae5584e37f37354f04e386df3dcddb155fd189fbeb5ba939f34069f061",
+      "size": 2298,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/schema.py",
+      "hash": "aadb73efd5b030bf8011c00f5e3cfe01df4fd9cbe8322cf482bbb6cd815ca187",
+      "size": 5453,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/slot.py",
+      "hash": "d2ffed456fc4212fa9e3c8e8bbe29560b13bd2e22fb909bf9b6d6695d36529ea",
+      "size": 2549,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source.py",
+      "hash": "9f431ad035a269715d08325bda455e5efebd962e21a88fa70a2541baad31c8dd",
+      "size": 1430,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_constraints.py",
+      "hash": "070e1eebc2059ae13737c5a5b666cabafcd7c77dc404c45cd68f219eafafd908",
+      "size": 2373,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_planner.py",
+      "hash": "6fd9c2827cc879bb3c23524d8c0d2b2738ad5d36fdcaf78949eef91d098cb919",
+      "size": 2734,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_profile.py",
+      "hash": "e552ac9a3c99c98bf1348dad8440eb4bcaba8cd1833e2a0e2d5cf1946aa5c8ad",
+      "size": 3151,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_recall.py",
+      "hash": "6be5ad9fe81d7d62c95f445fb72b7f10a37fbbe5bd7257f9e1714bb24b83e248",
+      "size": 2932,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_taskmem.py",
+      "hash": "59aace176ec96d7f24cc137d3426bdfa77e25bee5a5a60658586cb875eb90f43",
+      "size": 3120,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/promptctx/source_tools.py",
+      "hash": "2f0ada93030cb343e0d3113e445ea2454ed147b4cedf78a1fc4ead2a287dec06",
+      "size": 5099,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/__init__.py",
+      "hash": "d4f2e244139ad2a1d7d935c5e4b61347cf70d22c40c4e37394c480183affbd4f",
+      "size": 79,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/hybrid.py",
+      "hash": "325b7cb003fbcb82fdb7adb4edc06fb255d47222361252b81ba4f920946bef61",
+      "size": 17254,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/rag.py",
+      "hash": "04bdb758fb0b685daf57c603e0e7c05f35e19b4e6cdb3dd4c73757ef943e7c0f",
+      "size": 11852,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/reranker.py",
+      "hash": "44da740f77632de680585404aec09fa6f0cb3199636d493264bbc463161d6579",
+      "size": 4506,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/rewriter.py",
+      "hash": "779a86fee71155eacfceac9d8f19d5e32f48ef2e0cd7dd710d9664a7a9d0fb05",
+      "size": 3720,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/rag/splitter.py",
+      "hash": "fcd0c9f76a20ea7d85ac58f418edebb2261a752dc67859e3cf79e45a1c6c752b",
+      "size": 6361,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/__init__.py",
+      "hash": "34f5696c0644b61e22ed2d80db9382914dc30cb763f88cf0ce1b20c2b0f184c4",
+      "size": 481,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/chathistory.py",
+      "hash": "ce705074c8c3188f55bc17c6eb9e0ed7c5f279fdc1242886bdc95f49090a3ac9",
+      "size": 2059,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/documentrepo.py",
+      "hash": "9a766da2edc531d02901516dfedfbea8f7ca5ef766c2ded48f67aadc467f7cf2",
+      "size": 8106,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/eventbus.py",
+      "hash": "fc190a89eadc8232e40ae1972f47fba9dd61008731c8fa00ecbcc54ed7da2387",
+      "size": 1242,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/longterm.py",
+      "hash": "ad5f612c1e9268985a5905cf342cac798dd6300fd046365faa0a8a7fd3e7678b",
+      "size": 8083,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/preference.py",
+      "hash": "d44248e0399e3e376055253ee55e3930f94b8f945f946541b16bba6f5d23926c",
+      "size": 1637,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/ragchunk.py",
+      "hash": "94d56d1071be5d8ce2882b622616b2d67b699deae021a821c8910a7998367947",
+      "size": 19148,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/repo/snapshot.py",
+      "hash": "b4bb3fd6890a798ac5c012beecc582c68231255565e961901d51bb34a2bde4be",
+      "size": 2339,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/__init__.py",
+      "hash": "ddf1c4c3799c4593438f2647a5441761a9757af343a54a52c3c75ecb06f4b76c",
+      "size": 832,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/docker.py",
+      "hash": "e64e5cb4541f911e631df5ab2aade9017ca7674eade6b2dac940513ef99e424a",
+      "size": 4865,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/executor.py",
+      "hash": "8866cac87f6340817f4ab093be94dfc2f20746adb5a3ee4aee5f69acf64a3f21",
+      "size": 3889,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/factory.py",
+      "hash": "ae88a83903dbdc6af8a001f44eaab0a6130c05d98cceda8a3404bb3e6665f5eb",
+      "size": 848,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/local.py",
+      "hash": "fef3a09b6cf5bd99fa2ab380d7cd2dd63f9a8aa251544454d5879faba7312d72",
+      "size": 3966,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/types.py",
+      "hash": "62055f8240d4689568e0b1ca29080efcae6885bc2f1e4bfa4b6c1a533a948076",
+      "size": 2676,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/sandbox/validator.py",
+      "hash": "598caf38d89fe083bb066c9a2dbe74ac21e5501bdd1a935030345e9d8c36aff0",
+      "size": 5329,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/tools/__init__.py",
+      "hash": "a92d530d6869700fa1a83e7af5a2067cf11f886f8f9198fb6f856eb8268056fc",
+      "size": 88,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/tools/exec_command.py",
+      "hash": "23b94b3deadb328b0ea45c80ddf7f6906d067a97ae370800ac21055f4c78d45e",
+      "size": 3176,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/tools/mcp_catalog.py",
+      "hash": "1a8dcc8e128cd24ff357528d7cde381f620e523ff5d14e1f591b9a74a5bcc13a",
+      "size": 1950,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/tools/tavily.py",
+      "hash": "6d5081e1c986a4510bb587a44b7226387ab39d0b57c19f134e94a681826c6f7c",
+      "size": 2511,
+      "type": "file"
+    },
+    {
+      "path": "final/internal/tools/tools.py",
+      "hash": "0e236b4b9149525e1bf19c7624b608d8131cc7aafe3c94ac6fe0fe9701c01aa2",
+      "size": 14881,
+      "type": "file"
+    },
+    {
+      "path": "final/main.py",
+      "hash": "397a70c35bbf042a57ea18631bedc40972678245ed33635ecb7c704c4c983c27",
+      "size": 5465,
+      "type": "file"
+    },
+    {
+      "path": "final/requirements.txt",
+      "hash": "4a81f15802978aea80a38de5d37b22c47b31cf8dbb5fed5b677fa7e63ac5ef98",
+      "size": 260,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/conftest.py",
+      "hash": "be56d3cbec764b793d418448c8ccff3591d7a0b01164efc9c514892ed08eee56",
+      "size": 775,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/fixtures/__init__.py",
+      "hash": "46b749b1d939ce90c901f4312cd44473671b4295b91cb3514c7a3dff5c393a93",
+      "size": 77,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/fixtures/phase0_behavior_cases.py",
+      "hash": "a75e0eada98babfbcc6e38f58bca19803902d4a87b6da116b1c45e9ff4e1cdc0",
+      "size": 931,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/network_guard.py",
+      "hash": "071bd420779d80ff6dd9f71bf1a4e65dfa8770cb557511f45593fd7e4dfd95a5",
+      "size": 3177,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agent_boundary_facade.py",
+      "hash": "498b99934233e849191ece82584599b6cedd5506304c3f105d9fbe789880706e",
+      "size": 4000,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agent_promptctx_alignment.py",
+      "hash": "87f75d1238d0ea672157a185597e7c5d926177d4aa47f76525b8976d05fa6d3e",
+      "size": 3621,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agent_stream.py",
+      "hash": "0a4175d89253ac3c8302ee069d7223d45e44d1b9982af33a127c8406a8e63854",
+      "size": 6366,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agentteam_contract_registry.py",
+      "hash": "d973c37dbcc77fddee12e34084be0354aa405c4bf86df15e489bd7d627822933",
+      "size": 3295,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agentteam_presets_research_writer.py",
+      "hash": "fdedcea1602580aa1b91be468f233a27205142dc2f7718303ff0fc79764fce2f",
+      "size": 2588,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_agentteam_presets_review_doc.py",
+      "hash": "93f76b340a2541261e732aba0fcd1e150275be06ceb33c882cb6608ddd0bd83e",
+      "size": 4189,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_bootstrap_concurrent.py",
+      "hash": "cb958f9dc0cb9b09702a1cb0aec8229df380ef85a4ef4a923a4bff4daa3d4f3f",
+      "size": 5481,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_cancel_registry.py",
+      "hash": "73488f7b5958b1c9ef99a4069fd6ec2e2bb294624027cb8ff6f1b91ad382398f",
+      "size": 3227,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_config_alignment.py",
+      "hash": "35ffdc65a784bbd38b0b95ed7814e61780b81cb66469b7defda87ee372159d67",
+      "size": 2935,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_consolidate_routing.py",
+      "hash": "934be6dac6c079d97667a61996cbba2cf5a5902edc56f605c1cc1ae342dd3098",
+      "size": 4976,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_document_api.py",
+      "hash": "136a7ff29135bcdd99e0c313cf62e2b62c1ef9528cd90f3b2b1a6904a06e923e",
+      "size": 6143,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_document_library.py",
+      "hash": "d0aa9822b741198b21573eb65bc0261bd832246360a94c9fb1527386b32999f6",
+      "size": 711,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_document_parser.py",
+      "hash": "3ac6f07016f51a7d64306094594aab3e14f117de0529eb0a25ece707db450a0d",
+      "size": 844,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_document_repo.py",
+      "hash": "106dc7c328305d8c44a06704550bf16eda73e725b439bdcc35280857255bbc44",
+      "size": 6368,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_document_tools.py",
+      "hash": "e1da2641687d607dca1ef7e52d94b1d183ee212a9743e3b78b163dc035031299",
+      "size": 3229,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_fill_params_from_preference.py",
+      "hash": "452c592ba16b83ad7614e45f7a219e0b9f5e2b85d4ec952bc63e4b22c6fbb6c2",
+      "size": 2976,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_frontend_main_alignment.py",
+      "hash": "d275e0e83ea93ad65318c9db236318dad372b59b61c54f534e119ec62962731d",
+      "size": 7977,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_graph_memory_async.py",
+      "hash": "d6f1882e5ddd367175d019e121c2dc5ecea3e8a37dd42dca2a1885cf635add93",
+      "size": 2598,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_graph_runtime.py",
+      "hash": "a88d40bf56847a00fa83cbd9fcfa6d387a68ffe674f920c34e9af372fb62af7a",
+      "size": 7162,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_intent_policy.py",
+      "hash": "d8af3d23b2afad85f67ec141ae954aa479490bc005dc457e91e3083e55a3da56",
+      "size": 2885,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_langgraph_e2e.py",
+      "hash": "688e806fae3266753603c14bdad62a60233cef47981f333807e3d76c48af63dc",
+      "size": 1609,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_langgraph_resume.py",
+      "hash": "fd314df137044b892dae35c9d574671f5176b1c94bb99cc9663d78f46d37862e",
+      "size": 3533,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_langgraph_runtime.py",
+      "hash": "ce20a15b68613cdc3bcb604222c92183ff49a6876c8279d7e4ac2d8f7a2495e2",
+      "size": 3533,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_legacy_shim_removal.py",
+      "hash": "3ada92549785b1da3312ce8c94157f2d7af956f8336d3ff77a63642f99d2b6d8",
+      "size": 2828,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_llm_stream.py",
+      "hash": "1fa8b5178eef55e47be03a46b6dc3cce35d99543ed1ba6d7492958b67e89f484",
+      "size": 5841,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_longterm_consolidate.py",
+      "hash": "9debf59ce4855ef87c0d74761acd165abfbe08d9a90f8a406aa19d18b2c9f911",
+      "size": 8335,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_longterm_graph_protect.py",
+      "hash": "3efce991e61aff3f94974bd8cae3cdcf861ecde9ec2e95d1a1a2adb6b9df25b9",
+      "size": 3869,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_longterm_recall_by_filter.py",
+      "hash": "08ec294fd4318c1762aeb1b507a188d2e2c714c7f76ade386dd8c1a305ca2e62",
+      "size": 6271,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_longterm_store_classified.py",
+      "hash": "3150c7b8fd5c9345301f30faf728a238ec9f19f23d52138bb3411c6af1c28207",
+      "size": 2872,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_mcp_tools.py",
+      "hash": "e2c57ef5ad8921398482880134c43d6c4305dde95c539aa5c9ec4177a58dca61",
+      "size": 1692,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_mem_stack.py",
+      "hash": "027623c30386e1bbffdd9217bc2cdb2e8e30660c1ecb9870052ffa7d083c9cb9",
+      "size": 4445,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_memory_accessors.py",
+      "hash": "322cc42a98fe268e089b506b5346f2eba7ba1a7248101c554ec2d6dca845547b",
+      "size": 5927,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_memory_manager_recall.py",
+      "hash": "fd5e8d21649d2c94ed2fb44c138ebbc909aade96a1549dcef2f4772da1b1e384",
+      "size": 4098,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_memory_writer.py",
+      "hash": "3b363458709f2d64d9bad23ac317f9eb8444958dd99a3ffc31f17bb691f82aa3",
+      "size": 9603,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_network_guard.py",
+      "hash": "3f79b108787331696f10804f827f4a7cef4994575998d9b4584788b11e874343",
+      "size": 1347,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase0_behavior_fixtures.py",
+      "hash": "352a619f5ee4dcedc62a455ea6232fe2e1cef7883f86c61e44806ffe46f730ed",
+      "size": 383,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase0_http_contract.py",
+      "hash": "d04717e257440705a9aa0140ebf65a26e34602c373d463583515f11344816201",
+      "size": 1161,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase0_security_baseline.py",
+      "hash": "3ce805dba566779fb530ac2ca0690e20ea0d3f1b717ab8c83e43560bdd74bd55",
+      "size": 1147,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_bootstrap.py",
+      "hash": "fabd3ec78d6aac50c92ce1a518a155e845550979d5635d859b7e3bd77f208983",
+      "size": 13018,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_compat.py",
+      "hash": "83e8bc992fb0e358e5ced7dfa9f4af4d0821f47e4f2a1451c1182e83e2ad3b9c",
+      "size": 3250,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_concurrent.py",
+      "hash": "b07b69340288a007da7f253aca698f1525b769862b8faffa49aefab6efaa1665",
+      "size": 2950,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_config.py",
+      "hash": "c2080d6913586e113efcc478d53ab0dc5077f8c723081bf164b42519b9ce4194",
+      "size": 6025,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_env_injection.py",
+      "hash": "04f98d6e1e6f645a2958075be06fcd7e20c4796e7377cdb055e989e4dcec4043",
+      "size": 3094,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_health.py",
+      "hash": "cd535a76f5121f710d9517f72da117d9971d6ac7b456bba351ee5ea02889fe55",
+      "size": 3232,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_integration.py",
+      "hash": "14dad53e50a95087cb638d4980918746f15032a51c224560795a799a7d18add3",
+      "size": 3103,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_lifecycle.py",
+      "hash": "d5640378d91642cc3da1a42b47221ecfc28167d20ddbcd973810ce6ae4a1a247",
+      "size": 7708,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase1_runtime_cleanup.py",
+      "hash": "75856ec50b50e6c4a81868b8dde3598c0e0d85d4d90d42d789151533c9ca82f6",
+      "size": 2580,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_capability_runtime.py",
+      "hash": "cfc3e2b65ec7dda320cfcd7f1d3349fcc9d726a89387ac274355fe3c66af988b",
+      "size": 12425,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_contracts.py",
+      "hash": "9c495721d7701b291a41973e02fa48e2a89945c68cfa0d2e0e86d6be1b0df878",
+      "size": 8342,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_dual_authorization.py",
+      "hash": "c92bcbc9ce0b7d4f999f88fcf9a112ee36ed8da1601aa8b79cd83bdcd5e4417c",
+      "size": 5703,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_intent_execution_projection.py",
+      "hash": "f36da9aceff761ffb1450346595813df8ebc7a71b1c8487540ee9cef24cbe1a9",
+      "size": 10288,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_intent_policy_fallback.py",
+      "hash": "2c2995f4ff961164e8fa40dc433b23c6316f4297c778506aa8925e57915cbb18",
+      "size": 9303,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_orchestration_architecture.py",
+      "hash": "315cb53c55169d0bdb740e2e36ed4c60cef40addcb9bd96f07b68f29a0456af1",
+      "size": 12961,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_participant_context.py",
+      "hash": "c83a7be44049dfea88d00db080dfd3c60821d77f1a615817f3fbcc80c5624462",
+      "size": 9596,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_run_authorization.py",
+      "hash": "11059e84c4fb35ec8c6839bf5b53a6cb37cb682d8a8c531e4e15e6aa077df4a3",
+      "size": 8596,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_run_snapshot.py",
+      "hash": "dc79fb9931d1d76ebfb7c478d342ce1ec79190165e8d7ea760f79ca499abbf9f",
+      "size": 11234,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_sandbox_policy.py",
+      "hash": "bfb00574455c2703dc9c052f1ffc2497adecc297e882b68d75833f970a52e015",
+      "size": 9480,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_team_manifest.py",
+      "hash": "ee82edb6f78224fd50211ccd3f018f6c8d2c1874434ad5090d7b5293629e2afc",
+      "size": 9207,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase2_team_manifest_loader.py",
+      "hash": "348c2f4933805f81200d23dd4b65d7962566b406b4d721eb7e68d778b38223d4",
+      "size": 13120,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase4_observability.py",
+      "hash": "1ca904847913366f565a19ee622de7b2fff9b693c97b16fcf34fc09892338e25",
+      "size": 3351,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_phase5_structure.py",
+      "hash": "8779065ca36f25afd8c2942924213d3ed55be6d86d1df973ca3e639ac9258b15",
+      "size": 1382,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_preference.py",
+      "hash": "34dbaa7495f703eb8b500196de6122ff14ec53f40f853deae7b16c0e9f79fcb6",
+      "size": 3890,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_rag_alignment.py",
+      "hash": "75f30051c6427705b356fb19a9561d07db1665579c17a1447f3bf8fb3f7505d0",
+      "size": 17598,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_restore.py",
+      "hash": "6a2d99f3138606089e041bbfb14dd488d07066927906225bde9e54704b4f31f2",
+      "size": 9279,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_runtime_governance.py",
+      "hash": "cf36898d8f091899f09f7d5186504476fe8d57289a91eb85c9dc180b93aaa336",
+      "size": 2410,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_search_backend.py",
+      "hash": "b4e12c35fcd7d49dc951c435f365a8a4dc16e6f9430aaac2e9c42ee8c029319d",
+      "size": 1101,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_shortterm.py",
+      "hash": "1d756dbd369d5cc8313b8bae76b07a29522cf83cd69c4b4c370d8af031ca39dd",
+      "size": 2667,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_subagents.py",
+      "hash": "8ac5f7935b71481d8be95a368fbc6a3f5a525ccd8d87b8db9afc2b2b79960029",
+      "size": 3991,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_task_graph.py",
+      "hash": "3d94dab85d01d9ad5bdcc4cfd680572d5e756e5abea981bb78507d824239d43e",
+      "size": 2095,
+      "type": "file"
+    },
+    {
+      "path": "final/tests/test_tool_executor_concurrency.py",
+      "hash": "1daae4827e2d103dd96f927626b58ced5240ea343a78080f558f6078e159208e",
+      "size": 3150,
+      "type": "file"
+    },
+    {
+      "path": "pyproject.toml",
+      "hash": "9a7d214d8fad57939234bce46c02b7ea11001b840e8811d4ee1085a8ce2d25e0",
+      "size": 1143,
+      "type": "file"
+    },
+    {
+      "path": "tests/conftest.py",
+      "hash": "782ae39277c36fbbd2a9ea20c99e9b8019ccb8c9220d3fcfcaa02191b7e8de73",
+      "size": 3148,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "hash": "bdabed664571b6ee80fbef9eddc0749803ec8ca5e195a5a9791b05c53435abcc",
+      "size": 7037,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_api.py",
+      "hash": "17f76c85ef70ebfc8d94e3f0b0f4ab15b402754e24cd371d356292e4c8cedc68",
+      "size": 8769,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_commit_recovery.py",
+      "hash": "6cb5e13eade515124449e195fb7e602bace1f21d8a693730e4e09fec2693705c",
+      "size": 7533,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_config.py",
+      "hash": "c0f278565094ccde26fa9d952b30e63add176e505b533a3aff47bb23a9b6e17a",
+      "size": 6834,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_conversation.py",
+      "hash": "c6ee124fdccf67b26181413fee0edf305a08903fe8973303c08d66e70d6a35ff",
+      "size": 3041,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_llm.py",
+      "hash": "3823ba9d876ebdc17bf51b231dbfdc8df368b49a1fdddd2234924fb9b6e4979e",
+      "size": 13184,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_context.py",
+      "hash": "efc6c1e3190558deec60746ac3446148fd77472257f25a87201dccc00e1f9fd7",
+      "size": 52013,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_evals.py",
+      "hash": "b351c62a10cd18aff08e6575dbaa59e97124d505c845a2652e86fb0115fda40a",
+      "size": 3588,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_graph_store.py",
+      "hash": "ba0a9ea7a00c3c4108b55ce2ffd2f8650cd41033b5a5c36e6e800aa256e6dc58",
+      "size": 3671,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_index.py",
+      "hash": "c9793caa2ebc1767b074ac6cccce6300387fa9314a0b568a728c6c2664119c6f",
+      "size": 8258,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_maintenance.py",
+      "hash": "b0c5ddb9e889587db309a9f03235efb3a8712bffe0089ba6f911e13b9d132d52",
+      "size": 2242,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_memory_semantics.py",
+      "hash": "830b56336bc702da28678b7bf588e5c27dfc27fd7b90796925040ec14900d0dc",
+      "size": 3441,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_migration.py",
+      "hash": "feda0778bb7484a1c097a0fc247d3d91c30b1a6f2c99a77973d93777a4f7d28e",
+      "size": 5624,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_neo4j_graph_memory.py",
+      "hash": "6b526bc5d4f46a8a0b55958fa81fa965689d6ef37a0257e4d4624f4145421819",
+      "size": 8168,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_ownership.py",
+      "hash": "c6199a000e4eb93322547d71703c1dcdcf5b595103389bb6fe454621184b36ee",
+      "size": 2240,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_package_layout.py",
+      "hash": "200c30aa79ed48136d886d160e689323e512518b7b117ce99f89740a6b4c3597",
+      "size": 5481,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "hash": "4f351d07e4b1fbcd5859136e3e672edb9c9e19c4f61b9aff8190e6c27711aa45",
+      "size": 28304,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_runs.py",
+      "hash": "c94a04bcd47b4aab35c8e57abbe49ddf6ced24f294a0255761499eb96308ee1f",
+      "size": 7230,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_startup_reporting.py",
+      "hash": "d72140a6773bf2cbacc5e58b1c3fd4eff218424dae92fa89437c013840fd991c",
+      "size": 11405,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_streaming.py",
+      "hash": "e373b9ed95acc85d4a24846ef2c7f2232760f3093bb0450491b6b6170869e54d",
+      "size": 2698,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_streaming_api.py",
+      "hash": "e2e805e0fe4a25514f9cf198ad3f773e763cbf24fdeef61c390b7d208e3179dc",
+      "size": 6885,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_test_configuration.py",
+      "hash": "5454071987ba05dc48ec24ce7f5f4113aea6f0d2553799d82910990fbdb1d95b",
+      "size": 1880,
+      "type": "file"
+    },
+    {
+      "path": "venagent/__init__.py",
+      "hash": "b5fbd5040f6312f52bc2db2862c37dabafb3f00de8c168f9343eae89fc7fd132",
+      "size": 270,
+      "type": "file"
+    },
+    {
+      "path": "venagent/__main__.py",
+      "hash": "1c904e3aeca59fb24b3cd7e97a5df8ca3333597204dec28a8a8b08353200a08c",
+      "size": 2197,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/__init__.py",
+      "hash": "ce96fbe59ce2e8afa894a2be67a92c0a537d1b4deff0f108021bf642e777ad3c",
+      "size": 305,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/errors.py",
+      "hash": "1dda5071698bcaab41b6cbec85164af5bc774afba178d1d9acd555ca5c2e20c1",
+      "size": 474,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/graph.py",
+      "hash": "1777286d4eeca2ed20372e0736a722903666b5bb50b139727fb4182ecde4779a",
+      "size": 1524,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/observation.py",
+      "hash": "2396e2911e1505cd184a1adebb45e50181abd72c9d8d1410e15be3b5e363db3c",
+      "size": 1748,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/ports.py",
+      "hash": "2a6fa4d9bc868c4e18349a878d11f52004dfb61eb31ce3ab900161078f183c2d",
+      "size": 1917,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/runs.py",
+      "hash": "463d037f48f39cdde3bad23c1495de943b8c5ceebfc704c80fbeeb681bd4ff2c",
+      "size": 4776,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/runtime.py",
+      "hash": "57410c1fb4dc3ada1a5a77c2a501217cfdc347db0444bda0583777d1bead39e6",
+      "size": 24529,
+      "type": "file"
+    },
+    {
+      "path": "venagent/agent/state.py",
+      "hash": "7b58587f8d5d1a3f471d546ee60eaa1c2a37b3bf3818dd5dc6b5a30911aa1495",
+      "size": 3406,
+      "type": "file"
+    },
+    {
+      "path": "venagent/bootstrap.py",
+      "hash": "f1505a6837482b9ff89e1c4660734f14701fc5169c608fd7208e5ebbd73167c9",
+      "size": 10765,
+      "type": "file"
+    },
+    {
+      "path": "venagent/config/__init__.py",
+      "hash": "17d1135ec808469d07e641a103a6266ffe32288681a1b2959bd1df23bd546512",
+      "size": 370,
+      "type": "file"
+    },
+    {
+      "path": "venagent/config/loader.py",
+      "hash": "683e09d4d6b844d79a1d5f5bcdee3103fcd8cb7359002a6e0a233c611568258f",
+      "size": 14941,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/__init__.py",
+      "hash": "d15260bf615052c0961e9dbeb94d2d871c2340667e6f22a7d5e081507b2e668d",
+      "size": 198,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/errors.py",
+      "hash": "2e9e29fff3ac308b8a97c82d1b2eb43802e24ef3d8106cd7e5dc425c8e2c25b7",
+      "size": 946,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/models.py",
+      "hash": "606d2155e419cf25ff12a339bfecfc71de505ed10a6723a7e26971e3c2d6c9e2",
+      "size": 1300,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/ports.py",
+      "hash": "26b9b1d4d267c48ebe9ed05dfc50d52f4c92300b292f289084bef634a393ef05",
+      "size": 2145,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/rules.py",
+      "hash": "09a528275e777452d07e2eee3060b54d96d8208ebbc9bfe42a192e8f120b3f3f",
+      "size": 1811,
+      "type": "file"
+    },
+    {
+      "path": "venagent/conversation/service.py",
+      "hash": "69c52cd81f7d6a70d131350740356d29ec35448496d50723d0c2f8340b63e824",
+      "size": 5727,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/__init__.py",
+      "hash": "b416d8e05fda93b98c152c779315ccff6f23e5db4805f5c5d3c29bfabed47498",
+      "size": 37,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/__init__.py",
+      "hash": "c7a7007f49b8a74ffdb3ddce6020c44c9892069b08e36a526c9ac7d676010bfd",
+      "size": 106,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/app.py",
+      "hash": "16fadcf0e53845141aeefdf784a96fb2862cf8c0702bb869f001bb3cd033c7e5",
+      "size": 10438,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/auth.py",
+      "hash": "5f930b3166b2b4537f3e42d54ce517699fed1b41bd7155888e4f75c833c327ee",
+      "size": 3620,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/errors.py",
+      "hash": "51b4f2004ff0df04f6088027a49ff64fcd1877629c01bf2d97c0468e109f94f3",
+      "size": 3686,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/routes/__init__.py",
+      "hash": "232e95b203257d7bb5d602a00c7cd06ce98c63b1634cd6044756d7ea9036fabb",
+      "size": 1041,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/routes/auth.py",
+      "hash": "08ade86e1f6b32450c8b9ab4077c92e03140dd251aad09d1fe3a075c8d031ea6",
+      "size": 6046,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/routes/conversations.py",
+      "hash": "6e4cd8ff688a759f679936517c4f3f568631de0bd9841cdd0128ede41477d2ff",
+      "size": 5815,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/routes/runs.py",
+      "hash": "5d6f043178db4a369a32e8e8ba62667f66e640e4b751dc4ba20d873656fc209b",
+      "size": 5458,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/schemas.py",
+      "hash": "5f94c39764bc9e369fb92ca7a9d6a79f9de14ac4092c319fe23e653308aef5cc",
+      "size": 2930,
+      "type": "file"
+    },
+    {
+      "path": "venagent/interfaces/http/streaming.py",
+      "hash": "ff77c8a260fd98957b35aa6b3873fba81332534f9f31312cb19a2eaf1603e36b",
+      "size": 2741,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/__init__.py",
+      "hash": "5d7ad3abcec67567787af071c51a277e8afe673148768cde5b0799fcfba8c9c0",
+      "size": 438,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/config.py",
+      "hash": "584a09263406a76a775caf6430a89f9c4bedfc92ffc8d4457d09d186f53f7bce",
+      "size": 13698,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/embeddings.py",
+      "hash": "6ff705dd587edab3dd83ee250893a8b07b9afef6e4ca081ecc27f415fa7f7fbe",
+      "size": 3988,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/factory.py",
+      "hash": "6864ea2cb6d3d48494575e6acdc1b11d24e62dd2dfe5720a00aa63f3bbb2be02",
+      "size": 2297,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/memory.py",
+      "hash": "d90386cb46bc669a1cd1192a4f1359f4ed7717b9259ed4380d4d7ef9717700ea",
+      "size": 5415,
+      "type": "file"
+    },
+    {
+      "path": "venagent/llm/providers.py",
+      "hash": "0dea34f500a63ee9d06627e6ce3f23fe8e4019ea396951434b57399d84bfd640",
+      "size": 5207,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/__init__.py",
+      "hash": "66534049fff8dbae9e6227ddf1467fc727d6213ec150ee9ff93b39086687e001",
+      "size": 196,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/authorization.py",
+      "hash": "5d97dd52f78d95e9b1e9745b7ebce78118dd70f100691a1bf4f9596688a0be9e",
+      "size": 6176,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/capabilities.py",
+      "hash": "afc40d55c7aaf757849be4102c3ecab317d08ece0a763bd088cc75d762c02fc0",
+      "size": 2787,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/command_adapter.py",
+      "hash": "d3df75e58a4a21ee2f7a714f929ed3ba3c76e730e8c939b6701b95514d74eeb3",
+      "size": 11090,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/errors.py",
+      "hash": "e724a7cb7b6cd51822e04cc5192a115c065deac4096c11db932c4cb0f4a312d5",
+      "size": 864,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/graph.py",
+      "hash": "af73dd47c68129c93aefd63c2adcd05cebf896c3054af29deb924d9c3d8560e1",
+      "size": 4307,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/graph_memory.py",
+      "hash": "0392f8625f22d41f76723a4e457a47d7fcaf4f810fe5a28717c6c7207aebbb3a",
+      "size": 4106,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/index.py",
+      "hash": "8747f4bd40bbe1986d74db03a656397d1142d5f70b19c4917132b8f7e1481b66",
+      "size": 4130,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/job_worker.py",
+      "hash": "5071bd2a9a0261f6f9a96742615497aa4c9d71b91658218fc7584d66e1662d78",
+      "size": 1647,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/jobs.py",
+      "hash": "30eee1bfa4390bf9d4baf69b3c110cbb2ba12b3a2a390e30a01e3d5977fd568b",
+      "size": 11968,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/__init__.py",
+      "hash": "52a932ab64873a9d40240c90219bd0f22645abcd0b83d5dd69e3f7ffde89a10b",
+      "size": 168,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/conflict.py",
+      "hash": "ba8bf66163958a93b0c0a989b912b66c5afbbc6053c0f0156cef24b8d6ccfc69",
+      "size": 2019,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/extractor.py",
+      "hash": "ec001a9a3e3a45ef0f8f380bd108a55d6287bc40de321970af916bcde682551d",
+      "size": 5133,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/facts.py",
+      "hash": "561b2a76fd327f89f3518a017a5c30b6d37fc87cefae46f1ca61a70f04303fc1",
+      "size": 1145,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/policy.py",
+      "hash": "a21cd32b25bfcfc9b60298d530ad366b238b23b66082c15fce4eba08bfb3a16e",
+      "size": 6029,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/long_term/writer.py",
+      "hash": "29c0710768dece2416b2a8f2a994739da8dd6d91cf961d0b254eb0166b2bc18d",
+      "size": 7886,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/management.py",
+      "hash": "1e5f810a10b5a14a4103c51723f0a5caa36adf2c082da5f5f606facd8dc5fe6b",
+      "size": 12827,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/ports.py",
+      "hash": "c9f498da9eff4395faa07aef66bc6f6f48add155ee5313058ff30c3315cdd832",
+      "size": 7046,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/recall.py",
+      "hash": "d901fe9616be00646ae94e60adc367b8da0eb2cf4ec29107851ba8a786034197",
+      "size": 16037,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/service.py",
+      "hash": "b7bd802dccf3fd8a68078a2cbac2e9dfc2a5d3f2bfeaca31cca5d8b3431cb2f2",
+      "size": 10695,
+      "type": "file"
+    },
+    {
+      "path": "venagent/memory/short_term.py",
+      "hash": "08304aba5d040c50846853aeecfe9c172dfa6254e001edea056311080010b522",
+      "size": 6286,
+      "type": "file"
+    },
+    {
+      "path": "venagent/ownership/__init__.py",
+      "hash": "6c0ed263b298d3971b7cde662692912ccee859cf14a6119764d9013621e7efdc",
+      "size": 187,
+      "type": "file"
+    },
+    {
+      "path": "venagent/ownership/errors.py",
+      "hash": "5315eea95108b259bb542a57d9aee41df4791bc89ae8088e69f77cb531be34cb",
+      "size": 1163,
+      "type": "file"
+    },
+    {
+      "path": "venagent/ownership/models.py",
+      "hash": "b7cdc4e6a1176232ebd2ab354605c19523cb9adda3dc01aa24d1598a99f0f959",
+      "size": 2258,
+      "type": "file"
+    },
+    {
+      "path": "venagent/ownership/ports.py",
+      "hash": "bcda19dc03ad287e5f70fa4497278a3451ee8aa1f3ba794005f42e88ba0fd29b",
+      "size": 2902,
+      "type": "file"
+    },
+    {
+      "path": "venagent/ownership/service.py",
+      "hash": "1c9e5084e16937cd6cab44dddd3edc64d8936a975ac8627972e9561b7392fb32",
+      "size": 13755,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/__init__.py",
+      "hash": "fa0adacfa436ae8f644a8e91c14167294be3c5c30714f2a27c229699096bf24a",
+      "size": 581,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/errors.py",
+      "hash": "a7499cf8255d75e5b327889f465def2bf3df7ce600d912fa3a50d3f01c8372ea",
+      "size": 202,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/neo4j/__init__.py",
+      "hash": "b5bca3e694b6b5aeb7800ca91e47ddf0f2efa790045efdb302270a6a6a76f710",
+      "size": 363,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/neo4j/migrations.py",
+      "hash": "26a8a91873f6357a98474f13ac74e9d3789e804f2d75d1640afc0f8326c1dee8",
+      "size": 3182,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/neo4j/runtime.py",
+      "hash": "1f9283bbc5fc3e100f105423d24e26584e23637ca49347ce0ffbe8b9d8af50a5",
+      "size": 6253,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/observability.py",
+      "hash": "aef1286c957cd680dbce5cb3eb0cc0f463c8ab2294c09a02c8b796c12133a4c3",
+      "size": 2438,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/postgresql/__init__.py",
+      "hash": "ed6af93486950616c20219888403568b4b1414dd50117b2e6b5046c73c93cf49",
+      "size": 236,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/postgresql/migrations.py",
+      "hash": "b5276b81fddd0fcc742afee5d71c77fb2190652baca020640c3cec8c1ab4b8d8",
+      "size": 28941,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/postgresql/runtime.py",
+      "hash": "d31ea462222357b5ce0109e07ddbb58ee22ddc6a3501b777a03c9f5fd3fedf04",
+      "size": 7058,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/runtime.py",
+      "hash": "28753b372ce0d1c95c86f3c6e011191cfe7d6c0a4c7e8fb2b973332b2b21ee94",
+      "size": 5579,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/security/__init__.py",
+      "hash": "27745598fb3842d5680b31cb8d137f551ccff5f5b8e9bfa36f54b6931f67d1be",
+      "size": 210,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/security/passwords.py",
+      "hash": "49974ca63d123b7fec3b03a01bafed066dd25ec80945c9abfff4bb4550a0a700",
+      "size": 832,
+      "type": "file"
+    },
+    {
+      "path": "venagent/platform/security/tokens.py",
+      "hash": "9f024d9121e32665f9a0a895791cc72ab6042ab813f35d1d4deaaf6cb4c84dff",
+      "size": 3764,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/__init__.py",
+      "hash": "30d028c46243aba3ddcca68987869936854328f668dc2201e6be51ed6d11ce43",
+      "size": 784,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/assembler.py",
+      "hash": "c4c99a68fd9815527d2f313c33eb2efcc8627e1028a704ab907d02b412855b8b",
+      "size": 3479,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/context.py",
+      "hash": "3856233037ad130d43c53e7e6fc400e6d900d32ae3fa19b7b9e05ac529759ad1",
+      "size": 1080,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/errors.py",
+      "hash": "be34527702d133c2dd7508d099eb4a1eacc6d0501c1b751a2f3d97f940cd97f3",
+      "size": 321,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/recall_provider.py",
+      "hash": "29e16ca863fbbf1ea1d20fa64eb7b5d068a464580e1520792399cc8fc891c916",
+      "size": 3544,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/schema.py",
+      "hash": "5a87e0cbe475f3aedf44eeed6cec1ef171916bb79048c67007214d0b203c6108",
+      "size": 1128,
+      "type": "file"
+    },
+    {
+      "path": "venagent/promptctx/source.py",
+      "hash": "a4d1c92c1bce0a90dac048a68d49ed3c939b444c073dc9493d0a000153bd1208",
+      "size": 2119,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/__init__.py",
+      "hash": "a971564a6b375e9b23a1727ae72cae1d6703df5c4257d4e150130180e3fbcf5a",
+      "size": 53,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/neo4j/__init__.py",
+      "hash": "1fad38363078d33d6ed02c59301474aa239607d15de32999b30d4f66a8c3a5fc",
+      "size": 118,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/neo4j/memory_graph.py",
+      "hash": "5be3665d5802de3184240a3036238cf07751673985ba14a0394e07d79cdddb5f",
+      "size": 16398,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/__init__.py",
+      "hash": "fdc9192db60dc4544a2e4781a474e99c65141d38f02190e9a7276b8e1154a4c6",
+      "size": 239,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/conversation.py",
+      "hash": "42a3fde75008dfb88cb092ed9feb6db3128b2415be2e2bb5ca3598e34c657e1e",
+      "size": 9590,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/conversation_mapping.py",
+      "hash": "1cc049ac2566e3203a89dd12089b1444fbb5171d7f9a40a5522708e076817a6a",
+      "size": 2799,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/conversation_runtime.py",
+      "hash": "42f937c80f90366017e2eebd96a9dbb125130dc324d82ffbf9e306cc475814ff",
+      "size": 581,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/__init__.py",
+      "hash": "0588fe388b408b4e92cd44e6d0019b6cbf4e4ff67e49dd2965ab9e60de326406",
+      "size": 647,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/index.py",
+      "hash": "dbc1cd1f999b34bc28eb907d4874933a4d44c81d73cec7cd4630f00767a79dcd",
+      "size": 3243,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/jobs.py",
+      "hash": "fc673e804782d6de136355a33b9d9e034e5f161d5c648971c3082c89108d8276",
+      "size": 14897,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/long_term.py",
+      "hash": "6e3fc588ece1136e99a4753896e80a16cd028175afea1f37c5bee8a510b24a1f",
+      "size": 29973,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/row_mapping.py",
+      "hash": "2d9c3997f61e289cf9dac3751579baff3e12be423cf9a89935e51d2a7f92422f",
+      "size": 2485,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/memory/short_term.py",
+      "hash": "8c7812e67d9b29f06fa51dee93b9a2c43ae39815ef9330af9d351e608e9e4113",
+      "size": 4287,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/ownership.py",
+      "hash": "1e2e0f94f52e481087ad2314264589ea6c2f12c06ffd111283b0fde5ea58e042",
+      "size": 16530,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/postgresql/runs.py",
+      "hash": "acea26b612c7bc1f7cfad00ae13f8a616fa2910b8fa9d37db5076b7ffe6360da",
+      "size": 25763,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/__init__.py",
+      "hash": "e4250ab49782f850d10723372662b9db1cc5b41121563d64b5673e64bab174e4",
+      "size": 324,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/conversation.py",
+      "hash": "08b778300a92c78308aa5cb56faf95e056248654611ac2ecd2bd5af22c1e760d",
+      "size": 7943,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/conversation_runtime.py",
+      "hash": "5cca75710fe296080dfa8b9dfdf74cfc39096124609d3042e60d38537ecce4f7",
+      "size": 526,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/__init__.py",
+      "hash": "dc1baf76ea4b7561de352dc232cccf9903e9d4952263842bd33a30f1fca6e4a6",
+      "size": 290,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/fact_state.py",
+      "hash": "915215f457a616ba91b0dc9fc5bf23d5e5e32f1a3122a3b941ac726a217b0779",
+      "size": 730,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/graph.py",
+      "hash": "60eed3bd47aa1d9486d0b8445bcbe896bdb1e7085b4508e7a965e6177312bdd4",
+      "size": 6696,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/index.py",
+      "hash": "6c0a08ea4282453343c082c6804a5f38ac3470a7910637004278a083be3ae2bc",
+      "size": 1655,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/jobs.py",
+      "hash": "b18b41b13136cbc2078c48047f0de4962f15f82484100f137f671ea208c95b35",
+      "size": 8852,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/long_term.py",
+      "hash": "2b5c2fbeca2e9f99051214b58f965fcfcd78adcd2a6ed6a53481594e5ee5a8c0",
+      "size": 15461,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/short_term.py",
+      "hash": "57a81b22b9e2dc3d0483087177ec27ba8b98999f2a34bf3d17e8824e6c51faed",
+      "size": 1338,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/memory/state.py",
+      "hash": "0a47f1b992d75fbcdd77b9a23c99ad2df4de4984da16236496bc324515b75047",
+      "size": 1694,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/ownership.py",
+      "hash": "f26603d796b0c076f8f21e3b5f8713ce448c9235fcf9fd586495dc7a2a1e39fb",
+      "size": 10190,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/runs.py",
+      "hash": "7066fc3e4d9d0d625b82756e9b1716cb6f3057d7bff34f85df1dbab6a5f718eb",
+      "size": 17335,
+      "type": "file"
+    },
+    {
+      "path": "venagent/repo/temporary/state.py",
+      "hash": "fd7d57adecda3c5ce7d7d559083c747160243fee1eee3c4ee81e09c16d1d7ca8",
+      "size": 2107,
+      "type": "file"
+    },
+    {
+      "path": "web/.gitignore",
+      "hash": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+      "size": 253,
+      "type": "file"
+    },
+    {
+      "path": "web/README.md",
+      "hash": "f5ce1d380b80196e959eea288b3bca81981daf7b4a6003636752dc7e154f0b81",
+      "size": 3110,
+      "type": "file"
+    },
+    {
+      "path": "web/artifacts/frontend-desktop-final.png",
+      "hash": "a0b8b2a9da1cc96a09d8b1e26055d41e50191005615c8d4e96be54d22acedd14",
+      "size": 28861,
+      "type": "file"
+    },
+    {
+      "path": "web/artifacts/frontend-desktop.png",
+      "hash": "34c98ac096f18b3c8d2d446f94882763cfa70af95accc7d0aec04e534bc37986",
+      "size": 29109,
+      "type": "file"
+    },
+    {
+      "path": "web/artifacts/frontend-mobile-drawer.png",
+      "hash": "344fc0699ba566a6ee66f4390030833c3be6372395777642bf1abbf8045d6df9",
+      "size": 12520,
+      "type": "file"
+    },
+    {
+      "path": "web/artifacts/frontend-mobile.png",
+      "hash": "c4ace907ef1c9e96989ffd876bf34ebf1ebe7f8026c7434e6134d4bad1120579",
+      "size": 18253,
+      "type": "file"
+    },
+    {
+      "path": "web/index.html",
+      "hash": "0f004811b4f74debb8b76e69beced6fd51d3408550e88c08be062f184a3be60f",
+      "size": 353,
+      "type": "file"
+    },
+    {
+      "path": "web/package-lock.json",
+      "hash": "2b82439d5e70ec90ae83dd43b86030a5ba826be010b93ba79ae2e809776ed0e2",
+      "size": 64112,
+      "type": "file"
+    },
+    {
+      "path": "web/package.json",
+      "hash": "15fe823d833515f67f98c914d636c4bf66a32b7a742428e2aaaaee7b14dc7e85",
+      "size": 567,
+      "type": "file"
+    },
+    {
+      "path": "web/playwright.config.ts",
+      "hash": "4a6c6f1cbda67ff9840d4ae8de555c5f28affc2514e5d1c7bc9671cb5249714d",
+      "size": 219,
+      "type": "file"
+    },
+    {
+      "path": "web/public/favicon.svg",
+      "hash": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
+      "size": 9522,
+      "type": "file"
+    },
+    {
+      "path": "web/public/icons.svg",
+      "hash": "b45fa506195cfcdef406ba9f0c77b36ddc1a7c224040926ec70abc2fdea7b93a",
+      "size": 5031,
+      "type": "file"
+    },
+    {
+      "path": "web/scripts/run-e2e.mjs",
+      "hash": "dda2e1b9165e8af8191214a5d2755182a9dc19cd6aa1f20f32b1e57c6a159a59",
+      "size": 1201,
+      "type": "file"
+    },
+    {
+      "path": "web/src/App.vue",
+      "hash": "2d0fc87186d7b6418b328e92a1f4b125efd0206f715f46c045736f58231b8153",
+      "size": 116,
+      "type": "file"
+    },
+    {
+      "path": "web/src/app/router.ts",
+      "hash": "76ab5372f5804da04540f5723899ef5e6a12c4668c01fb07d1173e7215dd4fe4",
+      "size": 306,
+      "type": "file"
+    },
+    {
+      "path": "web/src/assets/hero.png",
+      "hash": "881ffbcaafc212e49addad08846a5b82761355fa20624253af3477ba33262c5c",
+      "size": 13057,
+      "type": "file"
+    },
+    {
+      "path": "web/src/assets/vite.svg",
+      "hash": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f",
+      "size": 8709,
+      "type": "file"
+    },
+    {
+      "path": "web/src/assets/vue.svg",
+      "hash": "5532db34f1c52841881bab8aeca6c3e8d092bd21a689a65f4d8f8cf8041eef9d",
+      "size": 496,
+      "type": "file"
+    },
+    {
+      "path": "web/src/main.ts",
+      "hash": "450025c59e8674a4ccce2226453eeb2bb73120ae945143417dc8328322290caa",
+      "size": 216,
+      "type": "file"
+    },
+    {
+      "path": "web/src/modules/chat/ChatWorkspace.vue",
+      "hash": "b6ea942f06d95e5c7dff831aa61491945c71b05b1e957117738a6b3d565d8bab",
+      "size": 12456,
+      "type": "file"
+    },
+    {
+      "path": "web/src/modules/chat/store.ts",
+      "hash": "5fda2e20da9f61c042910039f0c7bf9ec95eaccc09a1ba97443b2fecd06e3a77",
+      "size": 16796,
+      "type": "file"
+    },
+    {
+      "path": "web/src/modules/ownership/OwnershipDialog.vue",
+      "hash": "57c1c5c9fe138aefa0c1055766a8ca64e19d00cdd2a999de692087aff04b7f34",
+      "size": 4198,
+      "type": "file"
+    },
+    {
+      "path": "web/src/modules/ownership/OwnershipPanel.vue",
+      "hash": "4ba9836b2302947f7f751d9ae8d8b8c8fa269222413059e45ae6967f8db955bb",
+      "size": 1167,
+      "type": "file"
+    },
+    {
+      "path": "web/src/modules/ownership/store.ts",
+      "hash": "f78e15e86a9ec6cb7f2a131abd0e285d3b7f9ac312cdc7549eb27d47f5177bec",
+      "size": 7446,
+      "type": "file"
+    },
+    {
+      "path": "web/src/style.css",
+      "hash": "d0386c8ea5fe0bdc77c298dadd7d6c7a90c70b7cd814bcb0b49571edf6a18a9e",
+      "size": 9707,
+      "type": "file"
+    },
+    {
+      "path": "web/tests/e2e/memory.spec.ts",
+      "hash": "11366b6fcd969f7f3a70af4127508d4b29b0c1fa4dd3315c35c03b3de49635eb",
+      "size": 7986,
+      "type": "file"
+    },
+    {
+      "path": "web/tests/e2e/workspace.spec.ts",
+      "hash": "9c9953c10d882361687bc8b8b321c7cc8fb7d239c327b665df6d26d1ea69da6a",
+      "size": 31082,
+      "type": "file"
+    },
+    {
+      "path": "web/tsconfig.app.json",
+      "hash": "ca8e94740608e82b7e0e6e899153badb1faa05f5733d878e2b0370ec62c188c5",
+      "size": 430,
+      "type": "file"
+    },
+    {
+      "path": "web/tsconfig.json",
+      "hash": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
+      "size": 119,
+      "type": "file"
+    },
+    {
+      "path": "web/tsconfig.node.json",
+      "hash": "d366cc0827139db39c61815f22491bbfda56c654354a42ad7795143d314e45e8",
+      "size": 558,
+      "type": "file"
+    },
+    {
+      "path": "web/vite.config.ts",
+      "hash": "4c8fd4551d964aedfc615dd838349ce4c6018930d1d86df5133c107cf7c46ad9",
+      "size": 273,
+      "type": "file"
+    }
+  ],
+  "omitted": [],
+  "omittedCount": 0
+}

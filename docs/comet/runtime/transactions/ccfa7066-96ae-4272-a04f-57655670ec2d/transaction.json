@@ -1,0 +1,27 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "ccfa7066-96ae-4272-a04f-57655670ec2d",
+  "kind": "archive",
+  "status": "committed",
+  "change": "audit-streaming-run-lifecycle",
+  "createdAt": "2026-07-23T14:47:37.341Z",
+  "preflightHash": "ee78247edc0eaec481e416ea1308467bcc79b0ffb762142dd2f325cc826cea99",
+  "operations": [
+    {
+      "id": "spec-1-streaming-run-lifecycle",
+      "type": "write",
+      "target": "specs/streaming-run-lifecycle/spec.md",
+      "staged": "runtime/transactions/ccfa7066-96ae-4272-a04f-57655670ec2d/staged/specs/streaming-run-lifecycle/spec.md",
+      "expectedTargetHash": null,
+      "stagedHash": "2ae200c7781c0f5dff2621baab72318031fdbf2fee5504cf1c0e7f788b0fed91"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/audit-streaming-run-lifecycle",
+      "target": "archive/2026-07-23-audit-streaming-run-lifecycle",
+      "expectedSourceHash": "a1d37e6e88b50806e7ecbdf0edeb2b6b4d8d551ca63b20b5df8cf00a645cf2e8",
+      "expectedTargetHash": null
+    }
+  ]
+}

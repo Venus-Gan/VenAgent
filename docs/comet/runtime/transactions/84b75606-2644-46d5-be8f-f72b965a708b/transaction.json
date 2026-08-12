@@ -1,0 +1,19 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "84b75606-2644-46d5-be8f-f72b965a708b",
+  "kind": "archive",
+  "status": "committed",
+  "change": "restore-legacy-env-test-inputs",
+  "createdAt": "2026-07-25T10:56:11.422Z",
+  "preflightHash": "253fbc1994b145633a2dd1d4aee70905a553cbdeb569e89908d6df746dcd7cd9",
+  "operations": [
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/restore-legacy-env-test-inputs",
+      "target": "archive/2026-07-25-restore-legacy-env-test-inputs",
+      "expectedSourceHash": "1d8a3861de3044344506f8563496dfb6bf603f902eeb6dce6d153a7b02fee2dc",
+      "expectedTargetHash": null
+    }
+  ]
+}

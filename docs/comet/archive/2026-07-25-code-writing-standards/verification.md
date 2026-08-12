@@ -1,0 +1,56 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-0567660b838aebf966d07c603337c5b4b2a3ae2a58ab5d96adcd66ffba297c9c",
+    "evidence_refs": [],
+    "skipped_reason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+  },
+  {
+    "acceptance_id": "acceptance-6d216062ecd363d33cf61b11c4a69bf74baee2c29e2a3015183b17a1de9e749e",
+    "evidence_refs": [],
+    "skipped_reason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+  },
+  {
+    "acceptance_id": "acceptance-aaaca9bd1f20df68fd746c35986fe1bff1f9b57945581aef27ca92df3b4450b5",
+    "evidence_refs": [],
+    "skipped_reason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+  },
+  {
+    "acceptance_id": "acceptance-c75541c1e04289bcec7deed5cde8c94a7775de1212a4ba96e7dc3647189800f4",
+    "evidence_refs": [],
+    "skipped_reason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+  },
+  {
+    "acceptance_id": "acceptance-f5cc3b1e5c6ff25a03e81e5f59fad7a3dff0d859a1d4793389f6d6b7906e44f5",
+    "evidence_refs": [],
+    "skipped_reason": "此变更以无运行时代码理由封存，Comet implementation scope 不含可绑定文件；已通过项目规则文本核对验证。"
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- Checked the seven required local ECC prompt paths referenced by `AGENTS.md`; all are present.
+- Searched `AGENTS.md` for the lean prompt route and confirmed the common/Python rule packs, Build entry, conditional FastAPI/security reviews, and Comet-driven project-native pytest policy.
+- `git diff --check -- AGENTS.md docs/comet/changes/code-writing-standards` completed without whitespace errors.
+- `comet native check code-writing-standards` passed with zero issues. Its scope correctly contains zero files because Build recorded this as a no-runtime-code rules synchronization.
+
+# Skipped checks
+
+- No pytest, formatter, linter, type checker, coverage tool, or security scanner was run: this change does not modify runtime, frontend, test, dependency, or toolchain code.
+- The local ECC prompts are referenced as external execution recipes; this change verifies their availability and project routing, not the behavior of any optional formatter, scanner, or agent.
+
+# Spec consistency
+
+`AGENTS.md` now treats `ecc-rules-pack-common` and `ecc-rules-pack-python` as the mandatory Python Build baseline. `ecc-feature-dev` is constrained to implementation within an approved Comet Shape. `ecc-python-review` and `ecc-code-review` apply to Python runtime changes, while FastAPI and security prompts are conditional. Tests remain project-native pytest selected and evidenced by Comet Verify; neither whole-repository coverage nor `ecc-tool-run-tests` is a standalone hard gate.
+
+# Known limitations and risks
+
+- The prompt paths are local-machine dependencies. If they move or become unavailable, future Build/Verify must record that fact and perform the prompt's public checklist as an equivalent main-session review.
+- The existing project does not currently install Ruff, Mypy, Bandit, or coverage tooling. The rule requires honest availability reporting and does not imply those tools have passed.
+
+# Conclusion
+
+Pass. The approved lean Python code-writing route is consistently recorded without importing the full ECC workflow or changing VenAgent runtime behavior.

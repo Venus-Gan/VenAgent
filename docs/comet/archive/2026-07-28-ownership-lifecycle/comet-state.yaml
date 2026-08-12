@@ -1,0 +1,26 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: ownership-lifecycle
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 202912539cc3cd4d8f1040aab3e88c2869e9d3c46cb94672996621ed3a2bf666
+spec_changes:
+  - capability: conversation-persistence
+    operation: replace
+    source: specs/conversation-persistence/spec.md
+    base_hash: 3fbf7697c81b3d6b313ecff63aee45b4eb6b74cbcaaf80618784b01789714215
+  - capability: ownership-lifecycle
+    operation: create
+    source: specs/ownership-lifecycle/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/9f585e8d77896c6ff851dc46acbe7f60a2dda1cb5bca02132c709bbfb4203ee1.json
+verification_evidence: runtime/evidence/verifications/b3cd6900b53921556a2910fda3703b5b9d6649c6fbd2c6e8331d42e3f9895ae5.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-27
+run_id: 83d38456-2745-4a01-bdae-b53f99c3e9b7

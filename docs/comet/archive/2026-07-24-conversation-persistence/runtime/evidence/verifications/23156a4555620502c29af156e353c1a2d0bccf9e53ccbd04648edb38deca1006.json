@@ -1,0 +1,110 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "conversation-persistence",
+  "sourceRevision": 3,
+  "result": "fail",
+  "freshness": "complete",
+  "contractHash": "5d6b346047079000490a7707bf0317d9ef46b589c1bbf85c98bf03d70fe5e05c",
+  "acceptanceCriteriaHash": "d06b41949e136b66b822c78f7375d78c89df8efa205b409a9532cf26c0cec404",
+  "implementationScopeRef": "runtime/evidence/scopes/8229b8e4f9b5bf528081d74fc1dd884848b3686618612cdbe2652ec84f744a97.json",
+  "implementationScopeHash": "8229b8e4f9b5bf528081d74fc1dd884848b3686618612cdbe2652ec84f744a97",
+  "reportRef": "verification.md",
+  "reportHash": "0621ae3fda6badc60923001138f1f6a650c1ed19ef1312f09f5dab7c674f530d",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "d06b41949e136b66b822c78f7375d78c89df8efa205b409a9532cf26c0cec404",
+    "total": 8,
+    "evidenced": 7,
+    "skipped": 1,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-5d06911a33906a52188de32c80ac77c4fb66866077b2b81dbca4f998cf3a4b00",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_api.py",
+          "tests/test_runs.py",
+          "tests/test_streaming_api.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-747ee77486dcf6cac251185fc5d06046123577c0e743d8707cb58e4e78566092",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_agent_loop.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-7b76a06d2b5cca88081634a2f49596dc19f998eb18e30ed5adb67d0b47f7ec3f",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_agent_loop.py",
+          "tests/test_streaming.py",
+          "tests/test_streaming_api.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a0ef6fc68867d5c17fbd18018b3220131c6a248d70f2b2789327924106f1f3fb",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/api.py",
+          "venagent/persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-b6c42e875b59313c61eca118851eef42fb5faba53c7f00054c4e80bbab2f3f60",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/conversation.py",
+          "venagent/web/index.html"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-da0c6bafe0796332720d980e82c9b3da1363c9cbbbd5b041585fd9ca5595bb53",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_conversation.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-f386d9251599653de3e1d5bf67083e2aff7a46aee6a5f2610d9dc1c14c9f7be4",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_persistence.py",
+          "venagent/persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-f515b6b8456c70adbca22489dc383a6204a901a428654e0e3cce81058122c800",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "当前实现只有首个 schema v1，尚无受支持旧版本到当前版本的增量升级路径可验证。"
+      }
+    ],
+    "traceHash": "61b3086ddbfaf6889b504929d6e99c0cdad68442859bc409d4d149c81f36bfc8"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/5a13b3afe1295bb8be8b3431e57cd06287fbd6837cb9cbce6e079affdf60862b.json",
+  "createdAt": "2026-07-24T10:10:36.804Z",
+  "envelopeHash": "23156a4555620502c29af156e353c1a2d0bccf9e53ccbd04648edb38deca1006"
+}

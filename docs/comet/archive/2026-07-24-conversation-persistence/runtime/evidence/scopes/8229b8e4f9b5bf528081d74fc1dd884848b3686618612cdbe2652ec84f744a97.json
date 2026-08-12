@@ -1,0 +1,294 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "5d6b346047079000490a7707bf0317d9ef46b589c1bbf85c98bf03d70fe5e05c",
+  "baselineProjectionRef": "runtime/evidence/snapshots/ab35822f1b3349aefe97e1489f4132a2b89d771247aeddaf7edb57baf3e014c8.json",
+  "baselineProjectionHash": "ab35822f1b3349aefe97e1489f4132a2b89d771247aeddaf7edb57baf3e014c8",
+  "currentProjectionRef": "runtime/evidence/snapshots/a9231ed8826ba14e8fc912fbce0bb341a25cb004daff5b987176c54088bd99bc.json",
+  "currentProjectionHash": "a9231ed8826ba14e8fc912fbce0bb341a25cb004daff5b987176c54088bd99bc",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "README.md",
+      "kind": "file"
+    },
+    {
+      "path": "compose.yaml",
+      "kind": "file"
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/__main__.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/agent_loop.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/api.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/conversation.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/llm.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/persistence.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/web/index.html",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "before": {
+        "hash": "2f19e49543da00e80f4ef9681dcd1de1dc0eb141a977dfb41a530ed8f54a0239",
+        "size": 12121
+      },
+      "after": {
+        "hash": "bb5e3b6a954bc6062565992890e9648bd8550df9829c59df36129982bc40565f",
+        "size": 13019
+      },
+      "attributedTo": [
+        {
+          "path": "README.md",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "compose.yaml",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "afd5924fdfe614cd7d17ff933526a7e1aca078d34e9e2033a4f75f78f7ca585e",
+        "size": 592
+      },
+      "attributedTo": [
+        {
+          "path": "compose.yaml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "modified",
+      "before": {
+        "hash": "fefc430abb7a60f6ddf4dd2e9ddc7b014a6e1539bfb5e77482329a36d86ac075",
+        "size": 786
+      },
+      "after": {
+        "hash": "fa73a6f111460bc364461eace574857434b571829b4c10a205f62cd2224d43d9",
+        "size": 871
+      },
+      "attributedTo": [
+        {
+          "path": "pyproject.toml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "5c0bf1fc829e29a5d84aa3c987614916fefb9ac9c46fb4aaeec1f20836a289cf",
+        "size": 3751
+      },
+      "after": {
+        "hash": "10ca57d774fd5457ebad847735e8a026e0edab6facf8c7dfd8e8b6939ae3038e",
+        "size": 3908
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_agent_loop.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_api.py",
+      "kind": "modified",
+      "before": {
+        "hash": "eb1af7fe6a08baae8c9aa3f1260bc3454c09a52dda718ef764f0bb2ce6f57839",
+        "size": 4002
+      },
+      "after": {
+        "hash": "bf1bef37babcf7aae30489d98c4b76600d9172ecede00910b4510ac4dddd40d8",
+        "size": 4103
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_api.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "0c022a3a3dbfdd038514eeadffb4ec487a1e3867913287056fbf21a864c0f32f",
+        "size": 10079
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_persistence.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/__main__.py",
+      "kind": "modified",
+      "before": {
+        "hash": "14a8d5c5b4329196a2708890bca12093ca8dd8c7f3c97a8631fb33d229f59982",
+        "size": 180
+      },
+      "after": {
+        "hash": "ec65af35e7e73275acac2c3af4d12bd8c54b0820f10ea49ca87dba8f92afe9de",
+        "size": 899
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/__main__.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "dfefc714502b063c319c9d66ee53deef02856e13ea08ae50dcc0f4ad829c209e",
+        "size": 8846
+      },
+      "after": {
+        "hash": "f87ddbeea3ff0d64f5af2be19d3d04b9144660b0ceada1e565896a8218529394",
+        "size": 11027
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/agent_loop.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/api.py",
+      "kind": "modified",
+      "before": {
+        "hash": "97cf8c75e4ab76a264775b44e95ad3bd5759e558e11f6f3dc3e0116da2eddd85",
+        "size": 7309
+      },
+      "after": {
+        "hash": "a42b861a230f3f7463300454a67a3e7de80ba295804515faa9598839c2759e18",
+        "size": 11992
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/api.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/conversation.py",
+      "kind": "modified",
+      "before": {
+        "hash": "18567207edc5cc48032109a949ddbff6965a89052b891d0bbedc852a02a17039",
+        "size": 5853
+      },
+      "after": {
+        "hash": "070b1a7734fbdc39c586bdfe9461faabb907686935509fe051a465a3172a4d05",
+        "size": 11451
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/conversation.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm.py",
+      "kind": "modified",
+      "before": {
+        "hash": "4c43d5899c7f2be97ff5768b1fb97c832cf98efed8eb9fd2635642c6853bb86e",
+        "size": 15425
+      },
+      "after": {
+        "hash": "ab320637f71637ecd81e4c9fc575bd0ea3dde1faf9ca898d7a8a58a8f5f00545",
+        "size": 15590
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/llm.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/persistence.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "cc7b66c93a702ade6ed745b7998c01418517030058edea718fe5544c7f893a3d",
+        "size": 17522
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/persistence.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/web/index.html",
+      "kind": "modified",
+      "before": {
+        "hash": "7b01950efa6225a0ecc56aaccf31ee7bb30ecb4f080c60623cbd2e7fa60974d3",
+        "size": 22672
+      },
+      "after": {
+        "hash": "a03745d0230c4dc443010d2c92c79718d618db51a95c562bf143e8b87275baf4",
+        "size": 26808
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/web/index.html",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "8229b8e4f9b5bf528081d74fc1dd884848b3686618612cdbe2652ec84f744a97"
+}

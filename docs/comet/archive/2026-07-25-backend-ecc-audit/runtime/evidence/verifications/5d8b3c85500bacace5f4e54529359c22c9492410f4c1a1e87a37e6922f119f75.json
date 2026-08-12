@@ -1,0 +1,62 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "backend-ecc-audit",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "0ad98be941416ea0f3ad0e396250a44ddc0a0bd435ccabc97797507bc11fb20e",
+  "acceptanceCriteriaHash": "d090d6aea7391dadc291ab086a219d38afa2a5f8ee2662e666cbde4bbe88da0e",
+  "implementationScopeRef": "runtime/evidence/scopes/b9720a4c7ffea0687395d903567d66b86ef7e0650364af897dd3f0288110642f.json",
+  "implementationScopeHash": "b9720a4c7ffea0687395d903567d66b86ef7e0650364af897dd3f0288110642f",
+  "reportRef": "verification.md",
+  "reportHash": "de4cbcf2c6b473dec67324869c4990d5a5cf883026fa9aa61c3f65e661b3544a",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "d090d6aea7391dadc291ab086a219d38afa2a5f8ee2662e666cbde4bbe88da0e",
+    "total": 3,
+    "evidenced": 3,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-8453ec508d27c3893ac8d688ed2212ee8a2abf0869c66102584d71e5ec23169b",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/infra/llm/factory.py",
+          "venagent/interfaces/http/schemas.py",
+          "venagent/interfaces/http/streaming.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-f1acf42b8fa1b589f5c0ac92a8b583d009a8c08e58e7cdb1fe60858c36df0835",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_llm.py",
+          "venagent/infra/config/loader.py",
+          "venagent/infra/llm/factory.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-fef8c9b8d0e7ccda6776c6ac80c29cfd66f862c4ed4e0271d843f8036bfd754e",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "pyproject.toml",
+          "venagent/interfaces/http/schemas.py",
+          "venagent/interfaces/http/streaming.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "cea827de2ed4f599c6787802f14f8594524932cd2ad65f9acad0ce905a02e1b4"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": null,
+  "createdAt": "2026-07-25T14:25:24.829Z",
+  "envelopeHash": "5d8b3c85500bacace5f4e54529359c22c9492410f4c1a1e87a37e6922f119f75"
+}

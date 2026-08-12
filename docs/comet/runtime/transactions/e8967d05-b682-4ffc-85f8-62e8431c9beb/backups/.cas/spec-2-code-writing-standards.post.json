@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-2-code-writing-standards",
+  "role": "post",
+  "hash": "3cffb1d0fab72f08ccce080614ba73e5df73e3a935fd67f7861af4a6d0672fab",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 562949954145849,
+    "birthtimeMs": 1786274043037.9836
+  }
+}

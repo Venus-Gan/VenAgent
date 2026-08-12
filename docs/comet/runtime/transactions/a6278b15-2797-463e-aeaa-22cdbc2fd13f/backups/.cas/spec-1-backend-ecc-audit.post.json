@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-backend-ecc-audit",
+  "role": "post",
+  "hash": "b6ce407f477836fe125538d5468bc3ede07ebde82dd81de278b890fc8693e5c2",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 11821949022575900,
+    "birthtimeMs": 1784989592433.6826
+  }
+}

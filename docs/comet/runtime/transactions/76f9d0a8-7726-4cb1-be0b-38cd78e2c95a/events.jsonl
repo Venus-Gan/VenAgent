@@ -1,0 +1,8 @@
+{"sequence":1,"timestamp":"2026-08-08T09:29:38.327Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-08-08T09:29:39.669Z","type":"operation-started","operationId":"spec-1-local-env-restoration"}
+{"sequence":3,"timestamp":"2026-08-08T09:29:39.887Z","type":"operation-completed","operationId":"spec-1-local-env-restoration"}
+{"sequence":4,"timestamp":"2026-08-08T09:29:39.917Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":5,"timestamp":"2026-08-08T09:29:40.350Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":6,"timestamp":"2026-08-08T09:29:40.607Z","type":"archive-finalization-started"}
+{"sequence":7,"timestamp":"2026-08-08T09:29:40.738Z","type":"archive-finalized"}
+{"sequence":8,"timestamp":"2026-08-08T09:29:40.834Z","type":"commit"}

@@ -1,0 +1,76 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "env-prefix-normalization",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "eca3ae1115ce91c55389e7c274e94982a2dfc637a298cfa135250965e351acf5",
+  "acceptanceCriteriaHash": "bd268f569ed8e8dbf6953a5d539f9131edd52e918b3c6768c6d189089f82c246",
+  "implementationScopeRef": "runtime/evidence/scopes/7b37cf4f214603b4c41f3618bd579cafe0e2c00f3a15e5e72176e62642912b22.json",
+  "implementationScopeHash": "7b37cf4f214603b4c41f3618bd579cafe0e2c00f3a15e5e72176e62642912b22",
+  "reportRef": "verification.md",
+  "reportHash": "f8d6c01add7625189f4eab92f3595a57ed396b4465aaaafa7345ccabaeef9a3d",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "bd268f569ed8e8dbf6953a5d539f9131edd52e918b3c6768c6d189089f82c246",
+    "total": 5,
+    "evidenced": 4,
+    "skipped": 1,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-0d34fd163882d25c84bb1fcabccbf617f8e3b46535a77045522e18c05feca00c",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [],
+        "skippedReason": "Comet 禁止把 .env 或 .env.example 作为证据引用；已用只读脚本逐行检查两份文件，所有赋值行均有紧邻中文注释。"
+      },
+      {
+        "acceptanceId": "acceptance-261a5c345090eef6aac086407458501d3395058661ad6454af5bb8557eec6b72",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_config.py",
+          "venagent/infra/config/loader.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-70d4fb4503e3716927700f6271cabd4589b34e04fa52c6481b866004cae1d356",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/conftest.py",
+          "tests/test_persistence.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-8326b33b3465d530c30d3a16f9577a01decfa7b9ea0cea3c202b5c56f20303b1",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_config.py",
+          "venagent/infra/config/loader.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-ea37e79f66bc0bae54ea23e287a64932570c80411dbdc6ab0c8d3f2657a1c7d0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_config.py",
+          "venagent/infra/config/loader.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "b601f6e711362547c959c8cd5e9b21a32d91d79d8a5fb78c6deed069ebab9037"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/d499439ab1d90ade5513b4f7fb6b3fae344be187571a38fa678850ffba9d1093.json",
+  "createdAt": "2026-08-07T10:28:50.305Z",
+  "envelopeHash": "3f94f2542ceb10dd6f592ff77ee6ae9391acc50b70d43da48b435359e8711dfa"
+}

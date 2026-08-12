@@ -1,0 +1,19 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "b0aebb6b-ce49-4ed3-a7ef-ab6cf32a6125",
+  "kind": "archive",
+  "status": "committed",
+  "change": "migrate-testclient-to-httpx2",
+  "createdAt": "2026-07-24T02:06:25.378Z",
+  "preflightHash": "bc42767109697c3333d969386d232c7ec4613d71af190ad887a7817c24196003",
+  "operations": [
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/migrate-testclient-to-httpx2",
+      "target": "archive/2026-07-24-migrate-testclient-to-httpx2",
+      "expectedSourceHash": "fbb6febfc6edf636dbeb3c20df5e6d4bb5248baf6c9859efa494656717b59f0e",
+      "expectedTargetHash": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 6
+name: rollback-ownership-lifecycle
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 8330d32bc46d9c3ce7a9545ba8b4983705bb9f77dcbea03e5571a527ef0ea65e
+spec_changes:
+  - capability: ownership-lifecycle
+    operation: remove
+    base_hash: 5d779ed32cb542d72d895f7c9842306ac739efcad589cf43233d5de6f37a33e2
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/bbe761eb62ec001538fcaacdc4ba7a6d0da52b516feba013735a32fa1b965bec.json
+verification_evidence: runtime/evidence/verifications/ec25d2e0bfa45eec92b74a5ec266bad808f33e1274013c9ccc023ba4b7533ecf.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-26
+run_id: 69d53a25-ff47-478b-a41e-c548a24be8c3

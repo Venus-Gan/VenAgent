@@ -1,0 +1,26 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: add-m03a-to-refactor-roadmap
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: afd824c39e930065310920e310d8fe3910a71f66ac137da87596f7882bc0a72c
+spec_changes:
+  - capability: conversation-context
+    operation: replace
+    source: specs/conversation-context/spec.md
+    base_hash: f969eb3aa21781c88268bf8a69da81c09c0cab5255fbcff214cb7c258f7d7b8e
+  - capability: refactor-roadmap
+    operation: replace
+    source: specs/refactor-roadmap/spec.md
+    base_hash: 8283e4a9b775f0e679519eb53ec5522c28a15a15a7293f11efa6cbb427afb434
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/0556e0015aefd39b8083f54fda0727cd68a7e72b8083638cf81e99f78d564228.json
+verification_evidence: runtime/evidence/verifications/5d793f4addb2ab928cb55c5c0a6007f737a6b70fe781e51add425a98b141b870.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-23
+run_id: be78f5f1-d0ec-4bda-b877-73fcaee2a545

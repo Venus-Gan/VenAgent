@@ -1,0 +1,15 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "bb0e5f28727b7ff6f5f59250c263ba5faf88b1c91ad4f46e12af5676cb2f2b6f",
+  "baselineProjectionRef": "runtime/evidence/snapshots/03f2b16253703286e27e5283d2ec63c0cc102e8ac6de29ac6da813f82a6a5b44.json",
+  "baselineProjectionHash": "03f2b16253703286e27e5283d2ec63c0cc102e8ac6de29ac6da813f82a6a5b44",
+  "currentProjectionRef": "runtime/evidence/snapshots/861a0797a988277cb35727abb8058b9414d38d53bbe8b331fda65f028e09e4d4.json",
+  "currentProjectionHash": "861a0797a988277cb35727abb8058b9414d38d53bbe8b331fda65f028e09e4d4",
+  "complete": true,
+  "declaredArtifacts": [],
+  "changes": [],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": "本 change 仅同步已确认的 AGENTS.md 代码编写 prompt 路由与 canonical 规则规格，不修改 VenAgent 运行时代码、前端代码或测试实现。",
+  "scopeHash": "9ec78e2fba2c7540414cbeade16ad8786d826792e26ba8f76865aa060d965b5f"
+}

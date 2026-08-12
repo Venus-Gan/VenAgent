@@ -1,0 +1,49 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-3e0cddeafccba53a6a74642b5ec1be76c48968fe1858906f3db399ab31a8bf4b",
+    "evidence_refs": [],
+    "skipped_reason": "规格断言确认 M01 仍有八节和七项验收基线；本 change 没有运行时代码产物。"
+  },
+  {
+    "acceptance_id": "acceptance-935456e91a10eb1dff52780cbdc5f8923179bff93aa238de94ae13e06a74115f",
+    "evidence_refs": [],
+    "skipped_reason": "路线完整规格的治理状态明确记录 M03A 及相关会话库能力为 drop，并要求未来显式路线修订。"
+  },
+  {
+    "acceptance_id": "acceptance-be47bddc8f912619dc4799529eda5be62985596186e0931b523ca3d7ca73e9b8",
+    "evidence_refs": [],
+    "skipped_reason": "候选目录文本断言确认不存在 M03A，且 M01、M02、M03、M04 顺序保持不变。"
+  },
+  {
+    "acceptance_id": "acceptance-f9ae9d94fc97f774e4adeb7136e81d0a02c510ec369c1b89593c00366129724f",
+    "evidence_refs": [],
+    "skipped_reason": "M01 完整规格差异仅删除一条 M03A 待办说明，其余条目保持一致。"
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- PowerShell `Compare-Object`：通过；路线规格只替换当前治理状态，新增 M01 完成和 M03A drop 结论；M01 规格只删除一条 M03A 建议。
+- PowerShell 规格断言：通过；候选目录没有 M03A，`M01 → M02 → M03 → M04` 顺序正确，drop 与禁止自动恢复的边界存在。
+- PowerShell M01 完整性断言：通过；M01 拟议规格不包含 M03A，仍有八节和七项验收基线。
+- `comet native check add-m03a-to-refactor-roadmap`：通过；receipt 为 `runtime/evidence/check-receipts/e75185c675eacf6122ff2bcdf4a78cb85317941bdeecf7287ce3888985b5c144.json`，0 issues，结果 fresh。
+
+# Skipped checks
+
+- 未运行 Python 测试或浏览器 E2E；本 change 只记录路线治理决定并删除一条 M01 待办文字，不修改任何运行时代码、Web UI 或测试。
+
+# Spec consistency
+
+`refactor-roadmap` 保持原 M01–M18 候选目录，仅把当前治理状态更新为 M01 已完成、M03A 及相关会话库能力整体 drop。`conversation-context` 保留全部已实现行为和验收基线，只删除已被用户明确舍弃的 M03A 建议。
+
+# Known limitations and risks
+
+drop 不表示这些能力技术上永远不能实现，而是当前路线不包含它们；未来若需求发生变化，必须通过新的显式路线修订重新审计复杂度和收益。Comet 内置检查的 no-code scope 扫描文件数为 0，内容一致性由独立差异和文本断言证明。
+
+# Conclusion
+
+PASS。M03A 及相关会话库能力已按用户确认整体舍弃，M01 不再有该待办并正式收尾。

@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 7
+name: consolidate-refactor-roadmap
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 69fee44bcd6358273ab5d5a0ef7d3825cac68add4543dd116a657e5dd083514b
+spec_changes:
+  - capability: refactor-roadmap
+    operation: replace
+    source: specs/refactor-roadmap/spec.md
+    base_hash: 6ddf1160b94fc842a64dc19997d1837f175de78989b86d8f81d9a778188014c6
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/345e05f0d793fc31319a0e85c17870f3bd89eb649e824d7d7c295faf62acd409.json
+verification_evidence: runtime/evidence/verifications/1fecb71a74dcc8e5e2e4ee04e03678d67a2582d3fd62ae0ef9d1c8a69e5477b3.json
+partial_allowance: runtime/evidence/allowances/96516b8a6a4222d1d38b73785a0cb224566c4532e786ae37d533adb7a57f7f4b.json
+archived: true
+created_at: 2026-07-25
+run_id: 83509ba8-7b9f-411f-8ec3-4937284e25ab

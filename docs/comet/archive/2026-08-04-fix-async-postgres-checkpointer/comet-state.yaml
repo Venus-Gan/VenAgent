@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: fix-async-postgres-checkpointer
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 8b7c37eccf394281c2719a932bedbe821505fecd44166011c7d401d717d82f27
+spec_changes:
+  - capability: async-checkpoint-runtime
+    operation: create
+    source: specs/async-checkpoint-runtime/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/29376403a2131b9255f3d10168eb9ffbc26e50031d620e821096d1bac01e734b.json
+verification_evidence: runtime/evidence/verifications/eb195af02bda83e797449d1acf3ed9312fbfff787bc0e09bd1d891987695a91e.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-04
+run_id: 5dd02400-cac4-4f82-b8cd-a27333bf391a

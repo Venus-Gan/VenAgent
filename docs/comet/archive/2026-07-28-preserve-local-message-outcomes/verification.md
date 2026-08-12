@@ -1,0 +1,78 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-01c265d94b1efd76113acdb34dfd3a941cb8d2a9a2df285f73733e71268ee5dd",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-113d51f96c85503f0e0e8b66968a4f264cd361b8179a6afa3b7ede19fbae758f",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-1521fd6d47fe976d44683597845b536c45d4593954d8ae9132d7ef927f9f1a28",
+    "evidence_refs": [
+      "web/src/modules/chat/store.ts",
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-4ba2207a93880680c1a06c7724a3f159c75ecbd7f17c5a5f92733c6b3b5e3476",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-8add1e1221bf65203012b169af76935b816ed8aea0e464efcfe26b00ed477418",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-c9aa37961899203f6ced4e77eef02c202b19f9504dac63706203b7bc8c1d385d",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-fd20d3ba0694a0fc68013351b90f0cfc47aff4080cd4c893a9a4295b2f9f0cc9",
+    "evidence_refs": [
+      "web/tests/e2e/workspace.spec.ts"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- `npm.cmd run build`：通过；Vue TypeScript 校验与 Vite 生产构建成功。
+- `npm.cmd run test:e2e`：10 passed；新增回归在旧实现上复现了详情覆盖与刷新中断问题，最终全部通过。
+- `.venv\Scripts\python.exe -m pytest`（PostgreSQL 关闭）：130 passed, 1 skipped。
+- 设置隔离 `VENAGENT_TEST_DATABASE_URL` 后运行完整 pytest：131 passed。
+- `.venv\Scripts\python.exe -m pip check`：No broken requirements found。
+- `comet native check preserve-local-message-outcomes`：当前 revision 5 实现范围检查通过；receipt `runtime/evidence/check-receipts/924101b414f0c839508bd7acd4e9800a8f5f906a3841f0bb87d2ddbf86328397.json`。
+- 真实 PostgreSQL、真实 HTTP/SSE 与浏览器：error partial 刷新保留、失败 A 后成功 B 顺序稳定、重试 A 原位收敛、cancelled partial 刷新保留、运行中刷新转为“连接已中断”且允许重试，全部通过；浏览器控制台无 error。
+- 安全边界复核：未新增 API、令牌持久化、HTML 注入面或跨 owner 缓存共享；消息仍由 Vue 文本插值渲染，JWT/Cookie 与服务端授权契约未变。
+
+# Skipped checks
+
+无。
+
+# Spec consistency
+
+通过。服务端只提交完整 turn、相同 `client_message_id` 收敛、取消/error/断线不提交、owner 隔离与本机可见顺序均符合 canonical `conversation-persistence`、`conversation-context` 和 `streaming-run-lifecycle` 规格。页面卸载和网络断开统一恢复为 `interrupted`，不再伪装成普通失败或活动运行。
+
+# Known limitations and risks
+
+- 失败、取消、partial 和 interrupted 仍是当前浏览器、当前身份下的本机记录，不跨设备同步；跨设备只恢复服务端 committed history，这是既定契约。
+- 旧运行不会在页面刷新后自动续跑或自动重发，用户必须显式点击重试，以避免重复副作用。
+- 注销或切换身份继续清除前一身份的本机未提交记录，以维持现有隐私边界。
+
+# Conclusion
+
+通过。七项 acceptance 均有自动化证据，真实浏览器覆盖的失败、取消、中断、顺序和重试结果与契约一致；验收后应用服务、Vite 端口和 PostgreSQL 容器均已停止。

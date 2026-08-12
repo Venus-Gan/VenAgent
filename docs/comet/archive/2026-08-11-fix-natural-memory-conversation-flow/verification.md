@@ -1,0 +1,85 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+[
+  {
+    "acceptance_id": "acceptance-1e6638c5c06d031d9c00aee558917510b85de442bd66d0f05b74224b65045f0d",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/memory/jobs.py",
+      "venagent/memory/long_term/policy.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-77f7d38dda424a63ffd009592aa47e06f328bd86dbb2d38848e03a4105f42d02",
+    "evidence_refs": [
+      "tests/test_agent_loop.py",
+      "tests/test_api.py",
+      "venagent/agent/runtime.py",
+      "venagent/interfaces/http/routes/runs.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-9fb606162490a6ae4cfbe17cccd8e33a8238c41121292983ea532daf97d76b79",
+    "evidence_refs": [
+      "tests/test_api.py",
+      "venagent/interfaces/http/routes/runs.py",
+      "venagent/memory/command_adapter.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-a5ea983f379e1eccedc2763f281169aa2797df6ba424e02554420679603569d9",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/agent/runtime.py",
+      "venagent/memory/service.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-a8910a29a5b006983f90f39bba8d5632e8fee9d680fc14dc356b7f5555a365ae",
+    "evidence_refs": [
+      "tests/test_agent_loop.py",
+      "tests/test_memory_context.py",
+      "venagent/memory/service.py"
+    ]
+  },
+  {
+    "acceptance_id": "acceptance-d80982e01a8ac4e9e3244a7a11faff16efc6a24618b5fd71acc8bc61a2d7d252",
+    "evidence_refs": [
+      "tests/test_memory_context.py",
+      "venagent/memory/long_term/policy.py",
+      "venagent/memory/model_adapters.py",
+      "venagent/memory/service.py"
+    ]
+  }
+]
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- `.\.venv\Scripts\python.exe -m pytest -q`：在最终时序复核前通过，219 passed；覆盖全仓离线与已配置集成测试。
+- 最终移除不可取消的线程伪超时后，`.\.venv\Scripts\python.exe -m pytest -q tests/test_agent_loop.py tests/test_memory_context.py tests/test_api.py tests/test_memory_semantics.py tests/test_memory_index.py`：75 passed。
+- `.\.venv\Scripts\python.exe -m ruff check venagent tests`：通过。
+- `.\.venv\Scripts\python.exe -m compileall -q venagent tests`：通过。
+- PostgreSQL 与 Neo4j 均为 healthy 时运行 `.\.venv\Scripts\python.exe -m pytest -q -rs tests\test_persistence.py tests\test_neo4j_graph_memory.py`：18 passed。
+- 真实浏览器验证：显式混合句形成用户消息与 assistant 消息；姓名保存、偏好未保存；后续普通闲聊正常回复，没有出现记忆命令提示短路。
+- 真实 UTF-8 HTTP 验证：显式混合句 run succeeded 且形成 2 条消息；新 conversation 准确召回姓名；自然忘记 run succeeded；随后 `/memory list` 返回空；第三个 conversation 不再召回姓名。
+- 验收账号已删除并确认重新登录返回 401；VenAgent 服务与 PostgreSQL、Neo4j 容器均已停止。
+
+# Skipped checks
+
+- 浏览器在完成自然记住和普通闲聊后，安全策略拒绝后续 localhost DOM 操作；跨会话、自然忘记和删除后召回改由同一真实账号的 HTTP API 完成，没有绕过浏览器策略。
+- 最终补丁后的全量 pytest 在容器已停止时等待基础设施连接并于 240 秒超时；该结果未记为通过。补丁影响仅为显式记忆等待时序，已由 75 项聚焦回归覆盖；补丁前全量 219 项和容器在线时真实集成 18 项均通过。
+- 未运行 mypy、Bandit 或 pip-audit；本次未增加依赖，Ruff、编译、聚焦/全量 pytest 和外部网络/秘密边界人工复核已覆盖本次风险。
+
+# Spec consistency
+
+仅 `/memory` 命令继续在 HTTP 层短路；自然语言记住与忘记均进入正常 run。显式记忆在回答模型调用前完成结构化提取、一次统一资格判断和权威写入或删除，并把净化后的 outcome 作为强制输出上下文。普通陈述仍在回答发布后异步提取；秘密在进入外部提取模型前阻断。`preferred_name` 未新增，偏好仍不持久化。
+
+# Known limitations and risks
+
+最终自然语言回复由模型组织，措辞存在非确定性，但回答上下文携带 saved、partial、rejected、disabled、unavailable、deleted、ambiguous 或 not_found 的权威状态和计数，禁止提前承诺。显式记忆等待依赖模型 adapter 自身的网络 timeout/retry；移除了无法真正取消线程的 runtime 伪超时，避免迟到写入与回复不一致。
+
+# Conclusion
+
+PASS。自然语言记忆已恢复为正常对话链路，混合候选按一次拆分与一次统一判断处理，显式操作的真实结果先于最终回复，跨会话召回和自然忘记在真实持久环境中通过，命令面保持兼容。

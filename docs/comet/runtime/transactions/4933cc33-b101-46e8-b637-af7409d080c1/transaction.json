@@ -1,0 +1,28 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "4933cc33-b101-46e8-b637-af7409d080c1",
+  "kind": "archive",
+  "status": "committed",
+  "change": "consolidate-refactor-roadmap",
+  "createdAt": "2026-07-25T12:27:57.546Z",
+  "preflightHash": "11ddd87be43af3be61be53b8602b0657bddcdf64e612c86d66ae65615cfe0596",
+  "operations": [
+    {
+      "id": "spec-1-refactor-roadmap",
+      "type": "write",
+      "target": "specs/refactor-roadmap/spec.md",
+      "staged": "runtime/transactions/4933cc33-b101-46e8-b637-af7409d080c1/staged/specs/refactor-roadmap/spec.md",
+      "backup": "runtime/transactions/4933cc33-b101-46e8-b637-af7409d080c1/backups/specs/refactor-roadmap/spec.md",
+      "expectedTargetHash": "6ddf1160b94fc842a64dc19997d1837f175de78989b86d8f81d9a778188014c6",
+      "stagedHash": "ace08f2b6b409efb89afb6943d94714c832f204aff32c8d7fbbb4c756360e9d2"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/consolidate-refactor-roadmap",
+      "target": "archive/2026-07-25-consolidate-refactor-roadmap",
+      "expectedSourceHash": "09b27fe07bc183825aaa64cd7fc4f7e4c95e49a5397fb9f2200edb9c141e2224",
+      "expectedTargetHash": null
+    }
+  ]
+}

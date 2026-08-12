@@ -1,0 +1,163 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "m05-neo4j-graph-memory-storage",
+  "sourceRevision": 3,
+  "result": "fail",
+  "freshness": "complete",
+  "contractHash": "14ef582a27473cffaa05845852a94311ae483a8618a271fa24faa3146d02c2ae",
+  "acceptanceCriteriaHash": "f4a9a85dffacbb17a11506020233779c077080eac80437ddac801529ed8fefcf",
+  "implementationScopeRef": "runtime/evidence/scopes/906a2ef48a934957668ee2cdd7ea36e5b3a888d7e7025c8156c1a9ab6a50d7cc.json",
+  "implementationScopeHash": "906a2ef48a934957668ee2cdd7ea36e5b3a888d7e7025c8156c1a9ab6a50d7cc",
+  "reportRef": "verification.md",
+  "reportHash": "26d25725a2dd20c205c4c961e1a948c33ff26808617078816490a398c7d48ce2",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "f4a9a85dffacbb17a11506020233779c077080eac80437ddac801529ed8fefcf",
+    "total": 13,
+    "evidenced": 13,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-0389a10bf49926325f84424dcea70bc7fd118b998004d8938b0df5d01f7582c0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "tests/test_neo4j_graph_memory.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-0f5d8c96ed3b9da7842ddb343ae25e31f2a7d946147eefc2c785359d02374baf",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "tests/test_memory_graph_store.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-1e06c27be59162d7d36dd3f66e56f61a40f162a38240e991d3d016c0f26988a0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "tests/test_memory_graph_store.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-3ce76bc477f76dac1af15079316313b41d07cfed40f96ae63f8d6f29c54a9557",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_graph_store.py",
+          "tests/test_neo4j_graph_memory.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-5fc0c74c5ee527854b6f4ed2d6c1337b7633088e459c3b7e769dcc9df8e67509",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "venagent/infra/memory/neo4j/graph.py",
+          "venagent/infra/platform/neo4j/migrations.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a184e141a52d86314b396fedda43d93ac163c994050e76441ddb8bfbf147beca",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_config.py",
+          "tests/test_memory_context.py",
+          "venagent/infra/platform/neo4j/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a239bf8666e096d9d7cb3bb66b104aadaa8898c6f73288052c7d112d3adc1bab",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/memory/recall_provider.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a2aa7cd1c18c65af43ab7bb3de9c6ae785cbe7222bfa0469e6ee0fedde6fce0c",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/infra/memory/postgresql/jobs.py",
+          "venagent/infra/memory/postgresql/long_term.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-b4b0c286a70b26b3827487c7f3cc9b1009522617b0a551a008aab987c6efbc9c",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_neo4j_graph_memory.py",
+          "venagent/infra/memory/neo4j/graph.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-e2de09ac111aced0a5bd0a339a379ffc82560c28010c6bf3eef4f088c54ec223",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/infra/platform/migrations.py",
+          "venagent/infra/platform/runtime.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-ec9413d674536db7515d89060a865030a36d12c036c5df29a30d1f0dcbd246e9",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/memory/write_pipeline.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-fcfbf8ef78af30f6bc5a34743e6f3f8c02c7e52c0524f401bf3bbedc738e42a5",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "venagent/infra/memory/postgresql/jobs.py",
+          "venagent/infra/memory/postgresql/long_term.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-fd79eff69ca7113779b416a69b7769835e62f55b293acafc880da0e1c6ad73f8",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_maintenance.py",
+          "venagent/memory/maintenance.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "4061773f20cd0bd5ec946895c38b7754debfcac3b085f050f3cfec2a576bdf39"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/5d5e23c43496a964aab443317b30350b237350bb44330237588fe11da325f723.json",
+  "createdAt": "2026-08-07T15:09:15.011Z",
+  "envelopeHash": "6ed24d4dba0231cfb4486fced7fd5059a921d3e18f9866af3ec6e40ef1f792e1"
+}

@@ -1,0 +1,26 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 10
+name: memory-graph-g2
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 2a839a76e2b997959373703818ef41c46fff09125b8dffd4d95175eedf3dffc5
+spec_changes:
+  - capability: g1-recall-ranking
+    operation: replace
+    source: specs/g1-recall-ranking/spec.md
+    base_hash: 1b040f78f3b97434d53c1f61e696311bdce8815f23822eef3e3f232ad739eb7e
+  - capability: memory-context
+    operation: replace
+    source: specs/memory-context/spec.md
+    base_hash: 53e1646018676ad8b27de4c6f6872b12512d9b6c0447e7a23da46233263677d5
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/29092dc9492166c937165308add66af58868d7e7b970bf270ee5725561098866.json
+verification_evidence: runtime/evidence/verifications/94070af1928043b9863049ceb59a25e9649a12c5725c520b50b406e302043e12.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-06
+run_id: a22aa975-868d-429a-8e62-1fa1e1325119

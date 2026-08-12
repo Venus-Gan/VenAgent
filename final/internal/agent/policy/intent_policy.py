@@ -2,9 +2,13 @@ from __future__ import annotations
 
 from typing import Mapping
 
+from .fallback import (
+    detect_compatible_tool,
+    has_compatible_tool_intent,
+    has_compatible_workflow_intent,
+)
 from .registry import PROFILE_REGISTRY, ProfileSpec
 from .types import CapabilityScope, ExecutionProfile, IntentDecision, IntentSignal
-from ..router import detect_tool, need_react, need_tool
 
 POLICY_VERSION = "v1"
 
@@ -55,19 +59,6 @@ _KNOWLEDGE_HINTS = (
     "原理",
     "解释",
 )
-
-_DEFAULT_TOOL_MAP = {
-    "search_web": True,
-    "get_time": True,
-    "get_weather": True,
-    "rag_search": True,
-    "write_document": True,
-    "read_document": True,
-    "list_documents": True,
-    "ingest_document": True,
-    "exec_command": True,
-}
-
 
 class IntentPolicy:
     def __init__(
@@ -142,7 +133,7 @@ class IntentPolicy:
                 0.84,
             )
 
-        if need_react(query):
+        if has_compatible_workflow_intent(query):
             return (
                 ExecutionProfile.WORKFLOW_TASK,
                 "multi-step workflow detected",
@@ -182,7 +173,7 @@ class IntentPolicy:
                 0.76,
             )
 
-        if need_tool(query):
+        if has_compatible_tool_intent(query):
             return (
                 ExecutionProfile.SINGLE_TOOL,
                 "generic tool keyword detected",
@@ -226,7 +217,7 @@ class IntentPolicy:
                 )
             if signal.selected_tools:
                 return profile, "requested single tool profile", 0.94
-            if need_tool(self._normalized_query(signal.query)):
+            if has_compatible_tool_intent(self._normalized_query(signal.query)):
                 return profile, "requested single tool profile", 0.9
             return profile, "requested single tool profile", 0.9
         if profile is ExecutionProfile.KNOWLEDGE_ANSWER:
@@ -275,7 +266,7 @@ class IntentPolicy:
         tool_name = self._detect_tool(signal.query, signal.available_tools)
         if tool_name is not None and tool_name != "rag_search":
             return (tool_name,)
-        if need_tool(self._normalized_query(signal.query)):
+        if has_compatible_tool_intent(self._normalized_query(signal.query)):
             return ("search_web",)
         return fallback.tools
 
@@ -306,8 +297,7 @@ class IntentPolicy:
         query: str,
         available_tools: tuple[str, ...],
     ) -> str | None:
-        tool_map = dict.fromkeys(available_tools or _DEFAULT_TOOL_MAP.keys(), True)
-        return detect_tool(query, tool_map)
+        return detect_compatible_tool(query, available_tools)
 
     @staticmethod
     def _looks_like_greeting(query: str) -> bool:
@@ -328,6 +318,6 @@ class IntentPolicy:
             return False
         if self._looks_like_knowledge(query):
             return False
-        if need_react(query) or need_tool(query):
+        if has_compatible_workflow_intent(query) or has_compatible_tool_intent(query):
             return False
         return any(hint in query for hint in _AMBIGUOUS_HINTS)

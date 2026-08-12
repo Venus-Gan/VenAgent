@@ -1,0 +1,44 @@
+{
+  "schema": "comet.native.check-receipt.v1",
+  "change": "postgres-test-project-ruff",
+  "sourceRevision": 3,
+  "checker": {
+    "policy": "scoped-text-safety",
+    "version": 1,
+    "hash": "0b8e0e9570269a64123ba2794f1f5125cf454695e1d7fda8f0acddf87ec4912f",
+    "limits": {
+      "maxFiles": 256,
+      "maxFileBytes": 1048576,
+      "maxTotalBytes": 8388608,
+      "maxIssues": 128
+    }
+  },
+  "inputHash": "b570c56c9c6d40b591c7702f56b9cd8cc8e2cac650e3ba30be026bc7caa2d677",
+  "status": "passed",
+  "startedAt": "2026-08-03T13:49:41.911Z",
+  "endedAt": "2026-08-03T13:49:43.120Z",
+  "contract": {
+    "expectedHash": "d9de36f797c02cee6b3fe5e08a4382265a50b98fb6cec2184d43bc40fb10c5d6",
+    "beforeHash": "d9de36f797c02cee6b3fe5e08a4382265a50b98fb6cec2184d43bc40fb10c5d6",
+    "afterHash": "d9de36f797c02cee6b3fe5e08a4382265a50b98fb6cec2184d43bc40fb10c5d6"
+  },
+  "implementation": {
+    "scopeHash": "4e471230b9b28a916cd2fa72d8db05581ef5feb9bd2189f365e5b4ad497c990e",
+    "expectedSnapshotHash": "4161a2bf3d6fd7ac4f6049fa5c646a895f9491ac5cca36da1b81b48db9469bc6",
+    "beforeSnapshotHash": "4161a2bf3d6fd7ac4f6049fa5c646a895f9491ac5cca36da1b81b48db9469bc6",
+    "afterSnapshotHash": "4161a2bf3d6fd7ac4f6049fa5c646a895f9491ac5cca36da1b81b48db9469bc6"
+  },
+  "counts": {
+    "filesSelected": 36,
+    "filesScanned": 36,
+    "binaryFilesSkipped": 0,
+    "bytesScanned": 288509,
+    "issueCount": 0,
+    "recordedIssueCount": 0
+  },
+  "issues": [],
+  "issuesTruncated": false,
+  "stale": false,
+  "staleReasons": [],
+  "receiptHash": "3c1b15f548e9047dbf35ef1924494cd5f7a59dc6c5f8a33e35a6b53ce3583d96"
+}

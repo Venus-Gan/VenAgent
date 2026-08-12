@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-m05-memory-boundaries",
+  "role": "post",
+  "hash": "5a437531874b3022ce7f9eecceee82ce16022bd20167a74f2ef827f06a3e3b4e",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1970324837700418,
+    "birthtimeMs": 1786439842690.9563
+  }
+}

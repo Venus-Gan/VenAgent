@@ -1,0 +1,36 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "dc837a7b9e4824628a7acbae41cf42d9cdf111005fb8ccfba096e0154c7780fe",
+  "baselineProjectionRef": "runtime/evidence/snapshots/611ba2e78250ff049513c4b4c7f72975d5138e387506c33000c704f168886e06.json",
+  "baselineProjectionHash": "611ba2e78250ff049513c4b4c7f72975d5138e387506c33000c704f168886e06",
+  "currentProjectionRef": "runtime/evidence/snapshots/ec1de64b5d1b0402a7dd526c1d9c83839d45b6349d0ab0f65bb1ca05aa5c35b7.json",
+  "currentProjectionHash": "ec1de64b5d1b0402a7dd526c1d9c83839d45b6349d0ab0f65bb1ca05aa5c35b7",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "docs/discussions/agi-saber-design-reference.md",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "docs/discussions/agi-saber-design-reference.md",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "c4cbf58888d762e59efd12246c12e1794e048cf8d1a8f9aeb55e4d1cb874d2fa",
+        "size": 25029
+      },
+      "attributedTo": [
+        {
+          "path": "docs/discussions/agi-saber-design-reference.md",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "d18771edf73e304de144f37e6c32ae061deb07ff6ba9700b44abaa82b1edd65d"
+}

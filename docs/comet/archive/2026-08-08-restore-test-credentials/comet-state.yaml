@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 7
+name: restore-test-credentials
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 4e0a67a5c0dbd129c052216d6c286491391f7f1e6036b3123aadcc2d6db55b5b
+spec_changes:
+  - capability: isolated-test-configuration
+    operation: create
+    source: specs/isolated-test-configuration/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/01d6e3203aababb8fe59855f83d64d863ae45fdc8d8e9ba9bb09b2577b38bf6c.json
+verification_evidence: runtime/evidence/verifications/5984eb07c4745bfeaf20466a712daceb04b6cb20b995491151b68fcf9a47cfc7.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-08
+run_id: 06525cb2-cd47-4fc0-af4c-6f6a7bcdf169

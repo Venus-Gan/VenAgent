@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-bounded-chat-payloads",
+  "role": "post",
+  "hash": "8502bcbd1ac3cb9a8f3eb8785a962062a6434b0d875696e0c053364313889a37",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1407374884233312,
+    "birthtimeMs": 1785056578910.2126
+  }
+}

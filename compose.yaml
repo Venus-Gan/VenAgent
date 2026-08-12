@@ -1,0 +1,42 @@
+name: venagent
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      # Compose 与应用读取同一个 .env；这里的变量只负责初始化容器。
+      POSTGRES_DB: venagent
+      POSTGRES_USER: venagent
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before starting PostgreSQL}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - venagent-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    restart: unless-stopped
+
+  neo4j:
+    image: neo4j:5.26.0-community
+    environment:
+      NEO4J_AUTH: ${NEO4J__USER:-neo4j}/${NEO4J_PASSWORD:?Set NEO4J_PASSWORD before starting Neo4j}
+    ports:
+      - "127.0.0.1:${NEO4J_HTTP_PORT:-7474}:7474"
+      - "127.0.0.1:${NEO4J_BOLT_PORT:-7687}:7687"
+    volumes:
+      - venagent-neo4j-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:7474 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 15s
+    restart: unless-stopped
+
+volumes:
+  venagent-postgres-data:
+  venagent-neo4j-data:

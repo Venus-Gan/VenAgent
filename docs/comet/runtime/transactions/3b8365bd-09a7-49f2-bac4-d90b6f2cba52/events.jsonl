@@ -1,0 +1,10 @@
+{"sequence":1,"timestamp":"2026-08-06T12:13:07.792Z","type":"prepared"}
+{"sequence":2,"timestamp":"2026-08-06T12:13:09.186Z","type":"operation-started","operationId":"spec-1-checkpoint-serialization-policy"}
+{"sequence":3,"timestamp":"2026-08-06T12:13:09.428Z","type":"operation-completed","operationId":"spec-1-checkpoint-serialization-policy"}
+{"sequence":4,"timestamp":"2026-08-06T12:13:09.466Z","type":"operation-started","operationId":"spec-2-g1-recall-ranking"}
+{"sequence":5,"timestamp":"2026-08-06T12:13:09.684Z","type":"operation-completed","operationId":"spec-2-g1-recall-ranking"}
+{"sequence":6,"timestamp":"2026-08-06T12:13:09.722Z","type":"operation-started","operationId":"archive-change"}
+{"sequence":7,"timestamp":"2026-08-06T12:13:10.207Z","type":"operation-completed","operationId":"archive-change"}
+{"sequence":8,"timestamp":"2026-08-06T12:13:10.541Z","type":"archive-finalization-started"}
+{"sequence":9,"timestamp":"2026-08-06T12:13:10.685Z","type":"archive-finalized"}
+{"sequence":10,"timestamp":"2026-08-06T12:13:10.872Z","type":"commit"}

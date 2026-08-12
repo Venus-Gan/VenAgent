@@ -1,0 +1,6 @@
+{"case_id":"correction","events":[{"source_ref":"message:1","fact":"我住在杭州"},{"source_ref":"message:2","fact":"我住在上海","intent":"correction"}],"expected_active":["message:2"],"expected_inactive":["message:1"]}
+{"case_id":"last-source-revoked","events":[{"source_ref":"message:3","fact":"我叫小维"},{"source_ref":"message:3","action":"revoke"}],"expected_active":[],"expected_inactive":["message:3"]}
+{"case_id":"weak-conflict-quarantine","events":[{"source_ref":"message:4","fact":"我叫小维"},{"source_ref":"message:5","fact":"我叫阿维"}],"expected_merge":"QUARANTINE","expected_active":["message:4"]}
+{"case_id":"index-retry","events":[{"source_ref":"message:6","fact":"我负责支付系统"},{"action":"index_fail"},{"action":"retry"}],"expected_index_status":"ready","expected_attempts":2}
+{"case_id":"old-generation-cancelled","events":[{"source_ref":"message:7","fact":"我住在杭州"},{"action":"delete_all"},{"action":"dispatch_old_job"}],"expected_active":[],"expected_job_status":"cancelled"}
+{"case_id":"ttl-expiry","events":[{"source_ref":"message:8","fact":"我本周在上海","valid_for_seconds":60},{"action":"advance","seconds":61}],"expected_active":[],"expected_status":"expired"}

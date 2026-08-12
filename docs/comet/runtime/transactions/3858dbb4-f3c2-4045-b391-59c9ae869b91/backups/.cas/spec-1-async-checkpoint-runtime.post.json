@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-1-async-checkpoint-runtime",
+  "role": "post",
+  "hash": "f1176d75c9b8f08f32e768cbcabd507fe7aa808d638dd49b5eee9cdf9a133705",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 1970324837663226,
+    "birthtimeMs": 1785835275870.7163
+  }
+}

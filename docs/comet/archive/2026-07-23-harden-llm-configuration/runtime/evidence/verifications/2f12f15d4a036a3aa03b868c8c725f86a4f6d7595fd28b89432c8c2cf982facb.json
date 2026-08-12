@@ -1,0 +1,81 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "harden-llm-configuration",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "34538a7003cd01db19983cc3939b81ab700adbd14574a21973b35fb758adf332",
+  "acceptanceCriteriaHash": "e2425e9077b49db34fecfe41c6057f8c7aa5970a300194c1006d78d035e941f2",
+  "implementationScopeRef": "runtime/evidence/scopes/8078f99073366c0bc03ce642432396ad70e23382b713a39f5f95ea665b747d3f.json",
+  "implementationScopeHash": "8078f99073366c0bc03ce642432396ad70e23382b713a39f5f95ea665b747d3f",
+  "reportRef": "verification.md",
+  "reportHash": "2b619b112d1e4aacac59f791969957c0d9831c44dd6f3477c63379b6b790c64e",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "e2425e9077b49db34fecfe41c6057f8c7aa5970a300194c1006d78d035e941f2",
+    "total": 5,
+    "evidenced": 5,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-00faa4c27ac7dea68823e2f3f18cae28b5cddcf3b7efe4d1ecfe17b3ddfe100d",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_llm.py",
+          "venagent/llm.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-3861b489640ecb1dacb6eebe8c9a5a206ab46d7f76a2df1ec694392773cfd350",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_llm.py",
+          "venagent/llm.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-485432d9587b233ab8202a97de5898b532c0d6d17e6035b6ee81ae627ace815f",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "README.md",
+          "tests/test_llm.py",
+          "venagent/llm.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-7823a48db6aa5236d972171fe1911208df35835bb7d99282bbd9d9991517de67",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_llm.py",
+          "venagent/llm.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a27e85b197845134a4fef6d565f62d592d686e0def02b39c941f3e6f25e90bb2",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "pyproject.toml",
+          "tests/test_llm.py",
+          "venagent/llm.py"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "1a359fb267b8dcfdfa2b51d6ce60d801f955f3bc551994aa42fe2b889686fb79"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/15ae749ba4830e62090783492072edd38ac6e0e28261a0d2ad99d2ef37c62a23.json",
+  "createdAt": "2026-07-23T11:33:56.626Z",
+  "envelopeHash": "2f12f15d4a036a3aa03b868c8c725f86a4f6d7595fd28b89432c8c2cf982facb"
+}

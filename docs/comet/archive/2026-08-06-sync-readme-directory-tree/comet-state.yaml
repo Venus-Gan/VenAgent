@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: sync-readme-directory-tree
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: implicit
+approved_contract_hash: 910cf36625f7df242ed9ff2ce137a48b974b0192844a964b86b9a9b2cbe3f8b2
+spec_changes:
+  - capability: readme-directory-tree
+    operation: create
+    source: specs/readme-directory-tree/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/e7a68d43d0cf3bc6a02bca100f2cbe4591241ff5a6c03ac88a03771a5f7b1cac.json
+verification_evidence: runtime/evidence/verifications/18c30ade1170ab863446a4b10ae3378481e23ae856b7c3000dcf15ceef5f1a70.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-06
+run_id: e8b710f1-d127-414b-8c73-36dda2d5d7e5

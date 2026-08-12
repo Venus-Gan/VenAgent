@@ -1,0 +1,32 @@
+{
+  "schema": "comet.native.checkpoint-manifest.v1",
+  "change": "frontend-foundation",
+  "artifacts": [
+    {
+      "path": "tests/test_api.py",
+      "hash": "e6ea0ce7aa0d44d0073c5fd45d037866df4c66e2073146025e8bf3e495b3b349",
+      "size": 3583
+    },
+    {
+      "path": "venagent/interfaces/http/app.py",
+      "hash": "69e57693c07e7b8fc8913069383fbda46fbbc93a13a4f616b294d006461b3f74",
+      "size": 3034
+    },
+    {
+      "path": "web/package.json",
+      "hash": "bcc6a7dd85bff3fb39ece65046d5f9b92b68a1dd238fc1d2e166fd4fc0753cb9",
+      "size": 488
+    },
+    {
+      "path": "web/src/App.vue",
+      "hash": "9e8f30378128be957d12c5f1f92e92d5dd5e571b22901e2345a4741783149309",
+      "size": 2689
+    },
+    {
+      "path": "web/src/modules/chat/store.ts",
+      "hash": "c10d072928663caa39b1ac9df3ef041be2fd56657705abb29a4a9e30ea53d47f",
+      "size": 4534
+    }
+  ],
+  "totalBytes": 14328
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "refine-m05-memory-boundaries",
+  "sourceRevision": 3,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "2d0b701c31f5a6cbed06752e9795bf9bf7552416d25c2516e3bf61ae61a37ca8",
+  "acceptanceCriteriaHash": "ba7297e1121e74557624b5a92e7fd3286a94f608af7e5070c8bfc28b110d6fd3",
+  "implementationScopeRef": "runtime/evidence/scopes/2bd06f52179e7e04f9b10eb202795cd9a5a3b7afd7a59ddba7cdd7901ffc3c3a.json",
+  "implementationScopeHash": "2bd06f52179e7e04f9b10eb202795cd9a5a3b7afd7a59ddba7cdd7901ffc3c3a",
+  "reportRef": "verification.md",
+  "reportHash": "b196835829487824bff4963db3bd111a2e3b04c1349b2a60b4376a89e01fd3a9",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "ba7297e1121e74557624b5a92e7fd3286a94f608af7e5070c8bfc28b110d6fd3",
+    "total": 4,
+    "evidenced": 4,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-68ab9ee93df7782359736de08961d881ec0a56f3b077923ce67c2ac21ab2b15b",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_semantics.py",
+          "venagent/memory/model_adapters.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-86ea2d13180a46c99dab867659467c7d17375e8b13fe234a19b650d2597d4ac0",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_index.py",
+          "venagent/llm/__init__.py",
+          "venagent/llm/embeddings.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-95e93cbd768204e8312732e6cedc6f982f8ea29ddd98c60324e3fe3640e29dc9",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_graph_store.py",
+          "tests/test_memory_index.py",
+          "venagent/bootstrap.py",
+          "venagent/memory/embedding/__init__.py",
+          "venagent/memory/graph_memory/__init__.py"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-e5c2f7e2ad00b586abb19a10b0c08ee0f78849d04ed818993841b6eb29d1b1c1",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "tests/test_memory_context.py",
+          "tests/test_memory_graph_store.py",
+          "tests/test_memory_index.py",
+          "tests/test_persistence.py",
+          "web/tests/e2e/memory.real.spec.ts"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "0db05ada969470bf3e2c3785f635a97e92a613d62d158738bc0e4dba283a4a80"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/fb61317f2f4b3c4407141ff77345c2de94128f3051bbbf8e1cbd7130265febb6.json",
+  "createdAt": "2026-08-11T09:16:51.534Z",
+  "envelopeHash": "875d4e75c472569b193ec25bf4fc12ad1adf4523eab096fb500f5b246952b4a0"
+}

@@ -1,0 +1,427 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "578089e1d4f7567dee58c1c3f214fe9287eb37c00cb4e8335a4907a6b8c355f9",
+  "baselineProjectionRef": "runtime/evidence/snapshots/ef2cef1000e74ac2e4fe1d601e1bb86a28fcb8861f0c8a23ea6008adfd2ca6bb.json",
+  "baselineProjectionHash": "ef2cef1000e74ac2e4fe1d601e1bb86a28fcb8861f0c8a23ea6008adfd2ca6bb",
+  "currentProjectionRef": "runtime/evidence/snapshots/e006cae4550379d9900923bf6fc564c5c7c38208b6b31d60d5470ded57b9bab5.json",
+  "currentProjectionHash": "e006cae4550379d9900923bf6fc564c5c7c38208b6b31d60d5470ded57b9bab5",
+  "complete": false,
+  "declaredArtifacts": [
+    {
+      "path": ".gitignore",
+      "kind": "file"
+    },
+    {
+      "path": "README.md",
+      "kind": "file"
+    },
+    {
+      "path": "compose.yaml",
+      "kind": "file"
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_config.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_llm.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_ownership.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/bootstrap.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/config/__init__.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/config/config.local.yaml.example",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/config/config.yaml",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/config/loader.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/platform/migrations.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/infra/platform/runtime.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": ".gitignore",
+      "kind": "modified",
+      "before": {
+        "hash": "a5ed98d9ef8f77726fa73aae8f66f659142ea6203b3fa372e2a861374fefee2a",
+        "size": 509
+      },
+      "after": {
+        "hash": "c0514458d9c0abfb2339de485f3de99796f8e4d6f8de2045f5a98e179804786c",
+        "size": 518
+      },
+      "attributedTo": [
+        {
+          "path": ".gitignore",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "before": {
+        "hash": "0b534223549e541f8020f952dbb87fda54ac0cfc40ddb84fa93b90183a7ca959",
+        "size": 14195
+      },
+      "after": {
+        "hash": "5b6fbfb14712f95bb01ce31b8153c2a4ed11d788e0f27d92b32f37ad020d38ef",
+        "size": 14217
+      },
+      "attributedTo": [
+        {
+          "path": "README.md",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "compose.yaml",
+      "kind": "modified",
+      "before": {
+        "hash": "afd5924fdfe614cd7d17ff933526a7e1aca078d34e9e2033a4f75f78f7ca585e",
+        "size": 592
+      },
+      "after": {
+        "hash": "600a3e171570ea94f7547faf4f212b6d04c94beb5dc67ae757d1157c029ad795",
+        "size": 673
+      },
+      "attributedTo": [
+        {
+          "path": "compose.yaml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "config/config.local.yaml.example",
+      "kind": "removed",
+      "before": {
+        "hash": "42d34c8f5d009c85d964c3528b73ed9b566a8a960b50c9816c2e287c4a7f80b1",
+        "size": 208
+      },
+      "after": null,
+      "attributedTo": []
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "removed",
+      "before": {
+        "hash": "95b11ec3f6af78fa96cf752aa51f618ccaeeb2bea1c220b854c5c699d6cd6975",
+        "size": 389
+      },
+      "after": null,
+      "attributedTo": []
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "modified",
+      "before": {
+        "hash": "22add2ae814235bdff3d75983c9021d2919bd46063e474a449c9873821bda413",
+        "size": 928
+      },
+      "after": {
+        "hash": "c028c516bddff101bf4f16921b6838c1d8d2a67e9cbc9fc1336855256a047819",
+        "size": 986
+      },
+      "attributedTo": [
+        {
+          "path": "pyproject.toml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_config.py",
+      "kind": "modified",
+      "before": {
+        "hash": "24535d7795b2ae454d865550a6db0a905668d0eeb6ef5a18194937519105cce7",
+        "size": 1572
+      },
+      "after": {
+        "hash": "47dbb0ac5bdbbfd6869aeef4e09072ace260e032c2ed3e13593d0bbe6777bc7b",
+        "size": 4112
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_config.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_llm.py",
+      "kind": "modified",
+      "before": {
+        "hash": "71963841f090cd2535d9288b62ee108afd58625e7be805898258334ffb385085",
+        "size": 12529
+      },
+      "after": {
+        "hash": "efe92866f4bdd91d62709958dd7d65ab11fc72b7202951485d766bd6f466e429",
+        "size": 12538
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_llm.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_ownership.py",
+      "kind": "modified",
+      "before": {
+        "hash": "0080fffd77de62568eeafae352133b526d20ada5ba312c78cec781e281fb62fe",
+        "size": 946
+      },
+      "after": {
+        "hash": "26a7c2dffdc18325304a0476f01467a854f0f56bde8138b586105797e70b735e",
+        "size": 1167
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_ownership.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_persistence.py",
+      "kind": "modified",
+      "before": {
+        "hash": "e603c7d2276cbb56083cd06cdcee6400d214e29f98ec6c695629ab7ac8562f34",
+        "size": 10526
+      },
+      "after": {
+        "hash": "86f9a71d83910cf3335fc6f049612adf4f216c79ae63d1e4d00d615cb081260b",
+        "size": 10726
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_persistence.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/bootstrap.py",
+      "kind": "modified",
+      "before": {
+        "hash": "245cb7819a88040648983ba97d7ba641bba3b90ea22eb75cce54c3e8cf337215",
+        "size": 2869
+      },
+      "after": {
+        "hash": "da02f2c85ffd9de004ba9285178f1905659968a29687102787ebd7828f38ef28",
+        "size": 2852
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/bootstrap.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/config/__init__.py",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "06e7cb9202c9047492db5db81f7e4a796c4e8447f37b6ea3d4395f7f5e8ff0ae",
+        "size": 50
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/config/__init__.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/config/config.local.yaml.example",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "cbf3bc966a1cc0ddb0b9d2fe64a2a0bfd89c004aa6d9fb5c5f394fb76ee6bda2",
+        "size": 326
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/config/config.local.yaml.example",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/config/config.yaml",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "535bf01b3e28723398d89a35440d3a03129d08dad55c23c549d64dd3ca40eb25",
+        "size": 593
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/config/config.yaml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/config/loader.py",
+      "kind": "modified",
+      "before": {
+        "hash": "0fb9617a64ae67cd805badf9fcc918fbbbbc0e4b481a60c2385e57eb93f5ad02",
+        "size": 6348
+      },
+      "after": {
+        "hash": "dd2010cf18913720fc6bc4eec09b457e74a303cdc939ce812e07b59c69cb3384",
+        "size": 7497
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/config/loader.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/migrations.py",
+      "kind": "modified",
+      "before": {
+        "hash": "21d7ce07877c00485ef4bd99d8cea06f155b9eff6d14fb44577a574ccdbc1250",
+        "size": 6701
+      },
+      "after": {
+        "hash": "f313d170c6c3443fd87c8170995825d1ca358d723a9265bc1735229bb65db6d6",
+        "size": 6736
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/platform/migrations.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/infra/platform/runtime.py",
+      "kind": "modified",
+      "before": {
+        "hash": "26b77464f1f0a11335de5725019b329b925b02045403b0a0d5269c1c594153dc",
+        "size": 5466
+      },
+      "after": {
+        "hash": "2ff86bf7a6af7a316c09fd0f6f816e3cd1dfcdec9468809e01c825ffce42f171",
+        "size": 5532
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/infra/platform/runtime.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "web/vite.config.ts",
+      "kind": "modified",
+      "before": {
+        "hash": "cc077cdfa184c960a9c7bdc95378e79fa3833b2bd753ed71d85b76d05bdc6383",
+        "size": 273
+      },
+      "after": {
+        "hash": "4c8fd4551d964aedfc615dd838349ce4c6018930d1d86df5133c107cf7c46ad9",
+        "size": 273
+      },
+      "attributedTo": []
+    }
+  ],
+  "unattributed": [
+    {
+      "path": "config/config.local.yaml.example",
+      "kind": "removed",
+      "before": {
+        "hash": "42d34c8f5d009c85d964c3528b73ed9b566a8a960b50c9816c2e287c4a7f80b1",
+        "size": 208
+      },
+      "after": null,
+      "attributedTo": []
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "removed",
+      "before": {
+        "hash": "95b11ec3f6af78fa96cf752aa51f618ccaeeb2bea1c220b854c5c699d6cd6975",
+        "size": 389
+      },
+      "after": null,
+      "attributedTo": []
+    },
+    {
+      "path": "web/vite.config.ts",
+      "kind": "modified",
+      "before": {
+        "hash": "cc077cdfa184c960a9c7bdc95378e79fa3833b2bd753ed71d85b76d05bdc6383",
+        "size": 273
+      },
+      "after": {
+        "hash": "4c8fd4551d964aedfc615dd838349ce4c6018930d1d86df5133c107cf7c46ad9",
+        "size": 273
+      },
+      "attributedTo": []
+    }
+  ],
+  "unresolvedScopes": [
+    {
+      "id": "scope:3b0a6f45936b5318959bc11ece67f27c7fc0e1eb18dcc6ebea6b2571aaf32439",
+      "kind": "unattributed-change",
+      "source": "implementation-scope",
+      "path": "config/config.local.yaml.example",
+      "reason": "Changed path is not covered by a declared artifact: config/config.local.yaml.example"
+    },
+    {
+      "id": "scope:f669344775b4eca252a020033472f99b7859e51a20528392dc970815b11b3be7",
+      "kind": "unattributed-change",
+      "source": "implementation-scope",
+      "path": "config/config.yaml",
+      "reason": "Changed path is not covered by a declared artifact: config/config.yaml"
+    },
+    {
+      "id": "scope:02ce644a4974681d8b01ad8b27618ba775049e113599276dc5cbcf0e1bfe87e8",
+      "kind": "unattributed-change",
+      "source": "implementation-scope",
+      "path": "web/vite.config.ts",
+      "reason": "Changed path is not covered by a declared artifact: web/vite.config.ts"
+    }
+  ],
+  "noCodeReason": null,
+  "scopeHash": "9611a16eb4ecc4b62ed59276c08d9947273cf5514ece5070db0dc19cc89d5dfc"
+}

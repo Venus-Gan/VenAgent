@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+name: minimal-agent-loop
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 7a17e74ad6036bfd9c000d9f64810ab66fd28ad0ab8f59f8a392e2df9cf346cf
+spec_changes:
+  - capability: minimal-agent-loop
+    operation: create
+    source: specs/minimal-agent-loop/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/5d5993eeb87fa737b64e2d0ac82272bf3149894da5c92c711b937c5fc75f6a45.json
+verification_evidence: runtime/evidence/verifications/70cd1438e59f6605cf487c1721d4b89c42c9218733af92fd5e7b53232b4db8c6.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-22
+run_id: 35d67dde-b1b3-432d-b8b2-bfa05116672f

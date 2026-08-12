@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-4-ownership-lifecycle",
+  "role": "post",
+  "hash": "4b3a333f37f09f4b2a60f62e77733d71fb43461463e908f5eb86f72e13fbfb4d",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 6473924465028736,
+    "birthtimeMs": 1785295162943.941
+  }
+}

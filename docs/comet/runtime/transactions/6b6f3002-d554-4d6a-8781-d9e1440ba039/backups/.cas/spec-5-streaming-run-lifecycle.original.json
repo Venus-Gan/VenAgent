@@ -1,0 +1,11 @@
+{
+  "schema": "comet.native.archive-cas.v1",
+  "operationId": "spec-5-streaming-run-lifecycle",
+  "role": "original",
+  "hash": "d909ae4123be909121dd047f0f703848c060de5ad6cc5f52785eee133e1e078d",
+  "identity": {
+    "dev": 2968106107,
+    "ino": 844424930920086,
+    "birthtimeMs": 1784818061622.5894
+  }
+}

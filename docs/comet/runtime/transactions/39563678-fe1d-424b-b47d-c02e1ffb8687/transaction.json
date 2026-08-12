@@ -1,0 +1,37 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "39563678-fe1d-424b-b47d-c02e1ffb8687",
+  "kind": "archive",
+  "status": "committed",
+  "change": "fix-run-cancellation-latency",
+  "createdAt": "2026-08-04T10:07:44.851Z",
+  "preflightHash": "e061aaed5a141350fa6d2e4786114dc6d973543ecae8a66118eafae781d8362b",
+  "operations": [
+    {
+      "id": "spec-1-frontend-foundation",
+      "type": "write",
+      "target": "specs/frontend-foundation/spec.md",
+      "staged": "runtime/transactions/39563678-fe1d-424b-b47d-c02e1ffb8687/staged/specs/frontend-foundation/spec.md",
+      "backup": "runtime/transactions/39563678-fe1d-424b-b47d-c02e1ffb8687/backups/specs/frontend-foundation/spec.md",
+      "expectedTargetHash": "13c5ce424e47a04a39b4f5832bcce1e9f4e316a34a4f39bb3f281a64407f78ef",
+      "stagedHash": "61a3e1ca3f00689f1ef6168de534caaec9e0cd340d2e20c91a777d6f833fb7bd"
+    },
+    {
+      "id": "spec-2-streaming-run-lifecycle",
+      "type": "write",
+      "target": "specs/streaming-run-lifecycle/spec.md",
+      "staged": "runtime/transactions/39563678-fe1d-424b-b47d-c02e1ffb8687/staged/specs/streaming-run-lifecycle/spec.md",
+      "backup": "runtime/transactions/39563678-fe1d-424b-b47d-c02e1ffb8687/backups/specs/streaming-run-lifecycle/spec.md",
+      "expectedTargetHash": "5fffd9084d78a4cc8012b2c451549cb750d20f5e0be6ba8c3e83958ab6337730",
+      "stagedHash": "50952d791e5fef07aa8066d8b90fa227b1d1dd02ebe35d4ffef89f12bf98d3a7"
+    },
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/fix-run-cancellation-latency",
+      "target": "archive/2026-08-04-fix-run-cancellation-latency",
+      "expectedSourceHash": "4b8b06ae054ad121818c8f70c6be7b7f21bb68b5b2570269ef12bd837dc58864",
+      "expectedTargetHash": null
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "comet.native.transaction.v2",
+  "id": "cf45f74e-533f-4cd7-b837-da79339979ff",
+  "kind": "archive",
+  "status": "committed",
+  "change": "preserve-local-message-outcomes",
+  "createdAt": "2026-07-28T09:24:13.320Z",
+  "preflightHash": "81f911edb39ea6817e5287dcd210f6694f6f8767b561668fca42c0ee58d9daad",
+  "operations": [
+    {
+      "id": "archive-change",
+      "type": "move",
+      "source": "changes/preserve-local-message-outcomes",
+      "target": "archive/2026-07-28-preserve-local-message-outcomes",
+      "expectedSourceHash": "53a4aca6678c0e07e5ab3d87e5a751f6a39a09abbce124b5e64c7be114422075",
+      "expectedTargetHash": null
+    }
+  ]
+}

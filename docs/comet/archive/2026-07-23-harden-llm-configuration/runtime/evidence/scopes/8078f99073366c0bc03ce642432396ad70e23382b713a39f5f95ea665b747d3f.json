@@ -1,0 +1,149 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "34538a7003cd01db19983cc3939b81ab700adbd14574a21973b35fb758adf332",
+  "baselineProjectionRef": "runtime/evidence/snapshots/4803970e895cd898087e2bfdf4aefe477ff0ef97e9e4d8062ca29d90f97e0012.json",
+  "baselineProjectionHash": "4803970e895cd898087e2bfdf4aefe477ff0ef97e9e4d8062ca29d90f97e0012",
+  "currentProjectionRef": "runtime/evidence/snapshots/c11b5a0625ee5170db446d2421275c720851d2d39e69d69dbf874fdae87833a1.json",
+  "currentProjectionHash": "c11b5a0625ee5170db446d2421275c720851d2d39e69d69dbf874fdae87833a1",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "README.md",
+      "kind": "file"
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "file"
+    },
+    {
+      "path": "tests/test_llm.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/agent_loop.py",
+      "kind": "file"
+    },
+    {
+      "path": "venagent/llm.py",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "before": {
+        "hash": "4e797da6663614a71dad52c6be9af339e703e9b91c23c73235885446b7f6b6ac",
+        "size": 11429
+      },
+      "after": {
+        "hash": "93a96b1ad30d4d9fdd248ae63022cb27fe6c744d86cee579bb757d9345a2bf73",
+        "size": 12540
+      },
+      "attributedTo": [
+        {
+          "path": "README.md",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "pyproject.toml",
+      "kind": "modified",
+      "before": {
+        "hash": "53431f503715eca8f3871fdfafa58416da3b1b5127b597150bda5d7567707d84",
+        "size": 709
+      },
+      "after": {
+        "hash": "067d0da77920cfc3ba10d239665b3bcc52b08c32e901d58a4231de37c1c62092",
+        "size": 786
+      },
+      "attributedTo": [
+        {
+          "path": "pyproject.toml",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "7a20a27319730711cb4fbe8d7363c51858e166bc25797a1f5ab8d5a76ba6a3bc",
+        "size": 3454
+      },
+      "after": {
+        "hash": "5c0bf1fc829e29a5d84aa3c987614916fefb9ac9c46fb4aaeec1f20836a289cf",
+        "size": 3751
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_agent_loop.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_llm.py",
+      "kind": "modified",
+      "before": {
+        "hash": "552f7aaa506e9f0e54e13521e69c3efe6f75b024c881f317f899a5d7f293db10",
+        "size": 2090
+      },
+      "after": {
+        "hash": "7e3dd46ed29acd394bb6aac0af987b055fb189c2a7aa7552821829aa79e46024",
+        "size": 12287
+      },
+      "attributedTo": [
+        {
+          "path": "tests/test_llm.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/agent_loop.py",
+      "kind": "modified",
+      "before": {
+        "hash": "b6cb7dfd27e7bc5e3355231e02ecfbc1685816265a40a2f0e31b63a1ffd4601e",
+        "size": 4372
+      },
+      "after": {
+        "hash": "7aebdec4ab00bd705cabf5ddd05cb787aa332d0814e315a995ee3fec77b3d450",
+        "size": 4384
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/agent_loop.py",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "venagent/llm.py",
+      "kind": "modified",
+      "before": {
+        "hash": "87d1e4cc995a88a986b7de44f6bef3f45290a452216964c6add054dace65d113",
+        "size": 1929
+      },
+      "after": {
+        "hash": "4898154244ceda4fcdd3612d12faea137798901e53a3097e3a1f3a4e3c370db2",
+        "size": 15434
+      },
+      "attributedTo": [
+        {
+          "path": "venagent/llm.py",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "8078f99073366c0bc03ce642432396ad70e23382b713a39f5f95ea665b747d3f"
+}
