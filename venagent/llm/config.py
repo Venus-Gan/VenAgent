@@ -132,7 +132,7 @@ ModelFactoryRegistry = Mapping[str, ModelFactory]
 
 def settings_from_config(config: LLMConfig) -> LLMSettings | None:
     """把统一配置对象转换为既有 provider 校验输入，集中保留 adapter 规则。"""
-    # .env 与显式环境最终收敛为同一组 LLM_* 语义，再做 provider 校验。
+    # config.yaml 与显式环境最终收敛为同一组 LLM_* 语义，再做 provider 校验。
     values: dict[str, str] = {}
     mapping = {
         PROVIDER: config.provider,

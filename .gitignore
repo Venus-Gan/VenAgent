@@ -21,6 +21,9 @@ env/
 AGENTS.md
 CLAUDE.md
 
+# Docs backup (pre-rebuild archive)
+.backup/
+
 # OS
 .DS_Store
 Thumbs.db
@@ -29,10 +32,10 @@ Thumbs.db
 *.log
 nohup.out
 
-# Local environment secrets
+# Local environment secrets（.env 已按 config 迁移票 D8 删除；保留规则防止意外回归）
 .env
 .env.*
-!.env.example
+config.yaml
 
 # Cache
 .pytest_cache/
@@ -41,5 +44,10 @@ nohup.out
 .claude/
 .agents/
 .comet/
+.codegraph/
+.zcode/
 web/test-results/
 web/playwright-report/
+
+# M06 local MCP credentials and server config
+mcp/

@@ -26,7 +26,7 @@ def build_runtime_model(
     elif config is None:
         settings = settings_from_config(load_config().llm)
     else:
-        # Mapping 是无文件测试入口，不能被本机 .env 或进程环境污染。
+        # Mapping 是无文件测试入口，不能被本机 config.yaml 或进程环境污染。
         settings = settings_from_environment(config)
     if settings is None:
         # 没有完整真实模型配置时使用离线模型，避免未配置状态触发网络请求。
