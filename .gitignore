@@ -20,6 +20,7 @@ env/
 # Local agent instructions
 AGENTS.md
 CLAUDE.md
+CONTEXT.md
 
 # Docs backup (pre-rebuild archive)
 .backup/
@@ -53,6 +54,8 @@ src/web/playwright-report/
 
 # Local analysis notes (kept locally, not shared)
 gap-roadmap-vs-agi-saber.md
+docs/agi-saber-设计思路总结.md
+docs/reference/
 
 # M06 本地 MCP 运行时状态（包锚定 src/mcp/mcp-configs/，源码 src/mcp/*.py 需入库）
 src/mcp/mcp-configs/
