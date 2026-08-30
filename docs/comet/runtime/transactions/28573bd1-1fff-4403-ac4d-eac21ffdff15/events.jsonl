@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-07-26T11:35:41.198Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-07-26T11:35:42.914Z","type":"operation-started","operationId":"spec-1-ownership-lifecycle"}
-{"sequence":3,"timestamp":"2026-07-26T11:35:43.370Z","type":"operation-completed","operationId":"spec-1-ownership-lifecycle"}
-{"sequence":4,"timestamp":"2026-07-26T11:35:43.505Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-07-26T11:35:44.666Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-07-26T11:35:45.208Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-07-26T11:35:45.576Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-07-26T11:35:45.816Z","type":"commit"}

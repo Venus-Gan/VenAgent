@@ -1,6 +1,0 @@
-{
-  "schema": "comet.native.checkpoint-manifest.v1",
-  "change": "refactor-memory-module-layout",
-  "artifacts": [],
-  "totalBytes": 0
-}

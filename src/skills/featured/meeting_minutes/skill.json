@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "id": "meeting_minutes",
+  "name": "会议纪要生成",
+  "version": "1.0.0",
+  "description": "把零散会议记录整理为议题、结论和待办事项。",
+  "skill_sha256": "84b72e26e6a5df509cbb552ac9aa4b3acc96cbf6c1b6d7090cd0338e17c323c3",
+  "compatible_runtimes": ["venagent"],
+  "files": []
+}

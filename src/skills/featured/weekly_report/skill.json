@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "id": "weekly_report",
+  "name": "周报生成",
+  "version": "1.0.0",
+  "description": "把碎片化工作记录汇总为结构清晰的周报。",
+  "skill_sha256": "6ba3a4807b6e4555407723ac030d7a8959966fe029067c72d8fb2e08d5f55aa5",
+  "compatible_runtimes": ["venagent"],
+  "files": []
+}

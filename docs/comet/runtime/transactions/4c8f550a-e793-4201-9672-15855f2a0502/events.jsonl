@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-07-25T14:58:26.232Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-07-25T14:58:28.539Z","type":"operation-started","operationId":"spec-1-ecc-lightweight-governance"}
-{"sequence":3,"timestamp":"2026-07-25T14:58:29.358Z","type":"operation-completed","operationId":"spec-1-ecc-lightweight-governance"}
-{"sequence":4,"timestamp":"2026-07-25T14:58:29.597Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-07-25T14:58:30.784Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-07-25T14:58:31.666Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-07-25T14:58:31.844Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-07-25T14:58:31.997Z","type":"commit"}

@@ -21,6 +21,9 @@ env/
 AGENTS.md
 CLAUDE.md
 
+# Docs backup (pre-rebuild archive)
+.backup/
+
 # OS
 .DS_Store
 Thumbs.db
@@ -29,10 +32,10 @@ Thumbs.db
 *.log
 nohup.out
 
-# Local environment secrets
+# Local environment secrets（.env 已按 config 迁移票 D8 删除；保留规则防止意外回归）
 .env
 .env.*
-!.env.example
+config.yaml
 
 # Cache
 .pytest_cache/
@@ -41,5 +44,15 @@ nohup.out
 .claude/
 .agents/
 .comet/
-web/test-results/
-web/playwright-report/
+.codegraph/
+.zcode/
+# Node
+node_modules/
+src/web/test-results/
+src/web/playwright-report/
+
+# Local analysis notes (kept locally, not shared)
+gap-roadmap-vs-agi-saber.md
+
+# M06 本地 MCP 运行时状态（包锚定 src/mcp/mcp-configs/，源码 src/mcp/*.py 需入库）
+src/mcp/mcp-configs/
