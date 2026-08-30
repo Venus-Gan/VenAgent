@@ -11,8 +11,9 @@ from uuid import uuid4
 from psycopg_pool import ConnectionPool
 
 from ....memory.jobs import MemoryJob
+from ....memory.ports import ConsolidationCursor
 from ....memory.ports import MemoryStoreError as StoreError
-from .row_mapping import _job
+from .row_mapping import _consolidation_cursor, _job
 
 
 class _PostgresJobsMixin:
@@ -245,6 +246,104 @@ class _PostgresJobsMixin:
                 return changed == 1
         except Exception as exc:
             raise StoreError("unable to update memory job") from exc
+
+    # ---------------------------------------------------------- M05 沉淀游标
+
+    def upsert_consolidation_cursor(
+        self,
+        owner_id: str,
+        tenant_id: str,
+        conversation_id: str,
+        sequence: int,
+        now: datetime,
+        deletion_generation: int,
+    ) -> ConsolidationCursor | None:
+        try:
+            with self._pool.connection() as conn:
+                row = conn.execute(
+                    """INSERT INTO memory_consolidation_cursor
+                    (owner_id,tenant_id,conversation_id,last_consolidated_sequence,
+                     last_message_sequence,last_activity_at,deletion_generation,updated_at)
+                    VALUES (%s,%s,%s,0,%s,%s,%s,%s)
+                    ON CONFLICT (owner_id,tenant_id,conversation_id) DO UPDATE SET
+                    last_message_sequence=GREATEST(
+                        memory_consolidation_cursor.last_message_sequence,%s),
+                    last_activity_at=excluded.last_activity_at,
+                    deletion_generation=excluded.deletion_generation,
+                    updated_at=excluded.updated_at
+                    RETURNING owner_id,tenant_id,conversation_id,
+                    last_consolidated_sequence,last_message_sequence,
+                    last_activity_at,deletion_generation""",
+                    (
+                        owner_id,
+                        tenant_id,
+                        conversation_id,
+                        sequence,
+                        now,
+                        deletion_generation,
+                        now,
+                        sequence,
+                    ),
+                ).fetchone()
+            return _consolidation_cursor(row) if row is not None else None
+        except Exception as exc:
+            raise StoreError("unable to upsert memory consolidation cursor") from exc
+
+    def get_consolidation_cursor(
+        self, owner_id: str, tenant_id: str, conversation_id: str
+    ) -> ConsolidationCursor | None:
+        try:
+            with self._pool.connection() as conn:
+                row = conn.execute(
+                    """SELECT owner_id,tenant_id,conversation_id,
+                    last_consolidated_sequence,last_message_sequence,
+                    last_activity_at,deletion_generation
+                    FROM memory_consolidation_cursor
+                    WHERE owner_id=%s AND tenant_id=%s AND conversation_id=%s""",
+                    (owner_id, tenant_id, conversation_id),
+                ).fetchone()
+            return _consolidation_cursor(row) if row is not None else None
+        except Exception as exc:
+            raise StoreError("unable to read memory consolidation cursor") from exc
+
+    def advance_consolidation_cursor(
+        self, owner_id: str, conversation_id: str, sequence: int, now: datetime
+    ) -> bool:
+        try:
+            with self._pool.connection() as conn:
+                changed = conn.execute(
+                    """UPDATE memory_consolidation_cursor SET
+                    last_consolidated_sequence=GREATEST(
+                        last_consolidated_sequence,%s),updated_at=%s
+                    WHERE owner_id=%s AND conversation_id=%s
+                    AND last_consolidated_sequence<%s""",
+                    (sequence, now, owner_id, conversation_id, sequence),
+                ).rowcount
+            return changed == 1
+        except Exception as exc:
+            raise StoreError("unable to advance memory consolidation cursor") from exc
+
+    def find_idle_consolidations(
+        self, now: datetime, idle_before: datetime, limit: int
+    ) -> tuple[ConsolidationCursor, ...]:
+        try:
+            with self._pool.connection() as conn:
+                rows = conn.execute(
+                    """SELECT cursor.* FROM memory_consolidation_cursor cursor
+                    JOIN owners owner ON owner.owner_id=cursor.owner_id
+                    JOIN conversations conversation
+                      ON conversation.conversation_id=cursor.conversation_id
+                    WHERE cursor.last_message_sequence>cursor.last_consolidated_sequence
+                    AND cursor.last_activity_at<%s
+                    AND owner.lifecycle_state='active'
+                    AND conversation.lifecycle_state='active'
+                    ORDER BY cursor.last_activity_at
+                    LIMIT %s""",
+                    (idle_before, limit),
+                ).fetchall()
+            return tuple(_consolidation_cursor(row) for row in rows)
+        except Exception as exc:
+            raise StoreError("unable to find idle memory consolidations") from exc
 
     def _bump_projection_in_connection(
         self, conn: Any, owner_id: Any, tenant_id: str, now: datetime

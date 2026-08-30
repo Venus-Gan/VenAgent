@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from ...agent.events import RunEvent
 from ...agent.runs import AgentRun
 from ...conversation.models import Conversation, ConversationMessage
 
@@ -26,6 +27,7 @@ def conversation_from_row(row: Any) -> Conversation:
 
 
 def message_from_row(row: Any) -> ConversationMessage:
+    blocks = row.get("content_blocks") or ()
     return ConversationMessage(
         message_id=str(row["message_id"]),
         conversation_id=str(row["conversation_id"]),
@@ -37,6 +39,17 @@ def message_from_row(row: Any) -> ConversationMessage:
         client_request_id=_optional_str(row.get("client_request_id")),
         source_run_id=_optional_str(row.get("source_run_id")),
         reply_to_message_id=_optional_str(row.get("reply_to_message_id")),
+        content_blocks=tuple(dict(item) for item in blocks),
+    )
+
+
+def run_event_from_row(row: Any) -> RunEvent:
+    return RunEvent(
+        run_id=str(row["run_id"]),
+        sequence=int(row["sequence"]),
+        type=str(row["event_type"]),
+        payload=dict(row["payload"]),
+        created_at=row["created_at"],
     )
 
 
@@ -65,6 +78,8 @@ def agent_run_from_row(row: Any) -> AgentRun:
         claim_token=_optional_str(row.get("claim_token")),
         lease_expires_at=row.get("lease_expires_at"),
         execution_attempt=int(row.get("execution_attempt") or 0),
+        selected_skill_id=_optional_str(row.get("selected_skill_id")),
+        selected_skill_name=_optional_str(row.get("selected_skill_name")),
     )
 
 

@@ -159,4 +159,5 @@ def message_response(item: ConversationMessage) -> MessageResponse:
         created_at=item.created_at,
         source_run_id=item.source_run_id,
         reply_to_message_id=item.reply_to_message_id,
+        blocks=list(item.content_blocks),
     )

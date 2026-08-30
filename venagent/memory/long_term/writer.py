@@ -7,16 +7,19 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from uuid import uuid4
 
-from ..authorization import MemoryAuthorization, MemoryAuthorizer
 from ..errors import MemoryUnauthorized, MemoryUnsafeContent
 from ..ports import MemoryFactWriteStore
 from ..ports import MemoryStoreError as StoreError
-from .conflict import ConflictJudge, MergeAction, decide_merge
-from .facts import MemoryFact, MemorySource
-from .policy import (
+from ..recall import MemoryAuthorization, MemoryAuthorizer
+from .facts import (
     CandidateRejection,
+    ConflictJudge,
     FactCandidate,
+    MemoryFact,
+    MemorySource,
+    MergeAction,
     candidate_reject_reason,
+    decide_merge,
     evaluate_candidates,
     extract_candidates,
 )

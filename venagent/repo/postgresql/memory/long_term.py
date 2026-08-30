@@ -10,8 +10,8 @@ from uuid import uuid4
 
 from psycopg_pool import ConnectionPool
 
-from ....memory.capabilities import MemorySettings
 from ....memory.long_term.facts import MemoryFact, MemorySource
+from ....memory.management import MemorySettings
 from ....memory.ports import G1RecallSnapshot
 from ....memory.ports import MemoryStoreError as StoreError
 from .row_mapping import _ids_hash, _source

@@ -12,7 +12,20 @@ from psycopg_pool import ConnectionPool
 
 from ....memory.jobs import MemoryJob
 from ....memory.long_term.facts import MemoryFact, MemorySource
+from ....memory.ports import ConsolidationCursor
 from ....memory.short_term import MemorySummary
+
+
+def _consolidation_cursor(row: Any) -> ConsolidationCursor:
+    return ConsolidationCursor(
+        str(row["owner_id"]),
+        str(row["tenant_id"]),
+        str(row["conversation_id"]),
+        int(row["last_consolidated_sequence"]),
+        int(row["last_message_sequence"]),
+        row["last_activity_at"],
+        int(row["deletion_generation"]),
+    )
 
 
 def _source(row: Any) -> MemorySource:

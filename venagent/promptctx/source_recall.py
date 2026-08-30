@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Protocol
 
 from ..conversation.models import ConversationMessage
-from ..memory.authorization import MemoryAuthorization, MemoryRequestSnapshot
 from ..memory.long_term.facts import MemoryFact
+from ..memory.recall import MemoryAuthorization, MemoryRequestSnapshot
 from ..memory.short_term import MemorySummary
 from .context import ContextBlock, conservative_token_count
 

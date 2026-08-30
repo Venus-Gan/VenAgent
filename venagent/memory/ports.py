@@ -7,14 +7,14 @@ from datetime import datetime
 from enum import StrEnum
 from typing import TYPE_CHECKING, Protocol
 
-from .capabilities import MemorySettings
 from .embedding.index import MemoryIndexStore
-from .graph import MemoryEdge
 from .long_term.facts import MemoryFact, MemorySource
 from .short_term import MemorySummary
 
 if TYPE_CHECKING:
+    from .graph_memory import MemoryEdge
     from .jobs import MemoryJob
+    from .management import MemorySettings
 
 
 class MemoryStoreError(RuntimeError):
@@ -51,6 +51,19 @@ class G1GraphSnapshot:
     deletion_generation: int
     registry_version: str
     edges: tuple[MemoryEdge, ...]
+
+
+@dataclass(frozen=True)
+class ConsolidationCursor:
+    """每对话的沉淀游标：已抽取到哪条 sequence、最新用户消息到哪条。"""
+
+    owner_id: str
+    tenant_id: str
+    conversation_id: str
+    last_consolidated_sequence: int
+    last_message_sequence: int
+    last_activity_at: datetime
+    deletion_generation: int
 
 
 class MemoryAuthorizationStore(Protocol):
@@ -215,6 +228,30 @@ class MemoryJobStore(MemoryAuthorizationStore, Protocol):
     def expire_due(self, now: datetime) -> int: ...
 
     def source(self, owner_id: str, source_ref: str) -> MemorySource | None: ...
+
+    # --- 沉淀式写入（M05 consolidation）游标面 ---
+
+    def upsert_consolidation_cursor(
+        self,
+        owner_id: str,
+        tenant_id: str,
+        conversation_id: str,
+        sequence: int,
+        now: datetime,
+        deletion_generation: int,
+    ) -> ConsolidationCursor | None: ...
+
+    def get_consolidation_cursor(
+        self, owner_id: str, tenant_id: str, conversation_id: str
+    ) -> ConsolidationCursor | None: ...
+
+    def advance_consolidation_cursor(
+        self, owner_id: str, conversation_id: str, sequence: int, now: datetime
+    ) -> bool: ...
+
+    def find_idle_consolidations(
+        self, now: datetime, idle_before: datetime, limit: int
+    ) -> tuple[ConsolidationCursor, ...]: ...
 
 
 class MemoryStore(

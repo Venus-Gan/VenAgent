@@ -35,6 +35,12 @@ class ConversationMessage:
     client_request_id: str | None = None
     source_run_id: str | None = None
     reply_to_message_id: str | None = None
+    content_blocks: tuple[dict[str, str], ...] = ()
+
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self, "content_blocks", tuple(dict(item) for item in self.content_blocks)
+        )
 
 
 @dataclass(frozen=True)

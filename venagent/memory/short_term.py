@@ -10,7 +10,7 @@ from uuid import uuid4
 
 from ..conversation.models import ConversationMessage
 from ..promptctx.context import conservative_token_count
-from .long_term.policy import contains_secret, extract_candidate
+from .long_term.facts import contains_secret, extract_candidate
 
 SUMMARY_STRATEGY_VERSION = "deterministic-turn-summary-v1"
 

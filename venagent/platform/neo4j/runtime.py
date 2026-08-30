@@ -8,8 +8,8 @@ from typing import Any
 from urllib.parse import urlsplit
 
 from ...config import Neo4jConfig
-from ...memory.capabilities import MemoryCapabilityRegistry
 from ...memory.graph_memory import DisabledGraphMemoryStore
+from ...memory.management import MemoryCapabilityRegistry
 from ...memory.ports import MemoryGraphStore
 from ...repo.neo4j import Neo4jMemoryGraphStore
 from ..observability import InfrastructureState, InfrastructureStatus

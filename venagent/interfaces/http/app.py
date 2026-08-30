@@ -20,7 +20,9 @@ from ...bootstrap import build_application
 from ...config import AppConfig
 from ...conversation.ports import ConversationStoreError
 from ...conversation.service import ConversationService
-from ...memory.job_worker import MemoryMaintenanceWorker
+from ...mcp.client import McpClientManager, McpConnectionError
+from ...mcp.config import McpConfigStore
+from ...memory.jobs import MemoryMaintenanceWorker
 from ...memory.ports import MemoryStoreError
 from ...memory.service import MemoryService
 from ...ownership.errors import OwnershipError
@@ -28,11 +30,27 @@ from ...ownership.ports import OwnershipStoreError
 from ...ownership.service import OwnershipService
 from ...platform.observability import log_startup_report
 from ...platform.runtime import PersistenceRuntime
+from ...skills.github import SkillHubUnavailable
+from ...skills.hub import SkillHubService
+from ...tools.control import ToolControlContext
+from ...tools.errors import ToolError
 from .errors import RUN_ERRORS, ApiError, ownership_api_error
 from .routes import register_routes
 from .schemas import ErrorBody, ErrorResponse
 
 LOGGER = logging.getLogger("venagent.startup")
+
+TOOL_ERRORS = {
+    "approval_required": (409, "该工具调用需要先完成用户审批。"),
+    "approval_expired": (409, "审批已过期，请重新发起调用。"),
+    "tool_blocked": (403, "该工具被本地策略禁止。"),
+    "tool_not_exposed": (403, "该工具未在当前快照中暴露。"),
+    "tool_not_found": (404, "未找到该工具。"),
+    "tool_schema_invalid": (422, "工具参数不符合 Schema。"),
+    "tool_unavailable": (503, "工具当前不可用。"),
+    "sandbox_unavailable": (503, "Sandbox 当前不可用，未执行命令。"),
+    "skill_unavailable": (400, "所选 Skill 不可用或已停用。"),
+}
 
 
 def create_app(
@@ -43,6 +61,10 @@ def create_app(
     persistence_runtime: PersistenceRuntime | None = None,
     config: AppConfig | None = None,
     frontend_dist: Path | None = None,
+    tool_control: ToolControlContext | None = None,
+    mcp_config_store: McpConfigStore | None = None,
+    mcp_manager: McpClientManager | None = None,
+    skill_hub: SkillHubService | None = None,
 ) -> FastAPI:
     """创建独立于旧 `final/` 运行时的线程化 Web 应用。"""
     application = build_application(
@@ -51,6 +73,10 @@ def create_app(
         ownership_service=ownership_service,
         persistence_runtime=persistence_runtime,
         config=config,
+        tool_control=tool_control,
+        mcp_config_store=mcp_config_store,
+        mcp_manager=mcp_manager,
+        skill_hub=skill_hub,
     )
     service = application.service
     ownership = application.ownership
@@ -58,7 +84,11 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(_app: FastAPI):
-        await application.open()
+        try:
+            await application.open()
+        except BaseException:
+            application.close()
+            raise
         stop = asyncio.Event()
         maintenance = asyncio.create_task(
             _maintenance_loop(
@@ -91,6 +121,11 @@ def create_app(
     app.state.memory_maintenance = memory_maintenance
     app.state.memory_capabilities = application.memory_capabilities
     app.state.neo4j_runtime = application.graph
+    app.state.document_service = application.document_service
+    app.state.tool_control = application.tool_control
+    app.state.mcp_store = application.mcp_store
+    app.state.mcp_manager = application.mcp_manager
+    app.state.skill_hub = application.skill_hub
     app.add_middleware(
         CORSMiddleware,
         allow_origins=application.config.auth.allowed_origins,
@@ -168,6 +203,57 @@ def create_app(
         payload = ErrorResponse(error=ErrorBody(code=exc.code, message=message))
         return JSONResponse(status_code=status_code, content=payload.model_dump())
 
+    @app.exception_handler(ToolError)
+    async def tool_error_handler(
+        _request: Request, exc: ToolError
+    ) -> JSONResponse:
+        status_code, message = TOOL_ERRORS.get(
+            exc.code, (400, "工具控制操作失败。")
+        )
+        payload = ErrorResponse(error=ErrorBody(code=exc.code, message=message))
+        return JSONResponse(status_code=status_code, content=payload.model_dump())
+
+    @app.exception_handler(McpConnectionError)
+    async def mcp_connection_error_handler(
+        _request: Request, _exc: McpConnectionError
+    ) -> JSONResponse:
+        payload = ErrorResponse(
+            error=ErrorBody(
+                code="mcp_unavailable",
+                message="MCP 服务暂时不可用，请稍后重试。",
+            )
+        )
+        return JSONResponse(
+            status_code=502,
+            content=payload.model_dump(),
+            headers={"Cache-Control": "no-store"},
+        )
+
+    @app.exception_handler(SkillHubUnavailable)
+    async def skill_hub_error_handler(
+        _request: Request, exc: SkillHubUnavailable
+    ) -> JSONResponse:
+        from ...skills.github import SkillRateLimited, SkillSourceNotFound
+
+        if isinstance(exc, SkillRateLimited):
+            code = "skill_hub_rate_limited"
+            message = "Skill 广场暂时被限流，请稍后重试。"
+            status_code = 429
+        elif isinstance(exc, SkillSourceNotFound):
+            code = "skill_source_not_found"
+            message = "该仓库固定位置没有可校验的 SKILL.md。"
+            status_code = 404
+        else:
+            code = "skill_hub_unavailable"
+            message = "Skill 广场暂时不可用，已保留已安装技能。"
+            status_code = 502
+        payload = ErrorResponse(error=ErrorBody(code=code, message=message))
+        return JSONResponse(
+            status_code=status_code,
+            content=payload.model_dump(),
+            headers={"Cache-Control": "no-store"},
+        )
+
     @app.exception_handler(Exception)
     async def unhandled_error_handler(
         _request: Request, exc: Exception
@@ -212,11 +298,16 @@ def create_app(
         service,
         application.runtime,
         ownership,
-        application.memory_commands,
+        application.command_registry,
         application.config,
         lambda owner_id: _finish_account_deletion(
             service, application.runtime, ownership, owner_id
         ),
+        application.tool_control,
+        application.mcp_store,
+        application.mcp_manager,
+        application.skill_hub,
+        document_service=application.document_service,
     )
     if frontend_available:
         app.mount(

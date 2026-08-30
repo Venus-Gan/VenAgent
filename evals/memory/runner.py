@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from venagent.memory.authorization import MemoryAuthorization
+from venagent.memory.recall import MemoryAuthorization
 from venagent.memory.service import MemoryService
 
 from .metrics import (

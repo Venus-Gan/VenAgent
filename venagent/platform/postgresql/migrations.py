@@ -12,7 +12,7 @@ from psycopg.rows import dict_row
 from ...agent.graph import checkpoint_serializer
 from ..errors import PersistenceError
 
-SCHEMA_VERSION = 9
+SCHEMA_VERSION = 13
 MIGRATION_LOCK_ID = 741_904
 
 
@@ -40,8 +40,20 @@ def migrate_database(database_url: str) -> None:
                 if current < 8:
                     _migrate_to_v8(conn)
                     current = 8
-                if current < SCHEMA_VERSION:
+                if current < 9:
                     _migrate_to_v9(conn)
+                    current = 9
+                if current < 10:
+                    _migrate_to_v10(conn)
+                    current = 10
+                if current < 11:
+                    _migrate_to_v11(conn)
+                    current = 11
+                if current < SCHEMA_VERSION:
+                    _migrate_to_v12(conn)
+                    current = 12
+                if current < SCHEMA_VERSION:
+                    _migrate_to_v13(conn)
     except PersistenceError:
         raise
     except Exception as exc:
@@ -89,6 +101,7 @@ def _migrate_to_v5(conn: Any, saver: PostgresSaver) -> None:
 
         with conn.transaction():
             for table in (
+                "run_events",
                 "memory_jobs",
                 "memory_summaries",
                 "memory_confirmations",
@@ -179,6 +192,7 @@ def _migrate_to_v5(conn: Any, saver: PostgresSaver) -> None:
                 owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
                 role TEXT NOT NULL CHECK (role IN ('user','assistant')),
                 content TEXT NOT NULL,
+                content_blocks JSONB NULL,
                 sequence INTEGER NOT NULL CHECK (sequence>0),
                 client_request_id UUID NULL,
                 source_run_id UUID NULL,
@@ -227,6 +241,8 @@ def _migrate_to_v5(conn: Any, saver: PostgresSaver) -> None:
                 claim_token UUID NULL,
                 lease_expires_at TIMESTAMPTZ NULL,
                 execution_attempt INTEGER NOT NULL DEFAULT 0 CHECK (execution_attempt>=0),
+                selected_skill_id TEXT NULL,
+                selected_skill_name TEXT NULL,
                 cancel_requested_at TIMESTAMPTZ NULL,
                 terminal_reason_code TEXT NULL,
                 terminal_message TEXT NULL,
@@ -246,6 +262,15 @@ def _migrate_to_v5(conn: Any, saver: PostgresSaver) -> None:
                 """ALTER TABLE conversation_messages ADD CONSTRAINT
                 conversation_messages_source_run_fk FOREIGN KEY (source_run_id)
                 REFERENCES agent_runs(run_id) ON DELETE CASCADE"""
+            )
+            conn.execute(
+                """CREATE TABLE run_events (
+                run_id UUID NOT NULL REFERENCES agent_runs(run_id) ON DELETE CASCADE,
+                sequence BIGINT NOT NULL CHECK (sequence>0),
+                event_type TEXT NOT NULL,
+                payload JSONB NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                PRIMARY KEY (run_id,sequence))"""
             )
             conn.execute(
                 """CREATE TABLE run_requests (
@@ -351,13 +376,33 @@ def _migrate_to_v5(conn: Any, saver: PostgresSaver) -> None:
                 UNIQUE (owner_id,conversation_id))"""
             )
             conn.execute(
+                """CREATE TABLE memory_consolidation_cursor (
+                owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
+                tenant_id TEXT NOT NULL,
+                conversation_id UUID NOT NULL REFERENCES conversations(conversation_id)
+                    ON DELETE CASCADE,
+                last_consolidated_sequence BIGINT NOT NULL DEFAULT 0
+                    CHECK (last_consolidated_sequence>=0),
+                last_message_sequence BIGINT NOT NULL DEFAULT 0
+                    CHECK (last_message_sequence>=0),
+                last_activity_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                deletion_generation INTEGER NOT NULL DEFAULT 0
+                    CHECK (deletion_generation>=0),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                PRIMARY KEY (owner_id,tenant_id,conversation_id))"""
+            )
+            conn.execute(
+                """CREATE INDEX memory_consolidation_cursor_activity_idx
+                ON memory_consolidation_cursor (last_activity_at)"""
+            )
+            conn.execute(
                 """CREATE TABLE memory_jobs (
                 job_id UUID PRIMARY KEY,
                 idempotency_key TEXT NOT NULL UNIQUE,
                 owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
                 tenant_id TEXT NOT NULL,
                 operation TEXT NOT NULL CHECK (operation IN
-                    ('extract','index','project','purge','quarantine-review','expire')),
+                    ('extract','index','project','purge','quarantine-review','expire','consolidate')),
                 source_ref TEXT NULL,
                 memory_id UUID NULL REFERENCES memory_facts(memory_id) ON DELETE SET NULL,
                 source_kind TEXT NULL CHECK
@@ -563,7 +608,7 @@ def _migrate_to_v9(conn: Any) -> None:
             conn.execute(
                 """ALTER TABLE memory_jobs ADD CONSTRAINT memory_jobs_operation_check
                 CHECK (operation IN ('extract','index','project','purge',
-                'quarantine-review','expire'))"""
+                'quarantine-review','expire','consolidate'))"""
             )
             for table in (
                 "memory_confirmations",
@@ -577,6 +622,181 @@ def _migrate_to_v9(conn: Any) -> None:
                 "memory_settings",
             ):
                 conn.execute(f"DELETE FROM {table}")
+            conn.execute("DELETE FROM venagent_schema_migrations")
+            _record_version(conn, SCHEMA_VERSION)
+    finally:
+        conn.execute("SELECT pg_advisory_unlock(%s)", (MIGRATION_LOCK_ID,))
+
+
+def _migrate_to_v10(conn: Any) -> None:
+    """增加可回放 RunEvent 与结构化 assistant blocks，保留既有对话。"""
+    conn.execute("SELECT pg_advisory_lock(%s)", (MIGRATION_LOCK_ID,))
+    try:
+        with conn.transaction():
+            conn.execute(
+                """ALTER TABLE conversation_messages
+                ADD COLUMN IF NOT EXISTS content_blocks JSONB NULL"""
+            )
+            conn.execute(
+                """UPDATE conversation_messages
+                SET content_blocks=jsonb_build_array(
+                    jsonb_build_object('type','text','text',content))
+                WHERE role='assistant' AND content_blocks IS NULL"""
+            )
+            conn.execute(
+                """CREATE TABLE IF NOT EXISTS run_events (
+                run_id UUID NOT NULL REFERENCES agent_runs(run_id) ON DELETE CASCADE,
+                sequence BIGINT NOT NULL CHECK (sequence>0),
+                event_type TEXT NOT NULL,
+                payload JSONB NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                PRIMARY KEY (run_id,sequence))"""
+            )
+            conn.execute("DELETE FROM venagent_schema_migrations")
+            _record_version(conn, SCHEMA_VERSION)
+    finally:
+        conn.execute("SELECT pg_advisory_unlock(%s)", (MIGRATION_LOCK_ID,))
+
+
+def _migrate_to_v11(conn: Any) -> None:
+    """在 agent_runs 持久化 selected_skill_id/name，支持刷新后显示 Skill。"""
+    conn.execute("SELECT pg_advisory_lock(%s)", (MIGRATION_LOCK_ID,))
+    try:
+        with conn.transaction():
+            conn.execute(
+                """ALTER TABLE agent_runs
+                ADD COLUMN IF NOT EXISTS selected_skill_id TEXT NULL"""
+            )
+            conn.execute(
+                """ALTER TABLE agent_runs
+                ADD COLUMN IF NOT EXISTS selected_skill_name TEXT NULL"""
+            )
+            conn.execute("DELETE FROM venagent_schema_migrations")
+            _record_version(conn, SCHEMA_VERSION)
+    finally:
+        conn.execute("SELECT pg_advisory_unlock(%s)", (MIGRATION_LOCK_ID,))
+
+
+def _migrate_to_v12(conn: Any) -> None:
+    """M08 RAG 文档库：rag_documents / rag_document_versions / rag_chunks。
+
+    per-owner 隔离（owner_id 全链携带），重传版本化（UNIQUE(document_id,version)），
+    chunk 按 (owner_id, doc_hash, chunk_idx) 幂等 upsert（AGI-saber 语义 + 隔离）。
+    """
+    conn.execute("SELECT pg_advisory_lock(%s)", (MIGRATION_LOCK_ID,))
+    try:
+        with conn.transaction():
+            conn.execute(
+                """CREATE TABLE IF NOT EXISTS rag_documents (
+                document_id TEXT PRIMARY KEY,
+                owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
+                title TEXT NOT NULL,
+                doc_type TEXT NOT NULL DEFAULT 'note',
+                source TEXT NOT NULL DEFAULT 'agent_generated' CHECK (source IN
+                    ('agent_generated','user_upload')),
+                status TEXT NOT NULL DEFAULT 'uploaded' CHECK (status IN
+                    ('uploaded','parsing','chunking','indexing','ready','failed','deleted')),
+                failure_reason TEXT NULL,
+                chunk_count INTEGER NOT NULL DEFAULT 0
+                    CHECK (chunk_count>=0),
+                indexed_count INTEGER NOT NULL DEFAULT 0
+                    CHECK (indexed_count>=0),
+                created_by TEXT NOT NULL DEFAULT 'agent',
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT now())"""
+            )
+            conn.execute(
+                """CREATE INDEX IF NOT EXISTS idx_rag_documents_owner_status
+                ON rag_documents (owner_id, status)"""
+            )
+            # 自愈：早期 v12 约束缺 'deleted'（软删状态），重建约束幂等修复。
+            conn.execute(
+                "ALTER TABLE rag_documents DROP CONSTRAINT IF EXISTS "
+                "rag_documents_status_check"
+            )
+            conn.execute(
+                """ALTER TABLE rag_documents ADD CONSTRAINT rag_documents_status_check
+                CHECK (status IN
+                    ('uploaded','parsing','chunking','indexing','ready','failed','deleted'))"""
+            )
+            conn.execute(
+                """CREATE TABLE IF NOT EXISTS rag_document_versions (
+                version_id TEXT PRIMARY KEY,
+                document_id TEXT NOT NULL
+                    REFERENCES rag_documents(document_id) ON DELETE CASCADE,
+                owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
+                version INTEGER NOT NULL CHECK (version>0),
+                content_md TEXT NOT NULL,
+                summary TEXT NULL,
+                metadata JSONB NULL,
+                doc_hash TEXT NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                UNIQUE (owner_id, document_id, version))"""
+            )
+            conn.execute(
+                """CREATE TABLE IF NOT EXISTS rag_chunks (
+                id BIGSERIAL PRIMARY KEY,
+                owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
+                document_id TEXT NOT NULL
+                    REFERENCES rag_documents(document_id) ON DELETE CASCADE,
+                version_id TEXT NOT NULL
+                    REFERENCES rag_document_versions(version_id) ON DELETE CASCADE,
+                chunk_idx INTEGER NOT NULL CHECK (chunk_idx>=0),
+                content TEXT NOT NULL,
+                parent_content TEXT NULL,
+                section TEXT NULL,
+                doc_hash TEXT NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                UNIQUE (owner_id, document_id, version_id, chunk_idx))"""
+            )
+            conn.execute(
+                """CREATE INDEX IF NOT EXISTS idx_rag_chunks_document
+                ON rag_chunks (owner_id, document_id, version_id)"""
+            )
+            conn.execute("DELETE FROM venagent_schema_migrations")
+            _record_version(conn, SCHEMA_VERSION)
+    finally:
+        conn.execute("SELECT pg_advisory_unlock(%s)", (MIGRATION_LOCK_ID,))
+
+
+def _migrate_to_v13(conn: Any) -> None:
+    """M05 沉淀式写入：consolidate 任务 + 每对话游标表。
+
+    记忆写入改为攒批延迟：run 结束不再逐条 extract，而是推进
+    memory_consolidation_cursor；攒满窗口或静默超时后入队一次 consolidate job。
+    """
+    conn.execute("SELECT pg_advisory_lock(%s)", (MIGRATION_LOCK_ID,))
+    try:
+        with conn.transaction():
+            conn.execute(
+                "ALTER TABLE memory_jobs DROP CONSTRAINT IF EXISTS "
+                "memory_jobs_operation_check"
+            )
+            conn.execute(
+                """ALTER TABLE memory_jobs ADD CONSTRAINT memory_jobs_operation_check
+                CHECK (operation IN ('extract','index','project','purge',
+                'quarantine-review','expire','consolidate'))"""
+            )
+            conn.execute(
+                """CREATE TABLE IF NOT EXISTS memory_consolidation_cursor (
+                owner_id UUID NOT NULL REFERENCES owners(owner_id) ON DELETE CASCADE,
+                tenant_id TEXT NOT NULL,
+                conversation_id UUID NOT NULL REFERENCES conversations(conversation_id)
+                    ON DELETE CASCADE,
+                last_consolidated_sequence BIGINT NOT NULL DEFAULT 0
+                    CHECK (last_consolidated_sequence>=0),
+                last_message_sequence BIGINT NOT NULL DEFAULT 0
+                    CHECK (last_message_sequence>=0),
+                last_activity_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                deletion_generation INTEGER NOT NULL DEFAULT 0
+                    CHECK (deletion_generation>=0),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+                PRIMARY KEY (owner_id,tenant_id,conversation_id))"""
+            )
+            conn.execute(
+                """CREATE INDEX IF NOT EXISTS memory_consolidation_cursor_activity_idx
+                ON memory_consolidation_cursor (last_activity_at)"""
+            )
             conn.execute("DELETE FROM venagent_schema_migrations")
             _record_version(conn, SCHEMA_VERSION)
     finally:

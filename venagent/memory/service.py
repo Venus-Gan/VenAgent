@@ -5,28 +5,33 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 from ..conversation.models import ConversationMessage
 from ..ownership.models import Actor, ExecutionAuthorization
 from ..ownership.ports import OwnershipStore
 from ..promptctx.context import ContextBlock, conservative_token_count
 from ..promptctx.recall_provider import MemoryRecallProvider
-from .authorization import MemoryAuthorization, MemoryAuthorizer, MemoryRequestSnapshot
-from .capabilities import MemoryCapabilityRegistry, MemoryHealth
 from .embedding.index import MemoryIndex
 from .errors import MemoryDisabled, MemoryError, MemoryUnsupported
 from .graph_memory import DisabledGraphMemoryStore, GraphMemory
 from .jobs import MemoryJobs
-from .long_term.conflict import ConflictJudge
-from .long_term.extractor import StructuredMemoryExtractor
-from .long_term.facts import MemoryFact, MemoryPage
+from .long_term.facts import ConflictJudge, MemoryFact, MemoryPage
 from .long_term.writer import LongTermWriter
-from .management import MemoryManager
+from .management import MemoryCapabilityRegistry, MemoryHealth, MemoryManager
+from .model_adapters import StructuredMemoryExtractor
 from .ports import MemoryGraphStore, MemoryStore
 from .ports import MemoryStoreError as StoreError
-from .recall import MemoryRecall
+from .recall import (
+    MemoryAuthorization,
+    MemoryAuthorizer,
+    MemoryRecall,
+    MemoryRequestSnapshot,
+)
 from .short_term import SummaryBuilder
+
+if TYPE_CHECKING:
+    from ..conversation.ports import ConversationStore
 
 NaturalMemoryOperation = Literal["remember", "forget"]
 NaturalMemoryStatus = Literal[
@@ -85,6 +90,10 @@ class MemoryService:
         extractor: StructuredMemoryExtractor | None = None,
         conflict_judge: ConflictJudge | None = None,
         memory_index: MemoryIndex | None = None,
+        conversation: ConversationStore | None = None,
+        window_messages: int = 5,
+        idle_seconds: int = 600,
+        max_input_tokens: int = 4000,
     ) -> None:
         self._store = store
         self._extractor = extractor
@@ -137,6 +146,10 @@ class MemoryService:
             self._transition,
             extractor,
             memory_index,
+            conversation,
+            window_messages=window_messages,
+            idle_seconds=idle_seconds,
+            max_input_tokens=max_input_tokens,
         )
         self._recall = MemoryRecall(
             store,
@@ -361,6 +374,22 @@ class MemoryService:
             source_ref=source_ref,
             source_order=source_order,
             source_kind=source_kind,
+        )
+
+    def record_user_message_for_consolidation(
+        self,
+        auth: MemoryAuthorization,
+        *,
+        conversation_id: str,
+        sequence: int,
+        now: datetime | None = None,
+    ) -> bool:
+        """沉淀式写入（D1）：用户消息推进对话游标，攒满窗口才入队抽取。"""
+        return self._jobs.record_user_message_for_consolidation(
+            auth,
+            conversation_id=conversation_id,
+            sequence=sequence,
+            now=now,
         )
 
     def process_pending_jobs(self, *, limit: int = 8) -> int:

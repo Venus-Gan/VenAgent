@@ -101,6 +101,21 @@ class ConversationService:
             raise RunNotFound
         return run
 
+    def set_run_skill(
+        self,
+        actor: Actor,
+        run_id: str,
+        skill_id: str | None,
+        skill_name: str | None,
+    ) -> AgentRun:
+        return self._run_store.set_run_skill(
+            actor.owner_id,
+            validate_run_id(run_id),
+            skill_id,
+            skill_name,
+            self._now(),
+        )
+
     def request_cancel(self, actor: Actor, run_id: str) -> AgentRun:
         canonical = validate_run_id(run_id)
         return self._run_store.request_cancel(actor.owner_id, canonical, self._now())

@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
-from ...memory.graph import MemoryEdge
+from ...memory.graph_memory import MemoryEdge
 from ...memory.ports import (
     G1GraphSnapshot,
     GraphProjectionStatus,

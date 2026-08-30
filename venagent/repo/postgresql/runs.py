@@ -8,6 +8,7 @@ from hashlib import sha256
 from typing import Any
 from uuid import uuid4
 
+from ...agent.events import RunEvent
 from ...agent.graph import RUNTIME_CONTRACT_VERSION
 from ...agent.ports import RunStoreError as StoreError
 from ...agent.runs import (
@@ -26,10 +27,61 @@ from ...conversation.errors import (
 from ...conversation.models import RunCreation
 from ...conversation.rules import automatic_title
 from ...ownership.models import Actor, ExecutionAuthorization
-from .conversation_mapping import agent_run_from_row, message_from_row
+from .conversation_mapping import (
+    agent_run_from_row,
+    message_from_row,
+    run_event_from_row,
+)
 
 
 class _PostgresRunMixin:
+    def append_run_event(
+        self, run_id: str, event_type: str, payload: dict, now: datetime
+    ) -> RunEvent:
+        try:
+            with self._pool.connection() as conn, conn.transaction():
+                locked = conn.execute(
+                    "SELECT run_id FROM agent_runs WHERE run_id=%s FOR UPDATE",
+                    (run_id,),
+                ).fetchone()
+                if locked is None:
+                    raise RunNotFound
+                row = conn.execute(
+                    """INSERT INTO run_events
+                    (run_id,sequence,event_type,payload,created_at)
+                    SELECT %s,COALESCE(max(sequence),0)+1,%s,%s::jsonb,%s
+                    FROM run_events WHERE run_id=%s RETURNING *""",
+                    (run_id, event_type, json.dumps(payload), now, run_id),
+                ).fetchone()
+            return run_event_from_row(row)
+        except RunNotFound:
+            raise
+        except Exception as exc:
+            raise StoreError("unable to append run event") from exc
+
+    def run_events(
+        self, owner_id: str, run_id: str, *, after_sequence: int = 0
+    ) -> tuple[RunEvent, ...]:
+        try:
+            with self._pool.connection() as conn:
+                rows = conn.execute(
+                    """SELECT event.* FROM run_events event
+                    JOIN agent_runs run USING (run_id)
+                    WHERE event.run_id=%s AND run.owner_id=%s AND event.sequence>%s
+                    ORDER BY event.sequence""",
+                    (run_id, owner_id, after_sequence),
+                ).fetchall()
+                if not rows and conn.execute(
+                    "SELECT 1 FROM agent_runs WHERE run_id=%s AND owner_id=%s",
+                    (run_id, owner_id),
+                ).fetchone() is None:
+                    raise RunNotFound
+            return tuple(run_event_from_row(row) for row in rows)
+        except RunNotFound:
+            raise
+        except Exception as exc:
+            raise StoreError("unable to read run events") from exc
+
     def create_run(
         self,
         actor: Actor,
@@ -325,6 +377,116 @@ class _PostgresRunMixin:
         except Exception as exc:
             raise StoreError("unable to request run cancellation") from exc
 
+    def wait_approval_run(
+        self,
+        run_id: str,
+        claim_token: str,
+        execution_attempt: int,
+        now: datetime,
+    ) -> AgentRun:
+        try:
+            with self._pool.connection() as conn:
+                row = conn.execute(
+                    """UPDATE agent_runs
+                    SET status='waiting_approval',updated_at=%s,phase='awaiting_approval',
+                    claimed_by=NULL,claim_token=NULL,lease_expires_at=NULL
+                    WHERE run_id=%s AND status='running' AND claim_token=%s AND execution_attempt=%s
+                    RETURNING *""",
+                    (now, run_id, claim_token, execution_attempt),
+                ).fetchone()
+            if row is None:
+                raise InvalidRunTransition("stale or invalid run claim")
+            return agent_run_from_row(row)
+        except InvalidRunTransition:
+            raise
+        except Exception as exc:
+            raise StoreError("unable to wait for approval") from exc
+
+    def resume_run(self, run_id: str, now: datetime) -> AgentRun:
+        try:
+            with self._pool.connection() as conn, conn.transaction():
+                row = conn.execute(
+                    """UPDATE agent_runs
+                    SET status='queued',updated_at=%s,phase='synthesizing'
+                    WHERE run_id=%s AND status='waiting_approval' RETURNING *""",
+                    (now, run_id),
+                ).fetchone()
+                if row is not None:
+                    return agent_run_from_row(row)
+                current = conn.execute(
+                    "SELECT status FROM agent_runs WHERE run_id=%s FOR UPDATE",
+                    (run_id,),
+                ).fetchone()
+                if current is None:
+                    raise RunNotFound
+                status = str(current["status"])
+                if status in {"cancelled", "succeeded", "failed", "incompatible"}:
+                    raise InvalidRunTransition("run_terminal")
+                if status in {"queued", "running"}:
+                    raise InvalidRunTransition("run_already_resumed")
+                raise InvalidRunTransition("run_not_waiting_approval")
+        except (RunNotFound, InvalidRunTransition):
+            raise
+        except Exception as exc:
+            raise StoreError("unable to resume agent run") from exc
+
+    def cancel_waiting_approval(
+        self,
+        owner_id: str,
+        run_id: str,
+        now: datetime,
+    ) -> AgentRun:
+        try:
+            with self._pool.connection() as conn, conn.transaction():
+                row = conn.execute(
+                    """UPDATE agent_runs
+                    SET status='cancelled',completed_at=%s,updated_at=%s,
+                    terminal_reason_code='user_cancelled',terminal_message='运行已取消',
+                    claimed_by=NULL,claim_token=NULL,lease_expires_at=NULL
+                    WHERE run_id=%s AND owner_id=%s AND status='waiting_approval'
+                    RETURNING *""",
+                    (now, now, run_id, owner_id),
+                ).fetchone()
+                if row is None:
+                    existing = conn.execute(
+                        "SELECT * FROM agent_runs WHERE run_id=%s AND owner_id=%s",
+                        (run_id, owner_id),
+                    ).fetchone()
+                    if existing is None:
+                        raise RunNotFound
+                    if str(existing["status"]) == "cancelled":
+                        return agent_run_from_row(existing)
+                    raise InvalidRunTransition("run is not waiting for approval")
+            return agent_run_from_row(row)
+        except (RunNotFound, InvalidRunTransition):
+            raise
+        except Exception as exc:
+            raise StoreError("unable to cancel waiting approval run") from exc
+
+    def set_run_skill(
+        self,
+        owner_id: str,
+        run_id: str,
+        skill_id: str | None,
+        skill_name: str | None,
+        now: datetime,
+    ) -> AgentRun:
+        try:
+            with self._pool.connection() as conn:
+                row = conn.execute(
+                    """UPDATE agent_runs
+                    SET selected_skill_id=%s, selected_skill_name=%s, updated_at=%s
+                    WHERE owner_id=%s AND run_id=%s RETURNING *""",
+                    (skill_id, skill_name, now, owner_id, run_id),
+                ).fetchone()
+            if row is None:
+                raise RunNotFound
+            return agent_run_from_row(row)
+        except RunNotFound:
+            raise
+        except Exception as exc:
+            raise StoreError("unable to set run skill") from exc
+
     def succeed_run(
         self,
         run_id: str,
@@ -332,6 +494,7 @@ class _PostgresRunMixin:
         execution_attempt: int,
         answer: str,
         now: datetime,
+        blocks: tuple[dict[str, str], ...] = (),
     ) -> AgentRun:
         try:
             with self._pool.connection() as conn, conn.transaction():
@@ -353,13 +516,14 @@ class _PostgresRunMixin:
                     output_id = str(uuid4())
                     output = conn.execute(
                         """INSERT INTO conversation_messages
-                    (message_id,conversation_id,owner_id,role,content,sequence,source_run_id,reply_to_message_id,created_at)
-                    VALUES (%s,%s,%s,'assistant',%s,%s,%s,%s,%s) RETURNING *""",
+                    (message_id,conversation_id,owner_id,role,content,content_blocks,sequence,source_run_id,reply_to_message_id,created_at)
+                    VALUES (%s,%s,%s,'assistant',%s,%s::jsonb,%s,%s,%s,%s) RETURNING *""",
                         (
                             output_id,
                             run["conversation_id"],
                             run["owner_id"],
                             answer,
+                            json.dumps(blocks),
                             self._next_sequence(conn, str(run["conversation_id"])),
                             run_id,
                             run["input_message_id"],
@@ -565,7 +729,9 @@ class _PostgresRunMixin:
                 actor.owner_id,
                 conversation_id,
                 json.dumps([f"conversation:{conversation_id}", "owner:memory"]),
-                json.dumps(["model.invoke", "memory.read", "memory.write"]),
+                json.dumps(
+                    ["model.invoke", "memory.read", "memory.write", "tool.invoke"]
+                ),
                 actor.owner_id,
                 actor.session_id,
                 now + timedelta(days=7),
