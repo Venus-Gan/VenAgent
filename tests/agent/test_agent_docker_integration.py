@@ -16,10 +16,10 @@ import os
 
 import pytest
 
-from venagent.sandbox.docker import DockerSandboxRuntime
-from venagent.skills.catalog import SkillCatalog
-from venagent.skills.manifest import SkillFile, SkillManifest, digest_sha256
-from venagent.tools.models import ToolDescriptor
+from src.sandbox.docker import DockerSandboxRuntime
+from src.skills.catalog import SkillCatalog
+from src.skills.manifest import SkillFile, SkillManifest, digest_sha256
+from src.tools.models import ToolDescriptor
 
 pytestmark = [
     pytest.mark.integration,

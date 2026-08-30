@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from venagent.interfaces.http.app import create_app
-from venagent.platform.runtime import build_persistence_runtime
+from src.interfaces.http.app import create_app
+from src.platform.runtime import build_persistence_runtime
 
 
 @pytest.fixture

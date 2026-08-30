@@ -11,8 +11,8 @@ from __future__ import annotations
 import logging
 from datetime import datetime
 
-from venagent.ownership.authorization import RunAuthorizationPolicy
-from venagent.ownership.models import ExecutionAuthorization
+from src.ownership.authorization import RunAuthorizationPolicy
+from src.ownership.models import ExecutionAuthorization
 
 
 def _authorization(

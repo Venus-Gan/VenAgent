@@ -10,8 +10,8 @@ from __future__ import annotations
 import pytest
 from langchain_core.messages import AIMessageChunk
 
-from venagent.tools.langchain import ModelToolCallInvalid, model_tool_calls_from_chunks
-from venagent.tools.models import ModelToolCall
+from src.tools.langchain import ModelToolCallInvalid, model_tool_calls_from_chunks
+from src.tools.models import ModelToolCall
 
 
 def test_deepseek_dsml_responses_tool_call_is_normalized() -> None:

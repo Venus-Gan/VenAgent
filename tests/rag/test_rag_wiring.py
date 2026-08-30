@@ -2,8 +2,8 @@
 
 from types import SimpleNamespace
 
-from venagent import bootstrap
-from venagent.config import load_config
+from src import bootstrap
+from src.config import load_config
 
 
 class _FixedModel:

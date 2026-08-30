@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from venagent.rag.rerank import parse_rerank_output
-from venagent.rag.rewriter import parse_rewrite_output
+from src.rag.rerank import parse_rerank_output
+from src.rag.rewriter import parse_rewrite_output
 
 
 def test_rewrite_accepts_plain_json_array():

@@ -31,7 +31,7 @@ def _load_local_test_environment() -> None:
         return
 
     try:
-        from venagent.config import load_config
+        from src.config import load_config
 
         config = load_config(project_root=PROJECT_ROOT)
     except Exception:
@@ -70,8 +70,8 @@ def neo4j_graph_store():
         pytest.fail("TEST_NEO4J_PASSWORD is required with TEST_NEO4J_URI")
 
     neo4j = pytest.importorskip("neo4j")
-    from venagent.platform.neo4j import migrate_neo4j_schema
-    from venagent.repo.neo4j import Neo4jMemoryGraphStore
+    from src.platform.neo4j import migrate_neo4j_schema
+    from src.repo.neo4j import Neo4jMemoryGraphStore
 
     database = os.environ.get("TEST_NEO4J_DATABASE", "neo4j")
     user = os.environ.get("TEST_NEO4J_USER", "neo4j")

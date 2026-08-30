@@ -5,19 +5,19 @@ from __future__ import annotations
 from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.graph_memory import MemoryEdge, build_g1_edges, replay_g1_edges
-from venagent.memory.long_term.facts import MemoryFact
-from venagent.memory.management import (
+from src.memory.graph_memory import MemoryEdge, build_g1_edges, replay_g1_edges
+from src.memory.long_term.facts import MemoryFact
+from src.memory.management import (
     MemoryCapabilityRegistry,
     MemoryCapabilityStatus,
 )
-from venagent.memory.ports import G1GraphSnapshot
-from venagent.memory.ports import MemoryStoreError as StoreError
-from venagent.memory.service import MemoryService
-from venagent.repo.inmemory import (
+from src.memory.ports import G1GraphSnapshot
+from src.memory.ports import MemoryStoreError as StoreError
+from src.memory.service import MemoryService
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 5, 8, 0, tzinfo=timezone.utc)
 

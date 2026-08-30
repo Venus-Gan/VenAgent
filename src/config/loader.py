@@ -20,7 +20,7 @@ from typing import Any, Mapping
 import yaml
 from pydantic import ValidationError
 
-from .models import (  # noqa: F401  # 保持旧 import 路径（venagent.config.loader.*）兼容
+from .models import (  # noqa: F401  # 保持旧 import 路径（src.config.loader.*）兼容
     AppConfig,
     AuthConfig,
     ConfigError,

@@ -5,9 +5,9 @@ from datetime import datetime, timezone
 import pytest
 from langchain_core.messages import AIMessageChunk
 
-from venagent.agent.events import normalize_assistant_chunk
-from venagent.ownership.models import Actor
-from venagent.repo.inmemory import InMemoryConversationRuntimeStore
+from src.agent.events import normalize_assistant_chunk
+from src.ownership.models import Actor
+from src.repo.inmemory import InMemoryConversationRuntimeStore
 
 
 def actor(owner_id: str = "00000000-0000-0000-0000-000000000001") -> Actor:

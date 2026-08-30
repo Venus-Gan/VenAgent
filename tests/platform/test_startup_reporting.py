@@ -13,18 +13,18 @@ from langgraph.checkpoint.memory import InMemorySaver
 from pydantic import SecretStr
 from uvicorn.config import LOGGING_CONFIG
 
-from venagent import __main__ as main_module
-from venagent import bootstrap as bootstrap_module
-from venagent.bootstrap import build_application
-from venagent.config import Neo4jConfig, load_config
-from venagent.platform.neo4j import build_neo4j_runtime
-from venagent.platform.observability import (
+from src import __main__ as main_module
+from src import bootstrap as bootstrap_module
+from src.bootstrap import build_application
+from src.config import Neo4jConfig, load_config
+from src.platform.neo4j import build_neo4j_runtime
+from src.platform.observability import (
     InfrastructureState,
     InfrastructureStatus,
     StartupReport,
     log_startup_report,
 )
-from venagent.platform.runtime import (
+from src.platform.runtime import (
     PersistenceRuntime,
     PersistenceStatus,
     build_persistence_runtime,
@@ -39,7 +39,7 @@ class FixedModel:
 class _ReadyPostgresqlRuntime:
     """构造期最小假 PG runtime：按 durable 装配语义持有 pool 资源。
 
-    bootstrap._build_repository_adapters（venagent/bootstrap.py:453-473）在
+    bootstrap._build_repository_adapters（src/bootstrap.py:453-473）在
     mode=durable 时访问 `runtime.postgresql_pool`（platform/runtime.py:88-92 的
     属性，postgresql_runtime 为 None 时会抛 PersistenceError）。真实 durable
     runtime 由 build_postgresql_runtime 提供 `pool`，此假对象只补这一个资源面。
@@ -183,7 +183,7 @@ def test_ready_neo4j_is_reported_between_postgresql_and_memory_capabilities(
 ):
     import neo4j
 
-    from venagent.platform.neo4j import runtime as neo4j_runtime_module
+    from src.platform.neo4j import runtime as neo4j_runtime_module
 
     class FakeDriver:
         def verify_connectivity(self) -> None:
@@ -266,11 +266,11 @@ def test_ready_neo4j_is_reported_between_postgresql_and_memory_capabilities(
 def test_neo4j_runtime_tracks_connection_and_schema_result(monkeypatch, caplog):
     import neo4j
 
-    from venagent.memory.management import (
+    from src.memory.management import (
         MemoryCapabilityRegistry,
         MemoryCapabilityStatus,
     )
-    from venagent.platform.neo4j import runtime as neo4j_runtime_module
+    from src.platform.neo4j import runtime as neo4j_runtime_module
 
     class FakeDriver:
         def verify_connectivity(self) -> None:
@@ -310,7 +310,7 @@ def test_neo4j_runtime_tracks_connection_and_schema_result(monkeypatch, caplog):
 
 
 def test_neo4j_runtime_reports_not_configured_separately_from_graph_capability():
-    from venagent.memory.management import (
+    from src.memory.management import (
         MemoryCapabilityRegistry,
         MemoryCapabilityStatus,
     )
@@ -334,7 +334,7 @@ def test_neo4j_runtime_reports_connection_failure_without_changing_durable_mode(
 ):
     import neo4j
 
-    from venagent.memory.management import (
+    from src.memory.management import (
         MemoryCapabilityRegistry,
         MemoryCapabilityStatus,
     )
@@ -431,5 +431,5 @@ def test_cli_keeps_the_configured_windows_event_loop_policy(monkeypatch):
 
     main_module.main()
 
-    assert captured["app"] == "venagent.interfaces.http.app:app"
+    assert captured["app"] == "src.interfaces.http.app:app"
     assert captured["loop"] == "none"

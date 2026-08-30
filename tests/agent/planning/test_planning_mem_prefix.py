@@ -10,13 +10,13 @@ import asyncio
 
 from langchain_core.messages import AIMessageChunk
 
-from venagent.agent.planning.factory import build_planning_nodes
-from venagent.agent.planning.planner import _invoke
-from venagent.agent.planning.replanner import _ask_replanner
-from venagent.agent.runtime import AgentRuntime
-from venagent.agent.state import Plan, PlanNode, TaskInput
-from venagent.promptctx import ContextProjectionService
-from venagent.promptctx.context import ContextBlock, conservative_token_count
+from src.agent.planning.factory import build_planning_nodes
+from src.agent.planning.planner import _invoke
+from src.agent.planning.replanner import _ask_replanner
+from src.agent.runtime import AgentRuntime
+from src.agent.state import Plan, PlanNode, TaskInput
+from src.promptctx import ContextProjectionService
+from src.promptctx.context import ContextBlock, conservative_token_count
 
 
 def _block(block_id: str, category: str, content: str) -> ContextBlock:

@@ -6,14 +6,14 @@ from uuid import uuid4
 
 import pytest
 
-from venagent.memory.graph_memory import MemoryEdge
-from venagent.memory.ports import GraphProjectionStatus
-from venagent.platform import PersistenceError
-from venagent.platform.neo4j import (
+from src.memory.graph_memory import MemoryEdge
+from src.memory.ports import GraphProjectionStatus
+from src.platform import PersistenceError
+from src.platform.neo4j import (
     migrate_neo4j_schema,
     validate_neo4j_schema,
 )
-from venagent.repo.neo4j import Neo4jMemoryGraphStore
+from src.repo.neo4j import Neo4jMemoryGraphStore
 
 NOW = datetime(2026, 8, 7, 8, 0, tzinfo=timezone.utc)
 

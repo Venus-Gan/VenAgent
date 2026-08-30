@@ -20,29 +20,29 @@ from uuid import uuid4
 import pytest
 from langchain_core.messages import AIMessageChunk
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.agent.graph import run_config
-from venagent.agent.state import NodeOutcome, StateConsistencyError, merge_node_outcomes
-from venagent.memory.management import (
+from src.agent.graph import run_config
+from src.agent.state import NodeOutcome, StateConsistencyError, merge_node_outcomes
+from src.memory.management import (
     MemoryCapabilityRegistry,
     MemoryCapabilityStatus,
 )
-from venagent.memory.model_adapters import StructuredMemoryExtractor
-from venagent.memory.service import MemoryService
-from venagent.ownership.models import Actor, OwnerRecord
-from venagent.promptctx import (
+from src.memory.model_adapters import StructuredMemoryExtractor
+from src.memory.service import MemoryService
+from src.ownership.models import Actor, OwnerRecord
+from src.promptctx import (
     ContextBlock,
     ContextOverflow,
     ContextProjectionService,
     ProjectionPolicy,
     SectionSpec,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryPlatformState as MemoryState,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 
 class _AStreamModel:

@@ -10,19 +10,19 @@ from pathlib import Path
 
 import pytest
 
-from venagent.interfaces.http.app import create_app
-from venagent.mcp.client import McpClientManager
-from venagent.mcp.config import McpConfigStore
-from venagent.platform.runtime import build_persistence_runtime
-from venagent.sandbox.docker import DockerSandboxRuntime
-from venagent.skills.catalog import SkillCatalog
-from venagent.tools.approval import ApprovalService
-from venagent.tools.catalog import ToolCatalog
-from venagent.tools.control import ToolControlContext
-from venagent.tools.gateway import ToolGateway
-from venagent.tools.models import ToolDescriptor
-from venagent.tools.operation_store import OperationStore
-from venagent.tools.policy import ToolExposurePolicy
+from src.interfaces.http.app import create_app
+from src.mcp.client import McpClientManager
+from src.mcp.config import McpConfigStore
+from src.platform.runtime import build_persistence_runtime
+from src.sandbox.docker import DockerSandboxRuntime
+from src.skills.catalog import SkillCatalog
+from src.tools.approval import ApprovalService
+from src.tools.catalog import ToolCatalog
+from src.tools.control import ToolControlContext
+from src.tools.gateway import ToolGateway
+from src.tools.models import ToolDescriptor
+from src.tools.operation_store import OperationStore
+from src.tools.policy import ToolExposurePolicy
 
 FAKE_MCP_SERVER = Path(__file__).parent / "fixtures" / "fake_mcp_server.py"
 

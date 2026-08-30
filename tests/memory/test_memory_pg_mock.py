@@ -8,13 +8,13 @@ from threading import Event, Thread
 
 import pytest
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.errors import MemoryPurgePending
-from venagent.memory.service import MemoryService
-from venagent.repo.inmemory import (
+from src.memory.errors import MemoryPurgePending
+from src.memory.service import MemoryService
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
-from venagent.repo.postgresql.memory import PostgresMemoryStore
+from src.repo.postgresql.memory import PostgresMemoryStore
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 5, 8, 0, tzinfo=timezone.utc)
 

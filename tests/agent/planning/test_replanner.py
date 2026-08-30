@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from venagent.agent.planning.replanner import detect_trigger
-from venagent.agent.state import NodeOutcome, Plan, PlanNode
+from src.agent.planning.replanner import detect_trigger
+from src.agent.state import NodeOutcome, Plan, PlanNode
 
 
 def _node(node_id, depends=(), tool="t1"):

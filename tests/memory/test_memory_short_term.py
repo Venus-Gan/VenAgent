@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from venagent.memory.management import (
+from src.memory.management import (
     MemoryCapabilityRegistry,
     MemoryCapabilityStatus,
 )
-from venagent.memory.service import MemoryService
-from venagent.repo.inmemory import (
+from src.memory.service import MemoryService
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
 

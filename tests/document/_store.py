@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
-from venagent.document.ports import (
+from src.document.ports import (
     DocumentRecord,
     DocumentStoreError,
     DocumentVersion,

@@ -123,7 +123,7 @@ logger = logging.getLogger(__name__)
 
 EMBEDDING_RECALL_MARGIN_SECONDS = 0.5
 MAX_EMBEDDING_RECALL_DEADLINE_SECONDS = 30.5
-DEFAULT_MCP_CONFIG_PATH = Path.cwd() / "mcp" / "mcp-configs" / "mcp-servers.json"
+DEFAULT_MCP_CONFIG_PATH = Path(__file__).resolve().parent / "mcp" / "mcp-configs" / "mcp-servers.json"
 
 
 @dataclass

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from venagent.agent.planning.dag import (
+from src.agent.planning.dag import (
     _has_cycle,
     ready_layer,
     resolved_ids,
@@ -10,7 +10,7 @@ from venagent.agent.planning.dag import (
     unresolvable_dependencies,
     validate_plan,
 )
-from venagent.agent.state import NodeOutcome, Plan, PlanNode
+from src.agent.state import NodeOutcome, Plan, PlanNode
 
 
 def _node(node_id: str, depends: tuple[str, ...] = (), tool: str = "t1") -> PlanNode:
@@ -82,7 +82,7 @@ def test_unresolvable_dependencies():
 
 def test_skipped_node_is_terminal_for_pending():
     """竞速败者 skipped 后不得再被视为剩余待办（防止 executor⇄replanner 空转）。"""
-    from venagent.agent.planning.dag import pending_nodes
+    from src.agent.planning.dag import pending_nodes
 
     plan = Plan(revision=1, goal="g", nodes=(_node("a"), _node("b")))
     outcomes = (_outcome("a", "skipped"), _outcome("b", "succeeded"))

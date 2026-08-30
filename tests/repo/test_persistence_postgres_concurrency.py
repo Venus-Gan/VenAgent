@@ -16,10 +16,10 @@ import psycopg
 import pytest
 from fastapi.testclient import TestClient
 
-from venagent.__main__ import _configure_event_loop_policy
-from venagent.agent.runs import AgentRunLifecycle, InvalidRunTransition
-from venagent.interfaces.http.app import create_app
-from venagent.platform.runtime import DATABASE_URL
+from src.__main__ import _configure_event_loop_policy
+from src.agent.runs import AgentRunLifecycle, InvalidRunTransition
+from src.interfaces.http.app import create_app
+from src.platform.runtime import DATABASE_URL
 
 
 @pytest.mark.integration

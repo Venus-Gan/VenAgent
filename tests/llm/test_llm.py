@@ -4,8 +4,8 @@ from pathlib import Path
 import pytest
 from langchain_core.messages import AIMessage, HumanMessage
 
-from venagent.config import load_config
-from venagent.llm.config import (
+from src.config import load_config
+from src.llm.config import (
     ANTHROPIC,
     AZURE_OPENAI,
     GOOGLE_GENAI,
@@ -14,13 +14,13 @@ from venagent.llm.config import (
     LLMConfigurationError,
     settings_from_environment,
 )
-from venagent.llm.factory import (
+from src.llm.factory import (
     build_memory_extractor_model,
     build_rerank_model,
     build_rewrite_model,
     build_runtime_model,
 )
-from venagent.llm.providers import default_model_factories, model_factory_kwargs
+from src.llm.providers import default_model_factories, model_factory_kwargs
 
 
 class RecordingModel:

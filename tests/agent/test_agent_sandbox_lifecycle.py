@@ -17,13 +17,13 @@ from fastapi.testclient import TestClient
 from langchain_core.messages import AIMessageChunk
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.graph import run_config
-from venagent.interfaces.http.app import create_app
-from venagent.platform.runtime import build_persistence_runtime
-from venagent.promptctx.source_constraints import sandbox_constraints_block
-from venagent.sandbox.docker import DockerSandboxRuntime
-from venagent.sandbox.models import SandboxCapability
-from venagent.tools.models import Operation
+from src.agent.graph import run_config
+from src.interfaces.http.app import create_app
+from src.platform.runtime import build_persistence_runtime
+from src.promptctx.source_constraints import sandbox_constraints_block
+from src.sandbox.docker import DockerSandboxRuntime
+from src.sandbox.models import SandboxCapability
+from src.tools.models import Operation
 
 ORIGIN = {"Origin": "http://localhost:5173"}
 
@@ -93,13 +93,13 @@ def test_runtime_does_not_create_sandbox_for_plain_text_run_and_stops_on_termina
         async def astream(self, _messages):
             yield AIMessageChunk(content="完成")
 
-    from venagent.skills.catalog import SkillCatalog
-    from venagent.tools.approval import ApprovalService
-    from venagent.tools.catalog import ToolCatalog
-    from venagent.tools.control import ToolControlContext
-    from venagent.tools.gateway import ToolGateway
-    from venagent.tools.operation_store import OperationStore
-    from venagent.tools.policy import ToolExposurePolicy
+    from src.skills.catalog import SkillCatalog
+    from src.tools.approval import ApprovalService
+    from src.tools.catalog import ToolCatalog
+    from src.tools.control import ToolControlContext
+    from src.tools.gateway import ToolGateway
+    from src.tools.operation_store import OperationStore
+    from src.tools.policy import ToolExposurePolicy
 
     policy = ToolExposurePolicy(policy_version="test", allowed_tool_ids=())
     operations = OperationStore()

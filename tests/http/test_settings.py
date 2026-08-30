@@ -9,9 +9,9 @@ import yaml
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from venagent.config import load_config
-from venagent.interfaces.http.app import create_app
-from venagent.ownership.models import Actor
+from src.config import load_config
+from src.interfaces.http.app import create_app
+from src.ownership.models import Actor
 
 ORIGIN = {"Origin": "http://localhost:5173"}
 AUTH_ORIGIN = {"Origin": "http://localhost:5173", "Authorization": "Bearer test-token"}
@@ -46,7 +46,7 @@ def _app(tmp_path: Path, ownership: object) -> FastAPI:
 
 
 def build_temporary_runtime():
-    from venagent.platform.runtime import build_persistence_runtime
+    from src.platform.runtime import build_persistence_runtime
 
     return build_persistence_runtime({})
 

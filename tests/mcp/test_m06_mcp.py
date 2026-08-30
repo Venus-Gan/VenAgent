@@ -15,15 +15,15 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from venagent.mcp.client import (
+from src.mcp.client import (
     McpClientManager,
     McpConnectionError,
     McpHttpClient,
     McpStdioClient,
 )
-from venagent.mcp.config import McpServerConfig
-from venagent.tools.errors import ToolSchemaInvalid
-from venagent.tools.schema import schema_supported, validate_arguments
+from src.mcp.config import McpServerConfig
+from src.tools.errors import ToolSchemaInvalid
+from src.tools.schema import schema_supported, validate_arguments
 
 ORIGIN = {"Origin": "http://localhost:5173"}
 

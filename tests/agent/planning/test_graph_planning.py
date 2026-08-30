@@ -9,8 +9,8 @@ import asyncio
 
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.graph import compile_agent_graph
-from venagent.agent.state import (
+from src.agent.graph import compile_agent_graph
+from src.agent.state import (
     FinalAnswer,
     NodeOutcome,
     Plan,
@@ -117,7 +117,7 @@ def test_react_flow_end_to_end():
     )
     initial: RunState = {"task_input": None}  # type: ignore[dict-item]
     initial["task_input"] = __import__(
-        "venagent.agent.state", fromlist=["TaskInput"]
+        "src.agent.state", fromlist=["TaskInput"]
     ).TaskInput("m1", "任务", plan_mode=True)
     result = asyncio.run(
         graph.ainvoke(initial, {"configurable": {"thread_id": "t1"}})
@@ -164,7 +164,7 @@ def test_baseline_flow_still_reaches_model_decision():
         generator_node=generator,
         rag_answer_node=rag_answer,
     )
-    from venagent.agent.state import TaskInput
+    from src.agent.state import TaskInput
 
     result = asyncio.run(
         graph.ainvoke(

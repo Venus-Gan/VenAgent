@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from venagent.rag.kg_extract import KgExtractionError, parse_kg_output
+from src.rag.kg_extract import KgExtractionError, parse_kg_output
 
 VALID = (
     '{"schema_version": "m08-kg-v1", '

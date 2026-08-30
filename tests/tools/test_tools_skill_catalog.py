@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import pytest
 
-from venagent.skills.catalog import SkillCatalog
-from venagent.skills.manifest import SkillManifest, digest_sha256
+from src.skills.catalog import SkillCatalog
+from src.skills.manifest import SkillManifest, digest_sha256
 
 
 def test_skill_catalog_validates_digest_and_snapshot() -> None:

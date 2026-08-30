@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
+from src.config import DocumentConfig, RagConfig
+from src.document.parser import DocumentParseError
+from src.document.ports import DocumentStoreError
+from src.document.service import DocumentService, DocumentUploadError
 from tests.document._store import FailingDocumentStore, InMemoryDocumentStore
-from venagent.config import DocumentConfig, RagConfig
-from venagent.document.parser import DocumentParseError
-from venagent.document.ports import DocumentStoreError
-from venagent.document.service import DocumentService, DocumentUploadError
 
 OWNER_A = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 OWNER_B = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
@@ -63,7 +63,7 @@ def test_upload_too_large_rejected(service):
 
 
 def test_upload_parse_failure_marks_document_failed(service, monkeypatch):
-    from venagent.document import service as service_module
+    from src.document import service as service_module
 
     def fake_parse(filename, content, config):
         raise DocumentParseError("该 PDF 为扫描件/图片型，需要 OCR 支持", reason="needs_ocr")
@@ -154,7 +154,7 @@ def test_list_filters_status_and_orders(service):
 def test_parse_pdf_needs_ocr_rejects_short_pages(monkeypatch):
     import sys
 
-    from venagent.document import parser as parser_module
+    from src.document import parser as parser_module
 
     class FakePage:
         def __init__(self, text: str) -> None:
@@ -184,7 +184,7 @@ def test_parse_pdf_needs_ocr_rejects_short_pages(monkeypatch):
 def test_parse_pdf_too_many_pages(monkeypatch):
     import sys
 
-    from venagent.document import parser as parser_module
+    from src.document import parser as parser_module
 
     class FakePage:
         def extract_text(self) -> str:
@@ -212,7 +212,7 @@ def test_parse_pdf_too_many_pages(monkeypatch):
 def test_parse_pdf_ok(monkeypatch):
     import sys
 
-    from venagent.document import parser as parser_module
+    from src.document import parser as parser_module
 
     class FakePage:
         def __init__(self, text: str) -> None:

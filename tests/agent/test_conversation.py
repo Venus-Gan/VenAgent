@@ -5,15 +5,15 @@ from uuid import UUID, uuid4
 
 import pytest
 
-from venagent.agent.runs import AgentRunLifecycle
-from venagent.conversation.errors import (
+from src.agent.runs import AgentRunLifecycle
+from src.conversation.errors import (
     ConversationNotFound,
     InvalidConversationId,
     RetryNotAllowed,
 )
-from venagent.conversation.service import ConversationService
-from venagent.ownership.models import Actor
-from venagent.repo.inmemory import (
+from src.conversation.service import ConversationService
+from src.ownership.models import Actor
+from src.repo.inmemory import (
     InMemoryConversationRuntimeStore as MemoryRuntimeStore,
 )
 

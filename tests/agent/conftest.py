@@ -17,22 +17,22 @@ import pytest
 from langchain_core.messages import AIMessageChunk
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.graph import checkpoint_serializer
-from venagent.agent.runs import AgentRun
-from venagent.agent.runtime import AgentRuntime
-from venagent.ownership.models import Actor
-from venagent.repo.inmemory import (
+from src.agent.graph import checkpoint_serializer
+from src.agent.runs import AgentRun
+from src.agent.runtime import AgentRuntime
+from src.ownership.models import Actor
+from src.repo.inmemory import (
     InMemoryConversationRuntimeStore as MemoryRuntimeStore,
 )
-from venagent.sandbox.models import SandboxCapability
-from venagent.skills.catalog import SkillCatalog
-from venagent.tools.approval import ApprovalService
-from venagent.tools.catalog import ToolCatalog
-from venagent.tools.control import ToolControlContext
-from venagent.tools.gateway import ToolGateway
-from venagent.tools.models import ToolDescriptor, ToolResult
-from venagent.tools.operation_store import OperationStore
-from venagent.tools.policy import ToolExposurePolicy
+from src.sandbox.models import SandboxCapability
+from src.skills.catalog import SkillCatalog
+from src.tools.approval import ApprovalService
+from src.tools.catalog import ToolCatalog
+from src.tools.control import ToolControlContext
+from src.tools.gateway import ToolGateway
+from src.tools.models import ToolDescriptor, ToolResult
+from src.tools.operation_store import OperationStore
+from src.tools.policy import ToolExposurePolicy
 
 
 def _mcp_descriptor() -> ToolDescriptor:

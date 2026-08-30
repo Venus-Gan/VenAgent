@@ -7,9 +7,9 @@ from types import SimpleNamespace
 
 import pytest
 
-from venagent.agent.observation import RunObservationHub
-from venagent.agent.runs import AgentRun
-from venagent.interfaces.http.streaming import stream_run_events
+from src.agent.observation import RunObservationHub
+from src.agent.runs import AgentRun
+from src.interfaces.http.streaming import stream_run_events
 
 
 def test_observation_hub_does_not_replay_tokens_to_late_subscribers() -> None:
@@ -48,7 +48,7 @@ def test_discarding_a_subscriber_does_not_cancel_runtime_work() -> None:
 def test_heartbeat_timeout_keeps_subscription_open_until_snapshot_is_terminal(
     monkeypatch,
 ) -> None:
-    from venagent.interfaces.http import streaming
+    from src.interfaces.http import streaming
 
     monkeypatch.setattr(streaming, "HEARTBEAT_INTERVAL_SECONDS", 0.01)
 

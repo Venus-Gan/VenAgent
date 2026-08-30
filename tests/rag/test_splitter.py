@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from venagent.rag.splitter import RecursiveSplitter
+from src.rag.splitter import RecursiveSplitter
 
 
 def test_respects_paragraph_boundary():

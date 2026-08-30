@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from venagent.agent.planning.planner import (
+from src.agent.planning.planner import (
     parse_planner_output,
     sanitize_clarification,
     sanitize_plan,

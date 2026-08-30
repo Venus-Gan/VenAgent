@@ -9,10 +9,10 @@ from __future__ import annotations
 
 import asyncio
 
-from venagent.tools.catalog import ToolCatalog
-from venagent.tools.langchain import snapshot_to_langchain_tools
-from venagent.tools.models import ToolDescriptor
-from venagent.tools.policy import ToolExposurePolicy
+from src.tools.catalog import ToolCatalog
+from src.tools.langchain import snapshot_to_langchain_tools
+from src.tools.models import ToolDescriptor
+from src.tools.policy import ToolExposurePolicy
 
 
 def test_catalog_honors_allow_deny_and_availability(tools_harness) -> None:

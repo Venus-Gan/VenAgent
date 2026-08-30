@@ -14,9 +14,9 @@ from typing import Any
 
 import pytest
 
-import venagent.platform.postgresql.migrations as migrations_module
-from venagent.platform import PersistenceError
-from venagent.platform.postgresql.migrations import (
+import src.platform.postgresql.migrations as migrations_module
+from src.platform import PersistenceError
+from src.platform.postgresql.migrations import (
     SCHEMA_VERSION,
     migrate_database,
 )

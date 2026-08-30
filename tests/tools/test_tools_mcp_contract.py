@@ -9,10 +9,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from venagent.command.mcp_adapter import McpCommandAdapter
-from venagent.command.registry import CommandRegistry
-from venagent.mcp.catalog import McpToolCatalog
-from venagent.mcp.config import (
+from src.command.mcp_adapter import McpCommandAdapter
+from src.command.registry import CommandRegistry
+from src.mcp.catalog import McpToolCatalog
+from src.mcp.config import (
     McpConfigStore,
     McpServerConfig,
     McpToolManifest,

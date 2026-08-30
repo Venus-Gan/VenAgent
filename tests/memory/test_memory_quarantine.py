@@ -6,12 +6,12 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.ports import MemoryStoreError as StoreError
-from venagent.memory.service import MemoryService
-from venagent.repo.inmemory import (
+from src.memory.ports import MemoryStoreError as StoreError
+from src.memory.service import MemoryService
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 5, 8, 0, tzinfo=timezone.utc)
 

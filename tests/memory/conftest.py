@@ -16,23 +16,23 @@ from typing import Any, Callable
 
 import pytest
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.graph_memory import MemoryEdge
-from venagent.memory.long_term.facts import MemoryFact, MemorySource
-from venagent.memory.model_adapters import StructuredMemoryExtractor
-from venagent.memory.ports import G1GraphSnapshot
-from venagent.memory.recall import MemoryAuthorization
-from venagent.memory.service import MemoryService
-from venagent.ownership.models import (
+from src.memory.graph_memory import MemoryEdge
+from src.memory.long_term.facts import MemoryFact, MemorySource
+from src.memory.model_adapters import StructuredMemoryExtractor
+from src.memory.ports import G1GraphSnapshot
+from src.memory.recall import MemoryAuthorization
+from src.memory.service import MemoryService
+from src.ownership.models import (
     Actor,
     ExecutionAuthorization,
     OwnerRecord,
     SessionRecord,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
-from venagent.repo.inmemory import InMemoryPlatformState as MemoryState
+from src.repo.inmemory import InMemoryPlatformState as MemoryState
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 5, 8, 0, tzinfo=timezone.utc)
 
@@ -170,7 +170,7 @@ def message() -> Callable[..., Any]:
     """会话消息工厂（sequence 决定 id/NOW 时间戳）。"""
 
     def _build(auth: MemoryAuthorization, sequence: int, role: str, content: str):
-        from venagent.conversation.models import ConversationMessage
+        from src.conversation.models import ConversationMessage
 
         return ConversationMessage(
             message_id=f"00000000-0000-0000-0001-{sequence:012d}",

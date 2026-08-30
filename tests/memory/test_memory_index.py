@@ -5,15 +5,15 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
+from src.config import EmbeddingConfig
+from src.llm.embeddings import EmbeddingError, HttpEmbeddingClient
+from src.memory.embedding import MemoryIndex, cosine_similarity
+from src.memory.long_term.facts import MemoryFact
+from src.memory.model_adapters import StructuredMemoryExtractor
+from src.memory.service import MemoryService
+from src.ownership.models import Actor, OwnerRecord, SessionRecord
+from src.repo.inmemory import InMemoryOwnershipStore, InMemoryPlatformState
 from tests.memory._store import InMemoryMemoryStore
-from venagent.config import EmbeddingConfig
-from venagent.llm.embeddings import EmbeddingError, HttpEmbeddingClient
-from venagent.memory.embedding import MemoryIndex, cosine_similarity
-from venagent.memory.long_term.facts import MemoryFact
-from venagent.memory.model_adapters import StructuredMemoryExtractor
-from venagent.memory.service import MemoryService
-from venagent.ownership.models import Actor, OwnerRecord, SessionRecord
-from venagent.repo.inmemory import InMemoryOwnershipStore, InMemoryPlatformState
 
 NOW = datetime(2026, 8, 10, tzinfo=timezone.utc)
 

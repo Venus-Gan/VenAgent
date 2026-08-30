@@ -19,15 +19,15 @@ import psycopg
 import pytest
 from langchain_core.messages import AIMessageChunk
 
-from venagent.ownership.service import OwnershipService
-from venagent.platform.postgresql.migrations import migrate_database
-from venagent.platform.runtime import build_persistence_runtime as _build_resources
-from venagent.platform.security import Argon2PasswordHasher, JwtAccessTokenCodec
-from venagent.repo.postgresql import (
+from src.ownership.service import OwnershipService
+from src.platform.postgresql.migrations import migrate_database
+from src.platform.runtime import build_persistence_runtime as _build_resources
+from src.platform.security import Argon2PasswordHasher, JwtAccessTokenCodec
+from src.repo.postgresql import (
     PostgresConversationRuntimeStore,
     PostgresOwnershipStore,
 )
-from venagent.repo.postgresql.memory import PostgresMemoryStore
+from src.repo.postgresql.memory import PostgresMemoryStore
 
 
 @pytest.fixture

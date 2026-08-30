@@ -4,14 +4,14 @@ from datetime import datetime, timezone
 
 import pytest
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.graph_memory import GraphMemory, MemoryEdge
-from venagent.memory.long_term.facts import MemoryFact, MemorySource
-from venagent.memory.ports import (
+from src.memory.graph_memory import GraphMemory, MemoryEdge
+from src.memory.long_term.facts import MemoryFact, MemorySource
+from src.memory.ports import (
     G1GraphSnapshot,
     GraphProjectionStatus,
     MemoryGraphSnapshotError,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 7, tzinfo=timezone.utc)
 

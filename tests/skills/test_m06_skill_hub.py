@@ -13,10 +13,10 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
-from venagent.skills.catalog import SkillCatalog
-from venagent.skills.github import SkillHubUnavailable, SkillRateLimited
-from venagent.skills.hub import SkillHubService
-from venagent.skills.manifest import (
+from src.skills.catalog import SkillCatalog
+from src.skills.github import SkillHubUnavailable, SkillRateLimited
+from src.skills.hub import SkillHubService
+from src.skills.manifest import (
     SkillFile,
     SkillManifest,
     digest_sha256,
@@ -78,7 +78,7 @@ class FakeGitHubClient:
     ) -> bytes:
         self.fetch_calls += 1
         if self.fail_repo is not None and repo == self.fail_repo:
-            from venagent.skills.github import SkillSourceNotFound
+            from src.skills.github import SkillSourceNotFound
 
             raise SkillSourceNotFound("skill_source_not_found")
         return self.content

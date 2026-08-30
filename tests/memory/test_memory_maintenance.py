@@ -3,14 +3,14 @@ from __future__ import annotations
 import asyncio
 from datetime import datetime, timedelta, timezone
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.memory.jobs import MemoryMaintenanceWorker
-from venagent.memory.service import MemoryService
-from venagent.ownership.models import Actor, OwnerRecord, SessionRecord
-from venagent.repo.inmemory import (
+from src.memory.jobs import MemoryMaintenanceWorker
+from src.memory.service import MemoryService
+from src.ownership.models import Actor, OwnerRecord, SessionRecord
+from src.repo.inmemory import (
     InMemoryOwnershipStore,
     InMemoryPlatformState,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 7, 8, 0, tzinfo=timezone.utc)
 

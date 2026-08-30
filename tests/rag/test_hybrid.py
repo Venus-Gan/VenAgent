@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from venagent.config import RagConfig
-from venagent.rag.hybrid import HybridSearchService
-from venagent.rag.routes import (
+from src.config import RagConfig
+from src.rag.hybrid import HybridSearchService
+from src.rag.routes import (
     DENSE_ROUTE,
     GRAPH_ROUTE,
     KEYWORD_ROUTE,

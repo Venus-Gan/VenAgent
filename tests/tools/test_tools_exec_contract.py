@@ -10,9 +10,9 @@ import asyncio
 
 import pytest
 
-from venagent.tools.errors import SandboxUnavailable, ToolUnavailable
-from venagent.tools.exec_command import execute_exec_command
-from venagent.tools.models import ToolDescriptor, ToolResult
+from src.tools.errors import SandboxUnavailable, ToolUnavailable
+from src.tools.exec_command import execute_exec_command
+from src.tools.models import ToolDescriptor, ToolResult
 
 
 def test_exec_command_requires_ready_sandbox_and_does_not_start_run(tools_harness) -> None:

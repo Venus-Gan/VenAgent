@@ -21,10 +21,10 @@ from uuid import uuid4
 from langchain_core.messages import AIMessageChunk
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.runtime import AgentRuntime
-from venagent.memory.service import NaturalMemoryOutcome
-from venagent.ownership.models import Actor
-from venagent.repo.inmemory import (
+from src.agent.runtime import AgentRuntime
+from src.memory.service import NaturalMemoryOutcome
+from src.ownership.models import Actor
+from src.repo.inmemory import (
     InMemoryConversationRuntimeStore as MemoryRuntimeStore,
 )
 

@@ -9,9 +9,9 @@ import pytest
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 
-from venagent.tools.approval import ApprovalService
-from venagent.tools.errors import ApprovalExpired
-from venagent.tools.langgraph import (
+from src.tools.approval import ApprovalService
+from src.tools.errors import ApprovalExpired
+from src.tools.langgraph import (
     approval_run_config,
     build_approval_node,
     compile_approval_graph,

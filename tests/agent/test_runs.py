@@ -13,25 +13,25 @@ from uuid import uuid4
 
 import pytest
 
-from venagent.agent.runs import (
+from src.agent.runs import (
     AgentRunLifecycle,
     InvalidRunTransition,
     RunAuthorizationInvalid,
     RunNotFound,
 )
-from venagent.conversation.errors import (
+from src.conversation.errors import (
     ConversationBusy,
     ConversationNotFound,
     IdempotencyConflict,
 )
-from venagent.ownership.models import Actor, OwnerRecord, SessionRecord
-from venagent.repo.inmemory import (
+from src.ownership.models import Actor, OwnerRecord, SessionRecord
+from src.repo.inmemory import (
     InMemoryConversationRuntimeStore as MemoryRuntimeStore,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryOwnershipStore as MemoryOwnershipStore,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryPlatformState as MemoryState,
 )
 

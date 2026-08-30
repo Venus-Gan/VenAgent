@@ -18,19 +18,19 @@ from hashlib import sha256
 from threading import RLock
 from uuid import uuid4
 
-from venagent.memory.embedding.index import MemoryIndexRecord
-from venagent.memory.graph_memory import MemoryEdge
-from venagent.memory.jobs import MemoryJob
-from venagent.memory.long_term.facts import MemoryFact, MemorySource
-from venagent.memory.management import MemorySettings
-from venagent.memory.ports import (
+from src.memory.embedding.index import MemoryIndexRecord
+from src.memory.graph_memory import MemoryEdge
+from src.memory.jobs import MemoryJob
+from src.memory.long_term.facts import MemoryFact, MemorySource
+from src.memory.management import MemorySettings
+from src.memory.ports import (
     ConsolidationCursor,
     G1GraphSnapshot,
     G1RecallSnapshot,
     GraphProjectionStatus,
     MemoryStoreError,
 )
-from venagent.memory.short_term import MemorySummary
+from src.memory.short_term import MemorySummary
 
 
 def _token_hash(token: str) -> str:

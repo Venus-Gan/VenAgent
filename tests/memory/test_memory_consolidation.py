@@ -9,22 +9,22 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from tests.memory._store import InMemoryMemoryStore
-from venagent.conversation.models import ConversationMessage
-from venagent.memory.long_term.facts import FactCandidate, MergeAction, MergeSuggestion
-from venagent.memory.model_adapters import StructuredMemoryExtractor
-from venagent.memory.ports import MemoryStoreError
-from venagent.memory.service import MemoryService
-from venagent.ownership.models import (
+from src.conversation.models import ConversationMessage
+from src.memory.long_term.facts import FactCandidate, MergeAction, MergeSuggestion
+from src.memory.model_adapters import StructuredMemoryExtractor
+from src.memory.ports import MemoryStoreError
+from src.memory.service import MemoryService
+from src.ownership.models import (
     Actor,
     ExecutionAuthorization,
     OwnerRecord,
     SessionRecord,
 )
-from venagent.repo.inmemory import (
+from src.repo.inmemory import (
     InMemoryOwnershipStore,
     InMemoryPlatformState,
 )
+from tests.memory._store import InMemoryMemoryStore
 
 NOW = datetime(2026, 8, 5, 8, 0, tzinfo=timezone.utc)
 OWNER_ID = "11111111-1111-1111-1111-111111111111"

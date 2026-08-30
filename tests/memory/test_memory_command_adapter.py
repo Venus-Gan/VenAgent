@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from venagent.memory.management import MemoryCommandAdapter
+from src.memory.management import MemoryCommandAdapter
 
 
 def test_memory_update_command_can_read_its_authorized_target(memory_service) -> None:

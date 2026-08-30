@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
+from src.config import DocumentConfig, RagConfig
+from src.document.service import DocumentService
+from src.rag.kg_extract import KgEntity, KgExtraction
+from src.rag.routes import GRAPH_ROUTE, GraphRoute, RouteUnavailable
 from tests.document._store import InMemoryDocumentStore
-from venagent.config import DocumentConfig, RagConfig
-from venagent.document.service import DocumentService
-from venagent.rag.kg_extract import KgEntity, KgExtraction
-from venagent.rag.routes import GRAPH_ROUTE, GraphRoute, RouteUnavailable
 
 OWNER = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 

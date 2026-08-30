@@ -4,9 +4,9 @@ import pytest
 import yaml
 from langchain_core.messages import AIMessage
 
-from venagent import bootstrap
-from venagent.config import ConfigError, load_config
-from venagent.platform.runtime import DATABASE_URL, build_persistence_runtime
+from src import bootstrap
+from src.config import ConfigError, load_config
+from src.platform.runtime import DATABASE_URL, build_persistence_runtime
 
 
 def _write_yaml(path: Path, data: dict) -> Path:

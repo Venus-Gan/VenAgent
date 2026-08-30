@@ -48,11 +48,11 @@ config.yaml
 .zcode/
 # Node
 node_modules/
-web/test-results/
-web/playwright-report/
+src/web/test-results/
+src/web/playwright-report/
 
 # Local analysis notes (kept locally, not shared)
 gap-roadmap-vs-agi-saber.md
 
-# M06 local MCP credentials and server config（仅根目录运行时状态；venagent/mcp 为源码，需入库）
-/mcp/
+# M06 本地 MCP 运行时状态（包锚定 src/mcp/mcp-configs/，源码 src/mcp/*.py 需入库）
+src/mcp/mcp-configs/

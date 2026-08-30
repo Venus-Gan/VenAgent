@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import asyncio
 
-from venagent.agent.planning.executor import ExecutorDeps, executor_node
-from venagent.agent.planning.subagents.base import SubAgentRegistry
-from venagent.agent.state import Plan, PlanNode
+from src.agent.planning.executor import ExecutorDeps, executor_node
+from src.agent.planning.subagents.base import SubAgentRegistry
+from src.agent.state import Plan, PlanNode
 
 
 class FakeToolControl:
@@ -158,8 +158,8 @@ def test_tool_node_failure_records_outcome():
 
 def test_resolve_params_placeholder():
     """{{node.field}} 占位符从上游成功观察的 JSON 解析。"""
-    from venagent.agent.planning.executor import _resolve_params
-    from venagent.agent.state import NodeOutcome
+    from src.agent.planning.executor import _resolve_params
+    from src.agent.state import NodeOutcome
 
     outcomes = (
         NodeOutcome(
@@ -179,8 +179,8 @@ def test_resolve_params_placeholder():
 def test_resolve_params_rejects_unknown_field_and_pending_upstream():
     import pytest
 
-    from venagent.agent.planning.executor import _resolve_params
-    from venagent.agent.state import NodeOutcome
+    from src.agent.planning.executor import _resolve_params
+    from src.agent.state import NodeOutcome
 
     outcomes = (
         NodeOutcome(
@@ -199,8 +199,8 @@ def test_resolve_params_rejects_unknown_field_and_pending_upstream():
 
 def test_resolve_params_text_fallback():
     """非 JSON 观察（exec_command 纯文本）降级为观察全文。"""
-    from venagent.agent.planning.executor import _resolve_params
-    from venagent.agent.state import NodeOutcome
+    from src.agent.planning.executor import _resolve_params
+    from src.agent.state import NodeOutcome
 
     outcomes = (
         NodeOutcome(

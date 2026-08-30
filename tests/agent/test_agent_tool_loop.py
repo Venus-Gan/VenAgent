@@ -18,9 +18,9 @@ import json
 from langchain_core.messages import AIMessage, ToolMessage
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.graph import run_config
-from venagent.agent.state import PendingToolCallRef, ToolObservationRef
-from venagent.tools.models import ArtifactRef, ToolResult
+from src.agent.graph import run_config
+from src.agent.state import PendingToolCallRef, ToolObservationRef
+from src.tools.models import ArtifactRef, ToolResult
 
 
 def _checkpoint_values(saver, run_id: str) -> dict:

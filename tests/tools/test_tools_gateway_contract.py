@@ -17,13 +17,13 @@ import asyncio
 
 import pytest
 
-from venagent.tools.approval import ApprovalService
-from venagent.tools.catalog import ToolCatalog
-from venagent.tools.errors import RunGrantInvalid, ToolSchemaInvalid
-from venagent.tools.gateway import ToolGateway
-from venagent.tools.models import ToolResult
-from venagent.tools.operation_store import OperationStore
-from venagent.tools.policy import ToolExposurePolicy
+from src.tools.approval import ApprovalService
+from src.tools.catalog import ToolCatalog
+from src.tools.errors import RunGrantInvalid, ToolSchemaInvalid
+from src.tools.gateway import ToolGateway
+from src.tools.models import ToolResult
+from src.tools.operation_store import OperationStore
+from src.tools.policy import ToolExposurePolicy
 
 
 def test_gateway_allows_lazy_sandbox_descriptor_to_reach_executor(

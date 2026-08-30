@@ -5,14 +5,14 @@ from types import SimpleNamespace
 
 import pytest
 
-from venagent.memory.long_term.facts import (
+from src.memory.long_term.facts import (
     MemoryFact,
     MergeAction,
     decide_merge,
     extract_candidates,
     reject_reason,
 )
-from venagent.memory.model_adapters import (
+from src.memory.model_adapters import (
     ExtractionOutputError,
     LangChainMemoryExtractor,
     parse_extraction_output,

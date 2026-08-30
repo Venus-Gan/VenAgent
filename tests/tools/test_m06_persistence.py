@@ -8,17 +8,17 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from venagent.sandbox.docker import DockerSandboxRuntime
-from venagent.skills.catalog import SkillCatalog
-from venagent.tools.approval import ApprovalService
-from venagent.tools.artifact_store import FileArtifactStore
-from venagent.tools.catalog import ToolCatalog
-from venagent.tools.control import ToolControlContext
-from venagent.tools.gateway import ToolGateway
-from venagent.tools.models import Operation, ToolDescriptor, ToolResult
-from venagent.tools.operation_store import OperationStore
-from venagent.tools.policy import ToolExposurePolicy
-from venagent.tools.state_directory import StateDirectoryLease
+from src.sandbox.docker import DockerSandboxRuntime
+from src.skills.catalog import SkillCatalog
+from src.tools.approval import ApprovalService
+from src.tools.artifact_store import FileArtifactStore
+from src.tools.catalog import ToolCatalog
+from src.tools.control import ToolControlContext
+from src.tools.gateway import ToolGateway
+from src.tools.models import Operation, ToolDescriptor, ToolResult
+from src.tools.operation_store import OperationStore
+from src.tools.policy import ToolExposurePolicy
+from src.tools.state_directory import StateDirectoryLease
 
 
 def test_operation_store_round_trips_through_json(tmp_path: Path) -> None:
@@ -154,7 +154,8 @@ def test_durable_state_directory_rejects_second_process(tmp_path: Path) -> None:
     code = """
 import sys
 from pathlib import Path
-from venagent.tools.state_directory import StateDirectoryInUse, StateDirectoryLease
+sys.path.insert(0, sys.argv[2])
+from src.tools.state_directory import StateDirectoryInUse, StateDirectoryLease
 lease = StateDirectoryLease(Path(sys.argv[1]))
 try:
     lease.acquire()
@@ -162,10 +163,11 @@ except StateDirectoryInUse:
     raise SystemExit(23)
 lease.release()
 """
+    repo_root = str(Path(__file__).resolve().parents[2])
     try:
         blocked = subprocess.run(
-            [sys.executable, "-c", code, str(state_dir)],
-            cwd=Path(__file__).parents[1],
+            [sys.executable, "-c", code, str(state_dir), repo_root],
+            cwd=repo_root,
             check=False,
             capture_output=True,
             timeout=10,
@@ -174,8 +176,8 @@ lease.release()
     finally:
         lease.release()
     available = subprocess.run(
-        [sys.executable, "-c", code, str(state_dir)],
-        cwd=Path(__file__).parents[1],
+        [sys.executable, "-c", code, str(state_dir), repo_root],
+        cwd=repo_root,
         check=False,
         capture_output=True,
         timeout=10,

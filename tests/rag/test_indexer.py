@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from venagent.document.ports import RagChunk
-from venagent.rag.indexer import RagIndexer
+from src.document.ports import RagChunk
+from src.rag.indexer import RagIndexer
 
 DIM = 8
 

@@ -15,8 +15,8 @@ from dataclasses import dataclass
 
 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 
-from venagent.agent.graph import checkpoint_serializer
-from venagent.agent.state import (
+from src.agent.graph import checkpoint_serializer
+from src.agent.state import (
     ApprovalItemRef,
     ApprovalWait,
     FinalAnswer,
@@ -26,7 +26,7 @@ from venagent.agent.state import (
     RunFailure,
     TaskInput,
 )
-from venagent.platform.runtime import DATABASE_URL
+from src.platform.runtime import DATABASE_URL
 
 
 @dataclass(frozen=True)
@@ -88,7 +88,7 @@ def test_unconfigured_persistence_uses_explicit_temporary_capabilities(
 def test_schema_validation_failure_is_safe_and_does_not_expose_details(
     monkeypatch, persistence_runtime
 ) -> None:
-    from venagent.platform.postgresql import runtime as runtime_module
+    from src.platform.postgresql import runtime as runtime_module
 
     captured: dict[str, object] = {}
 

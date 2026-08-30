@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import asyncio
 
-from venagent.sandbox.docker import DockerSandboxRuntime
+from src.sandbox.docker import DockerSandboxRuntime
 
 
 def test_docker_sandbox_reports_clean_degredation() -> None:

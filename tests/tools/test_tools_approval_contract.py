@@ -9,7 +9,7 @@
 
 from __future__ import annotations
 
-from venagent.tools.approval import ApprovalService
+from src.tools.approval import ApprovalService
 
 
 def test_approval_decide_detailed_is_idempotent_and_conflict_aware() -> None:

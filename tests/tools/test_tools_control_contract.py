@@ -11,10 +11,10 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from venagent.interfaces.http.app import create_app
-from venagent.platform.runtime import build_persistence_runtime
-from venagent.promptctx.assembler import ContextProjectionService
-from venagent.promptctx.schema import FOUNDATION_POLICY
+from src.interfaces.http.app import create_app
+from src.platform.runtime import build_persistence_runtime
+from src.promptctx.assembler import ContextProjectionService
+from src.promptctx.schema import FOUNDATION_POLICY
 
 ORIGIN = {"Origin": "http://localhost:5173"}
 
@@ -33,7 +33,7 @@ def test_prompt_projection_includes_m06_capability_blocks(tools_harness) -> None
 
 
 def _app(tmp_path: Path, tools_harness):
-    from venagent.mcp.config import McpConfigStore as Store
+    from src.mcp.config import McpConfigStore as Store
 
     store = Store(tmp_path / "servers.json")
     control = tools_harness.tool_control(sandbox_ready=False)

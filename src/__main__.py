@@ -37,7 +37,7 @@ def _build_log_config() -> dict[str, Any]:
 
 def main() -> None:
     _configure_event_loop_policy()
-    parser = argparse.ArgumentParser(prog="python -m venagent")
+    parser = argparse.ArgumentParser(prog="python -m src")
     parser.add_argument(
         "command",
         nargs="?",
@@ -62,7 +62,7 @@ def main() -> None:
         print("VenAgent PostgreSQL/Neo4j schema 已迁移到当前版本。")
         return
     uvicorn.run(
-        "venagent.interfaces.http.app:app",
+        "src.interfaces.http.app:app",
         host="127.0.0.1",
         port=config.server.port,
         reload=False,

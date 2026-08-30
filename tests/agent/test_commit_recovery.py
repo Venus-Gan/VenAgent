@@ -15,10 +15,10 @@ from uuid import uuid4
 from langchain_core.messages import AIMessageChunk
 from langgraph.checkpoint.memory import InMemorySaver
 
-from venagent.agent.ports import RunStoreError as StoreError
-from venagent.agent.runtime import AgentRuntime
-from venagent.ownership.models import Actor
-from venagent.repo.inmemory import (
+from src.agent.ports import RunStoreError as StoreError
+from src.agent.runtime import AgentRuntime
+from src.ownership.models import Actor
+from src.repo.inmemory import (
     InMemoryConversationRuntimeStore as MemoryRuntimeStore,
 )
 
@@ -90,7 +90,7 @@ def test_completed_checkpoint_replays_finalizer_without_reinvoking_model(
     # 缩短租约使第二个 worker 的 worker loop 能在真实时间内自然接管，
     # 而不是手动 claim_next 抢占（手动抢占会给 run 续上新租约，
     # 第二个 worker 反而永远 claim 不到）。
-    from venagent.agent import runtime as runtime_module
+    from src.agent import runtime as runtime_module
 
     monkeypatch.setattr(runtime_module, "LEASE_DURATION", timedelta(seconds=0.05))
 
@@ -142,7 +142,7 @@ def test_completed_checkpoint_replays_finalizer_without_reinvoking_model(
 
 
 def test_uncertain_lease_does_not_forge_cancelled_terminal(monkeypatch) -> None:
-    from venagent.agent import runtime as runtime_module
+    from src.agent import runtime as runtime_module
 
     monkeypatch.setattr(runtime_module, "HEARTBEAT_INTERVAL_SECONDS", 0.01)
 
@@ -219,7 +219,7 @@ def test_scheduler_runs_at_most_two_claims_concurrently() -> None:
 def test_persistent_cancel_observer_handles_request_from_another_runtime(
     monkeypatch,
 ) -> None:
-    from venagent.agent import runtime as runtime_module
+    from src.agent import runtime as runtime_module
 
     monkeypatch.setattr(runtime_module, "CANCEL_OBSERVATION_INTERVAL_SECONDS", 0.01)
 

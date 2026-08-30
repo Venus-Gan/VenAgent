@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+from src.config import DocumentConfig, RagConfig
+from src.document.ports import RagChunk
+from src.document.service import DocumentService
 from tests.document._store import InMemoryDocumentStore
-from venagent.config import DocumentConfig, RagConfig
-from venagent.document.ports import RagChunk
-from venagent.document.service import DocumentService
 
 OWNER_A = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 

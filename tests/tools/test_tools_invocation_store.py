@@ -9,7 +9,7 @@
 
 from __future__ import annotations
 
-from venagent.tools.invocation_store import (
+from src.tools.invocation_store import (
     EncryptedFileInvocationStore,
     InMemoryInvocationStore,
     InvocationStoreError,

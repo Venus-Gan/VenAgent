@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from venagent.command.rag_adapter import RagCommandAdapter
-from venagent.ownership.models import Actor
-from venagent.rag.hybrid import CitationSource, RagResult
+from src.command.rag_adapter import RagCommandAdapter
+from src.ownership.models import Actor
+from src.rag.hybrid import CitationSource, RagResult
 
 ACTOR = Actor("owner-1", "user", "session-1", "alice", "durable")
 

@@ -15,19 +15,19 @@ import psycopg
 import pytest
 from fastapi.testclient import TestClient
 
-from venagent.__main__ import _configure_event_loop_policy
-from venagent.agent.graph import compile_agent_graph, run_config
-from venagent.agent.runs import AgentRunLifecycle
-from venagent.agent.state import FinalAnswer, RunState, TaskInput
-from venagent.interfaces.http.app import create_app
-from venagent.memory.errors import MemoryConfirmationInvalid
-from venagent.memory.graph_memory import GraphMemory
-from venagent.memory.long_term.facts import MemoryFact, MemorySource
-from venagent.memory.ports import GraphProjectionStatus
-from venagent.memory.service import MemoryService
-from venagent.memory.short_term import MemorySummary
-from venagent.platform.postgresql.migrations import SCHEMA_VERSION
-from venagent.platform.runtime import DATABASE_URL
+from src.__main__ import _configure_event_loop_policy
+from src.agent.graph import compile_agent_graph, run_config
+from src.agent.runs import AgentRunLifecycle
+from src.agent.state import FinalAnswer, RunState, TaskInput
+from src.interfaces.http.app import create_app
+from src.memory.errors import MemoryConfirmationInvalid
+from src.memory.graph_memory import GraphMemory
+from src.memory.long_term.facts import MemoryFact, MemorySource
+from src.memory.ports import GraphProjectionStatus
+from src.memory.service import MemoryService
+from src.memory.short_term import MemorySummary
+from src.platform.postgresql.migrations import SCHEMA_VERSION
+from src.platform.runtime import DATABASE_URL
 
 
 @pytest.mark.integration
