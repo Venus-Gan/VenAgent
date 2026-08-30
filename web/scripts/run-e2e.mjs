@@ -3,7 +3,7 @@ import { spawn } from 'node:child_process'
 const cwd = new URL('..', import.meta.url).pathname.replace(/^\/(.:)/, '$1')
 const server = spawn(
   process.execPath,
-  ['./node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', '4173'],
+  ['./node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', '4173', '--configLoader', 'runner'],
   { cwd, stdio: 'inherit' },
 )
 
