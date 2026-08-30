@@ -14,7 +14,12 @@ from venagent.llm.config import (
     LLMConfigurationError,
     settings_from_environment,
 )
-from venagent.llm.factory import build_memory_extractor_model, build_runtime_model
+from venagent.llm.factory import (
+    build_memory_extractor_model,
+    build_rerank_model,
+    build_rewrite_model,
+    build_runtime_model,
+)
 from venagent.llm.providers import default_model_factories, model_factory_kwargs
 
 
@@ -92,6 +97,37 @@ def test_memory_extractor_factory_uses_model_only_override(tmp_path: Path) -> No
     assert extractor is created[0][1]
     assert created[0][1].kwargs["model"] == "extractor-model"
     assert created[0][1].kwargs["api_key"] == "test-only-value"
+
+
+@pytest.mark.parametrize("section", ["rewrite_model", "rerank_model"])
+def test_override_factory_uses_model_only_override(tmp_path: Path, section: str) -> None:
+    config = load_config(
+        environ={
+            **complete_environment(),
+            f"{section.upper()}_MODEL": f"{section}-model",
+        },
+        project_root=tmp_path,
+    )
+    created: list[tuple[str, RecordingModel]] = []
+    main = RecordingModel(model="chat-model")
+    build = build_rewrite_model if section == "rewrite_model" else build_rerank_model
+
+    override = build(config, main, model_factories=recording_registry(created))
+
+    assert override is created[0][1]
+    assert created[0][1].kwargs["model"] == f"{section}-model"
+    assert created[0][1].kwargs["api_key"] == "test-only-value"
+
+
+@pytest.mark.parametrize("section", ["rewrite_model", "rerank_model"])
+def test_override_factory_unconfigured_returns_main_model(
+    tmp_path: Path, section: str
+) -> None:
+    config = load_config(environ=complete_environment(), project_root=tmp_path)
+    main = RecordingModel(model="chat-model")
+    build = build_rewrite_model if section == "rewrite_model" else build_rerank_model
+
+    assert build(config, main, model_factories=recording_registry([])) is main
 
 
 def test_explicit_mapping_does_not_read_project_dotenv(tmp_path, monkeypatch):

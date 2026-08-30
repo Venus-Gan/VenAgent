@@ -18,8 +18,10 @@ dependencies = [
     "neo4j>=5.26,<6.0",
     "PyJWT>=2.10,<3.0",
     "argon2-cffi>=25.1,<26.0",
+    "jsonschema>=4.23,<5.0",
+    "cryptography>=42.0,<46.0",
     "psycopg[binary,pool]>=3.2,<4.0",
-    "python-dotenv>=1.0,<2.0",
+    "PyYAML>=6.0,<7.0",
     "uvicorn[standard]>=0.29,<1.0",
 ]
 
@@ -33,6 +35,9 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = [
+    "integration: 需要真实基础设施（PostgreSQL / Neo4j / Docker）的集成测试，缺对应环境变量时 skip",
+]
 
 [tool.ruff]
 target-version = "py311"
@@ -50,3 +55,6 @@ include = ["venagent*"]
 
 [tool.setuptools]
 include-package-data = true
+
+[tool.setuptools.package-data]
+"venagent.skills" = ["featured/*/skill.json", "featured/*/SKILL.md"]

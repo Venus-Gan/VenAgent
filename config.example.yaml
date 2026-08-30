@@ -1,0 +1,190 @@
+# VenAgent 配置模板。
+#
+# 用法：把本文件复制为 config.yaml（已被 gitignore，含真实密钥时永不进 git），
+# 填入真实值后启动。缺失 config.yaml 时启动会自动从本模板复制生成。
+#
+# 敏感字段（api_key / password / jwt_secret / encryption_key / token /
+# credentials）留空 = 对应能力安全降级（未配置/不启用），不会拒绝启动。
+# 环境变量可覆盖任意字段（白名单见 loader.ENV_FIELDS，优先级高于 config.yaml）。
+
+llm:
+  provider: ""            # openai | openai_compatible | azure_openai | anthropic | google_genai
+  api_key: ""
+  model: ""
+  api_mode: chat_completions   # chat_completions | responses
+  base_url: null
+  endpoint_url: null
+  azure_endpoint: null
+  azure_deployment: null
+  api_version: null
+  reasoning_effort: null       # 思考强度：minimal | medium | high（OpenAI 系）
+  temperature: null
+  max_tokens: null
+  timeout: null
+  max_retries: null
+  verbosity: null
+  extra_body: null
+
+memory_extractor:
+  # 可选结构化记忆提取 profile；只填 model = 继承主 LLM 的连接配置。
+  provider: ""
+  api_key: ""
+  model: ""
+  api_mode: chat_completions
+  base_url: null
+  endpoint_url: null
+  azure_endpoint: null
+  azure_deployment: null
+  api_version: null
+  temperature: null
+  max_tokens: null
+  timeout: null
+  max_retries: null
+  extra_body: null
+
+rewrite_model:
+  # 可选 RAG 查询改写模型 profile；留空 = 复用主 LLM。
+  # 只填 model = 继承主 LLM 的连接配置仅换模型名。
+  provider: ""
+  api_key: ""
+  model: ""
+  api_mode: chat_completions
+  base_url: null
+  endpoint_url: null
+  azure_endpoint: null
+  azure_deployment: null
+  api_version: null
+  temperature: null
+  max_tokens: null
+  timeout: null
+  max_retries: null
+  extra_body: null
+
+rerank_model:
+  # 可选 RAG 精排模型 profile；留空 = 复用主 LLM。
+  # 只填 model = 继承主 LLM 的连接配置仅换模型名。
+  provider: ""
+  api_key: ""
+  model: ""
+  api_mode: chat_completions
+  base_url: null
+  endpoint_url: null
+  azure_endpoint: null
+  azure_deployment: null
+  api_version: null
+  temperature: null
+  max_tokens: null
+  timeout: null
+  max_retries: null
+  extra_body: null
+
+memory_consolidation:
+  # M05 沉淀式写入（D1/D7）：隐式记忆攒批延迟写，不再逐条抽取。
+  # window_messages：攒满 N 条用户消息触发一次 consolidate 任务（整数 ≥1）。
+  # idle_seconds：未攒满时静默超过该秒数，由后台兜底扫描触发（整数 ≥60）。
+  # max_input_tokens：单段抽取输入的最大 token 数；超限按时间顺序早期优先切段（整数 ≥1000）。
+  window_messages: 5
+  idle_seconds: 600
+  max_input_tokens: 4000
+
+embedding:
+  api_url: ""            # 必须以 /embeddings 结尾；三者全填才启用
+  api_key: ""
+  model: ""
+  timeout: 10.0
+  max_retries: 2
+
+server:
+  port: 8090
+
+sandbox:
+  image: ubuntu:22.04
+  disabled: false        # true = 关闭沙箱执行能力（原 VENAGENT_SANDBOX_DISABLED）
+
+persistence:
+  enabled: false         # 启用 PostgreSQL 持久化请改为 true 并填 password
+  host: 127.0.0.1
+  port: 5432
+  database: venagent
+  user: venagent
+  password: ""
+
+neo4j:
+  enabled: false         # 启用图记忆请改为 true 并填 password
+  uri: bolt://127.0.0.1:7687
+  database: neo4j
+  user: neo4j
+  password: ""
+  max_pool_size: 10
+  connection_timeout: 2.0
+  acquisition_timeout: 2.0
+  read_timeout: 0.1
+  write_timeout: 30.0
+
+# M08 RAG 三路检索：dense=Milvus、keyword=Elasticsearch（compose 内网端口）。
+milvus:
+  enabled: false         # 启用 RAG dense 检索请改为 true
+  uri: http://127.0.0.1:19530
+  user: ""
+  password: ""
+  collection: rag_chunks
+  dim: 2048
+  timeout: 2.0
+
+es:
+  enabled: false         # 启用 RAG keyword 检索请改为 true
+  uri: http://127.0.0.1:9200
+  user: ""
+  password: ""
+  index: rag_chunks
+  timeout: 2.0
+
+document:
+  max_upload_bytes: 67108864   # 64MB 上传上限
+  max_pdf_pages: 200
+  ocr_reject_threshold: 0.3    # 有效字符占比阈值（0.0-1.0），低于此值拒绝为扫描件
+
+rag:
+  chunk_size: 200
+  chunk_overlap: 50
+  parent_multiplier: 4     # small-to-big 父块倍数（父块=parent_multiplier×chunk_size）
+  top_k: 3
+  fetch_k_multiplier: 2
+  rrf_constant_k: 60
+  kg_weight: 0.3
+  rewrite_enabled: true
+  rewrite_num_queries: 3
+  rerank_enabled: true
+  rerank_preview_len: 200
+  kg_max_hops: 2
+
+planning:                    # M07 计划层编排（默认值对齐 AGI-saber 实测）
+  max_parallel: 2            # 层内最大并发节点数（信号量）
+  race_timeout_ms: 30000     # 竞速组整体超时（0 = 不限时）
+  max_replan: 2              # Replanner 额度（含审批被拒触发的重规划）
+  replan_append_limit: 3     # 每次修订最多追加节点数
+  max_plan_nodes: 8          # 单个 Plan 的节点上限
+
+auth:
+  issuer: venagent
+  audience: venagent-web
+  jwt_secret: ""         # 为空 = 登录/会话能力安全降级
+  cookie_secure: false
+  allowed_origins:
+    - http://127.0.0.1:5173
+    - http://localhost:5173
+    - http://127.0.0.1:8090
+    - http://localhost:8090
+
+invocation:
+  encryption_key: ""     # M06 调用载荷加密（32 字节 base64）；为空 = 工具调用载荷加密降级
+
+github:
+  token: ""              # 为空 = skill hub 匿名访问（限速更低）
+
+mcp:
+  allowed_commands:      # stdio 服务器可执行白名单（原 VENAGENT_MCP_ALLOWED_COMMANDS）
+    - node
+    - python
+    - python3
+  credentials: {}        # MCP server 的 credential_ref / env_refs 值来源（ref 名 → 秘密值）

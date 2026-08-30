@@ -4,7 +4,7 @@ from collections.abc import Mapping
 
 from ..agent.ports import MessageInvoker
 from ..agent.runtime import build_local_model
-from ..config.loader import AppConfig, load_config
+from ..config.loader import AppConfig, LLMProfileOverride, load_config
 from .config import (
     PROVIDER,
     LLMConfigurationError,
@@ -44,15 +44,49 @@ def build_runtime_model(
     return model
 
 
+def _build_override_model(
+    section: LLMProfileOverride,
+    main_config: AppConfig,
+    main_model: MessageInvoker,
+    model_factories: ModelFactoryRegistry | None = None,
+) -> MessageInvoker:
+    """复用主模型，或按覆盖段（三档）构造独立 LLM 模型。"""
+    if not section.configured:
+        return main_model
+    override_config = main_config.model_copy(
+        update={"llm": section.as_llm_config(main_config.llm)}
+    )
+    return build_runtime_model(override_config, model_factories)
+
+
 def build_memory_extractor_model(
     config: AppConfig,
     main_model: MessageInvoker,
     model_factories: ModelFactoryRegistry | None = None,
 ) -> MessageInvoker:
     """复用对话模型，或从已校验的 extractor override 构造独立模型。"""
-    if not config.memory_extractor.configured:
-        return main_model
-    extractor_config = config.model_copy(
-        update={"llm": config.memory_extractor.as_llm_config(config.llm)}
+    return _build_override_model(
+        config.memory_extractor, config, main_model, model_factories
     )
-    return build_runtime_model(extractor_config, model_factories)
+
+
+def build_rewrite_model(
+    config: AppConfig,
+    main_model: MessageInvoker,
+    model_factories: ModelFactoryRegistry | None = None,
+) -> MessageInvoker:
+    """复用对话模型，或从已校验的 rewrite override 构造独立模型。"""
+    return _build_override_model(
+        config.rewrite_model, config, main_model, model_factories
+    )
+
+
+def build_rerank_model(
+    config: AppConfig,
+    main_model: MessageInvoker,
+    model_factories: ModelFactoryRegistry | None = None,
+) -> MessageInvoker:
+    """复用对话模型，或从已校验的 rerank override 构造独立模型。"""
+    return _build_override_model(
+        config.rerank_model, config, main_model, model_factories
+    )
