@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-07-22T10:33:04.827Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-07-22T10:33:06.358Z","type":"operation-started","operationId":"spec-1-minimal-agent-loop"}
-{"sequence":3,"timestamp":"2026-07-22T10:33:06.669Z","type":"operation-completed","operationId":"spec-1-minimal-agent-loop"}
-{"sequence":4,"timestamp":"2026-07-22T10:33:06.714Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-07-22T10:33:08.404Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-07-22T10:33:08.888Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-07-22T10:33:09.437Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-07-22T10:33:09.539Z","type":"commit"}

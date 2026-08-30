@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-07-26T09:02:56.324Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-07-26T09:02:58.790Z","type":"operation-started","operationId":"spec-1-bounded-chat-payloads"}
-{"sequence":3,"timestamp":"2026-07-26T09:03:00.210Z","type":"operation-completed","operationId":"spec-1-bounded-chat-payloads"}
-{"sequence":4,"timestamp":"2026-07-26T09:03:00.267Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-07-26T09:03:00.989Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-07-26T09:03:02.203Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-07-26T09:03:02.455Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-07-26T09:03:02.630Z","type":"commit"}

@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-07-29T09:43:17.218Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-07-29T09:43:18.933Z","type":"operation-started","operationId":"spec-1-frontend-foundation"}
-{"sequence":3,"timestamp":"2026-07-29T09:43:19.349Z","type":"operation-completed","operationId":"spec-1-frontend-foundation"}
-{"sequence":4,"timestamp":"2026-07-29T09:43:19.388Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-07-29T09:43:20.088Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-07-29T09:43:20.580Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-07-29T09:43:20.808Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-07-29T09:43:20.967Z","type":"commit"}

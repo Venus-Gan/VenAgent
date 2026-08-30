@@ -49,5 +49,8 @@ config.yaml
 web/test-results/
 web/playwright-report/
 
+# Local analysis notes (kept locally, not shared)
+gap-roadmap-vs-agi-saber.md
+
 # M06 local MCP credentials and server config
 mcp/

@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-08-06T13:19:12.206Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-08-06T13:19:13.777Z","type":"operation-started","operationId":"spec-1-readme-directory-tree"}
-{"sequence":3,"timestamp":"2026-08-06T13:19:13.996Z","type":"operation-completed","operationId":"spec-1-readme-directory-tree"}
-{"sequence":4,"timestamp":"2026-08-06T13:19:14.027Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-08-06T13:19:14.511Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-08-06T13:19:14.807Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-08-06T13:19:14.955Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-08-06T13:19:15.047Z","type":"commit"}

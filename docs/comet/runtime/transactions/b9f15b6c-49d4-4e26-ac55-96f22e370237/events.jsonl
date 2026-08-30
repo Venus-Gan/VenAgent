@@ -1,8 +1,0 @@
-{"sequence":1,"timestamp":"2026-08-08T13:50:13.728Z","type":"prepared"}
-{"sequence":2,"timestamp":"2026-08-08T13:50:15.195Z","type":"operation-started","operationId":"spec-1-infrastructure-startup-reporting"}
-{"sequence":3,"timestamp":"2026-08-08T13:50:15.530Z","type":"operation-completed","operationId":"spec-1-infrastructure-startup-reporting"}
-{"sequence":4,"timestamp":"2026-08-08T13:50:15.562Z","type":"operation-started","operationId":"archive-change"}
-{"sequence":5,"timestamp":"2026-08-08T13:50:16.006Z","type":"operation-completed","operationId":"archive-change"}
-{"sequence":6,"timestamp":"2026-08-08T13:50:16.308Z","type":"archive-finalization-started"}
-{"sequence":7,"timestamp":"2026-08-08T13:50:16.442Z","type":"archive-finalized"}
-{"sequence":8,"timestamp":"2026-08-08T13:50:16.565Z","type":"commit"}
