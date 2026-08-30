@@ -23,7 +23,7 @@ labels: [wayfinder:map]
   - `docs/` 最终 = 先打包备份再清空，之后严格按 Wayfinder 规则重建；**map/tickets 属于新文档一部分，docs 重建不得删除 `docs/wayfinder/`**。
   - 现有 docs（comet/ 1516 文件 + discussions/ 4 篇）**不可全面相信**，带批判眼光读；其结论只有在被本图票确认后才生效。
 - **tracker**：local-markdown（无 issue tracker 工具配置）；地图与票在 `docs/wayfinder/`；blocking 用 frontmatter（`blocked_by`）。
-- **目录平整（2026-08-30，用户直接拍板，非票）**：形态 C 定稿——`venagent/` 包改名 `src/`、`web/` 移入 `src/web/`、mcp-configs 运行时目录包锚定（`bootstrap.py:121` cwd 敏感修复；ADR-0010）；根级散件处置 = 两个散测试移入 `scripts/`（C1，认证段已修）、`gap-roadmap-vs-agi-saber.md` 保留但 .gitignore 忽略、PHASE2_COMPLETE.md 与 TESTING-GUIDE.md 不上传（未跟踪）；`docs/wayfinder/` 提交边界 = map.md + tickets/ 入库、assets/ 不入库。实施记录见 `assets/目录平整与提交-计划.md`（C1–C3 已提交：89ca1cb / 9a828b3 / 65e9ad6 / 45063d1；subsequent commits 收尾中，M 文件按「整文件归主主题」）。
+- **目录平整（2026-08-30，用户直接拍板，非票）**：形态 C 定稿——`venagent/` 包改名 `src/`、`web/` 移入 `src/web/`、mcp-configs 运行时目录包锚定（`bootstrap.py` 以 `__file__` 解析，cwd 敏感修复；ADR-0010）；根级散件处置 = 两个散测试移入 `scripts/`（C1，认证段已修）、`gap-roadmap-vs-agi-saber.md` 保留但 .gitignore 忽略、PHASE2_COMPLETE.md 与 TESTING-GUIDE.md 不上传（未跟踪）；`docs/wayfinder/` 提交边界 = map.md + tickets/ 入库、assets/ 不入库。**执行完成（2026-08-30）**：C1–C9 共 10 个 commit（HEAD 51e7c83），全量验证 = pytest 445 passed / 14 deselected + ruff src/tests 绿 + pnpm build 过 + 遮蔽验证（stdlib platform 未被劫持）+ mcp-configs 包锚定。实施记录见 `assets/目录平整与提交-计划.md`。
 
 ## Decisions so far
 

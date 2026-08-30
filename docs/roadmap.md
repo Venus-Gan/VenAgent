@@ -36,7 +36,7 @@
 
 > 上一版「现状事实」（2026-08-29）中『RAG 未接入主链路 / RunPhase planning·replanning 惰性 / `deciding` 不在 Literal』三条为 **M07 整合前的快照，已失效**；以下为按当前工作树核实后的现行事实。
 
-- **分支与入库状态**：分支 `codex/memory-system-refactor`；**提交入库已启动**（2026-08-30）——弃用内容清理（C1：docs/comet、final、旧 memory/repo-temporary、tests 根平铺测试、根 mcp/）、`.gitignore` 修复与 M06 MCP 客户端入库（C2）、M06 工具面/技能/沙箱/命令支撑（C2.5）、M08 RAG 与文档库（C3）已提交，共 4 个 commit（89ca1cb / 9a828b3 / 65e9ad6 / 45063d1）；其余（M07 计划层、记忆系统、config、前端、docs、src 改名）工作树待收尾。
+- **分支与入库状态**：分支 `codex/memory-system-refactor`；**提交入库已完成**（2026-08-30，10 个 commit C1–C9；HEAD `51e7c83`）。提交分组：C1 弃用清理（89ca1cb）/ C2 .gitignore 修复+MCP 客户端入库（9a828b3）/ C2.5 M06 支撑面（65e9ad6）/ C3 M08 RAG 与文档库（45063d1）/ C4 M07 计划层（339d7f6）/ C5 记忆系统重构（802e8cc）/ C6 config 迁移（fd07cc4）/ C7 前端与 E2E（40620e0）/ C8 文档体系（c017d7b）/ C9 src 改名（51e7c83）。工作树仅剩 `docs/wayfinder/assets/`（拍板不入库）。
 - **M06 / 多工具**：`graph.py:28` `RUNTIME_CONTRACT_VERSION = 3` + `pending_tool_calls` 条件回环；测试 `tests/agent/`（11 文件）。
 - **M07 路由 + 动态图编排**：已实现并验收。计划层 `venagent/agent/planning/`（dag/selector/planner/executor/replanner/factory + `subagents/`）；`runtime.py:342-380` 按 `PlanningRuntime.enabled` 接线 selector/planner/executor/replanner/generator/rag_answer 节点；`bootstrap.py:412-418` 装配（`config.planning`，AppConfig 定义于 `config/models.py:366`，planning 字段 :385）。
 - **RunPhase**（`agent/state.py:187-195`）：Literal 含 `planning`/`replanning`；原 `"deciding"` 漂移已修（m07 §9 顺手项 → `"selecting_tools"`）。
@@ -50,7 +50,7 @@
 
 > 这些不是功能缺口，是"项目整体完成"的最后几步。
 
-1. **提交入库**：~~全部实现产物未跟踪~~ —— 已启动（2026-08-30，见「分支与入库状态」）。提交策略经用户拍板调整为「先文档、commit 最后统一」：文档与代码收尾后再整体 commit（M 文件按「整文件归主主题」，不拆 hunk；形态 C src 改名作为最后一个 commit）。
+1. **提交入库**：~~全部实现产物未跟踪~~ —— **已完成**（2026-08-30，C1–C9 共 10 个 commit，见「分支与入库状态」）。提交策略：M 文件按「整文件归主主题」（不拆 hunk）；形态 C src 改名作为最后一个 commit。
 2. **M07 定稿偏差处置**：~~已关闭（2026-08-30）~~。m07-intake.md §8-10 要求的 `promptctx/source_planner.py`、`source_rag.py` 未建——经 AGI-saber 实证（`D:\VSCProject\AGI-saber` 的 memPrefix + 节点内联模式）确认定稿与实证不符，用户拍板 C'：保留节点内联 + 每 run 一次统一 `mem_prefix` 投影装配 + 不建 source_rag + source_planner 语义更正为任务状态跨轮快照（Phase 2 可选）。已实施：`runtime.py:_build_planning_mem_prefix` + factory/planner/replanner 四节点前缀注入，测试 429 passed；m07-intake.md §8 第 4/8/10 条已按实证改写，结论沉淀为 ADR-0009。
 3. **README 架构图重画**：README 架构图仍为旧实现描述（map.md 已注明「整图重画另行处理」）——已纳入本次文档整理：与形态 C 布局（ADR-0010）一并更新 README 目录树与启动说明（`python -m src`）、mcp-configs 运行时目录说明。
 4. **遗留测试账号处置**：历史遗留账号 m05_*/e2e_rag_*/diag_* 等 17 个（含会话/run/文档）待用户拍板是否批量清除（m07 §10 遗留与建议）。
