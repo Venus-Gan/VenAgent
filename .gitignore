@@ -46,11 +46,13 @@ config.yaml
 .comet/
 .codegraph/
 .zcode/
+# Node
+node_modules/
 web/test-results/
 web/playwright-report/
 
 # Local analysis notes (kept locally, not shared)
 gap-roadmap-vs-agi-saber.md
 
-# M06 local MCP credentials and server config
-mcp/
+# M06 local MCP credentials and server config（仅根目录运行时状态；venagent/mcp 为源码，需入库）
+/mcp/
