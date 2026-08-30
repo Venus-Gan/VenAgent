@@ -70,6 +70,8 @@ class AgentRun:
     claim_token: str | None = None
     lease_expires_at: datetime | None = None
     execution_attempt: int = 0
+    selected_skill_id: str | None = None
+    selected_skill_name: str | None = None
 
     @property
     def terminal(self) -> bool:
@@ -115,6 +117,35 @@ class AgentRunLifecycle:
     def request_cancel(self, owner_id: str, run_id: str, now: datetime) -> AgentRun:
         return self._store.request_cancel(owner_id, validate_run_id(run_id), now)
 
+    def wait_approval(
+        self,
+        run_id: str,
+        claim_token: str,
+        execution_attempt: int,
+        now: datetime,
+    ) -> AgentRun:
+        return self._store.wait_approval_run(
+            validate_run_id(run_id),
+            claim_token,
+            execution_attempt,
+            now,
+        )
+
+    def resume(self, run_id: str, now: datetime) -> AgentRun:
+        return self._store.resume_run(validate_run_id(run_id), now)
+
+    def cancel_waiting_approval(
+        self,
+        owner_id: str,
+        run_id: str,
+        now: datetime,
+    ) -> AgentRun:
+        return self._store.cancel_waiting_approval(
+            owner_id,
+            validate_run_id(run_id),
+            now,
+        )
+
     def succeed(
         self,
         run_id: str,
@@ -122,6 +153,7 @@ class AgentRunLifecycle:
         execution_attempt: int,
         answer: str,
         now: datetime,
+        blocks: tuple[dict[str, str], ...] = (),
     ) -> AgentRun:
         return self._store.succeed_run(
             validate_run_id(run_id),
@@ -129,6 +161,7 @@ class AgentRunLifecycle:
             execution_attempt,
             answer,
             now,
+            blocks,
         )
 
     def fail(

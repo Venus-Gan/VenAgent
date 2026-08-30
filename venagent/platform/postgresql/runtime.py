@@ -195,6 +195,7 @@ def _validate_schema(pool: ConnectionPool[Any], saver: PostgresSaver) -> None:
             "conversations",
             "conversation_messages",
             "agent_runs",
+            "run_events",
             "run_grants",
             "run_requests",
             "memory_settings",

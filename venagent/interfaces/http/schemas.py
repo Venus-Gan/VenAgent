@@ -1,7 +1,7 @@
 """HTTP request/response schemas。"""
 
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, field_validator
 
@@ -61,6 +61,15 @@ class MessageResponse(ApiModel):
     created_at: datetime
     source_run_id: str | None = None
     reply_to_message_id: str | None = None
+    blocks: list[dict[str, str]] = []
+
+
+class RunEventResponse(ApiModel):
+    run_id: str
+    sequence: int
+    type: str
+    payload: dict[str, Any]
+    created_at: datetime
 
 
 class RunResponse(ApiModel):
@@ -76,6 +85,8 @@ class RunResponse(ApiModel):
     created_at: datetime
     updated_at: datetime
     retry_eligible: bool = False
+    selected_skill_id: str | None = None
+    selected_skill_name: str | None = None
 
 
 class ConversationDetailResponse(ConversationResponse):
@@ -95,6 +106,7 @@ class RenameConversationRequest(ApiModel):
 class CreateRunRequest(ApiModel):
     message: str
     client_request_id: str
+    selected_skill_id: str | None = None
 
     @field_validator("message")
     @classmethod
@@ -102,6 +114,12 @@ class CreateRunRequest(ApiModel):
         if len(value.strip().encode("utf-8")) > MAX_MESSAGE_BYTES:
             raise ValueError("message exceeds the maximum size")
         return value
+
+
+class CommandOptionResponse(ApiModel):
+    command: str
+    description: str
+    parent: str | None = None
 
 
 class RetryRunRequest(ApiModel):
@@ -113,10 +131,14 @@ class RunCreationResponse(ApiModel):
     input_message: MessageResponse
 
 
-class MemoryCommandResponse(ApiModel):
-    kind: Literal["memory_command"] = "memory_command"
+class CommandResponse(ApiModel):
+    kind: Literal["memory_command", "mcp_command", "rag_command"]
     code: str
     message: str
+
+
+# 兼容旧引用的别名；新命令统一使用 CommandResponse。
+MemoryCommandResponse = CommandResponse
 
 
 class CancelRunResponse(ApiModel):
@@ -124,6 +146,33 @@ class CancelRunResponse(ApiModel):
     status: Literal[
         "cancel_requested", "succeeded", "failed", "cancelled", "incompatible"
     ]
+
+
+class ClarifyRunRequest(ApiModel):
+    """M07 澄清答复：单选/多选/其他自填/忽略。"""
+
+    selected: list[str] = []
+    custom: str | None = None
+    skipped: bool = False
+
+    @field_validator("selected")
+    @classmethod
+    def validate_selected(cls, value: list[str]) -> list[str]:
+        if len(value) > 10:
+            raise ValueError("selected items exceed limit")
+        return value
+
+    @field_validator("custom")
+    @classmethod
+    def validate_custom(cls, value: str | None) -> str | None:
+        if value is not None and len(value) > 2000:
+            raise ValueError("custom answer too long")
+        return value
+
+
+class ClarifyRunResponse(ApiModel):
+    run_id: str
+    status: str
 
 
 class ErrorBody(ApiModel):
