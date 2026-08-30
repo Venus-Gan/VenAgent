@@ -98,6 +98,9 @@ graph TB
 
 ---
 
+> 2026-08-30：形态 C（ADR-0010）后唯一 Python 源包为 `src/`（原 `venagent/` 包级改名）；`venagent` 仍为产品名（pip 包名、DB/logger/标识等保留）。实施细节见 `docs/wayfinder/assets/目录平整与提交-计划.md`。
+> 架构图与流程图仍有旧实现描述，整图重画另行处理。
+
 ## 核心流程时序图
 
 ```mermaid
@@ -225,10 +228,10 @@ sequenceDiagram
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
-.\.venv\Scripts\python.exe -m venagent
+.\.venv\Scripts\python.exe -m src
 ```
 
-访问 `http://127.0.0.1:8090`。首次启动会自动从 `config.example.yaml` 复制生成仓库根 `config.yaml`（已被 gitignore，永不进 git）；敏感字段留空 = 对应能力安全降级，完全不配置 LLM 时使用无网络的本地回复模型。需要真实模型时编辑 `config.yaml` 的 `llm` 区块，或用前端 `/settings` 页面配置。
+访问 `http://127.0.0.1:8090`。首次启动会自动从 `config.example.yaml` 复制生成仓库根 `config.yaml`（已被 gitignore，永不进 git）；敏感字段留空 = 对应能力安全降级，完全不配置 LLM 时使用无网络的本地回复模型。需要真实模型时编辑 `config.yaml` 的 `llm` 区块，或用前端 `/settings` 页面配置。MCP 配置与运行时状态生成于 `src/mcp/mcp-configs/`（随包锚定，与启动目录无关，gitignored）。
 
 ### 对话与图记忆持久化（PostgreSQL + Neo4j）
 
@@ -238,8 +241,8 @@ python -m venv .venv
 $env:POSTGRES_PASSWORD = "仅用于本机开发的密码"
 $env:NEO4J_PASSWORD = "另一个仅用于本机开发的密码"
 docker compose up -d postgres neo4j
-.\.venv\Scripts\python.exe -m venagent migrate
-.\.venv\Scripts\python.exe -m venagent
+.\.venv\Scripts\python.exe -m src migrate
+.\.venv\Scripts\python.exe -m src
 ```
 
 `migrate` 是唯一建立或升级 PostgreSQL 业务/checkpointer schema 与 M05 Neo4j constraints 的入口；普通启动只做兼容性检查，不静默执行 DDL。PostgreSQL 不可用时聊天退化到进程内模式；Neo4j 不可用时只停用 G1 图增益，PostgreSQL 普通长期事实仍可召回。
@@ -252,7 +255,7 @@ Ruff 属于 `dev` extra，只安装在项目虚拟环境中，不要求全局安
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
-.\.venv\Scripts\python.exe -m ruff check venagent tests
+.\.venv\Scripts\python.exe -m ruff check src tests
 ```
 
 测试按新目录树归位到 `tests/<module>/`。默认 `pytest` 运行单元面；需要真实基础设施（PostgreSQL / Neo4j / Docker）的用例标记 `integration`，缺对应环境变量时自动 skip：
@@ -301,7 +304,7 @@ OpenAI-family 默认使用 `api_mode: chat_completions`，也可选择 `response
 
 `reasoning_effort` 与 `verbosity` 当前只用于 OpenAI-family/Azure。Anthropic/Gemini 的原生 thinking 配置通过 `extra_body` 传入；配置层不会在不同厂商间猜测式换算强度。
 
-配置优先级为内建安全默认值、仓库根 `config.yaml`、显式进程环境变量白名单（`venagent/config/loader.py` 的 `ENV_FIELDS`）。`config.yaml` 全量 fail-fast：未知键或类型错误在启动装配阶段抛出 `ConfigError`；含 `__` 的未知环境覆盖键同样快速失败。秘密不会写入日志或错误。只要 `llm` 区块出现任意非空字段，配置就必须完整合法，否则应用在启动装配阶段失败；不会静默回退并伪装为真实模型成功。
+配置优先级为内建安全默认值、仓库根 `config.yaml`、显式进程环境变量白名单（`src/config/loader.py` 的 `ENV_FIELDS`）。`config.yaml` 全量 fail-fast：未知键或类型错误在启动装配阶段抛出 `ConfigError`；含 `__` 的未知环境覆盖键同样快速失败。秘密不会写入日志或错误。只要 `llm` 区块出现任意非空字段，配置就必须完整合法，否则应用在启动装配阶段失败；不会静默回退并伪装为真实模型成功。
 
 持久（durable）模式还需要 `invocation.encryption_key`：这是用于加密 M06 私有工具调用载荷的 32 字节 Base64 密钥。缺失或无效时持久模式会 fail closed，拒绝启动，不会降级为明文存储。本地开发可用 PowerShell 生成：`[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Max 256 }))`。该密钥与其他秘密一样只写入 `config.yaml`，不要提交到仓库。
 
@@ -312,17 +315,17 @@ OpenAI-family 默认使用 `api_mode: chat_completions`，也可选择 `response
 当前渐进式运行时采用按能力优先的 package layout：
 
 ```text
-venagent/                                      # 唯一 Python 运行时包（目标树；每文件职责定稿：docs/wayfinder/assets/新目录树-draft.md）
+src/                                         # 唯一 Python 运行时包（原 venagent/，形态 C/ADR-0010；每文件职责定稿：docs/wayfinder/assets/新目录树-draft.md）
 ├── __init__.py                                # 稳定公开 API
-├── __main__.py                                # serve/migrate CLI 入口
+├── __main__.py                                # serve/migrate CLI 入口（python -m src）
 ├── bootstrap.py                               # 唯一 feature adapter composition root
-├── agent/                                     # 执行层：AgentRun 与 M06 LangGraph 图
+├── agent/                                     # 执行层：AgentRun 与 M06 LangGraph 图 + M07 计划层
 │   ├── __init__.py                            # agent 稳定导出
 │   ├── errors.py                              # run 领域错误
 │   ├── events.py                              # run 事件发布
 │   ├── graph.py                               # M06 执行图（prepare→model_decision→execute_tool→model_finalize→final）
 │   ├── observation.py                         # 在线观察发布/订阅，不保存运行事实
-│   ├── planning/                              # [M07 留位] 外层计划层（planner/selector/replanner/state），实现时建
+│   ├── planning/                              # [M07 已实现] 外层计划层：dag/selector/planner/executor/replanner/factory + subagents/（任务视窗由前端派生）
 │   ├── ports.py                               # RunStore 与模型调用消费方端口
 │   ├── runs.py                                # AgentRun 生命周期、claim 与 fencing
 │   ├── runtime.py                             # 调度、执行、恢复、取消与 façade
@@ -372,7 +375,7 @@ venagent/                                      # 唯一 Python 运行时包（�
 │   ├── source_tools.py                        # 工具状态槽位
 │   ├── source_skills.py                       # 技能槽位
 │   ├── source_constraints.py                  # sandbox 静态安全政策快照槽位
-│   └── source_planner.py                      # [M07 留位] Planner 状态槽位，实现时建
+│   └── source_planner.py                      # [定稿留位未兑现] M07 按 AGI-saber 实证对齐为「节点内联 + 每 run 一次 mem_prefix 装配」（ADR-0009）；source_planner 语义=任务状态跨轮快照，Phase 2 可选
 ├── tools/                                     # 工具面：M06 权威执行层
 │   ├── __init__.py                            # tools 稳定导出
 │   ├── models.py                              # 工具/操作/审批值对象（ArtifactRef/ModelToolCall/ToolDescriptor/Operation/ToolResult/ApprovalItem）
@@ -449,7 +452,8 @@ venagent/                                      # 唯一 Python 运行时包（�
 │   │   └── state.py                           # conversation/ownership/run 共享进程状态
 │   └── neo4j/                                 # Neo4j feature adapters
 │       ├── __init__.py                        # Neo4j memory adapter 稳定导出
-│       └── memory_graph.py                    # durable G1 edge adapter
+│       ├── memory_graph.py                    # durable G1 edge adapter
+│       └── rag_kg.py                          # M08 KG 边 adapter（入库扇出→图/倒排）
 ├── platform/                                  # 共享技术资源与运行期能力
 │   ├── __init__.py                            # 平台状态、runtime 与迁移稳定导出
 │   ├── errors.py                              # 连接、迁移与 schema 错误
@@ -493,10 +497,12 @@ venagent/                                      # 唯一 Python 运行时包（�
             ├── auth.py                        # 身份、session 与账号 routes
             ├── conversations.py               # conversation 查询/重命名/删除 routes
             ├── runs.py                        # run 创建/重试/取消/SSE routes
-            └── control.py                     # /memory、/mcp 等控制面 routes
+            ├── control.py                     # /memory、/mcp 等控制面 routes
+            ├── documents.py                   # M08 文档库 routes（上传/状态/删除）
+            └── settings.py                    # /settings 配置读改 routes
 
-web/                                           # Vue 3 前端；生产构建由 FastAPI 托管
-├── src/modules/                               # chat、ownership 等前端能力模块
+src/web/                                       # Vue 3 前端（原 web/，形态 C 归位；生产构建由 FastAPI 托管）
+├── src/modules/                               # chat、settings、documents、control 等前端能力模块
 ├── tests/e2e/                                 # Playwright 端到端验收
 └── vite.config.ts                             # 开发代理与构建配置
 ```
